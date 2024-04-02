@@ -72,12 +72,11 @@
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"rmgpanw/gtexr"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
+<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
-<p>This is a basic example which shows you how to solve a common problem:</p>
+<p>Get general information about the GTEx service:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rmgpanw.github.io/gtexr/">gtexr</a></span><span class="op">)</span></span>
-<span><span class="co">## basic example code</span></span>
 <span><span class="fu"><a href="reference/get_service_info.html">get_service_info</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── Paging info ─────────────────────────────────────────────────────────────────</span></span>
@@ -109,6 +108,31 @@
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $environment</span></span>
 <span><span class="co">#&gt; [1] "prod"</span></span></code></pre></div>
+<p>Retrieve eQTL genes for whole blood:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/get_eqtl_genes.html">get_eqtl_genes</a></span><span class="op">(</span><span class="st">"Whole_Blood"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── Paging info ─────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; • numberOfPages = 50</span></span>
+<span><span class="co">#&gt; • page = 0</span></span>
+<span><span class="co">#&gt; • maxItemsPerPage = 250</span></span>
+<span><span class="co">#&gt; • totalNumberOfItems = 12360</span></span>
+<span><span class="co">#&gt; # A tibble: 250 × 10</span></span>
+<span><span class="co">#&gt;    tissueSiteDetailId ontologyId  datasetId empiricalPValue gencodeId geneSymbol</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;              &lt;chr&gt;       &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     </span></span>
+<span><span class="co">#&gt;  1 Whole_Blood        UBERON:001… gtex_v8          1.05e- 9 ENSG0000… WASH7P    </span></span>
+<span><span class="co">#&gt;  2 Whole_Blood        UBERON:001… gtex_v8          1.06e-25 ENSG0000… RP11-34P1…</span></span>
+<span><span class="co">#&gt;  3 Whole_Blood        UBERON:001… gtex_v8          6.31e- 2 ENSG0000… CICP27    </span></span>
+<span><span class="co">#&gt;  4 Whole_Blood        UBERON:001… gtex_v8          8.71e- 9 ENSG0000… RP11-34P1…</span></span>
+<span><span class="co">#&gt;  5 Whole_Blood        UBERON:001… gtex_v8          6.01e-20 ENSG0000… RP11-34P1…</span></span>
+<span><span class="co">#&gt;  6 Whole_Blood        UBERON:001… gtex_v8          6.96e- 9 ENSG0000… RP11-34P1…</span></span>
+<span><span class="co">#&gt;  7 Whole_Blood        UBERON:001… gtex_v8          3.10e- 4 ENSG0000… RP11-34P1…</span></span>
+<span><span class="co">#&gt;  8 Whole_Blood        UBERON:001… gtex_v8          1.92e- 3 ENSG0000… ABC7-4304…</span></span>
+<span><span class="co">#&gt;  9 Whole_Blood        UBERON:001… gtex_v8          1.58e- 3 ENSG0000… RP11-34P1…</span></span>
+<span><span class="co">#&gt; 10 Whole_Blood        UBERON:001… gtex_v8          7.82e- 2 ENSG0000… AP006222.2</span></span>
+<span><span class="co">#&gt; # ℹ 240 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 4 more variables: log2AllelicFoldChange &lt;dbl&gt;, pValue &lt;dbl&gt;,</span></span>
+<span><span class="co">#&gt; #   pValueThreshold &lt;dbl&gt;, qValue &lt;dbl&gt;</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
