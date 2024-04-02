@@ -1,0 +1,41 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# gtexr
+
+<!-- badges: start -->
+[![pkgdown](https://github.com/rmgpanw/gtexr/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/rmgpanw/gtexr/actions/workflows/pkgdown.yaml)
+<!-- badges: end -->
+
+The goal of gtexr is to provide a convenient R interface to the [GTEx Portal API V2](https://gtexportal.org/api/v2/redoc#tag/GTEx-Portal-API-Info).
+
+## Installation
+
+You can install the development version of gtexr from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("rmgpanw/gtexr")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(gtexr)
+## basic example code
+get_service_info()
+```
