@@ -2,3 +2,4 @@
 ^renv\.lock$
 ^gtexr\.Rproj$
 ^\.Rproj\.user$
+^LICENSE\.md$
