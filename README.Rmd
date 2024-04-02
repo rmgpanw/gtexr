@@ -30,12 +30,17 @@ You can install the development version of gtexr from [GitHub](https://github.co
 devtools::install_github("rmgpanw/gtexr")
 ```
 
-## Example
+## Examples
 
-This is a basic example which shows you how to solve a common problem:
+Get general information about the GTEx service:
 
-```{r example}
+```{r}
 library(gtexr)
-## basic example code
 get_service_info()
+```
+
+Retrieve eQTL genes for whole blood:
+
+```{r get-eqtl-genes}
+get_eqtl_genes("Whole_Blood")
 ```
