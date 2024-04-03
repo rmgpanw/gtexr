@@ -29,12 +29,11 @@ Get general information about the GTEx service:
 ``` r
 library(gtexr)
 get_service_info()
-#> # A tibble: 2 × 8
-#>   id          name  version organization description contactUrl documentationUrl
-#>   <chr>       <chr> <chr>   <named list> <chr>       <chr>      <chr>           
-#> 1 org.gtexpo… GTEx… 2.0.0   <chr [1]>    This servi… https://g… https://gtexpor…
-#> 2 org.gtexpo… GTEx… 2.0.0   <chr [1]>    This servi… https://g… https://gtexpor…
-#> # ℹ 1 more variable: environment <chr>
+#> # A tibble: 1 × 9
+#>   id     name  version organization_name organization_url description contactUrl
+#>   <chr>  <chr> <chr>   <chr>             <chr>            <chr>       <chr>     
+#> 1 org.g… GTEx… 2.0.0   GTEx Project      https://gtexpor… This servi… https://g…
+#> # ℹ 2 more variables: documentationUrl <chr>, environment <chr>
 ```
 
 Retrieve eQTL genes for whole blood:
