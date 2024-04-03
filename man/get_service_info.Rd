@@ -7,7 +7,7 @@
 get_service_info()
 }
 \value{
-List.
+A tibble.
 }
 \description{
 General information about the GTEx service.

@@ -12,7 +12,7 @@ get_news_item(page = 0, itemsPerPage = 250)
 \item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-List.
+A tibble.
 }
 \description{
 Getting all the news items from the database that are current.

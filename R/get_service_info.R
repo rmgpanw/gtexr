@@ -2,7 +2,7 @@
 #'
 #' General information about the GTEx service.
 #'
-#' @return List.
+#' @return A tibble.
 #' @export
 #'
 #' @examples

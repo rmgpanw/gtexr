@@ -24,7 +24,7 @@ data source and data release.}
 \item{itemsPerPage}{Integer (default = 0).}
 }
 \value{
-Tibble.
+A tibble.
 }
 \description{
 Retrieve eGenes (eQTL Genes).

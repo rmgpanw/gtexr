@@ -7,7 +7,7 @@
 get_maintenance_message()
 }
 \value{
-List.
+A tibble.
 }
 \description{
 Getting all the maintenance messages from the database that are enabled.

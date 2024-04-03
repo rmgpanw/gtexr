@@ -24,7 +24,7 @@
 #' @param page Integer (default = 0).
 #' @param itemsPerPage Integer (default = 0).
 #'
-#' @return Tibble.
+#' @return A tibble.
 #' @export
 #'
 #' @examples

@@ -2,7 +2,7 @@
 #'
 #' Getting all the maintenance messages from the database that are enabled.
 #'
-#' @return List.
+#' @return A tibble.
 #' @export
 #'
 #' @examples

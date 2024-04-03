@@ -20,7 +20,7 @@ ENSG00000065613.9.}
 data source and data release.}
 }
 \value{
-Tibble.
+A tibble.
 }
 \description{
 \href{https://gtexportal.org/api/v2/redoc#tag/Dynamic-Association-Endpoints/operation/calculate_expression_quantitative_trait_loci_api_v2_association_dyneqtl_get}{Calculate your own eQTLs}

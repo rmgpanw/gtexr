@@ -12,7 +12,7 @@
 #'   "gtex_snrnaseq_pilot". Unique identifier of a dataset. Usually includes a
 #'   data source and data release.
 #'
-#' @return Tibble.
+#' @return A tibble.
 #' @export
 #' @family Dynamic Association Endpoints
 #'

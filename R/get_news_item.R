@@ -5,7 +5,7 @@
 #' @param page Integer (default = 0).
 #' @param itemsPerPage Integer (default = 250).
 #'
-#' @return List.
+#' @return A tibble.
 #' @export
 #'
 #' @examples
