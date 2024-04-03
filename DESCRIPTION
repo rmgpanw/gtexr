@@ -22,3 +22,5 @@ Imports:
     purrr,
     rlang,
     tibble
+Suggests:
+    tidyr

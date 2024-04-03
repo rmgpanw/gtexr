@@ -1,6 +1,7 @@
 base_url <- "https://gtexportal.org/api/v2/"
 
-gtex_query <- function(endpoint = NULL) {
+gtex_query <- function(endpoint = NULL,
+                       return_raw = FALSE) {
 
   # build request
   gtex_request <- httr2::request(base_url)
@@ -30,6 +31,10 @@ gtex_query <- function(endpoint = NULL) {
   gtex_response <- gtex_request |>
     httr2::req_perform() |>
     httr2::resp_body_json()
+
+  if (return_raw) {
+    return(gtex_response)
+  }
 
   if (!is.null(gtex_response[["paging_info"]])) {
     if ((gtex_response$paging_info$totalNumberOfItems > gtex_response$paging_info$maxItemsPerPage) &
