@@ -40,4 +40,8 @@ A tibble.
 \examples{
 get_gene_search("CRP")
 }
+\seealso{
+Other Reference Genome Endpoints: 
+\code{\link{get_genes}()}
+}
 \concept{Reference Genome Endpoints}
