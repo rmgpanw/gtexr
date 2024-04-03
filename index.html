@@ -83,7 +83,7 @@
 <span><span class="co">#&gt;   &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;             &lt;chr&gt;            &lt;chr&gt;       &lt;chr&gt;     </span></span>
 <span><span class="co">#&gt; 1 org.g… GTEx… 2.0.0   GTEx Project      https://gtexpor… This servi… https://g…</span></span>
 <span><span class="co">#&gt; # ℹ 2 more variables: documentationUrl &lt;chr&gt;, environment &lt;chr&gt;</span></span></code></pre></div>
-<p>Retrieve eQTL genes for whole blood:</p>
+<p>Retrieve eQTL genes for whole blood tissue:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_eqtl_genes.html">get_eqtl_genes</a></span><span class="op">(</span><span class="st">"Whole_Blood"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -108,6 +108,32 @@
 <span><span class="co">#&gt; # ℹ 240 more rows</span></span>
 <span><span class="co">#&gt; # ℹ 4 more variables: log2AllelicFoldChange &lt;dbl&gt;, pValue &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   pValueThreshold &lt;dbl&gt;, qValue &lt;dbl&gt;</span></span></code></pre></div>
+<p>Retrieve significant eQTLs for one or more genes:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/get_significant_single_tissue_eqtls.html">get_significant_single_tissue_eqtls</a></span><span class="op">(</span>gencodeId <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ENSG00000132693.12"</span>,</span>
+<span>                                                  <span class="st">"ENSG00000203782.5"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; ── Paging info ─────────────────────────────────────────────────────────────────</span></span>
+<span><span class="co">#&gt; • numberOfPages = 1</span></span>
+<span><span class="co">#&gt; • page = 0</span></span>
+<span><span class="co">#&gt; • maxItemsPerPage = 250</span></span>
+<span><span class="co">#&gt; • totalNumberOfItems = 249</span></span>
+<span><span class="co">#&gt; # A tibble: 249 × 13</span></span>
+<span><span class="co">#&gt;    snpId            pos snpIdUpper variantId  geneSymbol  pValue geneSymbolUpper</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;          &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;        &lt;dbl&gt; &lt;chr&gt;          </span></span>
+<span><span class="co">#&gt;  1 rs12128960 159343657 RS12128960 chr1_1593… CRP        8.52e-5 CRP            </span></span>
+<span><span class="co">#&gt;  2 rs12132451 159344052 RS12132451 chr1_1593… CRP        7.92e-5 CRP            </span></span>
+<span><span class="co">#&gt;  3 rs12136402 159347493 RS12136402 chr1_1593… CRP        7.92e-5 CRP            </span></span>
+<span><span class="co">#&gt;  4 rs10908709 159350390 RS10908709 chr1_1593… CRP        7.92e-5 CRP            </span></span>
+<span><span class="co">#&gt;  5 rs10908710 159351189 RS10908710 chr1_1593… CRP        7.92e-5 CRP            </span></span>
+<span><span class="co">#&gt;  6 rs11265178 159359256 RS11265178 chr1_1593… CRP        9.62e-5 CRP            </span></span>
+<span><span class="co">#&gt;  7 rs35532309 159360755 RS35532309 chr1_1593… CRP        6.11e-5 CRP            </span></span>
+<span><span class="co">#&gt;  8 rs6692378  159369451 RS6692378  chr1_1593… CRP        1.17e-6 CRP            </span></span>
+<span><span class="co">#&gt;  9 rs10908714 159370563 RS10908714 chr1_1593… CRP        1.80e-5 CRP            </span></span>
+<span><span class="co">#&gt; 10 rs6656924  159372915 RS6656924  chr1_1593… CRP        1.00e-6 CRP            </span></span>
+<span><span class="co">#&gt; # ℹ 239 more rows</span></span>
+<span><span class="co">#&gt; # ℹ 6 more variables: datasetId &lt;chr&gt;, tissueSiteDetailId &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   ontologyId &lt;chr&gt;, chromosome &lt;chr&gt;, gencodeId &lt;chr&gt;, nes &lt;dbl&gt;</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
