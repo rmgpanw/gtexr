@@ -1,15 +1,21 @@
 #' Get Variant
 #'
-#' This service returns information about a variant, including position, dbSNP
+#' [This service returns information about a variant, including position, dbSNP
 #' RS ID, the reference allele, the alternative allele, and whether the minor
-#' allele frequency is >= 1%. For GTEx v6p, there is also information about
-#' whether the whole exome sequence and chip sequencing data are available.
-#' Results may be queried by GTEx variant ID (variantId), dbSNP RS ID (snpId) or
-#' genomic location (chromosome and pos). Variants are identified based on the
-#' genotype data of each dataset cohort, namely, are dataset-dependent. Each
-#' variant is assigned a unique GTEx variant ID (i.e. the primary key). Not all
-#' variants have a mappable dbSNP RS ID. By default, this service queries the
-#' latest GTEx release.
+#' allele frequency is >=
+#' 1%.](https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_variant_api_v2_dataset_variant_get)
+#'
+#' For GTEx v6p, there is also information about whether the whole exome
+#' sequence and chip sequencing data are available. Results may be queried by
+#' GTEx variant ID (variantId), dbSNP RS ID (snpId) or genomic location
+#' (chromosome and pos). Variants are identified based on the genotype data of
+#' each dataset cohort, namely, are dataset-dependent. Each variant is assigned
+#' a unique GTEx variant ID (i.e. the primary key). Not all variants have a
+#' mappable dbSNP RS ID. By default, this service queries the latest GTEx
+#' release.
+#'
+#' Note: searching by chromosome and position can be more easily achieved using
+#' [get_variant_by_location()].
 #'
 #' @param snpId String.
 #' @param variantId String.
@@ -21,6 +27,7 @@
 #'
 #' @return A tibble.
 #' @export
+#' @family Datasets Endpoints
 #'
 #' @examples
 #' # search by rsid

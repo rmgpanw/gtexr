@@ -33,16 +33,20 @@ get_variant(
 A tibble.
 }
 \description{
-This service returns information about a variant, including position, dbSNP
-RS ID, the reference allele, the alternative allele, and whether the minor
-allele frequency is >= 1\%. For GTEx v6p, there is also information about
-whether the whole exome sequence and chip sequencing data are available.
-Results may be queried by GTEx variant ID (variantId), dbSNP RS ID (snpId) or
-genomic location (chromosome and pos). Variants are identified based on the
-genotype data of each dataset cohort, namely, are dataset-dependent. Each
-variant is assigned a unique GTEx variant ID (i.e. the primary key). Not all
-variants have a mappable dbSNP RS ID. By default, this service queries the
-latest GTEx release.
+\href{https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_variant_api_v2_dataset_variant_get}{This service returns information about a variant, including position, dbSNP RS ID, the reference allele, the alternative allele, and whether the minor allele frequency is >= 1\%.}
+}
+\details{
+For GTEx v6p, there is also information about whether the whole exome
+sequence and chip sequencing data are available. Results may be queried by
+GTEx variant ID (variantId), dbSNP RS ID (snpId) or genomic location
+(chromosome and pos). Variants are identified based on the genotype data of
+each dataset cohort, namely, are dataset-dependent. Each variant is assigned
+a unique GTEx variant ID (i.e. the primary key). Not all variants have a
+mappable dbSNP RS ID. By default, this service queries the latest GTEx
+release.
+
+Note: searching by chromosome and position can be more easily achieved using
+\code{\link[=get_variant_by_location]{get_variant_by_location()}}.
 }
 \examples{
 # search by rsid
@@ -55,3 +59,8 @@ get_variant(variantId = "chr1_153209640_C_A_b38")
 get_variant(chromosome = "chr1",
             pos = 153209600:153209700)
 }
+\seealso{
+Other Datasets Endpoints: 
+\code{\link{get_variant_by_location}()}
+}
+\concept{Datasets Endpoints}
