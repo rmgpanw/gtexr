@@ -60,7 +60,9 @@ gtex_query <- function(endpoint = NULL,
       cli::cli_bullets()
 
     result <- gtex_response$data |>
-      purrr::map(tibble::as_tibble) |>
+      purrr::map(\(x) x |>
+                   purrr::compact() |>
+                   tibble::as_tibble()) |>
       dplyr::bind_rows()
 
   } else {
