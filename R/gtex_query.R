@@ -24,7 +24,22 @@ gtex_query <- function(endpoint = NULL,
   if (!is.null(query_params)) {
     # create a named list of argument-value pairs
     query_params <- rlang::env_get_list(env = rlang::caller_env(n = 1),
-                                        nms = query_params) |>
+                                        nms = query_params)
+
+    empty_query_params <- query_params |>
+      purrr::keep(rlang::is_missing)
+
+    if (length(empty_query_params) > 0) {
+      cli::cli_abort(
+        c(
+          "Identified {length(empty_query_params)} argument{?s} with no default value{?s} provided: ",
+          "{paste(names(empty_query_params), sep = '', collapse = ', ')}"
+        ),
+        call = rlang::caller_env()
+      )
+    }
+
+    query_params <- query_params |>
       purrr::compact() |>
       purrr::imap(\(x, idx) purrr::set_names(as.list(x), idx)) |>
       purrr::flatten()
@@ -47,7 +62,7 @@ gtex_query <- function(endpoint = NULL,
         is.null(query_params[["page"]]) &
         is.null(query_params[["itemsPerPage"]])) {
 
-      message(cli::format_message("Requesting all {gtex_response$paging_info$totalNumberOfItems} items."))
+      cli::cli_alert_info("Requesting all {gtex_response$paging_info$totalNumberOfItems} items.")
       gtex_response <- gtex_request |>
         httr2::req_url_query(itemsPerPage = gtex_response$paging_info$totalNumberOfItems)
     }
