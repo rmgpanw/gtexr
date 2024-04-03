@@ -48,8 +48,8 @@ get_variant <- function(snpId = NULL,
                         itemsPerPage = 250) {
 
   if (is.null(snpId) & is.null(variantId) & (is.null(chromosome) | is.null(pos))) {
-    stop(cli::format_error(c("Either `snpId` or `variantId` must be provided, or both `chromosome` and `pos`.",
-                             "i" = "See {.fn ?get_variant} for examples")))
+    cli::cli_abort(c("Either `snpId` or `variantId` must be provided, or both `chromosome` and `pos`.",
+                             "i" = "See {.fn ?get_variant} for examples"))
   }
 
   gtex_query(endpoint = "dataset/variant")

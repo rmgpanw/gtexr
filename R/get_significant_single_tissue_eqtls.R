@@ -44,8 +44,8 @@ get_significant_single_tissue_eqtls <- function(gencodeId = NULL,
                                                 page = 0,
                                                 itemsPerPage = 250) {
   if (is.null(gencodeId) & is.null(variantId)) {
-    stop(cli::format_error(c("Either `gencodeId` or `variantId` must be provided",
-                             "i" = "See {.fn ?get_significant_single_tissue_eqtls}")))
+    cli::cli_abort(c("Either `gencodeId` or `variantId` must be provided",
+                             "i" = "See {.fn ?get_significant_single_tissue_eqtls}"))
   }
 
   gtex_query(endpoint = "association/singleTissueEqtl")
