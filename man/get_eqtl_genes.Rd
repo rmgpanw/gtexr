@@ -50,3 +50,8 @@ For each eGene, the results include the allelic fold change
 \examples{
 get_eqtl_genes("Whole_Blood")
 }
+\seealso{
+Other Static Association Endpoints: 
+\code{\link{get_significant_single_tissue_eqtls}()}
+}
+\concept{Static Association Endpoints}

@@ -59,3 +59,8 @@ get_significant_single_tissue_eqtls(gencodeId = c("ENSG00000132693.12",
                                     variantId = "chr1_153209640_C_A_b38",
                                     tissueSiteDetailId = "Whole_Blood")
 }
+\seealso{
+Other Static Association Endpoints: 
+\code{\link{get_eqtl_genes}()}
+}
+\concept{Static Association Endpoints}

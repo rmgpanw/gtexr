@@ -5,6 +5,7 @@
 #'
 #' @return A character vector.
 #' @export
+#' @family Utilities
 #'
 #' @examples
 #' available_tissueSiteDetailIds()

@@ -16,3 +16,4 @@ functions which include the argument \code{tissueSiteDetailId}.
 \examples{
 available_tissueSiteDetailIds()
 }
+\concept{Utilities}

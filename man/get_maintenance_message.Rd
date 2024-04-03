@@ -15,3 +15,8 @@ Getting all the maintenance messages from the database that are enabled.
 \examples{
 get_maintenance_message()
 }
+\seealso{
+Other Admin Endpoints: 
+\code{\link{get_news_item}()}
+}
+\concept{Admin Endpoints}

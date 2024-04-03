@@ -15,3 +15,4 @@ General information about the GTEx service.
 \examples{
 get_service_info()
 }
+\concept{GTEx Portal API Info}

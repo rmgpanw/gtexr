@@ -26,6 +26,7 @@
 #'
 #' @return A tibble.
 #' @export
+#' @family Static Association Endpoints
 #'
 #' @examples
 #' get_eqtl_genes("Whole_Blood")

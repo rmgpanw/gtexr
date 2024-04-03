@@ -20,3 +20,8 @@ Getting all the news items from the database that are current.
 \examples{
 get_news_item()
 }
+\seealso{
+Other Admin Endpoints: 
+\code{\link{get_maintenance_message}()}
+}
+\concept{Admin Endpoints}

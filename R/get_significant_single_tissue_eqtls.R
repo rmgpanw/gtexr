@@ -21,6 +21,7 @@
 #'
 #' @return A tibble.
 #' @export
+#' @family Static Association Endpoints
 #'
 #' @examples
 #' # search by gene

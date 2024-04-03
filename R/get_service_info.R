@@ -4,6 +4,7 @@
 #'
 #' @return A tibble.
 #' @export
+#' @family GTEx Portal API Info
 #'
 #' @examples
 #' get_service_info()

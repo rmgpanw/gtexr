@@ -7,6 +7,7 @@
 #'
 #' @return A tibble.
 #' @export
+#' @family Admin Endpoints
 #'
 #' @examples
 #' get_news_item()

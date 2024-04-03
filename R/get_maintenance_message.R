@@ -4,6 +4,7 @@
 #'
 #' @return A tibble.
 #' @export
+#' @family Admin Endpoints
 #'
 #' @examples
 #' get_maintenance_message()
