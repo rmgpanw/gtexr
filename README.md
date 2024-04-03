@@ -29,36 +29,12 @@ Get general information about the GTEx service:
 ``` r
 library(gtexr)
 get_service_info()
-#> 
-#> ── Paging info ─────────────────────────────────────────────────────────────────
-#> $id
-#> [1] "org.gtexportal.rest.v2"
-#> 
-#> $name
-#> [1] "GTEx Portal V2 API"
-#> 
-#> $version
-#> [1] "2.0.0"
-#> 
-#> $organization
-#> $organization$name
-#> [1] "GTEx Project"
-#> 
-#> $organization$url
-#> [1] "https://gtexportal.org"
-#> 
-#> 
-#> $description
-#> [1] "This service provides access to the data powering the GTEx portal."
-#> 
-#> $contactUrl
-#> [1] "https://gtexportal.org/home/contact"
-#> 
-#> $documentationUrl
-#> [1] "https://gtexportal.org/api/v2/docs"
-#> 
-#> $environment
-#> [1] "prod"
+#> # A tibble: 2 × 8
+#>   id          name  version organization description contactUrl documentationUrl
+#>   <chr>       <chr> <chr>   <named list> <chr>       <chr>      <chr>           
+#> 1 org.gtexpo… GTEx… 2.0.0   <chr [1]>    This servi… https://g… https://gtexpor…
+#> 2 org.gtexpo… GTEx… 2.0.0   <chr [1]>    This servi… https://g… https://gtexpor…
+#> # ℹ 1 more variable: environment <chr>
 ```
 
 Retrieve eQTL genes for whole blood:
