@@ -13,7 +13,13 @@ gtex_query <- function(endpoint = NULL,
   }
 
   # append query parameters
-  query_params <- rlang::fn_fmls_names(rlang::caller_fn())
+  query_params <- NULL
+  fn <- rlang::caller_fn()
+
+  # allows gtex_query() to be called directly
+  if (!is.null(fn)) {
+    query_params <- rlang::fn_fmls_names(fn)
+  }
 
   if (!is.null(query_params)) {
     # create a named list of argument-value pairs
