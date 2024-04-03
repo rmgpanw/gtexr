@@ -86,6 +86,9 @@
 <p>Retrieve eQTL genes for whole blood tissue:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_eqtl_genes.html">get_eqtl_genes</a></span><span class="op">(</span><span class="st">"Whole_Blood"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Warning: ! Total number of items (12360) exceeds maximum page size (250).</span></span>
+<span><span class="co">#&gt; ℹ Try increasing `itemsPerPage`, or set this to `NULL` to return all available</span></span>
+<span><span class="co">#&gt;   items in one page.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; ── Paging info ─────────────────────────────────────────────────────────────────</span></span>
 <span><span class="co">#&gt; • numberOfPages = 50</span></span>
@@ -171,6 +174,7 @@
 <h2 data-toc-skip>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://github.com/rmgpanw/gtexr/actions/workflows/pkgdown.yaml" class="external-link"><img src="https://github.com/rmgpanw/gtexr/actions/workflows/pkgdown.yaml/badge.svg" alt="pkgdown"></a></li>
+<li><a href="https://app.codecov.io/gh/rmgpanw/gtexr?branch=main" class="external-link"><img src="https://codecov.io/gh/rmgpanw/gtexr/branch/main/graph/badge.svg" alt="Codecov test coverage"></a></li>
 </ul>
 </div>
 
