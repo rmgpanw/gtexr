@@ -19,7 +19,6 @@ Imports:
     cli,
     dplyr,
     httr2,
-    magrittr,
     purrr,
     rlang,
     tibble

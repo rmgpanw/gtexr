@@ -45,7 +45,7 @@ gtex_query <- function(endpoint = NULL) {
     cli::cli_h1("Paging info")
     gtex_response$paging_info |>
       purrr::imap_chr(\(x, idx) paste(idx, x, sep = " = ")) |>
-      purrr::set_names(nm = "*") %>%
+      purrr::set_names(nm = "*") |>
       cli::cli_bullets()
 
     result <- gtex_response$data |>
