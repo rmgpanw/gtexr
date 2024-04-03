@@ -16,6 +16,9 @@
     <loc>https://rmgpanw.github.io/gtexr/index.html</loc>
   </url>
   <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/available_tissueSiteDetailIds.html</loc>
+  </url>
+  <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/calculate_eqtl.html</loc>
   </url>
   <url>
@@ -29,6 +32,12 @@
   </url>
   <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_service_info.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_significant_single_tissue_eqtls.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_variant.html</loc>
   </url>
   <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/index.html</loc>
