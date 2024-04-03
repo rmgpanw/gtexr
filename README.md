@@ -36,7 +36,7 @@ get_service_info()
 #> # ℹ 2 more variables: documentationUrl <chr>, environment <chr>
 ```
 
-Retrieve eQTL genes for whole blood:
+Retrieve eQTL genes for whole blood tissue:
 
 ``` r
 get_eqtl_genes("Whole_Blood")
@@ -62,4 +62,33 @@ get_eqtl_genes("Whole_Blood")
 #> # ℹ 240 more rows
 #> # ℹ 4 more variables: log2AllelicFoldChange <dbl>, pValue <dbl>,
 #> #   pValueThreshold <dbl>, qValue <dbl>
+```
+
+Retrieve significant eQTLs for one or more genes:
+
+``` r
+get_significant_single_tissue_eqtls(gencodeId = c("ENSG00000132693.12",
+                                                  "ENSG00000203782.5"))
+#> 
+#> ── Paging info ─────────────────────────────────────────────────────────────────
+#> • numberOfPages = 1
+#> • page = 0
+#> • maxItemsPerPage = 250
+#> • totalNumberOfItems = 249
+#> # A tibble: 249 × 13
+#>    snpId            pos snpIdUpper variantId  geneSymbol  pValue geneSymbolUpper
+#>    <chr>          <int> <chr>      <chr>      <chr>        <dbl> <chr>          
+#>  1 rs12128960 159343657 RS12128960 chr1_1593… CRP        8.52e-5 CRP            
+#>  2 rs12132451 159344052 RS12132451 chr1_1593… CRP        7.92e-5 CRP            
+#>  3 rs12136402 159347493 RS12136402 chr1_1593… CRP        7.92e-5 CRP            
+#>  4 rs10908709 159350390 RS10908709 chr1_1593… CRP        7.92e-5 CRP            
+#>  5 rs10908710 159351189 RS10908710 chr1_1593… CRP        7.92e-5 CRP            
+#>  6 rs11265178 159359256 RS11265178 chr1_1593… CRP        9.62e-5 CRP            
+#>  7 rs35532309 159360755 RS35532309 chr1_1593… CRP        6.11e-5 CRP            
+#>  8 rs6692378  159369451 RS6692378  chr1_1593… CRP        1.17e-6 CRP            
+#>  9 rs10908714 159370563 RS10908714 chr1_1593… CRP        1.80e-5 CRP            
+#> 10 rs6656924  159372915 RS6656924  chr1_1593… CRP        1.00e-6 CRP            
+#> # ℹ 239 more rows
+#> # ℹ 6 more variables: datasetId <chr>, tissueSiteDetailId <chr>,
+#> #   ontologyId <chr>, chromosome <chr>, gencodeId <chr>, nes <dbl>
 ```
