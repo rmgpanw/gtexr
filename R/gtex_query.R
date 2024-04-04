@@ -41,12 +41,13 @@ gtex_query <- function(endpoint = NULL,
     }
 
     query_params <- query_params |>
-      purrr::compact() |>
+      purrr::compact()
+
+    validate_args(arguments = query_params, fn = fn)
+
+    query_params <- query_params |>
       purrr::imap(\(x, idx) purrr::set_names(as.list(x), idx)) |>
       purrr::flatten()
-
-    # validate
-    validate_args(arguments = query_params, fn = fn)
 
     # convert these to query parameters
     gtex_request <- gtex_request |>
