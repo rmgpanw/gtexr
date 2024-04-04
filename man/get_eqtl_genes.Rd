@@ -16,9 +16,9 @@ get_eqtl_genes(
 GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
 to see valid values) or an Ontology ID.}
 
-\item{datasetId}{String (default = "gtex_v8"). Options: "gtex_v8" or
-"gtex_snrnaseq_pilot". Unique identifier of a dataset. Usually includes a
-data source and data release.}
+\item{datasetId}{String. Unique identifier of a dataset. Usually includes a
+data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
+Default = "gtex_v8".}
 
 \item{page}{Integer (default = 0).}
 
