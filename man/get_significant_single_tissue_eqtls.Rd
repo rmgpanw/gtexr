@@ -14,8 +14,8 @@ get_significant_single_tissue_eqtls(
 )
 }
 \arguments{
-\item{gencodeId}{String. A Versioned GENCODE ID of a gene, e.g.
-ENSG00000065613.9.}
+\item{gencodeId}{A vector of Versioned GENCODE IDs, e.g.
+c("ENSG00000132693.12", "ENSG00000203782.5")}
 
 \item{variantId}{String. A gtex variant ID.}
 

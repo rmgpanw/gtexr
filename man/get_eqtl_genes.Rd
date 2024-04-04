@@ -7,7 +7,7 @@
 get_eqtl_genes(
   tissueSiteDetailId,
   datasetId = "gtex_v8",
-  page = NULL,
+  page = 0,
   itemsPerPage = 250
 )
 }

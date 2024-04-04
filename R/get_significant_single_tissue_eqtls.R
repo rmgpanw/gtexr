@@ -12,6 +12,8 @@
 #' when searching by variant, this returns no results. Instead use gtex variant
 #' IDs e.g. use "chr1_153209640_C_A_b38" instead of "rs1410858".
 #'
+#' @param gencodeId A vector of Versioned GENCODE IDs, e.g.
+#'   c("ENSG00000132693.12", "ENSG00000203782.5")
 #' @inheritParams gtexr_arguments
 #'
 #' @return A tibble.
