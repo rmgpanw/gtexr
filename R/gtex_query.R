@@ -33,7 +33,7 @@ gtex_query <- function(endpoint = NULL,
     if (length(empty_query_params) > 0) {
       cli::cli_abort(
         c(
-          "Identified {length(empty_query_params)} argument{?s} with no default value{?s} provided: ",
+          "Identified {length(empty_query_params)} missing argument{?s} with no default value{?s} provided: ",
           "{paste(names(empty_query_params), sep = '', collapse = ', ')}"
         ),
         call = rlang::caller_env()
