@@ -26,7 +26,7 @@
 #' get_eqtl_genes("Whole_Blood")
 get_eqtl_genes <- function(tissueSiteDetailId,
                            datasetId = "gtex_v8",
-                           page = NULL,
+                           page = 0,
                            itemsPerPage = 250) {
   gtex_query(endpoint = "association/egene")
 }
