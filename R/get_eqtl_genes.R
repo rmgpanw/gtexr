@@ -16,13 +16,7 @@
 #' - The empiricalPValue is the beta distribution-adjusted empirical p-value from FastQTL.
 #' - The qValues were calculated based on the empirical p-values. A false discovery rate (FDR) threshold of <= 0.05 was applied to identify genes with a significant eQTL.
 #'
-#' @param tissueSiteDetailId String. A vector of Tissue IDs of the tissue(s) of
-#'   interest. Can be a GTEx specific ID or an Ontology ID.
-#' @param datasetId String (default = "gtex_v8"). Options: "gtex_v8" or
-#'   "gtex_snrnaseq_pilot". Unique identifier of a dataset. Usually includes a
-#'   data source and data release.
-#' @param page Integer (default = 0).
-#' @param itemsPerPage Integer (default = 0).
+#' @inheritParams gtexr_arguments
 #'
 #' @return A tibble.
 #' @export

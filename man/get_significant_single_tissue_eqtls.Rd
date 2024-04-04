@@ -14,17 +14,22 @@ get_significant_single_tissue_eqtls(
 )
 }
 \arguments{
-\item{gencodeId}{String, vector.}
+\item{gencodeId}{String. A Versioned GENCODE ID of a gene, e.g.
+ENSG00000065613.9.}
 
-\item{variantId}{String.}
+\item{variantId}{String. A gtex variant ID.}
 
-\item{tissueSiteDetailId}{String.}
+\item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
+GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
+to see valid values) or an Ontology ID.}
 
-\item{datasetId}{String.}
+\item{datasetId}{String (default = "gtex_v8"). Options: "gtex_v8" or
+"gtex_snrnaseq_pilot". Unique identifier of a dataset. Usually includes a
+data source and data release.}
 
-\item{page}{Integer.}
+\item{page}{Integer (default = 0).}
 
-\item{itemsPerPage}{Integer.}
+\item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
 A tibble.

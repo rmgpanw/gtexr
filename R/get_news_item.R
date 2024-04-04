@@ -2,8 +2,7 @@
 #'
 #' Getting all the news items from the database that are current.
 #'
-#' @param page Integer (default = 0).
-#' @param itemsPerPage Integer (default = 250).
+#' @inheritParams gtexr_arguments
 #'
 #' @return A tibble.
 #' @export

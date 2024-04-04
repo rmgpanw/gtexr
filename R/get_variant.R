@@ -17,13 +17,7 @@
 #' Note: searching by chromosome and position can be more easily achieved using
 #' [get_variant_by_location()].
 #'
-#' @param snpId String.
-#' @param variantId String.
-#' @param datasetId String.
-#' @param chromosome String.
-#' @param pos Integer, vector.
-#' @param page Integer.
-#' @param itemsPerPage Integer.
+#' @inheritParams gtexr_arguments
 #'
 #' @return A tibble.
 #' @export

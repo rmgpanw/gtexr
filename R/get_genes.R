@@ -7,7 +7,7 @@
 #' - Versioned GENCODE ID is recommended to ensure unique ID matching.
 #' - By default, this service queries the genome build and GENCODE version used by the latest GTEx release.
 #'
-#' @inheritParams get_gene_search
+#' @inheritParams gtexr_arguments
 #'
 #' @return A tibble
 #' @export

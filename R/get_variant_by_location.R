@@ -4,12 +4,7 @@
 #' certain chromosome at a certain
 #' location.](https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_variant_by_location_api_v2_dataset_variantByLocation_get)
 #'
-#' @param start Integer.
-#' @param end Integer.
-#' @param chromosome String.
-#' @param sortDirection String (default = "asc"). Either "asc" or "desc".
-#' @param page Integer.
-#' @param itemsPerPage Integer.
+#' @inheritParams gtexr_arguments
 #'
 #' @return A tibble.
 #' @export

@@ -6,13 +6,7 @@
 #' - gene_id could be a gene symbol, a gencode ID, or an Ensemble ID
 #' - Gencode Version and Genome Build must be specified
 #'
-#' @param geneId String.
-#' @param gencodeVersion String (default = "v26"). GENCODE annotation release.
-#'   Either "v26" or "v19".
-#' @param genomeBuild String (default = "GRCh38/hg38"). Either "GRCh38/hg38" or
-#'   "GRCh37/hg19".
-#' @param page Integer.
-#' @param itemsPerPage Integer.
+#' @inheritParams gtexr_arguments
 #'
 #' @return A tibble.
 #' @export

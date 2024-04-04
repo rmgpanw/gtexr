@@ -3,14 +3,7 @@
 #' [Calculate your own
 #' eQTLs](https://gtexportal.org/api/v2/redoc#tag/Dynamic-Association-Endpoints/operation/calculate_expression_quantitative_trait_loci_api_v2_association_dyneqtl_get)
 #'
-#' @param tissueSiteDetailId String. The ID of the tissue of interest. Can be a
-#'   GTEx specific ID or an Ontology ID.
-#' @param gencodeId String. A Versioned GENCODE ID of a gene, e.g.
-#'   ENSG00000065613.9.
-#' @param variantId String. A gtex variant ID.
-#' @param datasetId String (default = "gtex_v8"). Options: "gtex_v8" or
-#'   "gtex_snrnaseq_pilot". Unique identifier of a dataset. Usually includes a
-#'   data source and data release.
+#' @inheritParams gtexr_arguments
 #'
 #' @return A tibble.
 #' @export

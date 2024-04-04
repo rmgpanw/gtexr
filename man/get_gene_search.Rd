@@ -21,9 +21,9 @@ Either "v26" or "v19".}
 \item{genomeBuild}{String (default = "GRCh38/hg38"). Either "GRCh38/hg38" or
 "GRCh37/hg19".}
 
-\item{page}{Integer.}
+\item{page}{Integer (default = 0).}
 
-\item{itemsPerPage}{Integer.}
+\item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
 A tibble.
