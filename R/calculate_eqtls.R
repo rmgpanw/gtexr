@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' # perform request
-#' result <- calculate_eqtl(tissueSiteDetailId = "Whole_Blood",
+#' result <- calculate_eqtls(tissueSiteDetailId = "Whole_Blood",
 #'                gencodeId = "ENSG00000203782.5",
 #'                variantId = "rs79641866")
 #'
@@ -20,7 +20,7 @@
 #'
 #' # unnest list columns with tidyr::unnest()
 #' tidyr::unnest(result, c("data", "genotypes"))
-calculate_eqtl <- function(tissueSiteDetailId,
+calculate_eqtls <- function(tissueSiteDetailId,
                            gencodeId,
                            variantId,
                            datasetId = "gtex_v8") {
