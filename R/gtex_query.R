@@ -45,6 +45,9 @@ gtex_query <- function(endpoint = NULL,
       purrr::imap(\(x, idx) purrr::set_names(as.list(x), idx)) |>
       purrr::flatten()
 
+    # validate
+    validate_args(arguments = query_params, fn = fn)
+
     # convert these to query parameters
     gtex_request <- gtex_request |>
       httr2::req_url_query(!!!query_params)

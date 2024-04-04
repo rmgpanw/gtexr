@@ -3,13 +3,10 @@
 #' Internal function that documents all arguments for exported gtexr functions
 #' that wrap GTEx Portal API endpoints (using roxygen `@inheritParams` tag).
 #'
-#' @param chromosome String. One of "chr1", "chr2", "chr3", "chr4", "chr5",
-#'   "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13",
-#'   "chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21",
-#'   "chr22", "chrM", "chrX", "chrY".
-#' @param datasetId String (default = "gtex_v8"). Options: "gtex_v8" or
-#'   "gtex_snrnaseq_pilot". Unique identifier of a dataset. Usually includes a
-#'   data source and data release.
+#' @param chromosome String. One of `r valid_chromosome_values(TRUE)`.
+#' @param datasetId String. Unique identifier of a dataset. Usually includes a
+#'   data source and data release. Options: `r valid_datasetId_values(TRUE)`.
+#'   Default = "gtex_v8".
 #' @param end Integer.
 #' @param gencodeId String. A Versioned GENCODE ID of a gene, e.g.
 #'   ENSG00000065613.9.
