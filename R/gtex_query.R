@@ -4,7 +4,8 @@ gtex_query <- function(endpoint = NULL,
                        return_raw = FALSE) {
 
   # build request
-  gtex_request <- httr2::request(base_url)
+  gtex_request <- httr2::request(base_url) |>
+    httr2::req_user_agent("gtexr (https://github.com/rmgpanw/gtexr)")
 
   # append endpoint
   if (!is.null(endpoint)) {
