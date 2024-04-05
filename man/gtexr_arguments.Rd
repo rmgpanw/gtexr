@@ -23,8 +23,8 @@ Either "v26" or "v19".}
 
 \item{geneId}{String.}
 
-\item{genomeBuild}{String (default = "GRCh38/hg38"). Either "GRCh38/hg38" or
-"GRCh37/hg19".}
+\item{genomeBuild}{String. Options: "GRCh38/hg38", "GRCh37/hg19",
+Default = "GRCh38/hg38".}
 
 \item{itemsPerPage}{Integer (default = 250).}
 
@@ -34,7 +34,8 @@ Either "v26" or "v19".}
 
 \item{snpId}{String}
 
-\item{sortDirection}{String (default = "asc"). Either "asc" or "desc".}
+\item{sortDirection}{String. Options: "asc", "desc".
+Default = "asc".}
 
 \item{start}{Integer.}
 

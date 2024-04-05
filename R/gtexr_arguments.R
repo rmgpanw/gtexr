@@ -13,13 +13,14 @@
 #' @param gencodeVersion String (default = "v26"). GENCODE annotation release.
 #'   Either "v26" or "v19".
 #' @param geneId String.
-#' @param genomeBuild String (default = "GRCh38/hg38"). Either "GRCh38/hg38" or
-#'   "GRCh37/hg19".
+#' @param genomeBuild String. Options: `r valid_genomeBuild_values(TRUE)`,
+#'   Default = "GRCh38/hg38".
 #' @param itemsPerPage Integer (default = 250).
 #' @param page Integer (default = 0).
 #' @param pos Integer, vector.
 #' @param snpId String
-#' @param sortDirection String (default = "asc"). Either "asc" or "desc".
+#' @param sortDirection String. Options: `r valid_sortDirection_values(TRUE)`.
+#'   Default = "asc".
 #' @param start Integer.
 #' @param tissueSiteDetailId String. The ID of the tissue of interest. Can be a
 #'   GTEx specific ID (e.g. "Whole_Blood"; use [available_tissueSiteDetailIds()]
