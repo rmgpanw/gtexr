@@ -59,3 +59,9 @@ get_fine_mapping(gencodeId = c("ENSG00000132693.12",
                                         "Thyroid"))
 }
 }
+\seealso{
+Other Static Association Endpoints: 
+\code{\link{get_eqtl_genes}()},
+\code{\link{get_significant_single_tissue_eqtls}()}
+}
+\concept{Static Association Endpoints}

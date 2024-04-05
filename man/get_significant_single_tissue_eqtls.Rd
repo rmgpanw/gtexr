@@ -66,6 +66,7 @@ get_significant_single_tissue_eqtls(gencodeId = c("ENSG00000132693.12",
 }
 \seealso{
 Other Static Association Endpoints: 
-\code{\link{get_eqtl_genes}()}
+\code{\link{get_eqtl_genes}()},
+\code{\link{get_fine_mapping}()}
 }
 \concept{Static Association Endpoints}
