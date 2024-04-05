@@ -40,18 +40,25 @@ validate_arg_chromosome <- function(x, call, ...) {
 }
 
 validate_arg_datasetId <- function(x, call, ...) {
-
   if (!rlang::is_string(x)) {
+    error_info <- ifelse(rlang::is_character(x),
+                         yes = "You supplied a {.cls {class(x)}} of length {length(x)}",
+                         no = "You supplied a {.cls {class(x)}}")
+
     cli::cli_abort(c("`datasetId` must be a string",
-                     "x" = "You supplied a {.cls {class(x)}}"),
+                     "x" = error_info),
                    call = call)
   }
 
   if (!x %in% valid_datasetId_values()) {
-    cli::cli_abort(c("Invalid `datasetId` value",
-                     "x" = 'You supplied "{x}"',
-                     "i" = "Valid options: {valid_datasetId_values(TRUE)}"),
-                   call = call)
+    cli::cli_abort(
+      c(
+        "Invalid `datasetId` value",
+        "x" = 'You supplied "{x}"',
+        "i" = "Valid options: {valid_datasetId_values(TRUE)}"
+      ),
+      call = call
+    )
   }
 }
 
