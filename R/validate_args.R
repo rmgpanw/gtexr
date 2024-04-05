@@ -1,14 +1,18 @@
 
 # Validate args function --------------------------------------------------
 
-
 validate_args <- function(arguments,
                           fn_name,
                           call) {
+  # see ?purrr::purrr_error_indexed - withCallingHandlers() is used here to get
+  # rid of purrr's wrapper error
   withCallingHandlers(
     purrr::iwalk(arguments,
                  \(value, arg_name) eval(
-                   rlang::call2(paste0("validate_arg_", arg_name), value, call, fn_name, .ns = NULL)
+                   rlang::call2(paste0("validate_arg_", arg_name),
+                                value, call,
+                                fn_name,
+                                .ns = NULL)
                  )),
     purrr_error_indexed = function(err) {
       rlang::cnd_signal(err$parent)
@@ -18,8 +22,6 @@ validate_args <- function(arguments,
 
 
 # Validate arg functions --------------------------------------------------
-
-
 
 validate_arg_chromosome <- function(x, call, ...) {
 
@@ -113,24 +115,97 @@ validate_arg_gencodeVersion <- function(x, call, ...) {
   }
 }
 
-validate_arg_geneId <- function(x, call, ...) {
-  TRUE
+validate_arg_geneId <- function(x, call, fn_name) {
+  if (fn_name ==
+      "get_gene_search") {
+    if (!rlang::is_string(x)) {
+      error_info <- ifelse(rlang::is_character(x),
+                           yes = "You supplied a {.cls {class(x)}} of length {length(x)}",
+                           no = "You supplied a {.cls {class(x)}}")
+
+      cli::cli_abort(c("`geneId` must be a string",
+                       "x" = error_info),
+                     call = call)
+    }
+  } else if (fn_name ==
+             "get_genes") {
+    if (!rlang::is_character(x)) {
+      cli::cli_abort(
+        c("`geneId` must be type character",
+          "x" = "You supplied a {.cls {class(x)}}"),
+        call = call
+      )
+    }
+  }
 }
 
 validate_arg_genomeBuild <- function(x, call, ...) {
-  TRUE
+  if (!rlang::is_string(x)) {
+    cli::cli_abort(c("`genomeBuild` must be a string",
+                     "x" = "You supplied a {.cls {class(x)}}"),
+                   call = call)
+  }
+
+  if (!x %in% valid_genomeBuild_values()) {
+    cli::cli_abort(c("Invalid `genomeBuild` value",
+                     "x" = 'You supplied "{x}"',
+                     "i" = "Valid options: {valid_genomeBuild_values(TRUE)}"),
+                   call = call)
+  }
 }
 
 validate_arg_itemsPerPage <- function(x, call, ...) {
-  TRUE
+  if (!rlang::is_scalar_integerish(x)) {
+    cli::cli_abort(c("`itemsPerPage` must be an integer",
+                     "x" = "You supplied a {.cls {class(x)}}"),
+                   call = call)
+  }
+
+  if (x < 0 | x > 100000) {
+    cli::cli_abort(c("`itemsPerPage` must be between 0 and 100000",
+                     "x" = "You supplied {x}"),
+                   call = call)
+  }
 }
 
 validate_arg_page <- function(x, call, ...) {
-  TRUE
+  if (!rlang::is_scalar_integerish(x)) {
+    cli::cli_abort(c("`page` must be an integer",
+                     "x" = "You supplied a {.cls {class(x)}}"),
+                   call = call)
+  }
+
+  if (x < 0 | x > 100000) {
+    cli::cli_abort(c("`page` must be between 0 and 100000",
+                     "x" = "You supplied {x}"),
+                   call = call)
+  }
 }
 
-validate_arg_pos <- function(x, call, ...) {
-  TRUE
+validate_arg_pos <- function(x, call, fn_name) {
+  if (fn_name == "get_neighbor_gene") {
+    if (!rlang::is_scalar_integerish(x)) {
+      error_info <- ifelse(rlang::is_integerish(x),
+                           yes = "You supplied a {.cls {class(x)}} of length {length(x)}",
+                           no = "You supplied a {.cls {class(x)}}")
+
+      cli::cli_abort(c("`pos` must be a scalar integer",
+                       "x" = error_info),
+                     call = call)
+    }
+  } else if (fn_name == "get_variant") {
+    if (!rlang::is_integerish(x)) {
+      cli::cli_abort(c("`pos` must be an integer",
+                       "x" = "You supplied a {.cls {class(x)}}"),
+                     call = call)
+    }
+  }
+
+  if (any(x < 0) | any(x > 248945542)) {
+    cli::cli_abort(c("`pos` must be between 0 and 248945542",
+                     "x" = "You supplied {x}"),
+                   call = call)
+  }
 }
 
 validate_arg_snpId <- function(x, call, ...) {
@@ -264,6 +339,22 @@ valid_gencodeVersion_values <- function(single_string = FALSE) {
     result <- paste0('"',
                      paste(
                        valid_gencodeVersion_values(FALSE),
+                       sep = "",
+                       collapse = '", "'
+                     ),
+                     '"')
+  }
+
+  return(result)
+}
+
+valid_genomeBuild_values <- function(single_string = FALSE) {
+  result <- c("GRCh38/hg38", "GRCh37/hg19")
+
+  if (single_string) {
+    result <- paste0('"',
+                     paste(
+                       valid_genomeBuild_values(FALSE),
                        sep = "",
                        collapse = '", "'
                      ),
