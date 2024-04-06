@@ -47,13 +47,10 @@ gtex_query <- function(endpoint = NULL,
     #               fn_name = rlang::call_name(rlang::caller_call()),
     #               call = rlang::caller_env())
 
-    query_params <- query_params |>
-      purrr::imap(\(x, idx) purrr::set_names(as.list(x), idx)) |>
-      purrr::flatten()
-
     # convert these to query parameters
     gtex_request <- gtex_request |>
-      httr2::req_url_query(!!!query_params)
+      httr2::req_url_query(!!!query_params,
+                           .multi = "explode")
   }
 
   gtex_response <- gtex_request |>

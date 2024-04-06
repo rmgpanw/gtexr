@@ -18,7 +18,7 @@ RoxygenNote: 7.2.3
 Imports: 
     cli,
     dplyr,
-    httr2,
+    httr2 (>= 1.0.0),
     purrr,
     rlang,
     tibble,
