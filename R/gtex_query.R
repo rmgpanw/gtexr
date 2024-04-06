@@ -43,9 +43,9 @@ gtex_query <- function(endpoint = NULL,
     query_params <- query_params |>
       purrr::compact()
 
-    validate_args(arguments = query_params,
-                  fn_name = rlang::call_name(rlang::caller_call()),
-                  call = rlang::caller_env())
+    # validate_args(arguments = query_params,
+    #               fn_name = rlang::call_name(rlang::caller_call()),
+    #               call = rlang::caller_env())
 
     query_params <- query_params |>
       purrr::imap(\(x, idx) purrr::set_names(as.list(x), idx)) |>
@@ -57,39 +57,49 @@ gtex_query <- function(endpoint = NULL,
   }
 
   gtex_response <- gtex_request |>
-    httr2::req_perform() |>
+    httr2::req_error(is_error = \(resp) FALSE) |>
+    httr2::req_perform()
+
+  gtex_response_body <- gtex_response |>
     httr2::resp_body_json()
 
+  # handle http errors
+  switch(as.character(gtex_response$status_code),
+         "422" = process_status_422(gtex_response_body,
+                                  call = rlang::caller_env()),
+         "400" = process_status_400(gtex_response_body,
+                                  call = rlang::caller_env()))
+
   if (return_raw) {
-    return(gtex_response)
+    return(gtex_response_body)
   }
 
-  if (!is.null(gtex_response[["paging_info"]])) {
+  if (!is.null(gtex_response_body[["paging_info"]])) {
 
     # warn user if not all available results fit on one page
-    if ((gtex_response$paging_info$totalNumberOfItems > gtex_response$paging_info$maxItemsPerPage)) {
+    if ((gtex_response_body$paging_info$totalNumberOfItems > gtex_response_body$paging_info$maxItemsPerPage)) {
 
       cli::cli_warn(
-        c("!" = "Total number of items ({gtex_response$paging_info$totalNumberOfItems}) exceeds maximum page size ({gtex_response$paging_info$maxItemsPerPage}).",
+        c("!" = "Total number of items ({gtex_response_body$paging_info$totalNumberOfItems}) exceeds maximum page size ({gtex_response_body$paging_info$maxItemsPerPage}).",
           "i" = "Try increasing `itemsPerPage`.")
       )
     }
 
     # print paging info
     cli::cli_h1("Paging info")
-    gtex_response$paging_info |>
+    gtex_response_body$paging_info |>
       purrr::imap_chr(\(x, idx) paste(idx, x, sep = " = ")) |>
       purrr::set_names(nm = "*") |>
       cli::cli_bullets()
 
-    result <- gtex_response$data |>
+    result <- gtex_response_body$data |>
       purrr::map(\(x) x |>
                    purrr::compact() |>
                    tibble::as_tibble()) |>
       dplyr::bind_rows()
 
   } else {
-    result <- gtex_response |>
+    result <- gtex_response_body |>
       tibble::as_tibble()
   }
 
