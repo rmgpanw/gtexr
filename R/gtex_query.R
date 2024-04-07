@@ -52,7 +52,7 @@ gtex_query <- function(endpoint = NULL,
                            .multi = "explode")
   }
 
-  gtex_response_body <- perform_gtex_request(gtex_request) |>
+  gtex_response_body <- perform_gtex_request(gtex_request, call = rlang::caller_env()) |>
     httr2::resp_body_json()
 
   if (return_raw) {
@@ -92,7 +92,7 @@ gtex_query <- function(endpoint = NULL,
 
 }
 
-perform_gtex_request <- function(gtex_request) {
+perform_gtex_request <- function(gtex_request, call) {
   gtex_response <- gtex_request |>
     httr2::req_error(is_error = \(resp) ifelse(!resp$status_code %in% c(200L, 422L, 400L),
                                                TRUE,
@@ -104,10 +104,10 @@ perform_gtex_request <- function(gtex_request) {
     as.character(gtex_response$status_code),
     "422" = gtex_response |>
       httr2::resp_body_json() |>
-      handle_status_422(call = rlang::caller_env()),
+      handle_status_422(call = call),
     "400" = gtex_response |>
       httr2::resp_body_json() |>
-      handle_status_400(call = rlang::caller_env())
+      handle_status_400(call = call)
   )
 
   return(gtex_response)
