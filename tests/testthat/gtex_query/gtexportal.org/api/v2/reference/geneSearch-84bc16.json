@@ -1,0 +1,27 @@
+{
+    "data": [
+        {
+            "chromosome": "chr1",
+            "dataSource": "HAVANA",
+            "description": "C-reactive protein pseudogene 1 [Source:HGNC Symbol;Acc:HGNC:2368]",
+            "end": 159705607,
+            "entrezGeneId": null,
+            "gencodeId": "ENSG00000223603.1",
+            "gencodeVersion": "v26",
+            "geneStatus": "",
+            "geneSymbol": "CRPP1",
+            "geneSymbolUpper": "CRPP1",
+            "geneType": "unprocessed pseudogene",
+            "genomeBuild": "GRCh38/hg38",
+            "start": 159704983,
+            "strand": "-",
+            "tss": 159705607
+        }
+    ],
+    "paging_info": {
+        "numberOfPages": 2,
+        "page": 0,
+        "maxItemsPerPage": 1,
+        "totalNumberOfItems": 2
+    }
+}

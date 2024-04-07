@@ -1,0 +1,13 @@
+{
+    "id": "org.gtexportal.rest.v2",
+    "name": "GTEx Portal V2 API",
+    "version": "2.0.0",
+    "organization": {
+        "name": "GTEx Project",
+        "url": "https://gtexportal.org"
+    },
+    "description": "This service provides access to the data powering the GTEx portal.",
+    "contactUrl": "https://gtexportal.org/home/contact",
+    "documentationUrl": "https://gtexportal.org/api/v2/docs",
+    "environment": "prod"
+}
