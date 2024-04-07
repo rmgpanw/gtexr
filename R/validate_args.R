@@ -1,5 +1,3 @@
-
-
 validate_args <- function(arguments,
                           call) {
   metadata <- gtexr_arguments()
@@ -9,14 +7,16 @@ validate_args <- function(arguments,
   withCallingHandlers(
     purrr::iwalk(arguments,
                  \(value, arg_name) {
-                   arg_metadata <- metadata[metadata$arg == arg_name,]
+                   arg_metadata <- metadata[metadata$arg == arg_name, ]
 
-                   if(arg_metadata$scalar) {
-                     error_msg <- c("`{arg_name}` must be class {.cls {arg_metadata$type}} of length 1",
-                                    "x" = "You supplied a {.cls {class(value)}} of length {length(value)}")
+                   if (arg_metadata$scalar) {
+                     error_msg <-
+                       c("`{arg_name}` must be class {.cls {arg_metadata$type}} of length 1",
+                         "x" = "You supplied a {.cls {class(value)}} of length {length(value)}")
                    } else {
-                     error_msg <- c("`{arg_name}` must be class {.cls {arg_metadata$type}}",
-                                    "x" = "You supplied class {.cls {class(value)}}")
+                     error_msg <-
+                       c("`{arg_name}` must be class {.cls {arg_metadata$type}}",
+                         "x" = "You supplied class {.cls {class(value)}}")
                    }
 
                    valid_type <- FALSE
@@ -40,7 +40,7 @@ validate_args <- function(arguments,
   )
 
   # if checks pass, rename any pluralised args
-  pluralised_args <- metadata[metadata$pluralised,]$arg
+  pluralised_args <- metadata[metadata$pluralised, ]$arg
   args_to_rename <- which(names(arguments) %in% pluralised_args)
   names(arguments)[args_to_rename] <-
     substr(names(arguments)[args_to_rename], 1, nchar(names(arguments)[args_to_rename]) - 1)
