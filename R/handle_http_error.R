@@ -1,4 +1,4 @@
-process_status_422 <- function(resp_body, call) {
+handle_status_422 <- function(resp_body, call) {
   invalid_args <- resp_body$detail |>
     purrr::map_chr(\(x) cli::format_inline("`{x$loc[[2]]}`")) |>
     unique()
@@ -11,14 +11,20 @@ process_status_422 <- function(resp_body, call) {
     purrr::map_chr(\(x) cli::format_inline("`{x$loc[[2]]}`: {x$msg}"))
   names(msgs) <- rep("i", length(msgs))
 
-  cli::cli_abort(c("!" = "HTTP 422 Validation Error",
-                   invalid_args,
-                   msgs),
-                 call = call)
+  cli::cli_abort(
+    class = "httr2_http_400",
+    message = c("!" = "HTTP 422 Validation Error",
+                invalid_args,
+                msgs),
+    call = call
+  )
 }
 
-process_status_400 <- function(resp_body, call) {
-  cli::cli_abort(c("!" = "HTTP 400 Illegal Query Input",
-                   "x" = resp_body$detail),
-                 call = call)
+handle_status_400 <- function(resp_body, call) {
+  cli::cli_abort(
+    class = "httr2_http_400",
+    message = c("!" = "HTTP 400 Illegal Query Input",
+                "x" = resp_body$detail),
+    call = call
+  )
 }

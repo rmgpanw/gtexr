@@ -1,10 +1,9 @@
-base_url <- "https://gtexportal.org/api/v2/"
 
 gtex_query <- function(endpoint = NULL,
                        return_raw = FALSE) {
 
   # build request
-  gtex_request <- httr2::request(base_url) |>
+  gtex_request <- httr2::request("https://gtexportal.org/api/v2/") |>
     httr2::req_user_agent("gtexr (https://github.com/rmgpanw/gtexr)")
 
   # append endpoint
@@ -54,7 +53,9 @@ gtex_query <- function(endpoint = NULL,
   }
 
   gtex_response <- gtex_request |>
-    httr2::req_error(is_error = \(resp) FALSE) |>
+    httr2::req_error(is_error = \(resp) ifelse(!resp$status_code %in% c(200L, 422L, 400L),
+                                               TRUE,
+                                               FALSE)) |>
     httr2::req_perform()
 
   gtex_response_body <- gtex_response |>
@@ -62,9 +63,9 @@ gtex_query <- function(endpoint = NULL,
 
   # handle http errors
   switch(as.character(gtex_response$status_code),
-         "422" = process_status_422(gtex_response_body,
+         "422" = handle_status_422(gtex_response_body,
                                   call = rlang::caller_env()),
-         "400" = process_status_400(gtex_response_body,
+         "400" = handle_status_400(gtex_response_body,
                                   call = rlang::caller_env()))
 
   if (return_raw) {
