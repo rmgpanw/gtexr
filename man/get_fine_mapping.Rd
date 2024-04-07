@@ -5,17 +5,17 @@
 \title{Get Fine Mapping}
 \usage{
 get_fine_mapping(
-  gencodeId,
+  gencodeIds,
   datasetId = "gtex_v8",
   variantId = NULL,
-  tissueSiteDetailId = NULL,
+  tissueSiteDetailIds = NULL,
   page = 0,
   itemsPerPage = 250
 )
 }
 \arguments{
-\item{gencodeId}{Character vector of versioned GENCODE IDs, e.g.
-\code{c("ENSG00000132693.12", "ENSG00000203782.5")}}
+\item{gencodeIds}{A character vector of Versioned GENCODE IDs, e.g.
+c("ENSG00000132693.12", "ENSG00000203782.5").}
 
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
 data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
@@ -23,8 +23,8 @@ Default = "gtex_v8".}
 
 \item{variantId}{String. A gtex variant ID.}
 
-\item{tissueSiteDetailId}{Character vector of IDs for tissues of
-interest. Can be a GTEx specific IDs (e.g. "Whole_Blood"; use
+\item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
+Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}} to see valid values) or Ontology IDs.}
 
 \item{page}{Integer (default = 0).}
@@ -48,14 +48,14 @@ The retrieved data is split into pages with items_per_page entries per page
 \examples{
 \dontrun{
 # search by gene
-get_fine_mapping(gencodeId = c("ENSG00000132693.12",
+get_fine_mapping(gencodeIds = c("ENSG00000132693.12",
                                "ENSG00000203782.5"))
 
 # optionally filter for a single variant and/or one or more tissues
-get_fine_mapping(gencodeId = c("ENSG00000132693.12",
+get_fine_mapping(gencodeIds = c("ENSG00000132693.12",
                                "ENSG00000203782.5"),
                  variantId = "chr1_153228363_A_G_b38",
-                 tissueSiteDetailId = c("Whole_Blood",
+                 tissueSiteDetailIds = c("Whole_Blood",
                                         "Thyroid"))
 }
 }

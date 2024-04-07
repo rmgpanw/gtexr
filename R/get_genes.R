@@ -14,8 +14,8 @@
 #' @family Reference Genome Endpoints
 #'
 #' @examples
-#' get_genes("CRP")
-get_genes <- function(geneId,
+#' get_genes(c("CRP", "IL6R"))
+get_genes <- function(geneIds,
                       gencodeVersion = "v26",
                       genomeBuild = "GRCh38/hg38",
                       page = 0,

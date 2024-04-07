@@ -13,13 +13,13 @@ get_gene_search(
 )
 }
 \arguments{
-\item{geneId}{String.}
+\item{geneId}{String. A gene symbol, a gencode ID, or an Ensemble ID.}
 
 \item{gencodeVersion}{String (default = "v26"). GENCODE annotation release.
 Either "v26" or "v19".}
 
-\item{genomeBuild}{String. Options: "GRCh38/hg38", "GRCh37/hg19",
-Default = "GRCh38/hg38".}
+\item{genomeBuild}{String. Options: "GRCh38/hg38", "GRCh37/hg19". Default =
+"GRCh38/hg38".}
 
 \item{page}{Integer (default = 0).}
 

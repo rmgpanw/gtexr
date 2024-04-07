@@ -7,7 +7,10 @@
 gtexr_arguments()
 }
 \arguments{
-\item{chromosome}{String. One of "chr1", "chr2", "chr3", "chr4", "chr5", "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13", "chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21", "chr22", "chrM", "chrX", "chrY".}
+\item{chromosome}{String. One of "chr1", "chr2", "chr3", "chr4", "chr5",
+"chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13",
+"chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21",
+"chr22", "chrM", "chrX", "chrY".}
 
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
 data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
@@ -16,15 +19,21 @@ Default = "gtex_v8".}
 \item{end}{Integer.}
 
 \item{gencodeId}{String. A Versioned GENCODE ID of a gene, e.g.
-ENSG00000065613.9.}
+"ENSG00000065613.9".}
+
+\item{gencodeIds}{A character vector of Versioned GENCODE IDs, e.g.
+c("ENSG00000132693.12", "ENSG00000203782.5").}
 
 \item{gencodeVersion}{String (default = "v26"). GENCODE annotation release.
 Either "v26" or "v19".}
 
-\item{geneId}{String.}
+\item{geneId}{String. A gene symbol, a gencode ID, or an Ensemble ID.}
 
-\item{genomeBuild}{String. Options: "GRCh38/hg38", "GRCh37/hg19",
-Default = "GRCh38/hg38".}
+\item{geneIds}{A character vector of gene symbols, versioned gencodeIds, or
+unversioned gencodeIds.}
+
+\item{genomeBuild}{String. Options: "GRCh38/hg38", "GRCh37/hg19". Default =
+"GRCh38/hg38".}
 
 \item{itemsPerPage}{Integer (default = 250).}
 
@@ -34,14 +43,17 @@ Default = "GRCh38/hg38".}
 
 \item{snpId}{String}
 
-\item{sortDirection}{String. Options: "asc", "desc".
-Default = "asc".}
+\item{sortDirection}{String. Options: "asc", "desc". Default = "asc".}
 
 \item{start}{Integer.}
 
 \item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
 GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
 to see valid values) or an Ontology ID.}
+
+\item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
+Can be GTEx specific IDs (e.g. "Whole_Blood"; use
+\code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}} to see valid values) or Ontology IDs.}
 
 \item{variantId}{String. A gtex variant ID.}
 }
