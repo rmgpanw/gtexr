@@ -5,7 +5,7 @@
 \title{Get Significant Single Tissue Eqtls}
 \usage{
 get_significant_single_tissue_eqtls(
-  gencodeId = NULL,
+  gencodeIds = NULL,
   variantId = NULL,
   tissueSiteDetailId = NULL,
   datasetId = "gtex_v8",
@@ -14,8 +14,8 @@ get_significant_single_tissue_eqtls(
 )
 }
 \arguments{
-\item{gencodeId}{A vector of Versioned GENCODE IDs, e.g.
-c("ENSG00000132693.12", "ENSG00000203782.5")}
+\item{gencodeIds}{A character vector of Versioned GENCODE IDs, e.g.
+c("ENSG00000132693.12", "ENSG00000203782.5").}
 
 \item{variantId}{String. A gtex variant ID.}
 
@@ -51,15 +51,15 @@ IDs e.g. use "chr1_153209640_C_A_b38" instead of "rs1410858".
 }
 \examples{
 # search by gene
-get_significant_single_tissue_eqtls(gencodeId = c("ENSG00000132693.12",
+get_significant_single_tissue_eqtls(gencodeIds = c("ENSG00000132693.12",
                                                   "ENSG00000203782.5"))
 
 # search by variant - must be variantId (not rsid)
 get_significant_single_tissue_eqtls(variantId = "chr1_153209640_C_A_b38")
 
-# filter by gene/variant and tissue site - either `gencodeId` or `variantId`
+# filter by gene/variant and tissue site - either `gencodeIds` or `variantId`
 # should be supplied as a minimum
-get_significant_single_tissue_eqtls(gencodeId = c("ENSG00000132693.12",
+get_significant_single_tissue_eqtls(gencodeIds = c("ENSG00000132693.12",
                                                   "ENSG00000203782.5"),
                                     variantId = "chr1_153209640_C_A_b38",
                                     tissueSiteDetailId = "Whole_Blood")

@@ -5,7 +5,7 @@
 \title{\href{https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_genes_api_v2_reference_gene_get}{Get Genes}}
 \usage{
 get_genes(
-  geneId,
+  geneIds,
   gencodeVersion = "v26",
   genomeBuild = "GRCh38/hg38",
   page = 0,
@@ -13,13 +13,14 @@ get_genes(
 )
 }
 \arguments{
-\item{geneId}{String.}
+\item{geneIds}{A character vector of gene symbols, versioned gencodeIds, or
+unversioned gencodeIds.}
 
 \item{gencodeVersion}{String (default = "v26"). GENCODE annotation release.
 Either "v26" or "v19".}
 
-\item{genomeBuild}{String. Options: "GRCh38/hg38", "GRCh37/hg19",
-Default = "GRCh38/hg38".}
+\item{genomeBuild}{String. Options: "GRCh38/hg38", "GRCh37/hg19". Default =
+"GRCh38/hg38".}
 
 \item{page}{Integer (default = 0).}
 
@@ -40,7 +41,7 @@ GENCODE version must be provided.
 }
 }
 \examples{
-get_genes("CRP")
+get_genes(c("CRP", "IL6R"))
 }
 \seealso{
 Other Reference Genome Endpoints: 

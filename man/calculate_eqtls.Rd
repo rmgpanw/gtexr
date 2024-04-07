@@ -17,7 +17,7 @@ GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetai
 to see valid values) or an Ontology ID.}
 
 \item{gencodeId}{String. A Versioned GENCODE ID of a gene, e.g.
-ENSG00000065613.9.}
+"ENSG00000065613.9".}
 
 \item{variantId}{String. A gtex variant ID.}
 

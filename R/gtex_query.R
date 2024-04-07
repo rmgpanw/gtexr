@@ -42,9 +42,8 @@ gtex_query <- function(endpoint = NULL,
     query_params <- query_params |>
       purrr::compact()
 
-    # validate_args(arguments = query_params,
-    #               fn_name = rlang::call_name(rlang::caller_call()),
-    #               call = rlang::caller_env())
+    query_params <- validate_args(arguments = query_params,
+                  call = rlang::caller_env())
 
     # convert these to query parameters
     gtex_request <- gtex_request |>

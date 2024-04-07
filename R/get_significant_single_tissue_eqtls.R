@@ -12,8 +12,6 @@
 #' when searching by variant, this returns no results. Instead use gtex variant
 #' IDs e.g. use "chr1_153209640_C_A_b38" instead of "rs1410858".
 #'
-#' @param gencodeId A vector of Versioned GENCODE IDs, e.g.
-#'   c("ENSG00000132693.12", "ENSG00000203782.5")
 #' @inheritParams gtexr_arguments
 #'
 #' @return A tibble.
@@ -22,26 +20,26 @@
 #'
 #' @examples
 #' # search by gene
-#' get_significant_single_tissue_eqtls(gencodeId = c("ENSG00000132693.12",
+#' get_significant_single_tissue_eqtls(gencodeIds = c("ENSG00000132693.12",
 #'                                                   "ENSG00000203782.5"))
 #'
 #' # search by variant - must be variantId (not rsid)
 #' get_significant_single_tissue_eqtls(variantId = "chr1_153209640_C_A_b38")
 #'
-#' # filter by gene/variant and tissue site - either `gencodeId` or `variantId`
+#' # filter by gene/variant and tissue site - either `gencodeIds` or `variantId`
 #' # should be supplied as a minimum
-#' get_significant_single_tissue_eqtls(gencodeId = c("ENSG00000132693.12",
+#' get_significant_single_tissue_eqtls(gencodeIds = c("ENSG00000132693.12",
 #'                                                   "ENSG00000203782.5"),
 #'                                     variantId = "chr1_153209640_C_A_b38",
 #'                                     tissueSiteDetailId = "Whole_Blood")
-get_significant_single_tissue_eqtls <- function(gencodeId = NULL,
+get_significant_single_tissue_eqtls <- function(gencodeIds = NULL,
                                                 variantId = NULL,
                                                 tissueSiteDetailId = NULL,
                                                 datasetId = "gtex_v8",
                                                 page = 0,
                                                 itemsPerPage = 250) {
-  if (is.null(gencodeId) & is.null(variantId)) {
-    cli::cli_abort(c("Either `gencodeId` or `variantId` must be provided",
+  if (is.null(gencodeIds) & is.null(variantId)) {
+    cli::cli_abort(c("Either `gencodeIds` or `variantId` must be provided",
                              "i" = "See {.fn ?get_significant_single_tissue_eqtls}"))
   }
 
