@@ -57,7 +57,10 @@ that wrap GTEx Portal API endpoints (using roxygen <code>@inheritParams</code> t
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>chromosome</dt>
-<dd><p>String. One of "chr1", "chr2", "chr3", "chr4", "chr5", "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13", "chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21", "chr22", "chrM", "chrX", "chrY".</p></dd>
+<dd><p>String. One of "chr1", "chr2", "chr3", "chr4", "chr5",
+"chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13",
+"chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21",
+"chr22", "chrM", "chrX", "chrY".</p></dd>
 
 
 <dt>datasetId</dt>
@@ -72,7 +75,12 @@ Default = "gtex_v8".</p></dd>
 
 <dt>gencodeId</dt>
 <dd><p>String. A Versioned GENCODE ID of a gene, e.g.
-ENSG00000065613.9.</p></dd>
+"ENSG00000065613.9".</p></dd>
+
+
+<dt>gencodeIds</dt>
+<dd><p>A character vector of Versioned GENCODE IDs, e.g.
+c("ENSG00000132693.12", "ENSG00000203782.5").</p></dd>
 
 
 <dt>gencodeVersion</dt>
@@ -81,12 +89,17 @@ Either "v26" or "v19".</p></dd>
 
 
 <dt>geneId</dt>
-<dd><p>String.</p></dd>
+<dd><p>String. A gene symbol, a gencode ID, or an Ensemble ID.</p></dd>
+
+
+<dt>geneIds</dt>
+<dd><p>A character vector of gene symbols, versioned gencodeIds, or
+unversioned gencodeIds.</p></dd>
 
 
 <dt>genomeBuild</dt>
-<dd><p>String. Options: "GRCh38/hg38", "GRCh37/hg19",
-Default = "GRCh38/hg38".</p></dd>
+<dd><p>String. Options: "GRCh38/hg38", "GRCh37/hg19". Default =
+"GRCh38/hg38".</p></dd>
 
 
 <dt>itemsPerPage</dt>
@@ -106,8 +119,7 @@ Default = "GRCh38/hg38".</p></dd>
 
 
 <dt>sortDirection</dt>
-<dd><p>String. Options: "asc", "desc".
-Default = "asc".</p></dd>
+<dd><p>String. Options: "asc", "desc". Default = "asc".</p></dd>
 
 
 <dt>start</dt>
@@ -118,6 +130,12 @@ Default = "asc".</p></dd>
 <dd><p>String. The ID of the tissue of interest. Can be a
 GTEx specific ID (e.g. "Whole_Blood"; use <code><a href="available_tissueSiteDetailIds.html">available_tissueSiteDetailIds()</a></code>
 to see valid values) or an Ontology ID.</p></dd>
+
+
+<dt>tissueSiteDetailIds</dt>
+<dd><p>Character vector of IDs for tissues of interest.
+Can be GTEx specific IDs (e.g. "Whole_Blood"; use
+<code><a href="available_tissueSiteDetailIds.html">available_tissueSiteDetailIds()</a></code> to see valid values) or Ontology IDs.</p></dd>
 
 
 <dt>variantId</dt>
