@@ -26,7 +26,6 @@ calculate_eqtls <- function(tissueSiteDetailId,
                            datasetId = "gtex_v8") {
   result <- gtex_query("association/dyneqtl",
              return_raw = TRUE)
-
   result$data <- list(tibble::tibble(data = as.numeric(result$data)))
   result$genotypes <- list(tibble::tibble(genotypes = as.integer(result$genotypes)))
 

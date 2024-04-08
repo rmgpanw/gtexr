@@ -11,3 +11,7 @@ with_mock_dir("gtex_query", {
     expect_warning(get_gene_search("CRP", itemsPerPage = 1))
   })
 })
+
+# TODO - add test for `calculate_eqtls(tissueSiteDetailId = "Artery_Aorta",
+# gencodeId = "ENSG00000116117", variantId = "rs147387290")` - returns `NULL`
+# for "pValueThreshold"

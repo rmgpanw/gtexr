@@ -52,7 +52,8 @@ gtex_query <- function(endpoint = NULL,
   }
 
   gtex_response_body <- perform_gtex_request(gtex_request, call = rlang::caller_env()) |>
-    httr2::resp_body_json()
+    httr2::resp_body_json() |>
+    purrr::map(convert_null_to_na)
 
   if (return_raw) {
     return(gtex_response_body)
@@ -110,4 +111,13 @@ perform_gtex_request <- function(gtex_request, call) {
   )
 
   return(gtex_response)
+}
+
+
+convert_null_to_na <- function(x) {
+  if (is.null(x)) {
+    return(NA)
+  } else {
+    return(x)
+  }
 }
