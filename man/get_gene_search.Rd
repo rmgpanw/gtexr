@@ -42,6 +42,7 @@ get_gene_search("CRP")
 }
 \seealso{
 Other Reference Genome Endpoints: 
-\code{\link{get_genes}()}
+\code{\link{get_genes}()},
+\code{\link{get_gwas_catalog_by_location}()}
 }
 \concept{Reference Genome Endpoints}
