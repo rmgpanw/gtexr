@@ -35,6 +35,7 @@ get_neighbor_gene(pos = 1000000, chromosome = "chr1", bp_window = 10000)
 Other Reference Genome Endpoints: 
 \code{\link{get_gene_search}()},
 \code{\link{get_genes}()},
-\code{\link{get_gwas_catalog_by_location}()}
+\code{\link{get_gwas_catalog_by_location}()},
+\code{\link{get_transcripts}()}
 }
 \concept{Reference Genome Endpoints}
