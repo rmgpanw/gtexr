@@ -31,6 +31,11 @@ A tibble.
 \description{
 \href{https://gtexportal.org/api/v2/redoc#tag/Dynamic-Association-Endpoints/operation/calculate_expression_quantitative_trait_loci_api_v2_association_dyneqtl_get}{Calculate your own eQTLs}
 }
+\details{
+\itemize{
+\item Note that in the output, beta and standard error are recorded in columns \code{nes} and \code{error} respectively (see \href{https://gtexportal.org/home/faq#nes_beta}{GTEx FAQs})
+}
+}
 \examples{
 # perform request
 result <- calculate_eqtls(tissueSiteDetailId = "Whole_Blood",
