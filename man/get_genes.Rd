@@ -46,6 +46,7 @@ get_genes(c("CRP", "IL6R"))
 \seealso{
 Other Reference Genome Endpoints: 
 \code{\link{get_gene_search}()},
-\code{\link{get_gwas_catalog_by_location}()}
+\code{\link{get_gwas_catalog_by_location}()},
+\code{\link{get_neighbor_gene}()}
 }
 \concept{Reference Genome Endpoints}

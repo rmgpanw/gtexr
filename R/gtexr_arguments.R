@@ -3,6 +3,7 @@
 #' Internal function that documents all arguments for exported gtexr functions
 #' that wrap GTEx Portal API endpoints (using roxygen `@inheritParams` tag).
 #'
+#' @param bp_window Integer.
 #' @param chromosome String. One of "chr1", "chr2", "chr3", "chr4", "chr5",
 #'   "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13",
 #'   "chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21",
@@ -41,6 +42,7 @@
 gtexr_arguments <- function() {
   tibble::tribble(
     ~arg, ~type, ~scalar, ~pluralised,
+    "bp_window", "integer", TRUE, FALSE,
     "chromosome", "character", TRUE, FALSE,
     "datasetId", "character", TRUE, FALSE,
     "end", "integer", TRUE, FALSE,
