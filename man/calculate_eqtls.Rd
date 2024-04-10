@@ -32,8 +32,10 @@ A tibble.
 \href{https://gtexportal.org/api/v2/redoc#tag/Dynamic-Association-Endpoints/operation/calculate_expression_quantitative_trait_loci_api_v2_association_dyneqtl_get}{Calculate your own eQTLs}
 }
 \details{
+Notes on output:
 \itemize{
-\item Note that in the output, beta and standard error are recorded in columns \code{nes} and \code{error} respectively (see \href{https://gtexportal.org/home/faq#nes_beta}{GTEx FAQs})
+\item Beta and standard error are recorded in columns \code{nes} and \code{error} respectively (see \href{https://gtexportal.org/home/faq#nes_beta}{GTEx FAQs})
+\item \code{variantId} contains (in order) chromosome, position, reference allele, alternative allele and human genome build separated by underscores. The reference and alternative alleles for "chr1_13550_G_A_b38" for example are "G" and "A" respectively.
 }
 }
 \examples{

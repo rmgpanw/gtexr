@@ -13,6 +13,13 @@ validate_args <- function(arguments,
                  \(value, arg_name) {
                    arg_metadata <- metadata[metadata$arg == arg_name, ]
 
+                   if (identical(nrow(arg_metadata), 0L)) {
+                     cli::cli_abort(c("Unrecognised argument: {.var {arg_name}}",
+                                      "i" = "Please submit an issue at {.url {packageDescription('gtexr')$BugReports}} with a reproducible example.",
+                                      "i" = "For gtexr package developers: check whether {.var {arg_name}} is included in {.fun gtexr_arguments}"),
+                                    call = call)
+                   }
+
                    if (arg_metadata$scalar) {
                      error_msg <-
                        c("`{arg_name}` must be class {.cls {arg_metadata$type}} of length 1",
