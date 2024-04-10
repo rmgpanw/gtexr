@@ -40,6 +40,9 @@
     <loc>https://rmgpanw.github.io/gtexr/reference/get_maintenance_message.html</loc>
   </url>
   <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_neighbor_gene.html</loc>
+  </url>
+  <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_news_item.html</loc>
   </url>
   <url>
@@ -47,6 +50,9 @@
   </url>
   <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_significant_single_tissue_eqtls.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_transcripts.html</loc>
   </url>
   <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_variant.html</loc>
