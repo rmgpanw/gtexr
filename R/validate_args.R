@@ -2,6 +2,10 @@ validate_args <- function(arguments,
                           call) {
   metadata <- gtexr_arguments()
 
+  # TODO move checks for missing args here, and also any "" values e.g. calculate_eqtls(tissueSiteDetailId = "Whole_Blood",
+                   # gencodeId = "",
+                   # variantId = "rs79641866")
+
   # see ?purrr::purrr_error_indexed - withCallingHandlers() is used here to get
   # rid of purrr's wrapper error
   withCallingHandlers(
