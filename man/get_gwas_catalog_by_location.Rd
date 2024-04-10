@@ -39,6 +39,7 @@ get_gwas_catalog_by_location(start = 1, end = 10000000, chromosome = "chr1")
 }
 \seealso{
 Other Reference Genome Endpoints: 
+\code{\link{get_exons}()},
 \code{\link{get_gene_search}()},
 \code{\link{get_genes}()},
 \code{\link{get_neighbor_gene}()},
