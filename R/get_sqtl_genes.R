@@ -23,6 +23,7 @@
 #' @family Static Association Endpoints
 #'
 #' @examples
+#' get_sqtl_genes("Whole_Blood")
 get_sqtl_genes <- function(tissueSiteDetailId,
                            datasetId = "gtex_v8",
                            page = 0,
