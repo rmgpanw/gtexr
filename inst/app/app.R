@@ -18,17 +18,23 @@ server <- function(input, output, session) {
     eventReactive(
       input$send_request,
       ignoreInit = TRUE,
-      valueExpr = get_genes(
+      valueExpr = tryCatch(get_genes(
         geneIds = input$geneIds,
         gencodeVersion = input$gencodeVersion,
         genomeBuild = input$genomeBuild,
         page = input$page,
         itemsPerPage = input$itemsPerPage
-      )
+      ),
+      error = function(cnd) cnd)
     )
 
   output$result <-
-    renderTable(response())
+    renderTable({
+      if (inherits(response(), "error")) {
+        validate(c(response()$message, response()$body))
+      }
+      response()
+      })
 }
 
 shinyApp(ui, server)
