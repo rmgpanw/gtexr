@@ -11,7 +11,7 @@
 #' @inheritParams gtexr_arguments
 #' @return A Tibble
 #' @export
-#' @family Static Assocation Endpoints
+#' @family Static Association Endpoints
 #'
 #' @examples
 #' \dontrun{

@@ -60,6 +60,7 @@ Other Static Association Endpoints:
 \code{\link{get_multi_tissue_eqtls}()},
 \code{\link{get_significant_single_tissue_Ieqtls}()},
 \code{\link{get_significant_single_tissue_eqtls}()},
+\code{\link{get_significant_single_tissue_isqtls}()},
 \code{\link{get_significant_single_tissue_sqtls}()},
 \code{\link{get_sqtl_genes}()}
 }

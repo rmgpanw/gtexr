@@ -53,6 +53,7 @@ Other Static Association Endpoints:
 \code{\link{get_significant_single_tissue_Ieqtls}()},
 \code{\link{get_significant_single_tissue_eqtls_by_location}()},
 \code{\link{get_significant_single_tissue_eqtls}()},
+\code{\link{get_significant_single_tissue_isqtls}()},
 \code{\link{get_sqtl_genes}()}
 }
 \concept{Static Association Endpoints}
