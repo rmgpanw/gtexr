@@ -15,9 +15,10 @@
 #'
 #' @examples
 #' \dontrun{
-#' get_significant_single_tissue_isqtls(gencodeId = "ENSG00000132693.12")
+#' get_significant_single_tissue_isqtls(gencodeIds = c("ENSG00000065613.9",
+#'                                                     "ENSG00000203782.5"))
 #' }
-get_significant_single_tissue_isqtls <- function(gencodeId,
+get_significant_single_tissue_isqtls <- function(gencodeIds,
                                                  variantId = NULL,
                                                  tissueSiteDetailId = NULL,
                                                  datasetId = "gtex_v8",

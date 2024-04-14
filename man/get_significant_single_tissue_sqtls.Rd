@@ -5,15 +5,15 @@
 \title{Get Significant Single Tissue Sqtls}
 \usage{
 get_significant_single_tissue_sqtls(
-  gencodeId,
+  gencodeIds,
   variantId = NULL,
   tissueSiteDetailId = NULL,
   datasetId = "gtex_v8"
 )
 }
 \arguments{
-\item{gencodeId}{String. A Versioned GENCODE ID of a gene, e.g.
-"ENSG00000065613.9".}
+\item{gencodeIds}{A character vector of Versioned GENCODE IDs, e.g.
+c("ENSG00000132693.12", "ENSG00000203782.5").}
 
 \item{variantId}{String. A gtex variant ID.}
 
@@ -41,7 +41,8 @@ The retrieved data is split into pages with items_per_page entries per page
 \examples{
 \dontrun{
 # search by gene
-get_significant_single_tissue_sqtls(gencodeId = "ENSG00000132693.12")
+get_significant_single_tissue_sqtls(gencodeIds = c("ENSG00000065613.9",
+                                                   "ENSG00000203782.5"))
 }
 }
 \seealso{
