@@ -24,11 +24,13 @@
 #' @param genomeBuild String. Options: "GRCh38/hg38", "GRCh37/hg19". Default =
 #'   "GRCh38/hg38".
 #' @param itemsPerPage Integer (default = 250).
+#' @param organizationName String. Options: "GTEx Consortium" "Kid's First".
 #' @param page Integer (default = 0).
 #' @param pos Integer, vector.
 #' @param snpId String
 #' @param sortDirection String. Options: "asc", "desc". Default = "asc".
 #' @param start Integer.
+#' @param tissueSampleId Array of strings. A list of Tissue Sample ID(s).
 #' @param tissueSiteDetailId String. The ID of the tissue of interest. Can be a
 #'   GTEx specific ID (e.g. "Whole_Blood"; use [available_tissueSiteDetailIds()]
 #'   to see valid values) or an Ontology ID.
@@ -53,11 +55,13 @@ gtexr_arguments <- function() {
     "geneIds", "character", FALSE, TRUE,
     "genomeBuild", "character", TRUE, FALSE,
     "itemsPerPage", "integer", TRUE, FALSE,
+    "organizationName", "character", TRUE, FALSE,
     "page", "integer", TRUE, FALSE,
     "pos", "integer", FALSE, FALSE,
     "snpId", "character", TRUE, FALSE,
     "sortDirection", "character", TRUE, FALSE,
     "start", "integer", TRUE, FALSE,
+    "tissueSampleId", "character", TRUE, FALSE,
     "tissueSiteDetailId", "character", TRUE, FALSE,
     "tissueSiteDetailIds", "character", FALSE, TRUE,
     "variantId", "character", TRUE, FALSE

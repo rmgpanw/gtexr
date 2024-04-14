@@ -39,6 +39,8 @@ unversioned gencodeIds.}
 
 \item{itemsPerPage}{Integer (default = 250).}
 
+\item{organizationName}{String. Options: "GTEx Consortium" "Kid's First".}
+
 \item{page}{Integer (default = 0).}
 
 \item{pos}{Integer, vector.}
@@ -48,6 +50,8 @@ unversioned gencodeIds.}
 \item{sortDirection}{String. Options: "asc", "desc". Default = "asc".}
 
 \item{start}{Integer.}
+
+\item{tissueSampleId}{Array of strings. A list of Tissue Sample ID(s).}
 
 \item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
 GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
