@@ -56,6 +56,7 @@ Other Static Association Endpoints:
 \code{\link{get_eqtl_genes}()},
 \code{\link{get_fine_mapping}()},
 \code{\link{get_independent_eqtl}()},
+\code{\link{get_multi_tissue_eqtls}()},
 \code{\link{get_significant_single_tissue_eqtls}()}
 }
 \concept{Static Association Endpoints}

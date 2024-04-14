@@ -58,6 +58,7 @@ get_independent_eqtl(gencodeIds = c("ENSG00000132693.12",
 Other Static Association Endpoints: 
 \code{\link{get_eqtl_genes}()},
 \code{\link{get_fine_mapping}()},
+\code{\link{get_multi_tissue_eqtls}()},
 \code{\link{get_significant_single_tissue_eqtls}()},
 \code{\link{get_sqtl_genes}()}
 }
