@@ -19,24 +19,31 @@ ui <- fluidPage(
   numericInput("page", "page", min = 0, max = 100000, value = 0),
   numericInput("itemsPerPage", "itemsPerPage", min = 1, max = 100000, value = 250),
   actionButton("send_request", "Send request"),
+  verbatimTextOutput("query_code"),
   tableOutput("result")
 )
 
 server <- function(input, output, session) {
 
+  query <- eventReactive(
+    input$send_request,
+    ignoreInit = TRUE,
+    valueExpr = rlang::expr(get_genes(
+    geneIds = !!input$geneIds,
+    gencodeVersion = !!input$gencodeVersion,
+    genomeBuild = !!input$genomeBuild,
+    page = !!input$page,
+    itemsPerPage = !!input$itemsPerPage
+  )))
+
+  output$query_code <- renderPrint(query())
+
   response <-
-    eventReactive(
-      input$send_request,
-      ignoreInit = TRUE,
-      valueExpr = tryCatch(get_genes(
-        geneIds = input$geneIds,
-        gencodeVersion = input$gencodeVersion,
-        genomeBuild = input$genomeBuild,
-        page = input$page,
-        itemsPerPage = input$itemsPerPage
-      ),
-      error = function(cnd) cnd)
-    )
+    reactive(tryCatch(
+      eval(query()),
+      error = function(cnd)
+        cnd
+    ))
 
   output$result <-
     renderTable({
