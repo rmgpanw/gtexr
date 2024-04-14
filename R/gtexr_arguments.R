@@ -24,6 +24,7 @@
 #' @param genomeBuild String. Options: "GRCh38/hg38", "GRCh37/hg19". Default =
 #'   "GRCh38/hg38".
 #' @param itemsPerPage Integer (default = 250).
+#' @param organizationName String. Options: "GTEx Consortium" "Kid's First".
 #' @param page Integer (default = 0).
 #' @param pos Integer, vector.
 #' @param snpId String
@@ -53,6 +54,7 @@ gtexr_arguments <- function() {
     "geneIds", "character", FALSE, TRUE,
     "genomeBuild", "character", TRUE, FALSE,
     "itemsPerPage", "integer", TRUE, FALSE,
+    "organizationName", "character", TRUE, FALSE,
     "page", "integer", TRUE, FALSE,
     "pos", "integer", FALSE, FALSE,
     "snpId", "character", TRUE, FALSE,

@@ -39,6 +39,8 @@ unversioned gencodeIds.}
 
 \item{itemsPerPage}{Integer (default = 250).}
 
+\item{organizationName}{String. Options: "GTEx Consortium" "Kid's First".}
+
 \item{page}{Integer (default = 0).}
 
 \item{pos}{Integer, vector.}
