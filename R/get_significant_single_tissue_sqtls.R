@@ -19,7 +19,6 @@
 #' # search by gene
 #' get_significant_single_tissue_sqtls(gencodeId = "ENSG00000132693.12")
 #' }
-
 get_significant_single_tissue_sqtls <- function(gencodeId,
                                                 variantId = NULL,
                                                 tissueSiteDetailId = NULL,

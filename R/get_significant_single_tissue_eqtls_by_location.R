@@ -3,11 +3,11 @@
 #' @description
 #' Find significant single tissue eQTLs using Chromosomal Locations.
 
-#' This service returns precomputed significant single tissue eQTLs.
-#' Results may be filtered by tissue, and/or dataset.
-#' By default, the service queries the latest GTEx release.
-#' Since this endpoint is used to support a third party program on the portal.
-#' The return structure is different from other endpoints and is not paginated.
+#' This service returns precomputed significant single tissue eQTLs. Results may
+#' be filtered by tissue, and/or dataset. By default, the service queries the
+#' latest GTEx release. Since this endpoint is used to support a third party
+#' program on the portal. The return structure is different from other endpoints
+#' and is not paginated.
 #'
 #'
 #' #' [GTEx Portal API

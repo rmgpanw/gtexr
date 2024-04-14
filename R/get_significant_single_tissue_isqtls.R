@@ -1,4 +1,4 @@
-#' Get Significant Single Tissue Isqtls
+#'Get Significant Single Tissue Isqtls
 #'
 #' Retrieve Interaction sQTL Data. This service retrieves cell type interaction
 #' sQTLs (isQTLs), from a specified dataset. Results may be filtered by tissue

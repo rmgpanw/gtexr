@@ -1,6 +1,6 @@
-#' Get Independent eQTL
+#'Get Independent eQTL
 #'
-#' @description Retrieve Independent eQTL Data
+#'@description Retrieve Independent eQTL Data
 #'
 #' - Finds and returns Independent eQTL Data data for the provided list of genes
 #' - By default, this endpoint fetches data from the latest GTEx version
