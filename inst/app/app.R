@@ -28,13 +28,15 @@ server <- function(input, output, session) {
   query <- eventReactive(
     input$send_request,
     ignoreInit = TRUE,
-    valueExpr = rlang::expr(get_genes(
-    geneIds = !!input$geneIds,
-    gencodeVersion = !!input$gencodeVersion,
-    genomeBuild = !!input$genomeBuild,
-    page = !!input$page,
-    itemsPerPage = !!input$itemsPerPage
-  )))
+    valueExpr = {
+      # extract query params from user input
+      query_args <- reactiveValuesToList(input)
+      to_keep <- subset(names(query_args),
+                        names(query_args) %in% gtexr_arguments()$arg)
+      query_args <- query_args[to_keep]
+
+      rlang::expr(get_genes(!!!query_args))
+      })
 
   output$query_code <- renderPrint(query())
 
