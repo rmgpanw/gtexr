@@ -64,8 +64,8 @@ GTEx portal API documentation"><!-- mathjax --><script src="https://cdnjs.cloudf
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_independent_eqtl</span><span class="op">(</span></span>
-<span>  <span class="va">gencodeId</span>,</span>
-<span>  tissueSiteDetailId <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">gencodeIds</span>,</span>
+<span>  tissueSiteDetailIds <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  datasetId <span class="op">=</span> <span class="st">"gtex_v8"</span>,</span>
 <span>  page <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  itemsPerPage <span class="op">=</span> <span class="fl">250</span></span>
@@ -74,15 +74,15 @@ GTEx portal API documentation"><!-- mathjax --><script src="https://cdnjs.cloudf
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>gencodeId</dt>
-<dd><p>String. A Versioned GENCODE ID of a gene, e.g.
-"ENSG00000065613.9".</p></dd>
+    <dl><dt>gencodeIds</dt>
+<dd><p>A character vector of Versioned GENCODE IDs, e.g.
+c("ENSG00000132693.12", "ENSG00000203782.5").</p></dd>
 
 
-<dt>tissueSiteDetailId</dt>
-<dd><p>String. The ID of the tissue of interest. Can be a
-GTEx specific ID (e.g. "Whole_Blood"; use <code><a href="available_tissueSiteDetailIds.html">available_tissueSiteDetailIds()</a></code>
-to see valid values) or an Ontology ID.</p></dd>
+<dt>tissueSiteDetailIds</dt>
+<dd><p>Character vector of IDs for tissues of interest.
+Can be GTEx specific IDs (e.g. "Whole_Blood"; use
+<code><a href="available_tissueSiteDetailIds.html">available_tissueSiteDetailIds()</a></code> to see valid values) or Ontology IDs.</p></dd>
 
 
 <dt>datasetId</dt>
@@ -125,14 +125,44 @@ Default = "gtex_v8".</p></dd>
 <span class="r-in"><span><span class="co"># search by gene</span></span></span>
 <span class="r-in"><span><span class="fu">get_independent_eqtl</span><span class="op">(</span>gencodeIds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ENSG00000132693.12"</span>,</span></span>
 <span class="r-in"><span>                               <span class="st">"ENSG00000203782.5"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in get_independent_eqtl(gencodeIds = c("ENSG00000132693.12", "ENSG00000203782.5")):</span> unused argument (gencodeIds = c("ENSG00000132693.12", "ENSG00000203782.5"))</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Paging info</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> numberOfPages = 1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> page = 0</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> maxItemsPerPage = 250</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> totalNumberOfItems = 8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 8 × 14</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   gencodeId       geneSymbol variantId snpId tissueSiteDetailId ontologyId  rank</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ENSG0000013269… CRP        chr1_160… rs66… Esophagus_Gastroe… UBERON:00…     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> ENSG0000013269… CRP        chr1_159… rs57… Thyroid            UBERON:00…     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> ENSG0000020378… LOR        chr1_153… rs14… Artery_Coronary    UBERON:00…     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span> ENSG0000020378… LOR        chr1_153… rs87… Whole_Blood        UBERON:00…     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span> ENSG0000020378… LOR        chr1_153… rs12… Skin_Sun_Exposed_… UBERON:00…     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span> ENSG0000020378… LOR        chr1_152… rs77… Heart_Atrial_Appe… UBERON:00…     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">7</span> ENSG0000020378… LOR        chr1_153… rs12… Esophagus_Mucosa   UBERON:00…     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">8</span> ENSG0000013269… CRP        chr1_159… rs86… Muscle_Skeletal    UBERON:00…     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 7 more variables: tssDistance &lt;int&gt;, maf &lt;dbl&gt;, pValue &lt;dbl&gt;, nes &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   chromosome &lt;chr&gt;, pos &lt;int&gt;, datasetId &lt;chr&gt;</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># optionally filter for a single variant and/or one or more tissues</span></span></span>
 <span class="r-in"><span><span class="fu">get_independent_eqtl</span><span class="op">(</span>gencodeIds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ENSG00000132693.12"</span>,</span></span>
-<span class="r-in"><span>                               <span class="st">"ENSG00000203782.5"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>                 tissueSiteDetailIds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Whole_Blood"</span>,</span></span>
-<span class="r-in"><span>                                        <span class="st">"Thyroid"</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in get_independent_eqtl(gencodeIds = c("ENSG00000132693.12", "ENSG00000203782.5"),     tissueSiteDetailIds = c("Whole_Blood", "Thyroid")):</span> unused arguments (gencodeIds = c("ENSG00000132693.12", "ENSG00000203782.5"), tissueSiteDetailIds = c("Whole_Blood", "Thyroid"))</span>
+<span class="r-in"><span>                                    <span class="st">"ENSG00000203782.5"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                     tissueSiteDetailIds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Whole_Blood"</span>,</span></span>
+<span class="r-in"><span>                                             <span class="st">"Thyroid"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Paging info</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> numberOfPages = 1</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> page = 0</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> maxItemsPerPage = 250</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> totalNumberOfItems = 2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 2 × 14</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   gencodeId       geneSymbol variantId snpId tissueSiteDetailId ontologyId  rank</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> ENSG0000013269… CRP        chr1_159… rs57… Thyroid            UBERON:00…     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> ENSG0000020378… LOR        chr1_153… rs87… Whole_Blood        UBERON:00…     1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 7 more variables: tssDistance &lt;int&gt;, maf &lt;dbl&gt;, pValue &lt;dbl&gt;, nes &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   chromosome &lt;chr&gt;, pos &lt;int&gt;, datasetId &lt;chr&gt;</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

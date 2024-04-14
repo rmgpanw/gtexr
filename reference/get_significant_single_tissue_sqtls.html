@@ -55,7 +55,7 @@ by tissue By default, the service queries the latest GTEx release.</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_significant_single_tissue_sqtls</span><span class="op">(</span></span>
-<span>  <span class="va">gencodeId</span>,</span>
+<span>  <span class="va">gencodeIds</span>,</span>
 <span>  variantId <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  tissueSiteDetailId <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  datasetId <span class="op">=</span> <span class="st">"gtex_v8"</span></span>
@@ -64,9 +64,9 @@ by tissue By default, the service queries the latest GTEx release.</p>
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>gencodeId</dt>
-<dd><p>String. A Versioned GENCODE ID of a gene, e.g.
-"ENSG00000065613.9".</p></dd>
+    <dl><dt>gencodeIds</dt>
+<dd><p>A character vector of Versioned GENCODE IDs, e.g.
+c("ENSG00000132693.12", "ENSG00000203782.5").</p></dd>
 
 
 <dt>variantId</dt>
@@ -114,14 +114,31 @@ Default = "gtex_v8".</p></dd>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
 <span class="r-in"><span><span class="co"># search by gene</span></span></span>
-<span class="r-in"><span><span class="fu">get_significant_single_tissue_sqtls</span><span class="op">(</span>gencodeId <span class="op">=</span> <span class="st">"ENSG00000132693.12"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">get_significant_single_tissue_sqtls</span><span class="op">(</span>gencodeIds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ENSG00000065613.9"</span>,</span></span>
+<span class="r-in"><span>                                                   <span class="st">"ENSG00000203782.5"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Paging info</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> numberOfPages = 0</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> numberOfPages = 1</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> page = 0</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> maxItemsPerPage = 250</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> totalNumberOfItems = 0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 0 × 0</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> totalNumberOfItems = 176</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 176 × 14</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    snpId            pos snpIdUpper variantId  geneSymbol  pValue geneSymbolUpper</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> rs4636462  152<span style="text-decoration: underline;">442</span>732 RS4636462  chr1_1524… LOR        7.71<span style="color: #949494;">e</span><span style="color: #BB0000;">-5</span> LOR            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> rs4845768  152<span style="text-decoration: underline;">442</span>997 RS4845768  chr1_1524… LOR        6.57<span style="color: #949494;">e</span><span style="color: #BB0000;">-5</span> LOR            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> rs12069640 152<span style="text-decoration: underline;">444</span>300 RS12069640 chr1_1524… LOR        7.13<span style="color: #949494;">e</span><span style="color: #BB0000;">-5</span> LOR            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> rs11803629 152<span style="text-decoration: underline;">445</span>670 RS11803629 chr1_1524… LOR        1.81<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span> LOR            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span> rs12125681 152<span style="text-decoration: underline;">445</span>737 RS12125681 chr1_1524… LOR        1.81<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span> LOR            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> rs11205004 152<span style="text-decoration: underline;">446</span>586 RS11205004 chr1_1524… LOR        1.81<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span> LOR            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> rs11579085 152<span style="text-decoration: underline;">447</span>965 RS11579085 chr1_1524… LOR        1.81<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span> LOR            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> rs1885529  152<span style="text-decoration: underline;">448</span>570 RS1885529  chr1_1524… LOR        1.81<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span> LOR            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> rs1885528  152<span style="text-decoration: underline;">448</span>978 RS1885528  chr1_1524… LOR        1.81<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span> LOR            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> rs1885527  152<span style="text-decoration: underline;">449</span>069 RS1885527  chr1_1524… LOR        1.81<span style="color: #949494;">e</span><span style="color: #BB0000;">-4</span> LOR            </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 166 more rows</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 7 more variables: datasetId &lt;chr&gt;, tissueSiteDetailId &lt;chr&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   ontologyId &lt;chr&gt;, chromosome &lt;chr&gt;, gencodeId &lt;chr&gt;, nes &lt;dbl&gt;,</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   phenotypeId &lt;chr&gt;</span></span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
