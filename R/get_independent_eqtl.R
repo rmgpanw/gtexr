@@ -23,12 +23,12 @@
 #'
 #' # optionally filter for a single variant and/or one or more tissues
 #' get_independent_eqtl(gencodeIds = c("ENSG00000132693.12",
-#'                                "ENSG00000203782.5"),
-#'                  tissueSiteDetailIds = c("Whole_Blood",
-#'                                         "Thyroid"))
+#'                                     "ENSG00000203782.5"),
+#'                      tissueSiteDetailIds = c("Whole_Blood",
+#'                                              "Thyroid"))
 #'}
-get_independent_eqtl <- function(gencodeId,
-                                 tissueSiteDetailId = NULL,
+get_independent_eqtl <- function(gencodeIds,
+                                 tissueSiteDetailIds = NULL,
                                  datasetId = "gtex_v8",
                                  page = 0,
                                  itemsPerPage = 250){
