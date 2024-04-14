@@ -22,6 +22,9 @@
     <loc>https://rmgpanw.github.io/gtexr/reference/calculate_eqtls.html</loc>
   </url>
   <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_dataset_info.html</loc>
+  </url>
+  <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_eqtl_genes.html</loc>
   </url>
   <url>
@@ -40,7 +43,16 @@
     <loc>https://rmgpanw.github.io/gtexr/reference/get_gwas_catalog_by_location.html</loc>
   </url>
   <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_image.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_independent_eqtl.html</loc>
+  </url>
+  <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_maintenance_message.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_multi_tissue_eqtls.html</loc>
   </url>
   <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_neighbor_gene.html</loc>
@@ -52,7 +64,22 @@
     <loc>https://rmgpanw.github.io/gtexr/reference/get_service_info.html</loc>
   </url>
   <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_significant_single_tissue_Ieqtls.html</loc>
+  </url>
+  <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_significant_single_tissue_eqtls.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_significant_single_tissue_eqtls_by_location.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_significant_single_tissue_isqtls.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_significant_single_tissue_sqtls.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_sqtl_genes.html</loc>
   </url>
   <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_transcripts.html</loc>
