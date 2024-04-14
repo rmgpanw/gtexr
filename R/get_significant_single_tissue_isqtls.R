@@ -1,17 +1,18 @@
-#' Get Significant Single Tissue Isqtls
+#'Get Significant Single Tissue Isqtls
 #'
-#' Retrieve Interaction sQTL Data.
-#' This service retrieves cell type interaction sQTLs (isQTLs), from a specified dataset.
-#' Results may be filtered by tissue
-#' By default, the service queries the latest GTEx release.
-#' The retrieved data is split into pages with items_per_page entries per page
+#'Retrieve Interaction sQTL Data. This service retrieves cell type interaction
+#'sQTLs (isQTLs), from a specified dataset. Results may be filtered by tissue By
+#'default, the service queries the latest GTEx release. The retrieved data is
+#'split into pages with items_per_page entries per page
 #'
 #'[GTEx Portal API
-#' documentation](https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_ieqtls_api_v2_association_singleTissueIEqtl_get)
+#'documentation](https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_ieqtls_api_v2_association_singleTissueIEqtl_get)
 #'
-#' @return A Tibble
-#' @export
-#' @family Static Assocation Endpoints
+#' @inheritParams gtexr_arguments
+#'
+#'@return A Tibble
+#'@export
+#'@family Static Assocation Endpoints
 #'
 #' @examples
 #' \dontrun

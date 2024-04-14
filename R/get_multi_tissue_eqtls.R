@@ -1,12 +1,14 @@
 #' Get Significant Single Tissue Eqtls By Location
 #'
-#' @description Find significant single tissue eQTLs using Chromosomal Locations.
-#' This service returns precomputed significant single tissue eQTLs.
-#' Results may be filtered by tissue, and/or dataset.
-#' By default, the service queries the latest GTEx release. Since this endpoint is used to support a third party program on the portal, the return structure is different from other endpoints and is not paginated.
+#' @description Find significant single tissue eQTLs using Chromosomal
+#'   Locations. This service returns precomputed significant single tissue
+#'   eQTLs. Results may be filtered by tissue, and/or dataset. By default, the
+#'   service queries the latest GTEx release. Since this endpoint is used to
+#'   support a third party program on the portal, the return structure is
+#'   different from other endpoints and is not paginated.
 #'
-#' [GTEx Portal API
-#' documentation](https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_eqtls_api_v2_association_singleTissueEqtl_get)
+#'   [GTEx Portal API
+#'   documentation](https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_eqtls_api_v2_association_singleTissueEqtl_get)
 #'
 #' @inheritParams gtexr_arguments
 #'

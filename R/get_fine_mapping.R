@@ -1,20 +1,20 @@
-#' Get Fine Mapping
+#'Get Fine Mapping
 #'
-#' @description Retrieve Fine Mapping Data
+#'@description Retrieve Fine Mapping Data
 #'
 #' - Finds and returns Fine Mapping data for the provided list of genes
 #' - By default, this endpoint fetches data from the latest GTEx version
 #'
-#' The retrieved data is split into pages with items_per_page entries per page
+#'  The retrieved data is split into pages with items_per_page entries per page
 #'
-#' [GTEx Portal API
-#' documentation](https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_fine_mapping_api_v2_association_fineMapping_get)
+#'  [GTEx Portal API
+#'  documentation](https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_fine_mapping_api_v2_association_fineMapping_get)
 #'
-#' @inheritParams gtexr_arguments
+#'@inheritParams gtexr_arguments
 #'
-#' @return A tibble.
-#' @export
-#' @family Static Association Endpoints
+#'@return A tibble.
+#'@export
+#'@family Static Association Endpoints
 #'
 #' @examples
 #' \dontrun{

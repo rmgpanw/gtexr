@@ -1,19 +1,19 @@
-#' Get Independent eQTL
+#'Get Independent eQTL
 #'
-#' @description Retrieve Independent eQTL Data
+#'@description Retrieve Independent eQTL Data
 #'
-#' Finds and returns Independent eQTL Data data for the provided list of genes
-#' By default, this endpoint fetches data from the latest GTEx version
-#' The retrieved data is split into pages with items_per_page entries per page
+#'  Finds and returns Independent eQTL Data data for the provided list of genes
+#'  By default, this endpoint fetches data from the latest GTEx version The
+#'  retrieved data is split into pages with items_per_page entries per page
 #'
-#' [GTEx portal API
-#' documentation] (https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_independent_eqtl_api_v2_association_independentEqtl_get)
+#'  [GTEx portal API documentation]
+#'  (https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_independent_eqtl_api_v2_association_independentEqtl_get)
 #'
-#' @inheritParams gtexr_arguments
+#'@inheritParams gtexr_arguments
 #'
-#' @return A tibble.
-#' @export
-#' @family Static Association Endpoints
+#'@return A tibble.
+#'@export
+#'@family Static Association Endpoints
 #'
 #' @examples
 #' \dontrun{
