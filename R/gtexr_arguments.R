@@ -30,6 +30,7 @@
 #' @param snpId String
 #' @param sortDirection String. Options: "asc", "desc". Default = "asc".
 #' @param start Integer.
+#' @param tissueSampleId Array of strings. A list of Tissue Sample ID(s).
 #' @param tissueSiteDetailId String. The ID of the tissue of interest. Can be a
 #'   GTEx specific ID (e.g. "Whole_Blood"; use [available_tissueSiteDetailIds()]
 #'   to see valid values) or an Ontology ID.
@@ -60,6 +61,7 @@ gtexr_arguments <- function() {
     "snpId", "character", TRUE, FALSE,
     "sortDirection", "character", TRUE, FALSE,
     "start", "integer", TRUE, FALSE,
+    "tissueSampleId", "character", TRUE, FALSE,
     "tissueSiteDetailId", "character", TRUE, FALSE,
     "tissueSiteDetailIds", "character", FALSE, TRUE,
     "variantId", "character", TRUE, FALSE

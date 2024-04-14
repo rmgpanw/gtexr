@@ -51,6 +51,8 @@ unversioned gencodeIds.}
 
 \item{start}{Integer.}
 
+\item{tissueSampleId}{Array of strings. A list of Tissue Sample ID(s).}
+
 \item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
 GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
 to see valid values) or an Ontology ID.}
