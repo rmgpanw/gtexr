@@ -35,7 +35,7 @@ endpointUI <- function(id, gtexr_fn, metadata) {
              ... = cli::cli_abort(c("Unrecognised `shinyinput` value for {.fn {gtexr_fn}} arg `{arg}`: '{arg_metadata$shinyinput}'",
                                     "i" = "Check `gtexr_arguments()`")))
     }) |>
-    purrr::map(eval)
+    purrr::map(rlang::eval_tidy, env = rlang::caller_env(n = 0))
 
   # multiple text input params - these inputs need converting to character vectors
   multiple_text_inputs <- metadata |>
