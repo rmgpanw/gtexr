@@ -104,48 +104,26 @@ endpointServer <- function(id, gtexr_fn) {
 
 # App ---------------------------------------------------------------------
 
-# endpointApp <- function(gtexr_fn,
-#                         metadata) {
-#
-#   ui <- fluidPage(
-    # endpointUI(
-    #   "endpoint1",
-    #   gtexr_fn = gtexr_fn,
-    #   metadata = metadata
-    # )
-#   )
-#
-#   server <- function(input, output, session) {
-    # endpointServer("endpoint1",
-    #                gtexr_fn = gtexr_fn)
-#   }
-#
-#   shinyApp(ui, server)
-# }
-
-# endpointApp(gtexr_fn = "get_genes",
-#             metadata = metadata)
-
 ui <- fluidPage(
-  tabsetPanel(tabPanel("tab1",
+  tabsetPanel(tabPanel("get_eqtl_genes",
                        endpointUI(
-                         "endpoint1",
+                         "get_eqtl_genes",
                          gtexr_fn = "get_eqtl_genes",
                          metadata = metadata
                        )),
-              tabPanel("tab2",
+              tabPanel("get_genes",
                        endpointUI(
-                         "endpoint2",
+                         "get_genes",
                          gtexr_fn = "get_genes",
                          metadata = metadata
                        )))
 )
 
 server <- function(input, output, session) {
-  endpointServer("endpoint1",
+  endpointServer("get_eqtl_genes",
                  gtexr_fn = "get_eqtl_genes")
 
-  endpointServer("endpoint2",
+  endpointServer("get_genes",
                  gtexr_fn = "get_genes")
 }
 
