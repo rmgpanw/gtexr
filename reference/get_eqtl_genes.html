@@ -49,7 +49,7 @@
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_eqtl_genes</span><span class="op">(</span></span>
-<span>  <span class="va">tissueSiteDetailId</span>,</span>
+<span>  <span class="va">tissueSiteDetailIds</span>,</span>
 <span>  datasetId <span class="op">=</span> <span class="st">"gtex_v8"</span>,</span>
 <span>  page <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  itemsPerPage <span class="op">=</span> <span class="fl">250</span></span>
@@ -58,10 +58,10 @@
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>tissueSiteDetailId</dt>
-<dd><p>String. The ID of the tissue of interest. Can be a
-GTEx specific ID (e.g. "Whole_Blood"; use <code><a href="available_tissueSiteDetailIds.html">available_tissueSiteDetailIds()</a></code>
-to see valid values) or an Ontology ID.</p></dd>
+    <dl><dt>tissueSiteDetailIds</dt>
+<dd><p>Character vector of IDs for tissues of interest.
+Can be GTEx specific IDs (e.g. "Whole_Blood"; use
+<code><a href="available_tissueSiteDetailIds.html">available_tissueSiteDetailIds()</a></code> to see valid values) or Ontology IDs.</p></dd>
 
 
 <dt>datasetId</dt>
@@ -114,15 +114,15 @@ Default = "gtex_v8".</p></dd>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">get_eqtl_genes</span><span class="op">(</span><span class="st">"Whole_Blood"</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span><span style="color: #BBBB00;">!</span> Total number of items (12360) exceeds maximum page size (250).</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">get_eqtl_genes</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Whole_Blood"</span>, <span class="st">"Artery_Aorta"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span><span style="color: #BBBB00;">!</span> Total number of items (24853) exceeds maximum page size (250).</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Try increasing `itemsPerPage`.</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Paging info</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> numberOfPages = 50</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> numberOfPages = 100</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> page = 0</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> maxItemsPerPage = 250</span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> totalNumberOfItems = 12360</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">•</span> totalNumberOfItems = 24853</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 250 × 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    tissueSiteDetailId ontologyId  datasetId empiricalPValue gencodeId geneSymbol</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
