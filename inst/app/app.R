@@ -104,19 +104,21 @@ endpointServer <- function(id, gtexr_fn) {
 
 # App ---------------------------------------------------------------------
 
+gtexr_functions <- c("get_eqtl_genes", "get_genes")
+
+# create tabPanels programmatically
+
+
+tab_panels <- gtexr_functions |>
+  purrr::map(\(fn) tabPanel(fn,
+                            endpointUI(
+                              fn,
+                              gtexr_fn = fn,
+                              metadata = metadata
+                            )))
+
 ui <- fluidPage(
-  tabsetPanel(tabPanel("get_eqtl_genes",
-                       endpointUI(
-                         "get_eqtl_genes",
-                         gtexr_fn = "get_eqtl_genes",
-                         metadata = metadata
-                       )),
-              tabPanel("get_genes",
-                       endpointUI(
-                         "get_genes",
-                         gtexr_fn = "get_genes",
-                         metadata = metadata
-                       )))
+  tabsetPanel(!!!tab_panels)
 )
 
 server <- function(input, output, session) {
