@@ -104,10 +104,11 @@ endpointServer <- function(id, gtexr_fn) {
 
 # App ---------------------------------------------------------------------
 
-gtexr_functions <- c("get_eqtl_genes", "get_genes")
+gtexr_functions <- c("get_eqtl_genes",
+                     "get_genes",
+                     "get_news_item")
 
-# create tabPanels programmatically
-
+# create UI tabPanels programmatically
 
 tab_panels <- gtexr_functions |>
   purrr::map(\(fn) tabPanel(fn,
@@ -121,12 +122,14 @@ ui <- fluidPage(
   tabsetPanel(!!!tab_panels)
 )
 
-server <- function(input, output, session) {
-  endpointServer("get_eqtl_genes",
-                 gtexr_fn = "get_eqtl_genes")
+# construct server function programmatically
 
-  endpointServer("get_genes",
-                 gtexr_fn = "get_genes")
-}
+server_body <- gtexr_functions |>
+  purrr::map(\(fn) rlang::call2("endpointServer", id = fn, gtexr_fn = fn))
+
+server_body <- rlang::call2("{", !!!server_body)
+
+server <- rlang::new_function(rlang::pairlist2(input = , output = , session =),
+                               body = server_body)
 
 shinyApp(ui, server)
