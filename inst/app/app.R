@@ -5,10 +5,21 @@ library(stringr)
 
 metadata <- gtexr:::gtexr_arguments()
 
+# Utils -------------------------------------------------------------------
+
+get_gtexr_fn_args <- function(gtexr_fn) {
+  gtexr_fn_args <- gtexr_fn |>
+    rlang::sym() |>
+    eval() |>
+    rlang::fn_fmls()
+}
+
 # UI ----------------------------------------------------------------------
 
-endpointUI <- function(id, gtexr_fn, gtexr_fn_args, metadata) {
+endpointUI <- function(id, gtexr_fn, metadata) {
   ns <- NS(id)
+
+  gtexr_fn_args <- get_gtexr_fn_args(gtexr_fn)
 
   # create a list of UI inputs - one input for each function argument
   query_params <- gtexr_fn_args |>
@@ -43,10 +54,12 @@ endpointUI <- function(id, gtexr_fn, gtexr_fn_args, metadata) {
   )
 }
 
-
 # Server ------------------------------------------------------------------
 
-endpointServer <- function(id, gtexr_fn, gtexr_fn_args) {
+endpointServer <- function(id, gtexr_fn) {
+
+  gtexr_fn_args <- get_gtexr_fn_args(gtexr_fn)
+
   moduleServer(id, function(input, output, session) {
 
     # generate code with user-specified argument values
@@ -91,45 +104,49 @@ endpointServer <- function(id, gtexr_fn, gtexr_fn_args) {
 
 # App ---------------------------------------------------------------------
 
-endpointApp <- function(gtexr_fn,
-                        metadata) {
-  gtexr_fn_args <- gtexr_fn |>
-    rlang::sym() |>
-    eval() |>
-    rlang::fn_fmls()
-
-  ui <- fluidPage(
-    endpointUI(
-      "endpoint1",
-      gtexr_fn = gtexr_fn,
-      gtexr_fn_args = gtexr_fn_args,
-      metadata = metadata
-    )
-  )
-
-  server <- function(input, output, session) {
-    endpointServer("endpoint1",
-                   gtexr_fn = gtexr_fn,
-                   gtexr_fn_args = gtexr_fn_args)
-  }
-
-  shinyApp(ui, server)
-}
+# endpointApp <- function(gtexr_fn,
+#                         metadata) {
+#
+#   ui <- fluidPage(
+    # endpointUI(
+    #   "endpoint1",
+    #   gtexr_fn = gtexr_fn,
+    #   metadata = metadata
+    # )
+#   )
+#
+#   server <- function(input, output, session) {
+    # endpointServer("endpoint1",
+    #                gtexr_fn = gtexr_fn)
+#   }
+#
+#   shinyApp(ui, server)
+# }
 
 # endpointApp(gtexr_fn = "get_genes",
 #             metadata = metadata)
 
 ui <- fluidPage(
-  tabsetPanel(tabPanel("get_genes",
-                       endpointApp(gtexr_fn = "get_genes",
-                                   metadata = metadata)),
-              tabPanel("get_eqtl_genes",
-                       endpointApp(gtexr_fn = "get_eqtl_genes",
-                                   metadata = metadata)))
+  tabsetPanel(tabPanel("tab1",
+                       endpointUI(
+                         "endpoint1",
+                         gtexr_fn = "get_eqtl_genes",
+                         metadata = metadata
+                       )),
+              tabPanel("tab2",
+                       endpointUI(
+                         "endpoint2",
+                         gtexr_fn = "get_genes",
+                         metadata = metadata
+                       )))
 )
 
 server <- function(input, output, session) {
+  endpointServer("endpoint1",
+                 gtexr_fn = "get_eqtl_genes")
 
+  endpointServer("endpoint2",
+                 gtexr_fn = "get_genes")
 }
 
 shinyApp(ui, server)
