@@ -5,6 +5,25 @@ library(stringr)
 
 metadata <- gtexr:::gtexr_arguments()
 
+# obtain and categorise list of gtexr functions programmatically
+gtexr_docs <- rlang::new_environment()
+
+lazyLoad(
+  file.path(system.file("help", package="gtexr"), "gtexr"),
+  envir = gtexr_docs
+)
+
+gtexr_functions <- gtexr_docs |>
+  ls() |>
+  purrr::set_names() |>
+  purrr::map(\(rd) get(rd, envir = gtexr_docs) |>
+               purrr::keep(\(x) attr(x, which = "Rd_tag") == "\\concept")) |>
+  purrr::compact() |>
+  purrr::map(\(x) x[[1]][[1]][1]) |>
+  tibble::enframe(name = "fn_name",
+                  value = "family") |>
+  tidyr::unnest("family")
+
 # Utils -------------------------------------------------------------------
 
 get_gtexr_fn_args <- function(gtexr_fn) {
@@ -12,6 +31,13 @@ get_gtexr_fn_args <- function(gtexr_fn) {
     rlang::sym() |>
     eval() |>
     rlang::fn_fmls()
+}
+
+detect_multiple_text_inputs <- function(metadata,
+                                        gtexr_fn_args) {
+  metadata |>
+    dplyr::filter(.data[["arg"]] %in% !!names(gtexr_fn_args)) |>
+    dplyr::filter(.data[["shinyinput"]] == "textAreaInput")
 }
 
 # UI ----------------------------------------------------------------------
@@ -31,16 +57,17 @@ endpointUI <- function(id, gtexr_fn, metadata) {
              "textAreaInput" = rlang::call2("textAreaInput", inputId = rlang::call2("ns", arg), label = arg, value = value),
              "selectInput" = rlang::call2("selectInput", inputId = rlang::call2("ns", arg), label = arg, choices = arg_metadata$choices[[1]], selected = value),
              "selectizeInput" = rlang::call2("selectizeInput", inputId = rlang::call2("ns", arg), label = arg, choices = arg_metadata$choices[[1]], selected = value, multiple = TRUE),
-             "numericInput" = rlang::call2("numericInput", inputId = rlang::call2("ns", arg), label = arg, min = arg_metadata$choices[[1]][1], max = arg_metadata$choices[[1]][2], value = value),
+             "numericInput" = rlang::call2("numericInput", inputId = rlang::call2("ns", arg), label = arg, min = arg_metadata$choices[[1]][1], max = arg_metadata$choices[[1]][2], value = ifelse(rlang::is_missing(value) | is.null(value),
+                                                                                                                                                                                                  arg_metadata$choices[[1]][1],
+                                                                                                                                                                                                  value)),
              ... = cli::cli_abort(c("Unrecognised `shinyinput` value for {.fn {gtexr_fn}} arg `{arg}`: '{arg_metadata$shinyinput}'",
                                     "i" = "Check `gtexr_arguments()`")))
     }) |>
     purrr::map(rlang::eval_tidy, env = rlang::caller_env(n = 0))
 
   # multiple text input params - these inputs need converting to character vectors
-  multiple_text_inputs <- metadata |>
-    dplyr::filter(.data[["arg"]] %in% !!names(gtexr_fn_args)) |>
-    dplyr::filter(.data[["shinyinput"]] == "textAreaInput")
+  multiple_text_inputs <- detect_multiple_text_inputs(metadata,
+                                                      gtexr_fn_args)
 
   # Important - UI fails to render if this is a named list
   names(query_params) <- NULL
@@ -71,6 +98,9 @@ endpointServer <- function(id, gtexr_fn) {
         query_params_input <- reactiveValuesToList(input)[names(gtexr_fn_args)]
 
         # split any multiple text entries into character vectors
+        multiple_text_inputs <- detect_multiple_text_inputs(metadata,
+                                                            gtexr_fn_args)
+
         query_params_input <- query_params_input |>
           purrr::map_at(.at = multiple_text_inputs$arg,
                         \(x) x |>
@@ -104,13 +134,9 @@ endpointServer <- function(id, gtexr_fn) {
 
 # App ---------------------------------------------------------------------
 
-gtexr_functions <- c("get_eqtl_genes",
-                     "get_genes",
-                     "get_news_item")
-
 # create UI tabPanels programmatically
 
-tab_panels <- gtexr_functions |>
+tab_panels <- gtexr_functions$fn_name |>
   purrr::map(\(fn) tabPanel(fn,
                             endpointUI(
                               fn,
@@ -124,7 +150,7 @@ ui <- fluidPage(
 
 # construct server function programmatically
 
-server_body <- gtexr_functions |>
+server_body <- gtexr_functions$fn_name |>
   purrr::map(\(fn) rlang::call2("endpointServer", id = fn, gtexr_fn = fn))
 
 server_body <- rlang::call2("{", !!!server_body)
