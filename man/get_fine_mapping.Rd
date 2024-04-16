@@ -46,7 +46,6 @@ The retrieved data is split into pages with items_per_page entries per page
 \href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_fine_mapping_api_v2_association_fineMapping_get}{GTEx Portal API documentation}
 }
 \examples{
-\dontrun{
 # search by gene
 get_fine_mapping(gencodeIds = c("ENSG00000132693.12",
                                "ENSG00000203782.5"))
@@ -58,13 +57,16 @@ get_fine_mapping(gencodeIds = c("ENSG00000132693.12",
                  tissueSiteDetailIds = c("Whole_Blood",
                                         "Thyroid"))
 }
-}
 \seealso{
 Other Static Association Endpoints: 
 \code{\link{get_eqtl_genes}()},
 \code{\link{get_independent_eqtl}()},
 \code{\link{get_multi_tissue_eqtls}()},
+\code{\link{get_significant_single_tissue_eqtls_by_location}()},
 \code{\link{get_significant_single_tissue_eqtls}()},
+\code{\link{get_significant_single_tissue_ieqtls}()},
+\code{\link{get_significant_single_tissue_isqtls}()},
+\code{\link{get_significant_single_tissue_sqtls}()},
 \code{\link{get_sqtl_genes}()}
 }
 \concept{Static Association Endpoints}

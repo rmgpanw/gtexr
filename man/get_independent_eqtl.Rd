@@ -5,20 +5,20 @@
 \title{Get Independent eQTL}
 \usage{
 get_independent_eqtl(
-  gencodeId,
-  tissueSiteDetailId = NULL,
+  gencodeIds,
+  tissueSiteDetailIds = NULL,
   datasetId = "gtex_v8",
   page = 0,
   itemsPerPage = 250
 )
 }
 \arguments{
-\item{gencodeId}{String. A Versioned GENCODE ID of a gene, e.g.
-"ENSG00000065613.9".}
+\item{gencodeIds}{A character vector of Versioned GENCODE IDs, e.g.
+c("ENSG00000132693.12", "ENSG00000203782.5").}
 
-\item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
-GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
-to see valid values) or an Ontology ID.}
+\item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
+Can be GTEx specific IDs (e.g. "Whole_Blood"; use
+\code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}} to see valid values) or Ontology IDs.}
 
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
 data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
@@ -33,33 +33,36 @@ A tibble.
 }
 \description{
 Retrieve Independent eQTL Data
+\itemize{
+\item Finds and returns Independent eQTL Data data for the provided list of genes
+\item By default, this endpoint fetches data from the latest GTEx version
+}
 
-Finds and returns Independent eQTL Data data for the provided list of genes
-By default, this endpoint fetches data from the latest GTEx version
 The retrieved data is split into pages with items_per_page entries per page
 
-\link[=GTEx portal API
-documentation]{GTEx portal API documentation} (https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_independent_eqtl_api_v2_association_independentEqtl_get)
+\href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_independent_eqtl_api_v2_association_independentEqtl_get}{GTEx portal API documentation}
 }
 \examples{
-\dontrun{
 # search by gene
 get_independent_eqtl(gencodeIds = c("ENSG00000132693.12",
                                "ENSG00000203782.5"))
 
 # optionally filter for a single variant and/or one or more tissues
 get_independent_eqtl(gencodeIds = c("ENSG00000132693.12",
-                               "ENSG00000203782.5"),
-                 tissueSiteDetailIds = c("Whole_Blood",
-                                        "Thyroid"))
-}
+                                    "ENSG00000203782.5"),
+                     tissueSiteDetailIds = c("Whole_Blood",
+                                             "Thyroid"))
 }
 \seealso{
 Other Static Association Endpoints: 
 \code{\link{get_eqtl_genes}()},
 \code{\link{get_fine_mapping}()},
 \code{\link{get_multi_tissue_eqtls}()},
+\code{\link{get_significant_single_tissue_eqtls_by_location}()},
 \code{\link{get_significant_single_tissue_eqtls}()},
+\code{\link{get_significant_single_tissue_ieqtls}()},
+\code{\link{get_significant_single_tissue_isqtls}()},
+\code{\link{get_significant_single_tissue_sqtls}()},
 \code{\link{get_sqtl_genes}()}
 }
 \concept{Static Association Endpoints}

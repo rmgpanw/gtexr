@@ -7,20 +7,18 @@
 #' The retrieved data is split into pages with items_per_page entries per page
 #'
 #' [GTEx Portal API
-#' documentation](https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_eqtls_by_location_api_v2_association_singleTissueEqtlByLocation_get)
+#' documentation](https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_sqtls_api_v2_association_singleTissueSqtl_get)
 #'
 #' @inheritParams gtexr_arguments
-#'
 #' @return A tibble
 #' @export
 #' @family Static Association Endpoints
 #'
 #' @examples
-#' \dontrun
-#' search by gene
-#' get_significant_single_tissue_sqtls(gencodeId = "ENSG00000132693.12")
-
-get_significant_single_tissue_sqtls <- function(gencodeId,
+#' # search by gene
+#' get_significant_single_tissue_sqtls(gencodeIds = c("ENSG00000065613.9",
+#'                                                    "ENSG00000203782.5"))
+get_significant_single_tissue_sqtls <- function(gencodeIds,
                                                 variantId = NULL,
                                                 tissueSiteDetailId = NULL,
                                                 datasetId = "gtex_v8"){

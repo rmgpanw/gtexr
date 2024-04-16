@@ -8,8 +8,7 @@
 #'algorithm developed by the GTEx analysis team.
 #' - By default, this service queries the models used by the latest GTEx release.
 #'
-#'[GTEx Portal API documentation]
-#'https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_collapsed_gene_model_exon_api_v2_dataset_collapsedGeneModelExon_get
+#'[GTEx Portal API documentation](https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_collapsed_gene_model_exon_api_v2_dataset_collapsedGeneModelExon_get)
 #'
 #'@inheritParams gtexr_arguments
 #'
@@ -18,7 +17,6 @@
 #'@family Datasets Endpoints
 #'
 #' @examples
-#' \dontrun
 #' get_collapsed_gene_model_exon(gencodeIds = c("ENSG00000132693.12",
 #'                                                   "ENSG00000203782.5"))
 get_collapsed_gene_model_exon <- function(gencodeIds,

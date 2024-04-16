@@ -7,6 +7,16 @@
 gtexr_arguments()
 }
 \arguments{
+\item{ageBrackets}{The age bracket(s) of the donors of interest. Options:
+"20-29", "30-39", "40-49", "50-59", "60-69", "70-79".}
+
+\item{aliquotIds}{Character vector.}
+
+\item{autolysisScores}{Character vector. Options: "None", "Mild", "Moderate",
+"Severe".}
+
+\item{bp_window}{Integer.}
+
 \item{chromosome}{String. One of "chr1", "chr2", "chr3", "chr4", "chr5",
 "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13",
 "chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21",
@@ -15,6 +25,9 @@ gtexr_arguments()
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
 data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
 Default = "gtex_v8".}
+
+\item{dataTypes}{Character vector. Options: "RNASEQ", "WGS", "WES", "OMNI",
+"EXCLUDE".}
 
 \item{end}{Integer.}
 
@@ -35,17 +48,60 @@ unversioned gencodeIds.}
 \item{genomeBuild}{String. Options: "GRCh38/hg38", "GRCh37/hg19". Default =
 "GRCh38/hg38".}
 
+\item{hardyScales}{Character vector. A list of Hardy Scale(s) of interest.
+Options: "Ventilator case", "Fast death - violent", "Fast death - natural
+causes", "Intermediate death", "Slow death".}
+
 \item{itemsPerPage}{Integer (default = 250).}
+
+\item{ischemicTime}{Integer.}
+
+\item{ischemicTimeGroups}{Character vector. Options: "<= 0", "1 - 300", "301
+\itemize{
+\item 600", "601 - 900", "901 - 1200", "1201 - 1500", "> 1500".
+}}
+
+\item{organizationName}{String. Options: "GTEx Consortium" "Kid's First".}
 
 \item{page}{Integer (default = 0).}
 
+\item{pathCategory}{Character vector. Options: "adenoma", "amylacea",
+"atelectasis", "atherosclerosis", "atherosis", "atrophy", "calcification",
+"cirrhosis", "clean_specimens", "congestion", "corpora_albicantia", "cyst",
+"desquamation", "diabetic", "dysplasia", "edema", "emphysema",
+"esophagitis", "fibrosis", "gastritis", "glomerulosclerosis", "goiter",
+"gynecomastoid", "hashimoto", "heart_failure_cells", "hemorrhage",
+"hepatitis", "hyalinization", "hypereosinophilia", "hyperplasia",
+"hypertrophy", "hypoxic", "infarction", "inflammation", "ischemic_changes",
+"macrophages", "mastopathy", "metaplasia", "monckeberg", "necrosis",
+"nephritis", "nephrosclerosis", "no_abnormalities", "nodularity",
+"pancreatitis", "pigment", "pneumonia", "post_menopausal", "prostatitis",
+"saponification", "scarring", "sclerotic", "solar_elastosis",
+"spermatogenesis", "steatosis", "sweat_glands", "tma".}
+
 \item{pos}{Integer, vector.}
 
+\item{project_id}{String. Options: "gtex" "adult-gtex" "egtex".}
+
+\item{rin}{Integer.}
+
+\item{sampleIds}{Character vector. GTEx sample ID.}
+
+\item{sex}{String. Options: "male", "female".}
+
 \item{snpId}{String}
+
+\item{sortBy}{String. Options: "sampleId", "ischemicTime", "aliquotId",
+"tissueSampleId", "hardyScale", "pathologyNotes", "ageBracket",
+"tissueSiteDetailId", "sex".}
 
 \item{sortDirection}{String. Options: "asc", "desc". Default = "asc".}
 
 \item{start}{Integer.}
+
+\item{subjectIds}{Character vector. GTEx subject ID.}
+
+\item{tissueSampleIds}{Array of strings. A list of Tissue Sample ID(s).}
 
 \item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
 GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
@@ -54,6 +110,22 @@ to see valid values) or an Ontology ID.}
 \item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
 Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}} to see valid values) or Ontology IDs.}
+
+\item{uberonIds}{Character vector. A list of Uberon ID(s) of interest.
+Options: "UBERON:EFO_0000572", "UBERON:EFO_0002009", "UBERON:0000007",
+"UBERON:0000458", "UBERON:0000473", "UBERON:0000945", "UBERON:0000992",
+"UBERON:0000995", "UBERON:0000996", "UBERON:0001114", "UBERON:0001150",
+"UBERON:0001157", "UBERON:0001159", "UBERON:0001211", "UBERON:0001225",
+"UBERON:0001255", "UBERON:0001293", "UBERON:0001323", "UBERON:0001496",
+"UBERON:0001621", "UBERON:0001870", "UBERON:0001873", "UBERON:0001874",
+"UBERON:0001876", "UBERON:0001882", "UBERON:0001898", "UBERON:0001954",
+"UBERON:0002037", "UBERON:0002038", "UBERON:0002046", "UBERON:0002106",
+"UBERON:0002190", "UBERON:0002367", "UBERON:0002369", "UBERON:0003889",
+"UBERON:0004264", "UBERON:0004550", "UBERON:0004648", "UBERON:0006330",
+"UBERON:0006469", "UBERON:0006566", "UBERON:0006631", "UBERON:0006920",
+"UBERON:0007610", "UBERON:0008367", "UBERON:0008952", "UBERON:0009834",
+"UBERON:0009835", "UBERON:0010414", "UBERON:0011907", "UBERON:0012249",
+"UBERON:0013756", "UBERON:0036149".}
 
 \item{variantId}{String. A gtex variant ID.}
 }

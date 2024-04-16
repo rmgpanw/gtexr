@@ -1,23 +1,22 @@
 #'Get Significant Single Tissue Isqtls
 #'
-#'[GTEx Portal API
-#'documentation](https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_ieqtls_api_v2_association_singleTissueIEqtl_get)
+#' Retrieve Interaction sQTL Data. This service retrieves cell type interaction
+#' sQTLs (isQTLs), from a specified dataset. Results may be filtered by tissue
+#' By default, the service queries the latest GTEx release. The retrieved data
+#' is split into pages with items_per_page entries per page
 #'
-#'Retrieve Interaction sQTL Data. This service retrieves cell type interaction
-#'sQTLs (isQTLs), from a specified dataset. Results may be filtered by tissue By
-#'default, the service queries the latest GTEx release. The retrieved data is
-#'split into pages with items_per_page entries per page
+#' [GTEx Portal API
+#' documentation](https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_isqtls_api_v2_association_singleTissueISqtl_get)
 #'
 #' @inheritParams gtexr_arguments
-#'
-#'@return A Tibble
-#'@export
-#'@family Static Assocation Endpoints
+#' @return A Tibble
+#' @export
+#' @family Static Association Endpoints
 #'
 #' @examples
-#' \dontrun
-#' get_significant_single_tissue_isqtls(gencodeId = "ENSG00000132693.12")
-get_significant_single_tissue_isqtls <- function(gencodeId,
+#' get_significant_single_tissue_isqtls(gencodeIds = c("ENSG00000065613.9",
+#'                                                     "ENSG00000203782.5"))
+get_significant_single_tissue_isqtls <- function(gencodeIds,
                                                  variantId = NULL,
                                                  tissueSiteDetailId = NULL,
                                                  datasetId = "gtex_v8",
