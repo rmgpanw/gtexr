@@ -56,7 +56,21 @@ that wrap GTEx Portal API endpoints (using roxygen <code>@inheritParams</code> t
 
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
-    <dl><dt>bp_window</dt>
+    <dl><dt>ageBrackets</dt>
+<dd><p>The age bracket(s) of the donors of interest. Options:
+"20-29", "30-39", "40-49", "50-59", "60-69", "70-79".</p></dd>
+
+
+<dt>aliquotIds</dt>
+<dd><p>Character vector.</p></dd>
+
+
+<dt>autolysisScores</dt>
+<dd><p>Character vector. Options: "None", "Mild", "Moderate",
+"Severe".</p></dd>
+
+
+<dt>bp_window</dt>
 <dd><p>Integer.</p></dd>
 
 
@@ -71,6 +85,11 @@ that wrap GTEx Portal API endpoints (using roxygen <code>@inheritParams</code> t
 <dd><p>String. Unique identifier of a dataset. Usually includes a
 data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
 Default = "gtex_v8".</p></dd>
+
+
+<dt>dataTypes</dt>
+<dd><p>Character vector. Options: "RNASEQ", "WGS", "WES", "OMNI",
+"EXCLUDE".</p></dd>
 
 
 <dt>end</dt>
@@ -106,8 +125,23 @@ unversioned gencodeIds.</p></dd>
 "GRCh38/hg38".</p></dd>
 
 
+<dt>hardyScales</dt>
+<dd><p>Character vector. A list of Hardy Scale(s) of interest.
+Options: "Ventilator case", "Fast death - violent", "Fast death - natural
+causes", "Intermediate death", "Slow death".</p></dd>
+
+
 <dt>itemsPerPage</dt>
 <dd><p>Integer (default = 250).</p></dd>
+
+
+<dt>ischemicTime</dt>
+<dd><p>Integer.</p></dd>
+
+
+<dt>ischemicTimeGroups</dt>
+<dd><p>Character vector. Options: "&lt;= 0", "1 - 300", "301</p><ul><li><p>600", "601 - 900", "901 - 1200", "1201 - 1500", "&gt; 1500".</p></li>
+</ul></dd>
 
 
 <dt>organizationName</dt>
@@ -118,12 +152,50 @@ unversioned gencodeIds.</p></dd>
 <dd><p>Integer (default = 0).</p></dd>
 
 
+<dt>pathCategory</dt>
+<dd><p>Character vector. Options: "adenoma", "amylacea",
+"atelectasis", "atherosclerosis", "atherosis", "atrophy", "calcification",
+"cirrhosis", "clean_specimens", "congestion", "corpora_albicantia", "cyst",
+"desquamation", "diabetic", "dysplasia", "edema", "emphysema",
+"esophagitis", "fibrosis", "gastritis", "glomerulosclerosis", "goiter",
+"gynecomastoid", "hashimoto", "heart_failure_cells", "hemorrhage",
+"hepatitis", "hyalinization", "hypereosinophilia", "hyperplasia",
+"hypertrophy", "hypoxic", "infarction", "inflammation", "ischemic_changes",
+"macrophages", "mastopathy", "metaplasia", "monckeberg", "necrosis",
+"nephritis", "nephrosclerosis", "no_abnormalities", "nodularity",
+"pancreatitis", "pigment", "pneumonia", "post_menopausal", "prostatitis",
+"saponification", "scarring", "sclerotic", "solar_elastosis",
+"spermatogenesis", "steatosis", "sweat_glands", "tma".</p></dd>
+
+
 <dt>pos</dt>
 <dd><p>Integer, vector.</p></dd>
 
 
+<dt>project_id</dt>
+<dd><p>String. Options: "gtex" "adult-gtex" "egtex".</p></dd>
+
+
+<dt>rin</dt>
+<dd><p>Integer.</p></dd>
+
+
+<dt>sampleIds</dt>
+<dd><p>Character vector. GTEx sample ID.</p></dd>
+
+
+<dt>sex</dt>
+<dd><p>String. Options: "male", "female".</p></dd>
+
+
 <dt>snpId</dt>
 <dd><p>String</p></dd>
+
+
+<dt>sortBy</dt>
+<dd><p>String. Options: "sampleId", "ischemicTime", "aliquotId",
+"tissueSampleId", "hardyScale", "pathologyNotes", "ageBracket",
+"tissueSiteDetailId", "sex".</p></dd>
 
 
 <dt>sortDirection</dt>
@@ -134,7 +206,11 @@ unversioned gencodeIds.</p></dd>
 <dd><p>Integer.</p></dd>
 
 
-<dt>tissueSampleId</dt>
+<dt>subjectIds</dt>
+<dd><p>Character vector. GTEx subject ID.</p></dd>
+
+
+<dt>tissueSampleIds</dt>
 <dd><p>Array of strings. A list of Tissue Sample ID(s).</p></dd>
 
 
@@ -148,6 +224,24 @@ to see valid values) or an Ontology ID.</p></dd>
 <dd><p>Character vector of IDs for tissues of interest.
 Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 <code><a href="available_tissueSiteDetailIds.html">available_tissueSiteDetailIds()</a></code> to see valid values) or Ontology IDs.</p></dd>
+
+
+<dt>uberonIds</dt>
+<dd><p>Character vector. A list of Uberon ID(s) of interest.
+Options: "UBERON:EFO_0000572", "UBERON:EFO_0002009", "UBERON:0000007",
+"UBERON:0000458", "UBERON:0000473", "UBERON:0000945", "UBERON:0000992",
+"UBERON:0000995", "UBERON:0000996", "UBERON:0001114", "UBERON:0001150",
+"UBERON:0001157", "UBERON:0001159", "UBERON:0001211", "UBERON:0001225",
+"UBERON:0001255", "UBERON:0001293", "UBERON:0001323", "UBERON:0001496",
+"UBERON:0001621", "UBERON:0001870", "UBERON:0001873", "UBERON:0001874",
+"UBERON:0001876", "UBERON:0001882", "UBERON:0001898", "UBERON:0001954",
+"UBERON:0002037", "UBERON:0002038", "UBERON:0002046", "UBERON:0002106",
+"UBERON:0002190", "UBERON:0002367", "UBERON:0002369", "UBERON:0003889",
+"UBERON:0004264", "UBERON:0004550", "UBERON:0004648", "UBERON:0006330",
+"UBERON:0006469", "UBERON:0006566", "UBERON:0006631", "UBERON:0006920",
+"UBERON:0007610", "UBERON:0008367", "UBERON:0008952", "UBERON:0009834",
+"UBERON:0009835", "UBERON:0010414", "UBERON:0011907", "UBERON:0012249",
+"UBERON:0013756", "UBERON:0036149".</p></dd>
 
 
 <dt>variantId</dt>

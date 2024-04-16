@@ -22,7 +22,16 @@
     <loc>https://rmgpanw.github.io/gtexr/reference/calculate_eqtls.html</loc>
   </url>
   <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_annotation.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_collapsed_gene_model_exon.html</loc>
+  </url>
+  <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_dataset_info.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_downloads_page_data.html</loc>
   </url>
   <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_eqtl_genes.html</loc>
@@ -31,7 +40,16 @@
     <loc>https://rmgpanw.github.io/gtexr/reference/get_exons.html</loc>
   </url>
   <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_file_list.html</loc>
+  </url>
+  <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_fine_mapping.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_full_get_collapsed_gene_model_exon.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_functional_annotation.html</loc>
   </url>
   <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_gene_search.html</loc>
@@ -49,6 +67,12 @@
     <loc>https://rmgpanw.github.io/gtexr/reference/get_independent_eqtl.html</loc>
   </url>
   <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_linkage_disequilibrium_by_variant_data.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_linkage_disequilibrium_data.html</loc>
+  </url>
+  <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_maintenance_message.html</loc>
   </url>
   <url>
@@ -59,6 +83,9 @@
   </url>
   <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_news_item.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_sample.html</loc>
   </url>
   <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_service_info.html</loc>
@@ -80,6 +107,12 @@
   </url>
   <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_sqtl_genes.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_subject.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/get_tissue_site_detail.html</loc>
   </url>
   <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_transcripts.html</loc>
