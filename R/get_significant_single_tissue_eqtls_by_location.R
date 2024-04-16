@@ -19,22 +19,18 @@
 #' @export
 #' @family Static Association Endpoints
 #'
-#' @examples
+#' @example
 #' \dontrun{
-#' get_significant_single_tissue_eqtls_by_location(
-#'   tissueSiteDetailId = "Artery_Aorta",
-#'   start = 10000,
-#'   end = 250000,
-#'   chromosome = "chr11")
-#' }
+#' get_significant_single_tissue_eqtls_by_location(tissueSiteDetailId = "Artery_Aorta",
+#' start = 10000,
+#' end = 250000,
+#' chromosome = "chr_11")
 get_significant_single_tissue_eqtls_by_location <- function(tissueSiteDetailId,
                                                             start,
                                                             end,
                                                             chromosome,
                                                             datasetId = "gtex_v8") {
-  gtex_query(endpoint = "association/singleTissueEqtlByLocation",
-             return_raw = TRUE)$singleTissueEqtl |>
-    purrr::map(tibble::as_tibble) |> dplyr::bind_rows()
+  gtex_query(endpoint = "association/singleTissueEqtlByLocation")
 }
 
 

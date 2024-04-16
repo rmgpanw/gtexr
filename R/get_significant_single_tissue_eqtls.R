@@ -1,7 +1,9 @@
 #' Get Significant Single Tissue Eqtls
 #'
-#' [Find significant single tissue
-#' eQTLs.](https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_eqtls_api_v2_association_singleTissueEqtl_get)
+#' Find significant single tissue eQTLs.
+#'
+#' [GTEx Portal API
+#'documentation](https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_eqtls_api_v2_association_singleTissueEqtl_get)
 #'
 #' - This service returns precomputed significant single tissue eQTLs.
 #' - Results may be filtered by tissue, gene, variant or dataset.

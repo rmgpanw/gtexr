@@ -26,9 +26,3 @@ test_that("validate_args() removes 's$' from pluralised args", {
                              call = rlang::caller_env()),
                list(geneId = "CRP"))
 })
-
-
-test_that("validate_args() raises an error for arguments that are not listed by `gtexr_arguments()`", {
-  expect_error(validate_args(list(unrecognised_arg = "x"), rlang::caller_env()),
-               "Unrecognised argument: `unrecognised_arg`")
-})

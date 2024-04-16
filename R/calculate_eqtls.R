@@ -3,11 +3,6 @@
 #' [Calculate your own
 #' eQTLs](https://gtexportal.org/api/v2/redoc#tag/Dynamic-Association-Endpoints/operation/calculate_expression_quantitative_trait_loci_api_v2_association_dyneqtl_get)
 #'
-#' Notes on output:
-#'
-#' * Beta and standard error are recorded in columns `nes` and `error` respectively (see [GTEx FAQs](https://gtexportal.org/home/faq#nes_beta))
-#' * `variantId` contains (in order) chromosome, position, reference allele, alternative allele and human genome build separated by underscores. The reference and alternative alleles for "chr1_13550_G_A_b38" for example are "G" and "A" respectively.
-#'
 #' @inheritParams gtexr_arguments
 #'
 #' @return A tibble.

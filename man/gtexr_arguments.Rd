@@ -7,8 +7,6 @@
 gtexr_arguments()
 }
 \arguments{
-\item{bp_window}{Integer.}
-
 \item{chromosome}{String. One of "chr1", "chr2", "chr3", "chr4", "chr5",
 "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13",
 "chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21",
@@ -39,8 +37,6 @@ unversioned gencodeIds.}
 
 \item{itemsPerPage}{Integer (default = 250).}
 
-\item{organizationName}{String. Options: "GTEx Consortium" "Kid's First".}
-
 \item{page}{Integer (default = 0).}
 
 \item{pos}{Integer, vector.}
@@ -50,8 +46,6 @@ unversioned gencodeIds.}
 \item{sortDirection}{String. Options: "asc", "desc". Default = "asc".}
 
 \item{start}{Integer.}
-
-\item{tissueSampleId}{Array of strings. A list of Tissue Sample ID(s).}
 
 \item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
 GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
