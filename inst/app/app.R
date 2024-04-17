@@ -136,17 +136,43 @@ endpointServer <- function(id, gtexr_fn) {
 
 # create UI tabPanels programmatically
 
-tab_panels <- gtexr_functions$fn_name |>
-  purrr::map(\(fn) tabPanel(fn,
-                            endpointUI(
-                              fn,
-                              gtexr_fn = fn,
-                              metadata = metadata
-                            )))
+# tab_panels <- gtexr_functions$fn_name |>
+#   purrr::map(\(fn) tabPanel(fn,
+#                             endpointUI(
+#                               fn,
+#                               gtexr_fn = fn,
+#                               metadata = metadata
+#                             )))
 
-ui <- fluidPage(
-  tabsetPanel(!!!tab_panels)
-)
+endpoint_tab_panels <- gtexr_functions$family |>
+  unique() |>
+  purrr::map(\(family) tabPanel(family,
+                                tabsetPanel(!!!{
+                                  gtexr_functions |>
+                                    dplyr::filter(.data[["family"]] == !!family) |>
+                                    dplyr::pull(.data[["fn_name"]]) |>
+                                    purrr::map(\(fn) tabPanel(fn,
+                                                              endpointUI(
+                                                                fn,
+                                                                gtexr_fn = fn,
+                                                                metadata = metadata
+                                                              )))
+                                })))
+
+# ui <- navbarPage(
+#   "GTExR",
+#   navbarMenu(
+#     "Endpoints",
+#   tabPanel(gtexr_functions$family[1],
+#            tabsetPanel(!!!tab_panels)),
+#   tabPanel(gtexr_functions$family[2],
+#            h1("HM2")),
+#            #
+#
+# ))
+
+ui <- navbarPage("GTExR",
+                 navbarMenu("Endpoints",!!!endpoint_tab_panels))
 
 # construct server function programmatically
 
