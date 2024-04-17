@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_genes.R
 \name{get_genes}
 \alias{get_genes}
-\title{\href{https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_genes_api_v2_reference_gene_get}{Get Genes}}
+\title{Get Genes}
 \usage{
 get_genes(
   geneIds,
@@ -39,6 +39,8 @@ GENCODE version must be provided.
 \item Versioned GENCODE ID is recommended to ensure unique ID matching.
 \item By default, this service queries the genome build and GENCODE version used by the latest GTEx release.
 }
+
+\href{(https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_genes_api_v2_reference_gene_get)}{GTEx API Portal docs}
 }
 \examples{
 get_genes(c("CRP", "IL6R"))

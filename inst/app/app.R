@@ -11,16 +11,29 @@ gtexr_docs <- rlang::new_environment()
 lazyLoad(file.path(system.file("help", package = "gtexr"), "gtexr"),
          envir = gtexr_docs)
 
+# function families
 gtexr_functions <- gtexr_docs |>
   ls() |>
   purrr::set_names() |>
   purrr::map(\(rd) get(rd, envir = gtexr_docs) |>
                purrr::keep(\(x) attr(x, which = "Rd_tag") == "\\concept")) |>
   purrr::compact() |>
-  purrr::map(\(x) x[[1]][[1]][1]) |>
+  purrr::map_chr(\(x) x[[1]][[1]][1]) |>
   tibble::enframe(name = "fn_name",
-                  value = "family") |>
-  tidyr::unnest("family")
+                  value = "fn_family")
+
+# function titles
+gtexr_functions <- gtexr_docs |>
+  ls() |>
+  purrr::set_names() |>
+  purrr::map_chr(\(rd) get(rd, envir = gtexr_docs)[[1]][[1]][1]) |>
+  tibble::enframe(name = "fn_name",
+                  value = "fn_title") |>
+  dplyr::full_join(gtexr_functions,
+                   by = "fn_name")
+
+# remove internal functions (gtexr_arguments())
+gtexr_functions <- na.omit(gtexr_functions)
 
 # Utils -------------------------------------------------------------------
 
@@ -180,17 +193,18 @@ endpointServer <- function(id, gtexr_fn) {
 
 # create UI tabPanels programmatically
 
-endpoint_tab_panels <- gtexr_functions$family |>
+endpoint_tab_panels <- gtexr_functions$fn_family |>
   unique() |>
-  purrr::map(\(family) tabPanel(family,
+  purrr::map(\(fn_family) tabPanel(fn_family,
                                 tabsetPanel(!!!{
                                   gtexr_functions |>
-                                    dplyr::filter(.data[["family"]] == !!family) |>
-                                    dplyr::pull(.data[["fn_name"]]) |>
-                                    purrr::map(\(fn) tabPanel(fn,
+                                    dplyr::filter(.data[["fn_family"]] == !!fn_family) |>
+                                    dplyr::select(fn_name, fn_title) |>
+                                    as.list() |>
+                                    purrr::pmap(\(fn_name, fn_title) tabPanel(fn_title,
                                                               endpointUI(
-                                                                fn,
-                                                                gtexr_fn = fn,
+                                                                fn_name,
+                                                                gtexr_fn = fn_name,
                                                                 metadata = metadata
                                                               )))
                                 })))
@@ -200,7 +214,7 @@ ui <- navbarPage("GTExR",!!!endpoint_tab_panels, theme = bslib::bs_theme(bootswa
 # construct server function programmatically
 
 server_body <- gtexr_functions$fn_name |>
-  purrr::map(\(fn) rlang::call2("endpointServer", id = fn, gtexr_fn = fn))
+  purrr::map(\(fn_name) rlang::call2("endpointServer", id = fn_name, gtexr_fn = fn_name))
 
 server_body <- rlang::call2("{",!!!server_body)
 
