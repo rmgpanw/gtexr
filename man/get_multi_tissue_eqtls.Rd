@@ -2,10 +2,10 @@
 % Please edit documentation in R/get_multi_tissue_eqtls.R
 \name{get_multi_tissue_eqtls}
 \alias{get_multi_tissue_eqtls}
-\title{Get Significant Single Tissue Eqtls By Location}
+\title{Get Multi Tissue Eqtls}
 \usage{
 get_multi_tissue_eqtls(
-  gencodeId,
+  gencodeIds,
   variantId = NULL,
   datasetId = "gtex_v8",
   page = 0,
@@ -13,8 +13,8 @@ get_multi_tissue_eqtls(
 )
 }
 \arguments{
-\item{gencodeId}{String. A Versioned GENCODE ID of a gene, e.g.
-"ENSG00000065613.9".}
+\item{gencodeIds}{A character vector of Versioned GENCODE IDs, e.g.
+c("ENSG00000132693.12", "ENSG00000203782.5").}
 
 \item{variantId}{String. A gtex variant ID.}
 
@@ -30,25 +30,35 @@ Default = "gtex_v8".}
 A tibble.
 }
 \description{
-Find significant single tissue eQTLs using Chromosomal Locations.
-This service returns precomputed significant single tissue eQTLs.
-Results may be filtered by tissue, and/or dataset.
-By default, the service queries the latest GTEx release. Since this endpoint is used to support a third party program on the portal, the return structure is different from other endpoints and is not paginated.
+Find multi-tissue eQTL Metasoft results.
+\itemize{
+\item This service returns multi-tissue eQTL Metasoft results for a given gene and variant in a specified dataset.
+\item A Versioned GENCODE ID must be provided.
+\item For each tissue, the results include: m-value (mValue), normalized effect size (nes), p-value (pValue), and standard error (se).
+\item The m-value is the posterior probability that an eQTL effect exists in each tissue tested in the cross-tissue meta-analysis (Han and Eskin, PLoS Genetics 8(3): e1002555, 2012).
+\item The normalized effect size is the slope of the linear regression of normalized expression data versus the three genotype categories using single-tissue eQTL analysis, representing eQTL effect size.
+\item The p-value is from a t-test that compares observed NES from single-tissue eQTL analysis to a null NES of 0.
+}
 
-\href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_eqtls_api_v2_association_singleTissueEqtl_get}{GTEx Portal API documentation}
+By default, the service queries the latest GTEx release. The retrieved data is split into pages with items_per_page entries per page
+
+\href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_multi_tissue_eqtls_api_v2_association_metasoft_get}{GTEx Portal API documentation}
 }
 \examples{
-\dontrun{
 # search by gene
-get_multi_tissue_eqtls(gencodeIds = c("ENSG00000132693.12",
-                               "ENSG00000203782.5"))}
+get_multi_tissue_eqtls(gencodeId = c("ENSG00000132693.12",
+                                     "ENSG00000203782.5"))
 }
 \seealso{
 Other Static Association Endpoints: 
 \code{\link{get_eqtl_genes}()},
 \code{\link{get_fine_mapping}()},
 \code{\link{get_independent_eqtl}()},
+\code{\link{get_significant_single_tissue_eqtls_by_location}()},
 \code{\link{get_significant_single_tissue_eqtls}()},
+\code{\link{get_significant_single_tissue_ieqtls}()},
+\code{\link{get_significant_single_tissue_isqtls}()},
+\code{\link{get_significant_single_tissue_sqtls}()},
 \code{\link{get_sqtl_genes}()}
 }
 \concept{Static Association Endpoints}

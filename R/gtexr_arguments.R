@@ -3,6 +3,12 @@
 #' Internal function that documents all arguments for exported gtexr functions
 #' that wrap GTEx Portal API endpoints (using roxygen `@inheritParams` tag).
 #'
+#' @param ageBrackets The age bracket(s) of the donors of interest. Options:
+#'   "20-29", "30-39", "40-49", "50-59", "60-69", "70-79".
+#' @param aliquotIds Character vector.
+#' @param autolysisScores Character vector. Options: "None", "Mild", "Moderate",
+#'   "Severe".
+#' @param bp_window Integer.
 #' @param chromosome String. One of "chr1", "chr2", "chr3", "chr4", "chr5",
 #'   "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13",
 #'   "chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21",
@@ -10,6 +16,8 @@
 #' @param datasetId String. Unique identifier of a dataset. Usually includes a
 #'   data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
 #'   Default = "gtex_v8".
+#' @param dataTypes Character vector. Options: "RNASEQ", "WGS", "WES", "OMNI",
+#'   "EXCLUDE".
 #' @param end Integer.
 #' @param gencodeId String. A Versioned GENCODE ID of a gene, e.g.
 #'   "ENSG00000065613.9".
@@ -22,18 +30,62 @@
 #'   unversioned gencodeIds.
 #' @param genomeBuild String. Options: "GRCh38/hg38", "GRCh37/hg19". Default =
 #'   "GRCh38/hg38".
+#' @param hardyScales Character vector. A list of Hardy Scale(s) of interest.
+#'   Options: "Ventilator case", "Fast death - violent", "Fast death - natural
+#'   causes", "Intermediate death", "Slow death".
 #' @param itemsPerPage Integer (default = 250).
+#' @param ischemicTime Integer.
+#' @param ischemicTimeGroups Character vector. Options: "<= 0", "1 - 300", "301
+#'   - 600", "601 - 900", "901 - 1200", "1201 - 1500", "> 1500".
+#' @param organizationName String. Options: "GTEx Consortium" "Kid's First".
 #' @param page Integer (default = 0).
+#' @param pathCategory Character vector. Options: "adenoma", "amylacea",
+#'   "atelectasis", "atherosclerosis", "atherosis", "atrophy", "calcification",
+#'   "cirrhosis", "clean_specimens", "congestion", "corpora_albicantia", "cyst",
+#'   "desquamation", "diabetic", "dysplasia", "edema", "emphysema",
+#'   "esophagitis", "fibrosis", "gastritis", "glomerulosclerosis", "goiter",
+#'   "gynecomastoid", "hashimoto", "heart_failure_cells", "hemorrhage",
+#'   "hepatitis", "hyalinization", "hypereosinophilia", "hyperplasia",
+#'   "hypertrophy", "hypoxic", "infarction", "inflammation", "ischemic_changes",
+#'   "macrophages", "mastopathy", "metaplasia", "monckeberg", "necrosis",
+#'   "nephritis", "nephrosclerosis", "no_abnormalities", "nodularity",
+#'   "pancreatitis", "pigment", "pneumonia", "post_menopausal", "prostatitis",
+#'   "saponification", "scarring", "sclerotic", "solar_elastosis",
+#'   "spermatogenesis", "steatosis", "sweat_glands", "tma".
 #' @param pos Integer, vector.
+#' @param project_id String. Options: "gtex" "adult-gtex" "egtex".
+#' @param rin Integer.
+#' @param sampleIds Character vector. GTEx sample ID.
+#' @param sex String. Options: "male", "female".
 #' @param snpId String
+#' @param sortBy String. Options: "sampleId", "ischemicTime", "aliquotId",
+#'   "tissueSampleId", "hardyScale", "pathologyNotes", "ageBracket",
+#'   "tissueSiteDetailId", "sex".
 #' @param sortDirection String. Options: "asc", "desc". Default = "asc".
 #' @param start Integer.
+#' @param subjectIds Character vector. GTEx subject ID.
+#' @param tissueSampleIds Array of strings. A list of Tissue Sample ID(s).
 #' @param tissueSiteDetailId String. The ID of the tissue of interest. Can be a
 #'   GTEx specific ID (e.g. "Whole_Blood"; use [available_tissueSiteDetailIds()]
 #'   to see valid values) or an Ontology ID.
 #' @param tissueSiteDetailIds Character vector of IDs for tissues of interest.
 #'   Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 #'   [available_tissueSiteDetailIds()] to see valid values) or Ontology IDs.
+#' @param uberonIds Character vector. A list of Uberon ID(s) of interest.
+#'   Options: "UBERON:EFO_0000572", "UBERON:EFO_0002009", "UBERON:0000007",
+#'   "UBERON:0000458", "UBERON:0000473", "UBERON:0000945", "UBERON:0000992",
+#'   "UBERON:0000995", "UBERON:0000996", "UBERON:0001114", "UBERON:0001150",
+#'   "UBERON:0001157", "UBERON:0001159", "UBERON:0001211", "UBERON:0001225",
+#'   "UBERON:0001255", "UBERON:0001293", "UBERON:0001323", "UBERON:0001496",
+#'   "UBERON:0001621", "UBERON:0001870", "UBERON:0001873", "UBERON:0001874",
+#'   "UBERON:0001876", "UBERON:0001882", "UBERON:0001898", "UBERON:0001954",
+#'   "UBERON:0002037", "UBERON:0002038", "UBERON:0002046", "UBERON:0002106",
+#'   "UBERON:0002190", "UBERON:0002367", "UBERON:0002369", "UBERON:0003889",
+#'   "UBERON:0004264", "UBERON:0004550", "UBERON:0004648", "UBERON:0006330",
+#'   "UBERON:0006469", "UBERON:0006566", "UBERON:0006631", "UBERON:0006920",
+#'   "UBERON:0007610", "UBERON:0008367", "UBERON:0008952", "UBERON:0009834",
+#'   "UBERON:0009835", "UBERON:0010414", "UBERON:0011907", "UBERON:0012249",
+#'   "UBERON:0013756", "UBERON:0036149".
 #' @param variantId String. A gtex variant ID.
 #'
 #' @keywords internal
@@ -41,8 +93,13 @@
 gtexr_arguments <- function() {
   tibble::tribble(
     ~arg, ~type, ~scalar, ~pluralised,
+    "ageBrackets", "character", FALSE, TRUE,
+    "aliquotIds", "character", FALSE, TRUE,
+    "autolysisScores", "character", FALSE, TRUE,
+    "bp_window", "integer", TRUE, FALSE,
     "chromosome", "character", TRUE, FALSE,
     "datasetId", "character", TRUE, FALSE,
+    "dataTypes", "character", FALSE, TRUE,
     "end", "integer", TRUE, FALSE,
     "gencodeId", "character", TRUE, FALSE,
     "gencodeIds", "character", FALSE, TRUE,
@@ -50,14 +107,27 @@ gtexr_arguments <- function() {
     "geneId", "character", TRUE, FALSE,
     "geneIds", "character", FALSE, TRUE,
     "genomeBuild", "character", TRUE, FALSE,
+    "hardyScales", "character", FALSE, TRUE,
     "itemsPerPage", "integer", TRUE, FALSE,
+    "ischemicTime", "integer", FALSE, FALSE,
+    "ischemicTimeGroups", "character", FALSE, TRUE,
+    "organizationName", "character", TRUE, FALSE,
     "page", "integer", TRUE, FALSE,
+    "pathCategory", "character", FALSE, FALSE,
     "pos", "integer", FALSE, FALSE,
+    "project_id", "character", TRUE, FALSE,
+    "rin", "integer", FALSE, FALSE,
+    "sampleIds", "character", FALSE, TRUE,
+    "sex", "character", TRUE, FALSE,
     "snpId", "character", TRUE, FALSE,
+    "sortBy", "character", TRUE, FALSE,
     "sortDirection", "character", TRUE, FALSE,
     "start", "integer", TRUE, FALSE,
+    "subjectIds", "character", TRUE, TRUE,
+    "tissueSampleIds", "character", FALSE, TRUE,
     "tissueSiteDetailId", "character", TRUE, FALSE,
     "tissueSiteDetailIds", "character", FALSE, TRUE,
+    "uberonIds", "character", FALSE, TRUE,
     "variantId", "character", TRUE, FALSE
   )
 }

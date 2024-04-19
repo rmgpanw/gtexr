@@ -14,4 +14,6 @@ with_mock_dir("gtex_query", {
 
 # TODO - add test for `calculate_eqtls(tissueSiteDetailId = "Artery_Aorta",
 # gencodeId = "ENSG00000116117", variantId = "rs147387290")` - returns `NULL`
-# for "pValueThreshold"
+# for "pValueThreshold". This doesn't however:
+# `calculate_eqtls(tissueSiteDetailId = "Artery_Aorta", gencodeId =
+# "ENSG00000225630", variantId = "rs554008981")`

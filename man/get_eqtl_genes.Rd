@@ -5,16 +5,16 @@
 \title{Get Eqtl Genes}
 \usage{
 get_eqtl_genes(
-  tissueSiteDetailId,
+  tissueSiteDetailIds,
   datasetId = "gtex_v8",
   page = 0,
   itemsPerPage = 250
 )
 }
 \arguments{
-\item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
-GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
-to see valid values) or an Ontology ID.}
+\item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
+Can be GTEx specific IDs (e.g. "Whole_Blood"; use
+\code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}} to see valid values) or Ontology IDs.}
 
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
 data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
@@ -49,14 +49,18 @@ For each eGene, the results include the allelic fold change
 }
 }
 \examples{
-get_eqtl_genes("Whole_Blood")
+get_eqtl_genes(c("Whole_Blood", "Artery_Aorta"))
 }
 \seealso{
 Other Static Association Endpoints: 
 \code{\link{get_fine_mapping}()},
 \code{\link{get_independent_eqtl}()},
 \code{\link{get_multi_tissue_eqtls}()},
+\code{\link{get_significant_single_tissue_eqtls_by_location}()},
 \code{\link{get_significant_single_tissue_eqtls}()},
+\code{\link{get_significant_single_tissue_ieqtls}()},
+\code{\link{get_significant_single_tissue_isqtls}()},
+\code{\link{get_significant_single_tissue_sqtls}()},
 \code{\link{get_sqtl_genes}()}
 }
 \concept{Static Association Endpoints}

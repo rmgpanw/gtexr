@@ -3,16 +3,15 @@
 #'@description
 #' - Retrieve all tissue site detail information in the database
 #'
-#'[GTEx Portal API documentation]
-#'https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_tissue_site_detail_api_v2_dataset_tissueSiteDetail_get
+#'[GTEx Portal API
+#'documentation](https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_tissue_site_detail_api_v2_dataset_tissueSiteDetail_get)
 #'
 #'@inheritParams gtexr_arguments
 #'@return A Tibble
 #'@export
-#'@family Dataset Endpoints
+#'@family Datasets Endpoints
 #'
 #' @examples
-#' \dontrun
 #' get_tissue_site_detail()
 get_tissue_site_detail <- function(page = 0,
                                    itemsPerPage = 250){

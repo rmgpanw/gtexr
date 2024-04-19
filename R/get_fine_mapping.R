@@ -17,7 +17,6 @@
 #'@family Static Association Endpoints
 #'
 #' @examples
-#' \dontrun{
 #' # search by gene
 #' get_fine_mapping(gencodeIds = c("ENSG00000132693.12",
 #'                                "ENSG00000203782.5"))
@@ -28,7 +27,6 @@
 #'                  variantId = "chr1_153228363_A_G_b38",
 #'                  tissueSiteDetailIds = c("Whole_Blood",
 #'                                         "Thyroid"))
-#'}
 get_fine_mapping <- function(gencodeIds,
                              datasetId = "gtex_v8",
                              variantId = NULL,
