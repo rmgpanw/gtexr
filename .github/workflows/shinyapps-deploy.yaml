@@ -34,7 +34,7 @@ jobs:
           extra-packages: local::.
 
       - name: deploy
-        uses: rmgpanw/shinyapps-deploy-github-action@v1.13-alpha
+        uses: rmgpanw/shinyapps-deploy-github-action@v1.13-alpha.2
         with:
           # account and application name (https://<accountName>.shinyapps.io/<appName>)
           appName: gtexr
@@ -50,4 +50,4 @@ jobs:
           forceUpdate: true
 
           # installs gtexr locally from current commit
-          localPackage: true
+          githubPackages: rmgpanw/gtexr@dev_shiny
