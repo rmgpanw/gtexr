@@ -25,13 +25,6 @@ jobs:
           rm renv.lock
           rm -r renv
           rm .Rprofile
-      - uses: r-lib/actions/setup-r@v2
-        with:
-          use-public-rspm: true
-
-      - uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          extra-packages: local::.
 
       - name: deploy
         uses: rmgpanw/shinyapps-deploy-github-action@v1.13-alpha.3
