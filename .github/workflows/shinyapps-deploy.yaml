@@ -26,7 +26,12 @@ jobs:
           rm -r renv
           rm .Rprofile
       - name: install gtexr
-        run: devtools::install_github("rmgpanw/gtexr@dev_shiny")
+        run: |
+          Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04", package = "devtools"))' | \
+            while read -r cmd; do \
+            echo $cmd && eval sudo $cmd; \
+            done
+          devtools::install_github("rmgpanw/gtexr@dev_shiny")
         shell: Rscript {0}
       - name: deploy
         uses: BDSI-Utwente/shinyapps-deploy-github-action@v1
