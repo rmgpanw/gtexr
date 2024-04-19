@@ -25,12 +25,16 @@ jobs:
           rm renv.lock
           rm -r renv
           rm .Rprofile
+      - uses: r-lib/actions/setup-r@v2
+        with:
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          extra-packages: any::devtools, local::.
+
       - name: install gtexr
         run: |
-          Rscript -e 'writeLines(remotes::system_requirements("ubuntu", "20.04", package = "devtools"))' | \
-            while read -r cmd; do \
-            echo $cmd && eval sudo $cmd; \
-            done
           devtools::install_github("rmgpanw/gtexr@dev_shiny")
         shell: Rscript {0}
       - name: deploy
