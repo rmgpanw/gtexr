@@ -195,6 +195,7 @@ endpointServer <- function(id, gtexr_fn) {
 
 endpoint_tab_panels <- gtexr_functions$fn_family |>
   unique() |>
+  sort() |>
   purrr::map(\(fn_family) tabPanel(fn_family,
                                 tabsetPanel(!!!{
                                   gtexr_functions |>
@@ -209,7 +210,13 @@ endpoint_tab_panels <- gtexr_functions$fn_family |>
                                                               )))
                                 })))
 
-ui <- navbarPage("GTExR",!!!endpoint_tab_panels, theme = bslib::bs_theme(bootswatch = "lumen"))
+ui <-
+  navbarPage(
+    "GTExR",
+    !!!endpoint_tab_panels,
+    theme = bslib::bs_theme(bootswatch = "lumen"),
+    selected = "GTEx Portal API Info"
+  )
 
 # construct server function programmatically
 
