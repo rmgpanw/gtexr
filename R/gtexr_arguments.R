@@ -55,6 +55,7 @@
 #' @param pos Integer, vector.
 #' @param project_id String. Options: "gtex" "adult-gtex" "egtex".
 #' @param rin Integer.
+#' @param sampleId String. `^GTEX-[A-Z0-9]{5}-[0-9]{4}-SM-[A-Z0-9]{5}$`
 #' @param sampleIds Character vector. GTEx sample ID.
 #' @param sex String. Options: "male", "female".
 #' @param snpId String

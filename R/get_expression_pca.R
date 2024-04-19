@@ -17,11 +17,14 @@
 #'
 #' @examples
 #' \dontrun{
-#' get_expression_pca(tissueSiteDetailIds = "Artery_Aorta")
+#' get_expression_pca(tissueSiteDetailIds = "Adipose_Subcutaneous")
+#'
+#' get_expression_pca(tissueSiteDetailIds = "Adipose_Subcutaneous",
+#'                    sampleId = "GTEX-1117F-0226-SM-5GZZ7")
 #' }
 get_expression_pca <- function(tissueSiteDetailIds,
                                datasetId = "gtex_v8",
-                               sampleId = "^GTEX-[A-Z0-9]{5}-[0-9]{4}-SM-[A-Z0-9]{5}$", #ASK ALASDAIR
+                               sampleId = NULL,
                                page = 0,
                                itemsPerPage = 250){
   gtex_query(endpoint = "expression/expressionPca")

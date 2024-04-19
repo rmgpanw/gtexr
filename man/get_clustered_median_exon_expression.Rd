@@ -21,6 +21,8 @@ Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
 Default = "gtex_v8".}
 
+\item{sampleId}{String. \verb{^GTEX-[A-Z0-9]\{5\}-[0-9]\{4\}-SM-[A-Z0-9]\{5\}$}}
+
 \item{page}{Integer (default = 0).}
 
 \item{itemsPerPage}{Integer (default = 250).}

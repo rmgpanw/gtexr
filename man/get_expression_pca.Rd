@@ -7,7 +7,7 @@
 get_expression_pca(
   tissueSiteDetailIds,
   datasetId = "gtex_v8",
-  sampleId = "^GTEX-[A-Z0-9]{5}-[0-9]{4}-SM-[A-Z0-9]{5}$",
+  sampleId = NULL,
   page = 0,
   itemsPerPage = 250
 )
@@ -20,6 +20,8 @@ Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
 data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
 Default = "gtex_v8".}
+
+\item{sampleId}{String. \verb{^GTEX-[A-Z0-9]\{5\}-[0-9]\{4\}-SM-[A-Z0-9]\{5\}$}}
 
 \item{page}{Integer (default = 0).}
 
@@ -40,7 +42,10 @@ A Tibble
 }
 \examples{
 \dontrun{
-get_expression_pca(tissueSiteDetailIds = "Artery_Aorta")
+get_expression_pca(tissueSiteDetailIds = "Adipose_Subcutaneous")
+
+get_expression_pca(tissueSiteDetailIds = "Adipose_Subcutaneous",
+                   sampleId = "GTEX-1117F-0226-SM-5GZZ7")
 }
 }
 \seealso{

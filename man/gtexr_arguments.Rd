@@ -85,6 +85,8 @@ causes", "Intermediate death", "Slow death".}
 
 \item{rin}{Integer.}
 
+\item{sampleId}{String. \verb{^GTEX-[A-Z0-9]\{5\}-[0-9]\{4\}-SM-[A-Z0-9]\{5\}$}}
+
 \item{sampleIds}{Character vector. GTEx sample ID.}
 
 \item{sex}{String. Options: "male", "female".}
