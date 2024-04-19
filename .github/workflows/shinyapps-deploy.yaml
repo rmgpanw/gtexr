@@ -34,7 +34,7 @@ jobs:
           extra-packages: local::.
 
       - name: deploy
-        uses: rmgpanw/shinyapps-deploy-github-action@v1
+        uses: rmgpanw/shinyapps-deploy-github-action@v1.13-alpha
         with:
           # account and application name (https://<accountName>.shinyapps.io/<appName>)
           appName: gtexr
