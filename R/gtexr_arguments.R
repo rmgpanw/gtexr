@@ -2,12 +2,12 @@
 #'
 #' Internal function that documents all arguments for exported gtexr functions
 #' that wrap GTEx Portal API endpoints (using roxygen `@inheritParams` tag).
-#'
 #' @param ageBrackets The age bracket(s) of the donors of interest. Options:
 #'   "20-29", "30-39", "40-49", "50-59", "60-69", "70-79".
 #' @param aliquotIds Character vector.
 #' @param autolysisScores Character vector. Options: "None", "Mild", "Moderate",
 #'   "Severe".
+#' @param attributeSubset String. Examples include but are not limited to "sex", "ageBracket"
 #' @param bp_window Integer.
 #' @param chromosome String. One of "chr1", "chr2", "chr3", "chr4", "chr5",
 #'   "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13",
@@ -19,6 +19,7 @@
 #' @param dataTypes Character vector. Options: "RNASEQ", "WGS", "WES", "OMNI",
 #'   "EXCLUDE".
 #' @param end Integer.
+#' @param excludeDataArray String. Options are TRUE or FALSE
 #' @param filterMrGene Logical. Exclude mitochondrial genes.
 #' @param gencodeId String. A Versioned GENCODE ID of a gene, e.g.
 #'   "ENSG00000065613.9".
@@ -98,11 +99,13 @@ gtexr_arguments <- function() {
     "ageBrackets", "character", FALSE, TRUE,
     "aliquotIds", "character", FALSE, TRUE,
     "autolysisScores", "character", FALSE, TRUE,
+    "attributeSubset", "character", FALSE, TRUE,
     "bp_window", "integer", TRUE, FALSE,
     "chromosome", "character", TRUE, FALSE,
     "datasetId", "character", TRUE, FALSE,
     "dataTypes", "character", FALSE, TRUE,
     "end", "integer", TRUE, FALSE,
+    "excludeDataArray", "character", FALSE, TRUE,
     "filterMtGene", "logical", TRUE, FALSE,
     "gencodeId", "character", TRUE, FALSE,
     "gencodeIds", "character", FALSE, TRUE,
