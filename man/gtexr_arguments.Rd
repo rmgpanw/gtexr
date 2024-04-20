@@ -31,6 +31,8 @@ Default = "gtex_v8".}
 
 \item{end}{Integer.}
 
+\item{filterMrGene}{Logical. Exclude mitochondrial genes.}
+
 \item{gencodeId}{String. A Versioned GENCODE ID of a gene, e.g.
 "ENSG00000065613.9".}
 

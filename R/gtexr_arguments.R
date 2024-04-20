@@ -19,6 +19,7 @@
 #' @param dataTypes Character vector. Options: "RNASEQ", "WGS", "WES", "OMNI",
 #'   "EXCLUDE".
 #' @param end Integer.
+#' @param filterMrGene Logical. Exclude mitochondrial genes.
 #' @param gencodeId String. A Versioned GENCODE ID of a gene, e.g.
 #'   "ENSG00000065613.9".
 #' @param gencodeIds A character vector of Versioned GENCODE IDs, e.g.
@@ -102,6 +103,7 @@ gtexr_arguments <- function() {
     "datasetId", "character", TRUE, FALSE,
     "dataTypes", "character", FALSE, TRUE,
     "end", "integer", TRUE, FALSE,
+    "filterMtGene", "logical", TRUE, FALSE,
     "gencodeId", "character", TRUE, FALSE,
     "gencodeIds", "character", FALSE, TRUE,
     "gencodeVersion", "character", TRUE, FALSE,
