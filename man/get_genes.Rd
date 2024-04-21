@@ -40,7 +40,7 @@ GENCODE version must be provided.
 \item By default, this service queries the genome build and GENCODE version used by the latest GTEx release.
 }
 
-\href{(https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_genes_api_v2_reference_gene_get)}{GTEx API Portal docs}
+\href{https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_genes_api_v2_reference_gene_get}{GTEx API Portal docs}
 }
 \examples{
 get_genes(c("CRP", "IL6R"))
