@@ -11,11 +11,11 @@ gtexr_docs <- rlang::new_environment()
 lazyLoad(file.path(system.file("help", package = "gtexr"), "gtexr"),
          envir = gtexr_docs)
 
+gtexr_docs <- as.list(gtexr_docs)
+
 # function families
 gtexr_functions <- gtexr_docs |>
-  ls() |>
-  purrr::set_names() |>
-  purrr::map(\(rd) get(rd, envir = gtexr_docs) |>
+  purrr::map(\(rd) rd |>
                purrr::keep(\(x) attr(x, which = "Rd_tag") == "\\concept")) |>
   purrr::compact() |>
   purrr::map_chr(\(x) x[[1]][[1]][1]) |>
@@ -24,11 +24,21 @@ gtexr_functions <- gtexr_docs |>
 
 # function titles
 gtexr_functions <- gtexr_docs |>
-  ls() |>
-  purrr::set_names() |>
-  purrr::map_chr(\(rd) get(rd, envir = gtexr_docs)[[1]][[1]][1]) |>
+  purrr::map_chr(\(rd) rd[[1]][[1]][1]) |>
   tibble::enframe(name = "fn_name",
                   value = "fn_title") |>
+  dplyr::full_join(gtexr_functions,
+                   by = "fn_name")
+
+# function docs, HTML
+gtexr_functions <- gtexr_docs |>
+  purrr::imap_chr(\(rd, fn) {
+    .html <- paste0(fn, "_html")
+    tools::Rd2HTML(rd, out = textConnection(.html, "w", local = TRUE))
+    as.character(HTML(eval(as.symbol(.html))))
+  }) |>
+  tibble::enframe(name = "fn_name",
+                  value = "fn_docs_html") |>
   dplyr::full_join(gtexr_functions,
                    by = "fn_name")
 
@@ -53,7 +63,7 @@ detect_multiple_text_inputs <- function(metadata,
 
 # UI ----------------------------------------------------------------------
 
-endpointUI <- function(id, gtexr_fn, metadata) {
+endpointUI <- function(id, gtexr_fn, metadata, gtexr_functions) {
   ns <- NS(id)
 
   gtexr_fn_args <- get_gtexr_fn_args(gtexr_fn)
@@ -131,7 +141,11 @@ endpointUI <- function(id, gtexr_fn, metadata) {
         width = 3
       ),
       mainPanel(
-        tableOutput(ns("result")),
+        tabsetPanel(tabPanel(title = "Result",
+                             tableOutput(ns("result"))),
+                    tabPanel(title = "Help",
+                             HTML(gtexr_functions[gtexr_functions$fn_name == gtexr_fn, ]$fn_docs_html)),
+                    type = "pills"),
         width = 6
       )
     )
@@ -189,6 +203,32 @@ endpointServer <- function(id, gtexr_fn) {
   })
 }
 
+# Single GTExR module app -------------------------------------------------
+
+# For testing a single function
+
+endpointMod <- function(gtexr_fn,
+                        metadata,
+                        gtexr_functions) {
+  ui <- fluidPage(endpointUI(
+    id = gtexr_fn,
+    gtexr_fn = gtexr_fn,
+    metadata = metadata,
+    gtexr_functions = gtexr_functions
+  ))
+
+  server <- function(input, output, session) {
+    endpointServer(id = gtexr_fn,
+                   gtexr_fn = gtexr_fn)
+  }
+
+  shinyApp(ui, server)
+}
+
+# endpointMod("get_genes",
+#             metadata = metadata,
+#             gtexr_functions = gtexr_functions)
+
 # App ---------------------------------------------------------------------
 
 # create UI tabPanels programmatically
@@ -206,7 +246,8 @@ endpoint_tab_panels <- gtexr_functions$fn_family |>
                                                               endpointUI(
                                                                 fn_name,
                                                                 gtexr_fn = fn_name,
-                                                                metadata = metadata
+                                                                metadata = metadata,
+                                                                gtexr_functions = gtexr_functions
                                                               )))
                                 })))
 
