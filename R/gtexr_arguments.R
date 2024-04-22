@@ -61,7 +61,7 @@ gtexr_arguments <- function() {
     "snpId", "character", TRUE, FALSE, "textInput", NA,
     "sortDirection", "character", TRUE, FALSE, "selectInput", c("asc", "desc"),
     "start", "integer", TRUE, FALSE, "numericInput", c(0, 250000000),
-    "tissueSampleId", "character", TRUE, FALSE, "selectInput", NA,
+    "tissueSampleId", "character", TRUE, FALSE, "textAreaInput", NA,
     "tissueSiteDetailId", "character", TRUE, FALSE, "selectInput", available_tissueSiteDetailIds(),
     "tissueSiteDetailIds", "character", FALSE, TRUE, "selectizeInput", available_tissueSiteDetailIds(),
     "variantId", "character", TRUE, FALSE, "textInput", NA
