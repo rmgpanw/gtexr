@@ -40,6 +40,13 @@ gtex_query <- function(endpoint = NULL,
     }
 
     query_params <- query_params |>
+      purrr::map(\(x) {
+        if (rlang::is_na(x) | identical(x, "")) {
+          return(NULL)
+        } else {
+          return(x)
+        }
+      }) |>
       purrr::compact()
 
     query_params <- validate_args(arguments = query_params,

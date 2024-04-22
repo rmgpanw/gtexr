@@ -3,7 +3,7 @@ library(gtexr)
 library(purrr)
 library(stringr)
 
-metadata <- gtexr:::gtexr_arguments()
+gtexr_arguments_metadata <- gtexr:::gtexr_arguments()
 
 # obtain and categorise list of gtexr functions programmatically
 gtexr_docs <- rlang::new_environment()
@@ -14,7 +14,7 @@ lazyLoad(file.path(system.file("help", package = "gtexr"), "gtexr"),
 gtexr_docs <- as.list(gtexr_docs)
 
 # function families
-gtexr_functions <- gtexr_docs |>
+gtexr_functions_metadata <- gtexr_docs |>
   purrr::map(\(rd) rd |>
                purrr::keep(\(x) attr(x, which = "Rd_tag") == "\\concept")) |>
   purrr::compact() |>
@@ -23,15 +23,15 @@ gtexr_functions <- gtexr_docs |>
                   value = "fn_family")
 
 # function titles
-gtexr_functions <- gtexr_docs |>
+gtexr_functions_metadata <- gtexr_docs |>
   purrr::map_chr(\(rd) rd[[1]][[1]][1]) |>
   tibble::enframe(name = "fn_name",
                   value = "fn_title") |>
-  dplyr::full_join(gtexr_functions,
+  dplyr::full_join(gtexr_functions_metadata,
                    by = "fn_name")
 
 # function docs, HTML
-gtexr_functions <- gtexr_docs |>
+gtexr_functions_metadata <- gtexr_docs |>
   purrr::imap_chr(\(rd, fn) {
     .html <- paste0(fn, "_html")
     tools::Rd2HTML(rd, out = textConnection(.html, "w", local = TRUE))
@@ -39,11 +39,63 @@ gtexr_functions <- gtexr_docs |>
   }) |>
   tibble::enframe(name = "fn_name",
                   value = "fn_docs_html") |>
-  dplyr::full_join(gtexr_functions,
+  dplyr::full_join(gtexr_functions_metadata,
+                   by = "fn_name")
+
+# function examples
+
+# to see tags
+# gtexr_docs$get_variant |>
+#   purrr::map_chr(\(x) attr(x, which = "Rd_tag"))
+
+gtexr_functions_metadata <- gtexr_docs |>
+  purrr::map(\(rd) rd |>
+               purrr::keep(\(x) attr(x, which = "Rd_tag") == "\\examples")) |>
+  purrr::compact() |>
+  purrr::map(\(x) {
+    examples <- x[[1]] |>
+      purrr::list_flatten() |>
+      purrr::reduce(c) |>
+      paste(sep = "", collapse = "") |>
+      rlang::parse_exprs()
+
+    examples[[1]]
+  }) |>
+  tibble::enframe(name = "fn_name",
+                  value = "fn_example") |>
+  dplyr::mutate("fn_example_args" = purrr::map(.data[["fn_example"]], \(first_example) {
+    rlang::call_match(first_example,
+                      eval(as.symbol(rlang::call_name(first_example))),
+                      defaults = TRUE)[-1] |>
+      as.list()
+  })) |>
+  dplyr::full_join(gtexr_functions_metadata,
+                   by = "fn_name")
+
+# get usage
+gtexr_functions_metadata <- gtexr_docs |>
+  purrr::map(\(rd) rd |>
+               purrr::keep(\(x) attr(x, which = "Rd_tag") == "\\usage")) |>
+  purrr::compact() |>
+  purrr::map(\(x) x[[1]] |>
+      purrr::list_flatten() |>
+      purrr::reduce(c) |>
+      paste(sep = "", collapse = "") |>
+      rlang::parse_expr()) |>
+  tibble::enframe(name = "fn_name",
+                  value = "fn_usage") |>
+  dplyr::mutate("fn_usage_args" = purrr::map(.data[["fn_usage"]], \(usage) {
+    tryCatch(rlang::call_match(usage,
+                      eval(as.symbol(rlang::call_name(usage))),
+                      defaults = TRUE)[-1] |>
+      as.list(),
+      error = function(cnd) list())
+  })) |>
+  dplyr::full_join(gtexr_functions_metadata,
                    by = "fn_name")
 
 # remove internal functions (gtexr_arguments())
-gtexr_functions <- na.omit(gtexr_functions)
+gtexr_functions_metadata <- na.omit(gtexr_functions_metadata)
 
 # Utils -------------------------------------------------------------------
 
@@ -54,24 +106,43 @@ get_gtexr_fn_args <- function(gtexr_fn) {
     rlang::fn_fmls()
 }
 
-detect_multiple_text_inputs <- function(metadata,
+detect_multiple_text_inputs <- function(gtexr_arguments_metadata,
                                         gtexr_fn_args) {
-  metadata |>
+  gtexr_arguments_metadata |>
     dplyr::filter(.data[["arg"]] %in% !!names(gtexr_fn_args)) |>
     dplyr::filter(.data[["shinyinput"]] == "textAreaInput")
 }
 
 # UI ----------------------------------------------------------------------
 
-endpointUI <- function(id, gtexr_fn, metadata, gtexr_functions) {
+endpointUI <- function(id, gtexr_fn, gtexr_arguments_metadata, gtexr_functions_metadata) {
   ns <- NS(id)
 
   gtexr_fn_args <- get_gtexr_fn_args(gtexr_fn)
+  gtexr_fn_metadata <- gtexr_functions_metadata[gtexr_functions_metadata$fn_name == gtexr_fn, ]
+
+  # if (gtexr_fn == "calculate_eqtls") {
+  #   browser()
+  # }
 
   # create a list of UI inputs - one input for each function argument
   query_params <- gtexr_fn_args |>
-    purrr::imap(\(value, arg) {
-      arg_metadata <- metadata[metadata$arg == arg,]
+    purrr::imap(\(default_value, arg) {
+      arg_metadata <- gtexr_arguments_metadata[gtexr_arguments_metadata$arg == arg,]
+
+      # include "" option if argument is optional
+      if (!rlang::is_missing(default_value)) {
+        if (is.null(default_value) &
+            identical(arg_metadata$shinyinput, "selectInput")) {
+          arg_metadata$shinyinput <- "selectizeInput"
+        }
+      }
+
+      # set default values to first example from function documentation
+      value <- eval(gtexr_fn_metadata$fn_example_args[[1]][[arg]])
+      if (is.character(value)) {
+        value <- paste(value, sep = "", collapse = "\n")
+      }
 
       switch(
         arg_metadata$shinyinput,
@@ -108,11 +179,7 @@ endpointUI <- function(id, gtexr_fn, metadata, gtexr_functions) {
           label = arg,
           min = arg_metadata$choices[[1]][1],
           max = arg_metadata$choices[[1]][2],
-          value = ifelse(
-            rlang::is_missing(value) | is.null(value),
-            arg_metadata$choices[[1]][1],
-            value
-          )
+          value = value
         ),
         ... = cli::cli_abort(
           c(
@@ -125,7 +192,7 @@ endpointUI <- function(id, gtexr_fn, metadata, gtexr_functions) {
     purrr::map(rlang::eval_tidy, env = rlang::caller_env(n = 0))
 
   # multiple text input params - these inputs need converting to character vectors
-  multiple_text_inputs <- detect_multiple_text_inputs(metadata,
+  multiple_text_inputs <- detect_multiple_text_inputs(gtexr_arguments_metadata,
                                                       gtexr_fn_args)
 
   # Important - UI fails to render if this is a named list
@@ -144,7 +211,7 @@ endpointUI <- function(id, gtexr_fn, metadata, gtexr_functions) {
         tabsetPanel(tabPanel(title = "Result",
                              tableOutput(ns("result"))),
                     tabPanel(title = "Help",
-                             HTML(gtexr_functions[gtexr_functions$fn_name == gtexr_fn, ]$fn_docs_html)),
+                             HTML(gtexr_functions_metadata[gtexr_functions_metadata$fn_name == gtexr_fn, ]$fn_docs_html)),
                     type = "pills"),
         width = 6
       )
@@ -168,7 +235,7 @@ endpointServer <- function(id, gtexr_fn) {
 
                              # split any multiple text entries into character vectors
                              multiple_text_inputs <-
-                               detect_multiple_text_inputs(metadata,
+                               detect_multiple_text_inputs(gtexr_arguments_metadata,
                                                            gtexr_fn_args)
 
                              query_params_input <-
@@ -208,13 +275,13 @@ endpointServer <- function(id, gtexr_fn) {
 # For testing a single function
 
 endpointMod <- function(gtexr_fn,
-                        metadata,
-                        gtexr_functions) {
+                        gtexr_arguments_metadata,
+                        gtexr_functions_metadata) {
   ui <- fluidPage(endpointUI(
     id = gtexr_fn,
     gtexr_fn = gtexr_fn,
-    metadata = metadata,
-    gtexr_functions = gtexr_functions
+    gtexr_arguments_metadata = gtexr_arguments_metadata,
+    gtexr_functions_metadata = gtexr_functions_metadata
   ))
 
   server <- function(input, output, session) {
@@ -225,20 +292,20 @@ endpointMod <- function(gtexr_fn,
   shinyApp(ui, server)
 }
 
-# endpointMod("get_genes",
-#             metadata = metadata,
-#             gtexr_functions = gtexr_functions)
+endpointMod("get_genes",
+            gtexr_arguments_metadata = gtexr_arguments_metadata,
+            gtexr_functions_metadata = gtexr_functions_metadata)
 
 # App ---------------------------------------------------------------------
 
 # create UI tabPanels programmatically
 
-endpoint_tab_panels <- gtexr_functions$fn_family |>
+endpoint_tab_panels <- gtexr_functions_metadata$fn_family |>
   unique() |>
   sort() |>
   purrr::map(\(fn_family) tabPanel(fn_family,
                                 tabsetPanel(!!!{
-                                  gtexr_functions |>
+                                  gtexr_functions_metadata |>
                                     dplyr::filter(.data[["fn_family"]] == !!fn_family) |>
                                     dplyr::select(fn_name, fn_title) |>
                                     as.list() |>
@@ -246,8 +313,8 @@ endpoint_tab_panels <- gtexr_functions$fn_family |>
                                                               endpointUI(
                                                                 fn_name,
                                                                 gtexr_fn = fn_name,
-                                                                metadata = metadata,
-                                                                gtexr_functions = gtexr_functions
+                                                                gtexr_arguments_metadata = gtexr_arguments_metadata,
+                                                                gtexr_functions_metadata = gtexr_functions_metadata
                                                               )))
                                 })))
 
@@ -261,7 +328,7 @@ ui <-
 
 # construct server function programmatically
 
-server_body <- gtexr_functions$fn_name |>
+server_body <- gtexr_functions_metadata$fn_name |>
   purrr::map(\(fn_name) rlang::call2("endpointServer", id = fn_name, gtexr_fn = fn_name))
 
 server_body <- rlang::call2("{",!!!server_body)
