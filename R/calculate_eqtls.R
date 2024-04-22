@@ -15,16 +15,16 @@
 #' @family Dynamic Association Endpoints
 #'
 #' @examples
-#' # perform request
-#' result <- calculate_eqtls(tissueSiteDetailId = "Whole_Blood",
-#'                gencodeId = "ENSG00000203782.5",
-#'                variantId = "rs79641866")
-#'
-#' # returns a tibble with a single row
-#' result
+#' # perform request - returns a tibble with a single row
+#' calculate_eqtls(tissueSiteDetailId = "Whole_Blood",
+#'                 gencodeId = "ENSG00000203782.5",
+#'                 variantId = "rs79641866")
 #'
 #' # unnest list columns with tidyr::unnest()
-#' tidyr::unnest(result, c("data", "genotypes"))
+#' calculate_eqtls(tissueSiteDetailId = "Whole_Blood",
+#'                 gencodeId = "ENSG00000203782.5",
+#'                 variantId = "rs79641866") |>
+#'   tidyr::unnest(c("data", "genotypes"))
 calculate_eqtls <- function(tissueSiteDetailId,
                            gencodeId,
                            variantId,
