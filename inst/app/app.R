@@ -256,11 +256,19 @@ endpointServer <- function(id, gtexr_fn) {
 
     # evaluate code, catching any error messages
     response <-
-      reactive(tryCatch(
+      reactive({
+        id <-
+          shiny::showNotification("Performing request...",
+                                  duration = NULL,
+                                  closeButton = FALSE,
+                                  type = "message")
+        on.exit(removeNotification(id), add = TRUE)
+
+        tryCatch(
         eval(query()),
         error = function(cnd)
           cnd
-      ))
+      )})
 
     output$result <-
       DT::renderDT({
