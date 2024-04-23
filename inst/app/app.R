@@ -2,7 +2,8 @@ library(shiny)
 library(gtexr)
 library(purrr)
 library(stringr)
-library(reactable)
+library(DT)
+library(tidyselect)
 
 gtexr_arguments_metadata <- gtexr:::gtexr_arguments()
 
@@ -114,30 +115,6 @@ detect_multiple_text_inputs <- function(gtexr_arguments_metadata,
     dplyr::filter(.data[["shinyinput"]] == "textAreaInput")
 }
 
-csvDownloadButton <-
-  function(id,
-           filename = "result.csv",
-           label = "Download as CSV") {
-    shiny::tags$button(
-      shiny::tagList(shiny::icon("download"), label),
-      onclick = sprintf("Reactable.downloadDataCSV('%s', '%s')", id, filename)
-    )
-  }
-
-app_reactable <- function(df) {
-  reactable::reactable(
-    df,
-    filterable = TRUE,
-    searchable = TRUE,
-    resizable = TRUE,
-    paginationType = "jump",
-    showPageSizeOptions = TRUE,
-    pageSizeOptions = c(10, 25, 50, 100, 200),
-    onClick = "select",
-    selection = "multiple"
-  )
-}
-
 # UI ----------------------------------------------------------------------
 
 endpointUI <- function(id, gtexr_fn, gtexr_arguments_metadata, gtexr_functions_metadata) {
@@ -230,16 +207,15 @@ endpointUI <- function(id, gtexr_fn, gtexr_arguments_metadata, gtexr_functions_m
         !!!query_params,
         actionButton(ns("send_request"), "Go", class = "btn-success"),
         verbatimTextOutput(ns("query_code")),
-        width = 3
+        width = 2
       ),
       mainPanel(
         tabsetPanel(tabPanel(title = "Result",
-                             csvDownloadButton(ns("result"), filename = paste0(gtexr_fn, "_", "query.csv")),
-                             reactable::reactableOutput(ns("result"))),
+                             DT::DTOutput(ns("result"))),
                     tabPanel(title = "Help",
                              HTML(gtexr_functions_metadata[gtexr_functions_metadata$fn_name == gtexr_fn, ]$fn_docs_html)),
                     type = "pills"),
-        width = 6
+        width = 7
       )
     )
   )
@@ -287,11 +263,15 @@ endpointServer <- function(id, gtexr_fn) {
       ))
 
     output$result <-
-      reactable::renderReactable({
+      DT::renderDT({
         if (inherits(response(), "error")) {
           validate(c(response()$message, response()$body))
         }
-        app_reactable(response())
+        DT::datatable(response() |>
+                        dplyr::mutate(dplyr::across(tidyselect::where(is.list),
+                                                    \(x) "[[data]]")),
+                      rownames = FALSE,
+                      filter = "top")
       })
   })
 }
@@ -334,6 +314,7 @@ endpoint_tab_panels <- gtexr_functions_metadata$fn_family |>
                                   gtexr_functions_metadata |>
                                     dplyr::filter(.data[["fn_family"]] == !!fn_family) |>
                                     dplyr::select(fn_name, fn_title) |>
+                                    dplyr::arrange(fn_title) |>
                                     as.list() |>
                                     purrr::pmap(\(fn_name, fn_title) tabPanel(fn_title,
                                                               endpointUI(
