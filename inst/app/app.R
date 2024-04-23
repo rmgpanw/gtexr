@@ -264,10 +264,16 @@ endpointServer <- function(id, gtexr_fn) {
                                   type = "message")
         on.exit(removeNotification(id), add = TRUE)
 
-        tryCatch(
+        withCallingHandlers(
         eval(query()),
         error = function(cnd)
-          cnd
+          cnd,
+        warning = function(cnd)
+          shiny::showNotification(
+            paste(cnd$message_unformatted, sep = "", collapse = "\n\n"),
+            type = "warning",
+            duration = 10
+          )
       )})
 
     output$result <-

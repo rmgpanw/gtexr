@@ -71,10 +71,16 @@ gtex_query <- function(endpoint = NULL,
     # warn user if not all available results fit on one page
     if ((gtex_response_body$paging_info$totalNumberOfItems > gtex_response_body$paging_info$maxItemsPerPage)) {
 
-      cli::cli_warn(
-        c("!" = "Total number of items ({gtex_response_body$paging_info$totalNumberOfItems}) exceeds maximum page size ({gtex_response_body$paging_info$maxItemsPerPage}).",
-          "i" = "Try increasing `itemsPerPage`.")
-      )
+      warning_message <-
+        c(
+          "!" = cli::format_inline(
+            "Total number of items ({gtex_response_body$paging_info$totalNumberOfItems}) exceeds maximum page size ({gtex_response_body$paging_info$maxItemsPerPage})."
+          ),
+          "i" = cli::format_inline("Try increasing `itemsPerPage`.")
+        )
+
+      cli::cli_warn(warning_message,
+                    message_unformatted = warning_message)
     }
 
     # print paging info
