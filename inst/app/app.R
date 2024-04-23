@@ -273,11 +273,18 @@ endpointServer <- function(id, gtexr_fn) {
     output$result <-
       DT::renderDT({
         if (inherits(response(), "error")) {
-          validate(c(response()$message, response()$body))
+          shiny::validate(c(response()$message, response()$body))
         }
+
+        if (nrow(response()) == 0) {
+          shiny::validate("<< No results >>")
+        }
+
         DT::datatable(response() |>
-                        dplyr::mutate(dplyr::across(tidyselect::where(is.list),
-                                                    \(x) "[[data]]")),
+                        dplyr::mutate(dplyr::across(
+                          tidyselect::where(is.list),
+                          \(x) "[[data]]"
+                        )),
                       rownames = FALSE,
                       filter = "top")
       })
