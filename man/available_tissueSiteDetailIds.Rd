@@ -7,11 +7,11 @@
 available_tissueSiteDetailIds()
 }
 \value{
-A character vector.
+A tibble.
 }
 \description{
-Returns a character vector of valid Tissue IDs that can be supplied to
-functions which include the argument \code{tissueSiteDetailId}.
+Tissue IDs that can be supplied to functions which include the argument
+\code{tissueSiteDetailId}.
 }
 \examples{
 available_tissueSiteDetailIds()
