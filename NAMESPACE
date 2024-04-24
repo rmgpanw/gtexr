@@ -2,6 +2,7 @@
 
 export(available_tissueSiteDetailIds)
 export(calculate_eqtls)
+export(calculate_ieqtls)
 export(get_annotation)
 export(get_collapsed_gene_model_exon)
 export(get_dataset_info)

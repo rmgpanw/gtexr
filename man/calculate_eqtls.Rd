@@ -50,4 +50,8 @@ result
 # unnest list columns with tidyr::unnest()
 tidyr::unnest(result, c("data", "genotypes"))
 }
+\seealso{
+Other Dynamic Association Endpoints: 
+\code{\link{calculate_ieqtls}()}
+}
 \concept{Dynamic Association Endpoints}

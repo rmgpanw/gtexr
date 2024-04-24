@@ -9,6 +9,8 @@
 #' @param autolysisScores Character vector. Options: "None", "Mild", "Moderate",
 #'   "Severe".
 #' @param bp_window Integer.
+#' @param cellType String. "Adipocytes", "Epithelial_cells", "Hepatocytes",
+#'   "Keratinocytes", "Myocytes", "Neurons", "Neutrophils".
 #' @param chromosome String. One of "chr1", "chr2", "chr3", "chr4", "chr5",
 #'   "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13",
 #'   "chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21",
@@ -97,6 +99,7 @@ gtexr_arguments <- function() {
     "aliquotIds", "character", FALSE, TRUE,
     "autolysisScores", "character", FALSE, TRUE,
     "bp_window", "integer", TRUE, FALSE,
+    "cellType", "character", TRUE, FALSE,
     "chromosome", "character", TRUE, FALSE,
     "datasetId", "character", TRUE, FALSE,
     "dataTypes", "character", FALSE, TRUE,
