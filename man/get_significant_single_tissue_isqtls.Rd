@@ -44,10 +44,8 @@ is split into pages with items_per_page entries per page
 \href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_isqtls_api_v2_association_singleTissueISqtl_get}{GTEx Portal API documentation}
 }
 \examples{
-\dontrun{
 get_significant_single_tissue_isqtls(gencodeIds = c("ENSG00000065613.9",
                                                     "ENSG00000203782.5"))
-}
 }
 \seealso{
 Other Static Association Endpoints: 
@@ -55,9 +53,9 @@ Other Static Association Endpoints:
 \code{\link{get_fine_mapping}()},
 \code{\link{get_independent_eqtl}()},
 \code{\link{get_multi_tissue_eqtls}()},
-\code{\link{get_significant_single_tissue_Ieqtls}()},
 \code{\link{get_significant_single_tissue_eqtls_by_location}()},
 \code{\link{get_significant_single_tissue_eqtls}()},
+\code{\link{get_significant_single_tissue_ieqtls}()},
 \code{\link{get_significant_single_tissue_sqtls}()},
 \code{\link{get_sqtl_genes}()}
 }

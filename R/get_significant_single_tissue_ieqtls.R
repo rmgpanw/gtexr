@@ -17,8 +17,9 @@
 #' @family Static Association Endpoints
 #'
 #' @examples
-#' get_significant_single_tissue_Ieqtls("ENSG00000132693.12")
-get_significant_single_tissue_Ieqtls <- function(gencodeId,
+#' get_significant_single_tissue_ieqtls(c("ENSG00000132693.12",
+#'                                        "ENSG00000203782.5"))
+get_significant_single_tissue_ieqtls <- function(gencodeIds,
                                                  variantId = NULL,
                                                  tissueSiteDetailId = NULL,
                                                  datasetId = "gtex_v8",

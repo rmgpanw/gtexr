@@ -8,6 +8,10 @@
 #' * Beta and standard error are recorded in columns `nes` and `error` respectively (see [GTEx FAQs](https://gtexportal.org/home/faq#nes_beta))
 #' * `variantId` contains (in order) chromosome, position, reference allele, alternative allele and human genome build separated by underscores. The reference and alternative alleles for "chr1_13550_G_A_b38" for example are "G" and "A" respectively.
 #'
+#' Notes on input:
+#'
+#' * Argument `variantId` also accepts RSIDs.
+#'
 #' @inheritParams gtexr_arguments
 #'
 #' @return A tibble.

@@ -23,7 +23,7 @@
 #' @family Static Association Endpoints
 #'
 #' @examples
-#' get_eqtl_genes("Whole_Blood")
+#' get_eqtl_genes(c("Whole_Blood", "Artery_Aorta"))
 get_eqtl_genes <- function(tissueSiteDetailIds,
                            datasetId = "gtex_v8",
                            page = 0,

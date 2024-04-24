@@ -14,10 +14,8 @@
 #' @family Static Association Endpoints
 #'
 #' @examples
-#' \dontrun{
 #' get_significant_single_tissue_isqtls(gencodeIds = c("ENSG00000065613.9",
 #'                                                     "ENSG00000203782.5"))
-#' }
 get_significant_single_tissue_isqtls <- function(gencodeIds,
                                                  variantId = NULL,
                                                  tissueSiteDetailId = NULL,

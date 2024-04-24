@@ -16,7 +16,6 @@
 #'@family Static Association Endpoints
 #'
 #' @examples
-#' \dontrun{
 #' # search by gene
 #' get_independent_eqtl(gencodeIds = c("ENSG00000132693.12",
 #'                                "ENSG00000203782.5"))
@@ -26,7 +25,6 @@
 #'                                     "ENSG00000203782.5"),
 #'                      tissueSiteDetailIds = c("Whole_Blood",
 #'                                              "Thyroid"))
-#'}
 get_independent_eqtl <- function(gencodeIds,
                                  tissueSiteDetailIds = NULL,
                                  datasetId = "gtex_v8",

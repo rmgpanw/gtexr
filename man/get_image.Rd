@@ -4,10 +4,10 @@
 \alias{get_image}
 \title{Get Image}
 \usage{
-get_image(tissueSampleId = NULL, page = 0, itemsPerPage = 250)
+get_image(tissueSampleIds = NULL, page = 0, itemsPerPage = 250)
 }
 \arguments{
-\item{tissueSampleId}{Array of strings. A list of Tissue Sample ID(s).}
+\item{tissueSampleIds}{Array of strings. A list of Tissue Sample ID(s).}
 
 \item{page}{Integer (default = 0).}
 
@@ -21,6 +21,6 @@ Get Image
 }
 \examples{
 get_image()
-get_image(tissueSampleId = "GTEX-1117F-0226", page = 0, itemsPerPage = 100000)
+get_image(tissueSampleIds = "GTEX-1117F-0226", page = 0, itemsPerPage = 100000)
 }
 \concept{Histology Endpoints}

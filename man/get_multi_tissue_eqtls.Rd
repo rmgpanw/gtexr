@@ -5,7 +5,7 @@
 \title{Get Multi Tissue Eqtls}
 \usage{
 get_multi_tissue_eqtls(
-  gencodeId,
+  gencodeIds,
   variantId = NULL,
   datasetId = "gtex_v8",
   page = 0,
@@ -13,8 +13,8 @@ get_multi_tissue_eqtls(
 )
 }
 \arguments{
-\item{gencodeId}{String. A Versioned GENCODE ID of a gene, e.g.
-"ENSG00000065613.9".}
+\item{gencodeIds}{A character vector of Versioned GENCODE IDs, e.g.
+c("ENSG00000132693.12", "ENSG00000203782.5").}
 
 \item{variantId}{String. A gtex variant ID.}
 
@@ -45,19 +45,18 @@ By default, the service queries the latest GTEx release. The retrieved data is s
 \href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_multi_tissue_eqtls_api_v2_association_metasoft_get}{GTEx Portal API documentation}
 }
 \examples{
-\dontrun{
 # search by gene
-get_multi_tissue_eqtls(gencodeId = "ENSG00000132693.12")
-}
+get_multi_tissue_eqtls(gencodeId = c("ENSG00000132693.12",
+                                     "ENSG00000203782.5"))
 }
 \seealso{
 Other Static Association Endpoints: 
 \code{\link{get_eqtl_genes}()},
 \code{\link{get_fine_mapping}()},
 \code{\link{get_independent_eqtl}()},
-\code{\link{get_significant_single_tissue_Ieqtls}()},
 \code{\link{get_significant_single_tissue_eqtls_by_location}()},
 \code{\link{get_significant_single_tissue_eqtls}()},
+\code{\link{get_significant_single_tissue_ieqtls}()},
 \code{\link{get_significant_single_tissue_isqtls}()},
 \code{\link{get_significant_single_tissue_sqtls}()},
 \code{\link{get_sqtl_genes}()}

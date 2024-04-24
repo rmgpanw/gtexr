@@ -66,6 +66,17 @@ get_variant(chromosome = "chr1",
 }
 \seealso{
 Other Datasets Endpoints: 
+\code{\link{get_annotation}()},
+\code{\link{get_collapsed_gene_model_exon}()},
+\code{\link{get_downloads_page_data}()},
+\code{\link{get_file_list}()},
+\code{\link{get_full_get_collapsed_gene_model_exon}()},
+\code{\link{get_functional_annotation}()},
+\code{\link{get_linkage_disequilibrium_by_variant_data}()},
+\code{\link{get_linkage_disequilibrium_data}()},
+\code{\link{get_sample}()},
+\code{\link{get_subject}()},
+\code{\link{get_tissue_site_detail}()},
 \code{\link{get_variant_by_location}()}
 }
 \concept{Datasets Endpoints}

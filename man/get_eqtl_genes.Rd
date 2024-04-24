@@ -49,16 +49,16 @@ For each eGene, the results include the allelic fold change
 }
 }
 \examples{
-get_eqtl_genes("Whole_Blood")
+get_eqtl_genes(c("Whole_Blood", "Artery_Aorta"))
 }
 \seealso{
 Other Static Association Endpoints: 
 \code{\link{get_fine_mapping}()},
 \code{\link{get_independent_eqtl}()},
 \code{\link{get_multi_tissue_eqtls}()},
-\code{\link{get_significant_single_tissue_Ieqtls}()},
 \code{\link{get_significant_single_tissue_eqtls_by_location}()},
 \code{\link{get_significant_single_tissue_eqtls}()},
+\code{\link{get_significant_single_tissue_ieqtls}()},
 \code{\link{get_significant_single_tissue_isqtls}()},
 \code{\link{get_significant_single_tissue_sqtls}()},
 \code{\link{get_sqtl_genes}()}
