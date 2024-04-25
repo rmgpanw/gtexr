@@ -17,9 +17,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' get_top_expressed_genes(tissueSiteDetailIds = "Artery_Aorta")
+#' get_top_expressed_genes(tissueSiteDetailId = "Artery_Aorta")
 #' }
-get_top_expressed_genes <- function(tissueSiteDetailIds,
+get_top_expressed_genes <- function(tissueSiteDetailId,
                                     datasetId = "gtex_v8",
                                     filterMtGene = TRUE,
                                     page = 0,
