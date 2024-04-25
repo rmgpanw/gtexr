@@ -17,6 +17,9 @@ gtexr_arguments()
 
 \item{bp_window}{Integer.}
 
+\item{cellType}{String. "Adipocytes", "Epithelial_cells", "Hepatocytes",
+"Keratinocytes", "Myocytes", "Neurons", "Neutrophils".}
+
 \item{chromosome}{String. One of "chr1", "chr2", "chr3", "chr4", "chr5",
 "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13",
 "chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21",
@@ -83,9 +86,9 @@ causes", "Intermediate death", "Slow death".}
 
 \item{pos}{Integer, vector.}
 
-\item{project_id}{String. Options: "gtex" "adult-gtex" "egtex".}
+\item{project_id}{String. Options: "gtex", "adult-gtex", "egtex".}
 
-\item{rin}{Integer.}
+\item{rin}{Integer vector.}
 
 \item{sampleId}{String. \verb{^GTEX-[A-Z0-9]\{5\}-[0-9]\{4\}-SM-[A-Z0-9]\{5\}$}}
 

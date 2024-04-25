@@ -77,7 +77,7 @@ causes", "Intermediate death", "Slow death".}
 \item 600", "601 - 900", "901 - 1200", "1201 - 1500", "> 1500".
 }}
 
-\item{rin}{Integer.}
+\item{rin}{Integer vector.}
 
 \item{uberonIds}{Character vector. A list of Uberon ID(s) of interest.
 Options: "UBERON:EFO_0000572", "UBERON:EFO_0002009", "UBERON:0000007",

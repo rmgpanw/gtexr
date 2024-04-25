@@ -1,0 +1,38 @@
+#' Calculate Ieqtls
+#'
+#'Calculate your own Cell Specific eQTLs.
+#'
+#'- This service calculates the gene-variant association for any given pair of gene and variant, which may or may not be significant.
+#'- This requires as input a GENCODE ID, GTEx variant ID, and tissue site detail ID.
+#'By default, the calculation is based on the latest GTEx release.
+#'
+#' @inheritParams gtexr_arguments
+#'
+#' @return A tibble.
+#' @export
+#' @family Dynamic Association Endpoints
+#'
+#' @examples
+#' \dontrun{
+#' # perform request
+#' calculate_ieqtls(cellType = "Adipocytes",
+#'                  tissueSiteDetailId = "Adipose_Subcutaneous",
+#'                  gencodeId = "ENSG00000203782.5",
+#'                  variantId = "chr1_1099341_T_C_b38")
+#'}
+calculate_ieqtls <-
+  function(cellType,
+           tissueSiteDetailId,
+           gencodeId,
+           variantId,
+           datasetId = "gtex_v8") {
+    gtex_query(endpoint = "association/dynieqtl", return_raw = TRUE) |>
+      purrr::imap(\(x, idx) ifelse(is.list(x),
+                                   tibble::tibble(
+                                     data = purrr::map_depth(x,
+                                                             purrr::pluck_depth(x) - 2,
+                                                             unlist)
+                                   ),
+                                   x)) |>
+      tibble::as_tibble()
+  }

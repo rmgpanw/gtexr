@@ -7,7 +7,7 @@
 get_downloads_page_data(project_id = "adult-gtex")
 }
 \arguments{
-\item{project_id}{String. Options: "gtex" "adult-gtex" "egtex".}
+\item{project_id}{String. Options: "gtex", "adult-gtex", "egtex".}
 }
 \value{
 A Tibble

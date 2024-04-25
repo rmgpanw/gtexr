@@ -2,6 +2,7 @@
 
 export(available_tissueSiteDetailIds)
 export(calculate_eqtls)
+export(calculate_ieqtls)
 export(get_annotation)
 export(get_clustered_median_exon_expression)
 export(get_clustered_median_gene_expression)

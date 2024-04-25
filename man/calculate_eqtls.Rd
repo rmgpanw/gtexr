@@ -37,17 +37,26 @@ Notes on output:
 \item Beta and standard error are recorded in columns \code{nes} and \code{error} respectively (see \href{https://gtexportal.org/home/faq#nes_beta}{GTEx FAQs})
 \item \code{variantId} contains (in order) chromosome, position, reference allele, alternative allele and human genome build separated by underscores. The reference and alternative alleles for "chr1_13550_G_A_b38" for example are "G" and "A" respectively.
 }
+
+Notes on input:
+\itemize{
+\item Argument \code{variantId} also accepts RSIDs.
+}
 }
 \examples{
-# perform request
-result <- calculate_eqtls(tissueSiteDetailId = "Whole_Blood",
-               gencodeId = "ENSG00000203782.5",
-               variantId = "rs79641866")
-
-# returns a tibble with a single row
-result
+# perform request - returns a tibble with a single row
+calculate_eqtls(tissueSiteDetailId = "Whole_Blood",
+                gencodeId = "ENSG00000203782.5",
+                variantId = "rs79641866")
 
 # unnest list columns with tidyr::unnest()
-tidyr::unnest(result, c("data", "genotypes"))
+calculate_eqtls(tissueSiteDetailId = "Whole_Blood",
+                gencodeId = "ENSG00000203782.5",
+                variantId = "rs79641866") |>
+  tidyr::unnest(c("data", "genotypes"))
+}
+\seealso{
+Other Dynamic Association Endpoints: 
+\code{\link{calculate_ieqtls}()}
 }
 \concept{Dynamic Association Endpoints}

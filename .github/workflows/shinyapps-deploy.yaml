@@ -1,0 +1,47 @@
+# https://github.com/marketplace/actions/deploy-to-shinyapps-io
+name: Deploy to shinyapps.io
+on:
+
+  # run on any push
+  push:
+    branches: [main]
+  release:
+    types: [published]
+  # run on request (via button in actions menu)
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to shinyapps
+
+    # allow skipping deployment for commits containing '[automated]' or '[no-deploy]' in the commit message
+    if: "!contains(github.event.head_commit.message, '[automated]') && !contains(github.event.head_commit.message, '[no-deploy]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Remove renv
+        # first remove renv, then install system requirements based on packages listed in DESCRIPTION
+        run: |
+          rm renv.lock
+          rm -r renv
+          rm .Rprofile
+
+      - name: deploy
+        uses: rmgpanw/shinyapps-deploy-github-action@v1.13-alpha.3
+        with:
+          # account and application name (https://<accountName>.shinyapps.io/<appName>)
+          appName: gtexr
+          accountName: 7hocgq-rmgpanw
+
+          # token and secret obtained from https://www.shinyapps.io/admin/#/tokens
+          accountToken: ${{ secrets.SHINYAPPS_TOKEN }}
+          accountSecret: ${{ secrets.SHINYAPPS_SECRET }}
+
+          appDir: inst/app
+
+          #updates the shiny app
+          forceUpdate: true
+
+          # installs gtexr locally from current commit
+          githubPackages: rmgpanw/gtexr
+          githubToken: ${{ secrets.GITHUB_TOKEN }}

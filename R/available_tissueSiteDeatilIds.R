@@ -1,16 +1,16 @@
 #' Available tissue types
 #'
-#' Returns a character vector of valid Tissue IDs that can be supplied to
-#' functions which include the argument `tissueSiteDetailId`.
+#' Tissue IDs that can be supplied to functions which include the argument
+#' `tissueSiteDetailId`.
 #'
-#' @return A character vector.
+#' @return A tibble.
 #' @export
 #' @family Utilities
 #'
 #' @examples
 #' available_tissueSiteDetailIds()
 available_tissueSiteDetailIds <- function() {
-  c(
+  tibble::tibble(tissue = c(
     "Adipose_Subcutaneous",
     "Adipose_Visceral_Omentum",
     "Adrenal_Gland",
@@ -66,5 +66,5 @@ available_tissueSiteDetailIds <- function() {
     "Uterus",
     "Vagina",
     "Whole_Blood"
-  )
+  ))
 }
