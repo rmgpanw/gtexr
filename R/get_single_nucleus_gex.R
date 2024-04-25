@@ -17,10 +17,26 @@
 #' get_single_nucleus_gex(gencodeIds = "ENSG00000132693.12")
 #' }
 get_single_nucleus_gex <- function(gencodeIds,
-                                   datasetId = "gtex_v8",
+                                   datasetId = "gtex_snrnaseq_pilot",
                                    tissueSiteDetailIds = NULL,
                                    excludeDataArray = TRUE,
                                    page = 0,
                                    itemsPerPage = 250){
-  gtex_query(endpoint = "expression/singleNucleusGeneExpression")
+  gtex_query(endpoint = "expression/singleNucleusGeneExpression",
+             return_raw = TRUE)$data |>
+    purrr::map(\(x) x |>
+                 purrr::imap(\(x, idx) ifelse(
+                   is.list(x),
+                   tibble::tibble(
+                     data = purrr::map_depth(
+                       x,
+                       purrr::pluck_depth(x) - 2,
+                       \(x) tibble::as_tibble(purrr::compact(x))
+                     ) |>
+                       dplyr::bind_rows()
+                   ),
+                   x
+                 )) |>
+                 tibble::as_tibble()) |>
+    dplyr::bind_rows()
 }
