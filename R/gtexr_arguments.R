@@ -17,7 +17,6 @@
 #'   "chr22", "chrM", "chrX", "chrY".
 #' @param datasetId String. Unique identifier of a dataset. Usually includes a
 #'   data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
-#'   Default = "gtex_v8".
 #' @param dataTypes Character vector. Options: "RNASEQ", "WGS", "WES", "OMNI",
 #'   "EXCLUDE".
 #' @param end Integer.
