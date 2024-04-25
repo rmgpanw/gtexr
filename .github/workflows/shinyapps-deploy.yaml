@@ -4,7 +4,7 @@ on:
 
   # run on any push
   push:
-    branches: [dev_shiny]
+    branches: [main]
   release:
     types: [published]
   # run on request (via button in actions menu)
@@ -43,5 +43,5 @@ jobs:
           forceUpdate: true
 
           # installs gtexr locally from current commit
-          githubPackages: rmgpanw/gtexr@dev_shiny
+          githubPackages: rmgpanw/gtexr
           githubToken: ${{ secrets.GITHUB_TOKEN }}
