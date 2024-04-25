@@ -183,6 +183,12 @@ endpointUI <- function(id, gtexr_fn, gtexr_arguments_metadata, gtexr_functions_m
           max = arg_metadata$choices[[1]][2],
           value = value
         ),
+        "checkboxInput" = rlang::call2(
+          "checkboxInput",
+          inputId = rlang::call2("ns", arg),
+          label = arg,
+          value = value
+        ),
         cli::cli_abort(
           c(
             "Unrecognised `shinyinput` value for {.fn {gtexr_fn}} arg `{arg}`: '{arg_metadata$shinyinput}'",
