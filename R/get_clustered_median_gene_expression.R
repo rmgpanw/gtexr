@@ -13,16 +13,26 @@
 #'
 #'@inheritParams gtexr_arguments
 #'
-#' @return A Tibble
+#' @return A list with items "clusters" (a list) and "clusteredMedianGeneExpression"
+#'  (a tibble).
 #' @export
 #' @family Expression Data Endpoints
 #'
 #' @examples
 #' \dontrun{
-#' get_clustered_median_gene_expression(gencodeIds = "ENSG00000132693.12")
+#' get_clustered_median_gene_expression(gencodeIds = c("ENSG00000203782.5",
+#'                                                     "ENSG00000132693.12"))
 #' }
 get_clustered_median_gene_expression <- function(gencodeIds,
                                                  datasetId = "gtex_v8",
                                                  tissueSiteDetailIds = NULL){
-  gtex_query(endpoint = "expression/clusteredMedianGeneExpression")
+  response <- gtex_query(endpoint = "expression/clusteredMedianGeneExpression",
+                         return_raw = TRUE)
+
+  response$medianGeneExpression <-
+    response$medianGeneExpression |>
+    purrr::map(tibble::as_tibble) |>
+    dplyr::bind_rows()
+
+  return(response)
 }
