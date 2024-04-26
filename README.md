@@ -8,6 +8,7 @@
 [![pkgdown](https://github.com/rmgpanw/gtexr/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/rmgpanw/gtexr/actions/workflows/pkgdown.yaml)
 [![Codecov test
 coverage](https://codecov.io/gh/rmgpanw/gtexr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rmgpanw/gtexr?branch=main)
+[![R-CMD-check](https://github.com/rmgpanw/gtexr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rmgpanw/gtexr/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The goal of gtexr is to provide a convenient R interface to the [GTEx
@@ -43,8 +44,7 @@ Retrieve eQTL genes for whole blood tissue:
 ``` r
 get_eqtl_genes("Whole_Blood")
 #> Warning: ! Total number of items (12360) exceeds maximum page size (250).
-#> ℹ Try increasing `itemsPerPage`, or set this to `NULL` to return all available
-#>   items in one page.
+#> ℹ Try increasing `itemsPerPage`.
 #> 
 #> ── Paging info ─────────────────────────────────────────────────────────────────
 #> • numberOfPages = 50
