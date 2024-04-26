@@ -219,6 +219,7 @@ endpointUI <- function(id, gtexr_fn, gtexr_arguments_metadata, gtexr_functions_m
         tabsetPanel(tabPanel(title = "Result",
                              DT::DTOutput(ns("result"))),
                     tabPanel(title = "Help",
+                             tags$a(href = stringr::str_glue("https://rmgpanw.github.io/gtexr/reference/{gtexr_fn}.html"), "GTExR reference"),
                              HTML(gtexr_functions_metadata[gtexr_functions_metadata$fn_name == gtexr_fn, ]$fn_docs_html)),
                     type = "pills"),
         width = 7
