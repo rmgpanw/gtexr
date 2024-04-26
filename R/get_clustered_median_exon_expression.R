@@ -1,10 +1,11 @@
 #' Get Clustered Median Exon Expression
 #'
 #' @description
-#' - Find median transcript expression data along with hierarchical clusters .
+#' Find median transcript expression data along with hierarchical clusters.
+#'
 #' - Returns median normalized transcript expression in tissues of all known transcripts of a given gene along with the hierarchical clustering results of tissues and transcripts, based on exon expression, in Newick format.
 #' - The hierarchical clustering is performed by calculating Euclidean distances and using the average linkage method.
-#' - This endpoint is not paginated.
+#' - **This endpoint is not paginated.**
 #' - By default, this endpoint queries the latest GTEx release.
 #'
 #' [GTEx Portal API
@@ -12,7 +13,8 @@
 #'
 #'@inheritParams gtexr_arguments
 #'
-#' @return A Tibble
+#' @return A list with items "clusters" (a list) and "medianExonExpression"
+#'  (a tibble).
 #' @export
 #' @family Expression Data Endpoints
 #'
@@ -20,10 +22,16 @@
 #' \dontrun{
 #' get_clustered_median_exon_expression(tissueSiteDetailIds = "Artery_Aorta")
 #' }
-get_clustered_median_exon_expression <- function(tissueSiteDetailIds,
+get_clustered_median_exon_expression <- function(gencodeIds,
                                                  datasetId = "gtex_v8",
-                                                 sampleId = "^GTEX-[A-Z0-9]{5}-[0-9]{4}-SM-[A-Z0-9]{5}$",
-                                                 page = 0,
-                                                 itemsPerPage = 250){
-  gtex_query(endpoint = "expression/clusteredMedianExonExpression")
+                                                 tissueSiteDetailIds = NULL){
+  response <- gtex_query(endpoint = "expression/clusteredMedianExonExpression",
+             return_raw = TRUE)
+
+  response$medianExonExpression <-
+    response$medianExonExpression |>
+    purrr::map(tibble::as_tibble) |>
+    dplyr::bind_rows()
+
+  return(response)
 }
