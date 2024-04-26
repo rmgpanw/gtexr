@@ -11,7 +11,7 @@
 #'
 #' @inheritParams gtexr_arguments
 #'
-#' @return A Tibble
+#' @return A tibble
 #' @export
 #' @family Expression Data Endpoints
 #'

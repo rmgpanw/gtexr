@@ -11,14 +11,14 @@
 #'
 #' @inheritParams gtexr_arguments
 #'
-#' @return A Tibble
+#' @return A tibble
 #' @export
 #' @family Expression Data Endpoints
 #'
 #' @examples
 #' \dontrun{
-#'get_median_exon_expression(gencodeIds = "ENSG00000132693.12")
-#'}
+#' get_median_exon_expression(gencodeIds = "ENSG00000132693.12")
+#' }
 get_median_exon_expression <- function(gencodeIds,
                                        datasetId = "gtex_v8",
                                        tissueSiteDetailIds = NULL,
