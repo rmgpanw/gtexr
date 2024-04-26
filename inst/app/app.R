@@ -354,9 +354,10 @@ endpoint_tab_panels <- gtexr_functions_metadata$fn_family |>
 
 ui <-
   navbarPage(
-    "GTExR",
+    title = tags$a(href = "https://rmgpanw.github.io/gtexr/", "GTExR", style = "text-decoration: none; color: black;"),
     !!!endpoint_tab_panels,
     theme = bslib::bs_theme(bootswatch = "lumen"),
+    collapsible = TRUE,
     selected = "GTEx Portal API Info"
   )
 
