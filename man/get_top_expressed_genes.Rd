@@ -5,7 +5,7 @@
 \title{Get Top Expressed Genes}
 \usage{
 get_top_expressed_genes(
-  tissueSiteDetailIds,
+  tissueSiteDetailId,
   datasetId = "gtex_v8",
   filterMtGene = TRUE,
   page = 0,
@@ -13,13 +13,14 @@ get_top_expressed_genes(
 )
 }
 \arguments{
-\item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
-Can be GTEx specific IDs (e.g. "Whole_Blood"; use
-\code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}} to see valid values) or Ontology IDs.}
+\item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
+GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
+to see valid values) or an Ontology ID.}
 
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
-data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
-Default = "gtex_v8".}
+data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
+
+\item{filterMtGene}{Logical. Exclude mitochondrial genes.}
 
 \item{page}{Integer (default = 0).}
 
@@ -40,7 +41,7 @@ A Tibble
 }
 \examples{
 \dontrun{
-get_top_expressed_genes(tissueSiteDetailIds = "Artery_Aorta")
+get_top_expressed_genes(tissueSiteDetailId = "Artery_Aorta")
 }
 }
 \seealso{

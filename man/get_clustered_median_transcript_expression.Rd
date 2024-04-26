@@ -15,15 +15,14 @@ get_clustered_median_transcript_expression(
 c("ENSG00000132693.12", "ENSG00000203782.5").}
 
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
-data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
-Default = "gtex_v8".}
+data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 
 \item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
 Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}} to see valid values) or Ontology IDs.}
 }
 \value{
-A Tibble
+A tibble, with clustering data stored as an attribute, "clusters".
 }
 \description{
 \itemize{
@@ -31,7 +30,7 @@ A Tibble
 \item Returns median normalized expression in tissues of all known transcripts of a given gene along with the hierarchical clustering results of tissues and genes, based on expression, in Newick format.
 \item Results may be filtered by dataset, gene or tissue, but at least one gene must be provided.
 \item The hierarchical clustering is performed by calculating Euclidean distances and using the average linkage method.
-\item This endpoint is not paginated.
+\item \strong{This endpoint is not paginated.}
 \item By default, this service queries the latest GTEx release.
 }
 
@@ -39,7 +38,11 @@ A Tibble
 }
 \examples{
 \dontrun{
-get_clustered_median_transcript_expression(gencodeIds = "ENSG00000132693.12")
+get_clustered_median_transcript_expression(gencodeIds = c("ENSG00000203782.5",
+                                                          "ENSG00000132693.12"))
+
+# clustering data is stored as an attribute "clusters"
+attributes(result)$cluster
 }
 }
 \seealso{

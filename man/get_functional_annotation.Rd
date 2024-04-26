@@ -15,8 +15,7 @@ get_functional_annotation(
 }
 \arguments{
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
-data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
-Default = "gtex_v8".}
+data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 
 \item{chromosome}{String. One of "chr1", "chr2", "chr3", "chr4", "chr5",
 "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13",

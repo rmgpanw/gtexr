@@ -6,7 +6,7 @@
 \usage{
 get_single_nucleus_gex(
   gencodeIds,
-  datasetId = "gtex_v8",
+  datasetId = "gtex_snrnaseq_pilot",
   tissueSiteDetailIds = NULL,
   excludeDataArray = TRUE,
   page = 0,
@@ -18,12 +18,13 @@ get_single_nucleus_gex(
 c("ENSG00000132693.12", "ENSG00000203782.5").}
 
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
-data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
-Default = "gtex_v8".}
+data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 
 \item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
 Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}} to see valid values) or Ontology IDs.}
+
+\item{excludeDataArray}{String. Options are TRUE or FALSE}
 
 \item{page}{Integer (default = 0).}
 
@@ -39,7 +40,24 @@ Retrieve Single Nucleus Gene Expression Data for a given Gene.
 }
 \examples{
 \dontrun{
-get_single_nucleus_gex(gencodeIds = "ENSG00000132693.12")
+# Search for one or more genes
+get_single_nucleus_gex(gencodeIds = c("ENSG00000203782.5",
+                                      "ENSG00000132693.12"))
+
+# Returns a tibble with one row per tissue
+response <- get_single_nucleus_gex(gencodeIds = "ENSG00000132693.12",
+                                   excludeDataArray = FALSE,
+                                   itemsPerPage = 2)
+
+response
+
+# Column "cellTypes" contains a tibble of data with one row for each cell type
+# e.g. for Breast_Mammary_Tissue,
+response$cellTypes[[2]]
+
+# Expression values are stored in "data" e.g. for Breast_Mammary_Tissue,
+# Epithelial cell (luminal):
+response$cellTypes[[2]]$data[[1]]
 }
 }
 \seealso{

@@ -19,8 +19,7 @@ c("ENSG00000132693.12", "ENSG00000203782.5").}
 \item{variantId}{String. A gtex variant ID.}
 
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
-data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
-Default = "gtex_v8".}
+data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 
 \item{page}{Integer (default = 0).}
 

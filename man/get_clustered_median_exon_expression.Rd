@@ -5,37 +5,31 @@
 \title{Get Clustered Median Exon Expression}
 \usage{
 get_clustered_median_exon_expression(
-  tissueSiteDetailIds,
+  gencodeIds,
   datasetId = "gtex_v8",
-  sampleId = "^GTEX-[A-Z0-9]{5}-[0-9]{4}-SM-[A-Z0-9]{5}$",
-  page = 0,
-  itemsPerPage = 250
+  tissueSiteDetailIds = NULL
 )
 }
 \arguments{
+\item{gencodeIds}{A character vector of Versioned GENCODE IDs, e.g.
+c("ENSG00000132693.12", "ENSG00000203782.5").}
+
+\item{datasetId}{String. Unique identifier of a dataset. Usually includes a
+data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
+
 \item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
 Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}} to see valid values) or Ontology IDs.}
-
-\item{datasetId}{String. Unique identifier of a dataset. Usually includes a
-data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
-Default = "gtex_v8".}
-
-\item{sampleId}{String. \verb{^GTEX-[A-Z0-9]\{5\}-[0-9]\{4\}-SM-[A-Z0-9]\{5\}$}}
-
-\item{page}{Integer (default = 0).}
-
-\item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-A Tibble
+A tibble, with clustering data stored as an attribute, "clusters".
 }
 \description{
+Find median transcript expression data along with hierarchical clusters.
 \itemize{
-\item Find median transcript expression data along with hierarchical clusters .
 \item Returns median normalized transcript expression in tissues of all known transcripts of a given gene along with the hierarchical clustering results of tissues and transcripts, based on exon expression, in Newick format.
 \item The hierarchical clustering is performed by calculating Euclidean distances and using the average linkage method.
-\item This endpoint is not paginated.
+\item \strong{This endpoint is not paginated.}
 \item By default, this endpoint queries the latest GTEx release.
 }
 
@@ -43,7 +37,11 @@ A Tibble
 }
 \examples{
 \dontrun{
-get_clustered_median_exon_expression(tissueSiteDetailIds = "Artery_Aorta")
+get_clustered_median_exon_expression(c("ENSG00000203782.5",
+                                       "ENSG00000132693.12"))
+
+# clustering data is stored as an attribute "clusters"
+attributes(result)$cluster
 }
 }
 \seealso{

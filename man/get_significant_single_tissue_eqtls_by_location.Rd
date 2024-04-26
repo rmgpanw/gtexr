@@ -28,8 +28,7 @@ to see valid values) or an Ontology ID.}
 "chr22", "chrM", "chrX", "chrY".}
 
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
-data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
-Default = "gtex_v8".}
+data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 }
 \value{
 A tibble.

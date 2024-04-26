@@ -5,7 +5,7 @@
 \title{Get Single Nucleus Gex Summary}
 \usage{
 get_single_nucleus_gex_summary(
-  datasetId = "gtex_v8",
+  datasetId = "gtex_snrnaseq_pilot",
   tissueSiteDetailIds = NULL,
   page = 0,
   itemsPerPage = 250
@@ -13,8 +13,7 @@ get_single_nucleus_gex_summary(
 }
 \arguments{
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
-data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
-Default = "gtex_v8".}
+data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 
 \item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
 Can be GTEx specific IDs (e.g. "Whole_Blood"; use
@@ -34,7 +33,12 @@ Retrieve Summarized Single Nucleus Gene Expression Data.
 }
 \examples{
 \dontrun{
+# all tissues
 get_single_nucleus_gex_summary()
+
+# filter for specific tissue
+get_single_nucleus_gex_summary(tissueSiteDetailIds = c("Breast_Mammary_Tissue",
+                                                       "Skin_Sun_Exposed_Lower_leg"))
 }
 }
 \seealso{

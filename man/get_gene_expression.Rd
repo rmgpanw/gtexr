@@ -18,12 +18,13 @@ get_gene_expression(
 c("ENSG00000132693.12", "ENSG00000203782.5").}
 
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
-data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
-Default = "gtex_v8".}
+data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 
 \item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
 GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
 to see valid values) or an Ontology ID.}
+
+\item{attributeSubset}{String. Examples include but are not limited to "sex", "ageBracket"}
 
 \item{page}{Integer (default = 0).}
 

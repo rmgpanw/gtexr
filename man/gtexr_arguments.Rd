@@ -15,6 +15,8 @@ gtexr_arguments()
 \item{autolysisScores}{Character vector. Options: "None", "Mild", "Moderate",
 "Severe".}
 
+\item{attributeSubset}{String. Examples include but are not limited to "sex", "ageBracket"}
+
 \item{bp_window}{Integer.}
 
 \item{cellType}{String. "Adipocytes", "Epithelial_cells", "Hepatocytes",
@@ -26,15 +28,16 @@ gtexr_arguments()
 "chr22", "chrM", "chrX", "chrY".}
 
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
-data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
-Default = "gtex_v8".}
+data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 
 \item{dataTypes}{Character vector. Options: "RNASEQ", "WGS", "WES", "OMNI",
 "EXCLUDE".}
 
 \item{end}{Integer.}
 
-\item{filterMrGene}{Logical. Exclude mitochondrial genes.}
+\item{excludeDataArray}{String. Options are TRUE or FALSE}
+
+\item{filterMtGene}{Logical. Exclude mitochondrial genes.}
 
 \item{gencodeId}{String. A Versioned GENCODE ID of a gene, e.g.
 "ENSG00000065613.9".}
