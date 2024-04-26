@@ -13,14 +13,16 @@
 #'
 #'@inheritParams gtexr_arguments
 #'
-#' @return A list with items "clusters" (a list) and "medianJunctionExpression"
-#'  (a tibble).
+#' @return A tibble, with clustering data stored as an attribute, "clusters".
 #' @export
 #' @family Expression Data Endpoints
 #'
 #' @examples
 #' \dontrun{
 #' get_clustered_median_junction_expression(gencodeIds = "ENSG00000132693.12")
+#'
+#' # clustering data is stored as an attribute "clusters"
+#' attributes(result)$cluster
 #' }
 get_clustered_median_junction_expression <- function(gencodeIds,
                                                      datasetId = "gtex_v8",
@@ -28,10 +30,14 @@ get_clustered_median_junction_expression <- function(gencodeIds,
   response <- gtex_query(endpoint = "expression/clusteredMedianJunctionExpression",
              return_raw = TRUE)
 
-  response$medianJunctionExpression <-
+  result <-
     response$medianJunctionExpression |>
     purrr::map(tibble::as_tibble) |>
     dplyr::bind_rows()
 
-  return(response)
+  attr(result, "clusters") <- response$clusters
+
+  cli::cli_alert_info("Retrieve clustering data with `attrbutes(<df>)$clusters`")
+
+  return(result)
 }
