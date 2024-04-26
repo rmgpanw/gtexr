@@ -1,4 +1,4 @@
-#'Get Annotation
+#'Get Annotations
 #'
 #'@description
 #' - This service returns the list of annotations and allowed values by which a particular dataset can be subsetted.
