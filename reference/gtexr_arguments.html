@@ -70,6 +70,10 @@ that wrap GTEx Portal API endpoints (using roxygen <code>@inheritParams</code> t
 "Severe".</p></dd>
 
 
+<dt>attributeSubset</dt>
+<dd><p>String. Examples include but are not limited to "sex", "ageBracket"</p></dd>
+
+
 <dt>bp_window</dt>
 <dd><p>Integer.</p></dd>
 
@@ -88,8 +92,7 @@ that wrap GTEx Portal API endpoints (using roxygen <code>@inheritParams</code> t
 
 <dt>datasetId</dt>
 <dd><p>String. Unique identifier of a dataset. Usually includes a
-data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
-Default = "gtex_v8".</p></dd>
+data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".</p></dd>
 
 
 <dt>dataTypes</dt>
@@ -99,6 +102,14 @@ Default = "gtex_v8".</p></dd>
 
 <dt>end</dt>
 <dd><p>Integer.</p></dd>
+
+
+<dt>excludeDataArray</dt>
+<dd><p>String. Options are TRUE or FALSE</p></dd>
+
+
+<dt>filterMtGene</dt>
+<dd><p>Logical. Exclude mitochondrial genes.</p></dd>
 
 
 <dt>gencodeId</dt>
@@ -178,11 +189,15 @@ causes", "Intermediate death", "Slow death".</p></dd>
 
 
 <dt>project_id</dt>
-<dd><p>String. Options: "gtex" "adult-gtex" "egtex".</p></dd>
+<dd><p>String. Options: "gtex", "adult-gtex", "egtex".</p></dd>
 
 
 <dt>rin</dt>
-<dd><p>Integer.</p></dd>
+<dd><p>Integer vector.</p></dd>
+
+
+<dt>sampleId</dt>
+<dd><p>String. <code>^GTEX-[A-Z0-9]{5}-[0-9]{4}-SM-[A-Z0-9]{5}$</code></p></dd>
 
 
 <dt>sampleIds</dt>
