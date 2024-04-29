@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# gtexr
+# gtexr <a href="https://rmgpanw.github.io/gtexr/"><img src="man/figures/logo.png" align="right" height="138"/></a>
 
 <!-- badges: start -->
 
@@ -9,11 +9,15 @@
 [![Codecov test
 coverage](https://codecov.io/gh/rmgpanw/gtexr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rmgpanw/gtexr?branch=main)
 [![R-CMD-check](https://github.com/rmgpanw/gtexr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rmgpanw/gtexr/actions/workflows/R-CMD-check.yaml)
+
 <!-- badges: end -->
 
 The goal of gtexr is to provide a convenient R interface to the [GTEx
 Portal API
 V2](https://gtexportal.org/api/v2/redoc#tag/GTEx-Portal-API-Info).
+
+New to R? Try out the ⭐[shiny
+app](https://7hocgq-rmgpanw.shinyapps.io/gtexr/)⭐.
 
 ## Installation
 
