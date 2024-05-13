@@ -1,0 +1,84 @@
+---
+title: "Introduction to gtexr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to gtexr}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>", 
+  eval = (Sys.getenv("RUN_VIGNETTES") != "")
+)
+```
+
+The [GTEx Portal API V2](https://gtexportal.org/home/apiPage) enables programmatic access to data available from the Genotype-Tissue Expression Portal. The gtexr package wraps this API, providing R functions that correspond to each [API endpoint](https://gtexportal.org/api/v2/redoc):
+
+- R function names mirror those of their corresponding endpoint, converted to lower case with spaces replaced with underscores e.g. the R function for ["Get Service Info"](https://gtexportal.org/api/v2/redoc#tag/GTEx-Portal-API-Info/operation/get_service_info_api_v2__get) is `get_service_info()`.
+- Query parameters are similarly mirrored by function arguments e.g. the arguments for `get_maintenance_message()` (corresponding to the endpoint ["Get Maintenance Message"](https://gtexportal.org/api/v2/redoc#tag/Admin-Endpoints/operation/get_maintenance_message_api_v2_admin_maintenanceMessage_get)) are `page` and `itemsPerPage`. For query parameters that accept an array of values however, the corresponding function argument is pluralised to indicate this e.g. for endpoint ["Get Eqtl Genes"](https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_eqtl_genes_api_v2_association_egene_get) the query parameter 'tissueSiteDetailId' is pluralised to argument name `tissueSiteDetailIds` in `get_eqtl_genes()`.
+- Default values for arguments mirror those for the API e.g. 
+- The documentation for each function includes at least one working example e.g. `?get_eqtl_genes` provides example valid values for the required argument `tissueSiteDetailIds`.
+- All functions return a `tibble::tibble`.
+- Users can try out all functions interatively with the ⭐[gtexr shiny app](https://7hocgq-rmgpanw.shinyapps.io/gtexr/)⭐, which pre-populates query parameters with those for the first working example from each function's documentation.
+
+The rest of this vignette outlines some example applications of gtexr.
+
+```{r setup, message = FALSE}
+library(gtexr)
+library(dplyr)
+library(purrr)
+```
+
+## Convert gene symbol to versioned GENCODE ID
+
+Use `get_gene()` or `get_genes()`
+
+```{r get-genes}
+get_genes("CRP") |>
+  select(geneSymbol, gencodeId)
+```
+
+## Convert rsID to GTEx variant ID
+
+Use `get_variant()`
+
+```{r get-variant}
+get_variant(snpId = "rs1410858") |>
+  select(snpId, variantId)
+```
+
+## For a gene of interest, which tissues have significant *cis*-eQTLs?
+
+Use `get_significant_single_tissue_eqtls()` (note this requires versioned GENCODE IDs)
+
+```{r get-significant-single-tissue-eqtls}
+gene_symbol_of_interest <- "CRP"
+
+gene_gencodeId_of_interest <- get_genes(gene_symbol_of_interest) |>
+  pull(gencodeId)
+
+gene_gencodeId_of_interest |>
+  get_significant_single_tissue_eqtls() |>
+  distinct(geneSymbol, gencodeId, tissueSiteDetailId)
+```
+
+## Get data for non-significant eQTLs
+
+Some analyses (e.g. Mendelian randomisation) require data for variants which may or may not be significant eQTLs. Use `calculate_eqtls()` with `purrr::map()` to retrieve data for multiple variants
+
+```{r calculate-eqtls}
+variants_of_interest <- c("rs6690230",
+                          "rs12119111")
+
+variants_of_interest |>
+  set_names() |>
+  map(\(x) calculate_eqtls(tissueSiteDetailId = "Liver",
+                          gencodeId = "ENSG00000132693.12",
+                          variantId = x)) |>
+  bind_rows(.id = "rsid")
+```

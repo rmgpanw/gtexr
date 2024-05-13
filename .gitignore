@@ -2,3 +2,5 @@
 docs
 .Rhistory
 .vscode
+inst/doc
+.Renviron
