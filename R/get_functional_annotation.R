@@ -12,7 +12,7 @@
 #'@family Datasets Endpoints
 #'
 #' @examples
-#' get_functional_annotation(chromosome = "chr15", start = 1400, end = 20000)
+#' get_functional_annotation(chromosome = "chr11", start = 192168000, end = 192169000)
 get_functional_annotation <- function(datasetId = "gtex_v8",
                                       chromosome,
                                       start,
