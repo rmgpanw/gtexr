@@ -1,0 +1,45 @@
+---
+title: "Developer guide"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Developer guide}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(gtexr)
+```
+
+**WIP**
+
+## Functions
+
+- [ ] Function name is title of endpoint in lower case, with words separated by underscores
+- [ ] `@description` section is copied verbatim from API documentation site and ends with a link to the corresponding API endpoint documentation.
+- [ ] Further notes may be added under `@details`
+- [ ] Arguments 
+
+  - [ ] Names match those for API endpoint, except where the argument accepts an array (vector in R) of values, in which case it is pluralised
+  - [ ] Default values also match those for API endpoint
+  - [ ] Are all documented in `gtexr_arguments.R`. Rules...see also link to separate section(?) (**TO DO**)
+  - [ ] All functions therefore use `@inheritParams gtexr_arguments` for documentation
+  
+- [ ] Use `@family` roxygen tag to match categories on API documentation e.g. ... . This is used to categorise functions on pkgdown site reference page.
+- [ ] All return a tibble
+- [ ] The first example in `@examples` must produce output, where possible, and be a single function call without assignment (e.g. `get_news_items()`, not `x <- get_news_items()`). This is used to pre-populate argument values in the gtexr shiny app with a working example.
+- [ ] All examples should be surrounded by `\dontrun{}`.
+- [ ] `gtexr_arguments()` metadata ... (*new section*)
+
+## TODO
+
+- [ ] Complete above documentation
+- [ ] Add unit test(s) to enforce above (e.g. check that URL to )
+  
