@@ -24,7 +24,12 @@ The [GTEx Portal API V2](https://gtexportal.org/home/apiPage) enables programmat
 - Default values for arguments mirror those for the API
 - The documentation for each function includes at least one working example e.g. `?get_eqtl_genes` provides example valid values for the required argument `tissueSiteDetailIds`.
 - All functions return a `tibble::tibble`.
-- Users can try out all functions interatively with the ⭐[gtexr shiny app](https://7hocgq-rmgpanw.shinyapps.io/gtexr/)⭐, which pre-populates query parameters with those for the first working example from each function's documentation.
+
+## Shiny app
+
+Users can try out all functions interatively with the ⭐[gtexr shiny app](https://7hocgq-rmgpanw.shinyapps.io/gtexr/)⭐, which pre-populates query parameters with those for the first working example from each function's documentation.
+
+## Examples
 
 The rest of this vignette outlines some example applications of gtexr.
 
@@ -34,7 +39,7 @@ library(dplyr)
 library(purrr)
 ```
 
-## Get build 37 coordinates for a variant
+### Get build 37 coordinates for a variant
 
 ```{r}
 get_variant(snpId = "rs1410858") |>
@@ -53,7 +58,7 @@ get_variant(snpId = "rs1410858") |>
   select(snpId:genome_build)
 ```
 
-## Convert gene symbol to versioned GENCODE ID
+### Convert gene symbol to versioned GENCODE ID
 
 Use `get_gene()` or `get_genes()`
 
@@ -62,7 +67,7 @@ get_genes("CRP") |>
   select(geneSymbol, gencodeId)
 ```
 
-## Convert rsID to GTEx variant ID
+### Convert rsID to GTEx variant ID
 
 Use `get_variant()`
 
@@ -71,7 +76,7 @@ get_variant(snpId = "rs1410858") |>
   select(snpId, variantId)
 ```
 
-## For a gene of interest, which tissues have significant *cis*-eQTLs?
+### For a gene of interest, which tissues have significant *cis*-eQTLs?
 
 Use `get_significant_single_tissue_eqtls()` (note this requires versioned GENCODE IDs)
 
@@ -86,7 +91,7 @@ gene_gencodeId_of_interest |>
   distinct(geneSymbol, gencodeId, tissueSiteDetailId)
 ```
 
-## Get data for non-eQTL variants
+### Get data for non-eQTL variants
 
 Some analyses (e.g. Mendelian randomisation) require data for variants which may or may not be significant eQTLs. Use `calculate_eqtls()` with `purrr::map()` to retrieve data for multiple variants
 
