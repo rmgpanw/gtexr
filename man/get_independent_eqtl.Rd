@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_independent_eqtl.R
 \name{get_independent_eqtl}
 \alias{get_independent_eqtl}
-\title{Get Independent eQTL}
+\title{Get Independent Eqtl}
 \usage{
 get_independent_eqtl(
   gencodeIds,
@@ -33,15 +33,16 @@ A tibble.
 \description{
 Retrieve Independent eQTL Data
 \itemize{
-\item Finds and returns Independent eQTL Data data for the provided list of genes
-\item By default, this endpoint fetches data from the latest GTEx version
+\item Finds and returns \verb{Independent eQTL Data} data for the provided list of genes
+\item By default, this endpoint fetches data from the latest \code{GTEx} version
 }
 
-The retrieved data is split into pages with items_per_page entries per page
+The retrieved data is split into pages with \code{items_per_page} entries per page
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_independent_eqtl_api_v2_association_independentEqtl_get}{GTEx portal API documentation}
 }
 \examples{
+\dontrun{
 # search by gene
 get_independent_eqtl(gencodeIds = c("ENSG00000132693.12",
                                "ENSG00000203782.5"))
@@ -51,6 +52,7 @@ get_independent_eqtl(gencodeIds = c("ENSG00000132693.12",
                                     "ENSG00000203782.5"),
                      tissueSiteDetailIds = c("Whole_Blood",
                                              "Thyroid"))
+}
 }
 \seealso{
 Other Static Association Endpoints: 

@@ -35,20 +35,25 @@ A tibble.
 }
 \description{
 Find significant single tissue eQTLs using Chromosomal Locations.
-This service returns precomputed significant single tissue eQTLs. Results may
-be filtered by tissue, and/or dataset. By default, the service queries the
-latest GTEx release. Since this endpoint is used to support a third party
-program on the portal. The return structure is different from other endpoints
-and is not paginated.
+\itemize{
+\item This service returns precomputed significant single tissue eQTLs.
+\item Results may be filtered by tissue, and/or dataset.
+}
 
-#' \href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_eqtls_api_v2_association_singleTissueEqtl_get}{GTEx Portal API documentation}
+By default, the service queries the latest GTEx release. Since this endpoint
+is used to support a third party program on the portal, the return structure
+is different from other endpoints and is not paginated.
+
+\href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_eqtls_api_v2_association_singleTissueEqtl_get}{GTEx Portal API documentation}
 }
 \examples{
+\dontrun{
 get_significant_single_tissue_eqtls_by_location(
   tissueSiteDetailId = "Artery_Aorta",
   start = 10000,
   end = 250000,
   chromosome = "chr11")
+}
 }
 \seealso{
 Other Static Association Endpoints: 

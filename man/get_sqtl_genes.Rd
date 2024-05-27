@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_sqtl_genes.R
 \name{get_sqtl_genes}
 \alias{get_sqtl_genes}
-\title{Get sqtl Genes}
+\title{Get Sqtl Genes}
 \usage{
 get_sqtl_genes(
   tissueSiteDetailId,
@@ -28,27 +28,20 @@ A tibble.
 }
 \description{
 Retrieve sGenes (sQTL Genes).
-}
-\details{
 \itemize{
 \item This service returns sGenes (sQTL Genes) from the specified dataset.
-\item sGenes are genes that have at least one significant cis-sQTL acting upon them.
-\item Results may be filtered by tissue. By default, the service queries the latest GTEx release.
+\item Results may be filtered by tissue.
+\item By default, the service queries the latest GTEx release.
 }
 
-For each sGene, the results include the allelic fold change
-(log2AllelicFoldChange), p-value (pValue), p-value threshold
-(pValueThreshold), empirical p-value (empiricalPValue), and q-value (qValue).
-\itemize{
-\item The log2AllelicFoldChange is the allelic fold change (in log2 scale) of the most significant sQTL.
-\item The pValue is the nominal p-value of the most significant sQTL.
-\item The pValueThreshold is the p-value threshold used to determine whether a cis-sQTL for this gene is significant. For more details see https://gtexportal.org/home/documentationPage#staticTextAnalysisMethods.
-\item The empiricalPValue is the beta distribution-adjusted empirical p-value from FastQTL.
-\item The qValues were calculated based on the empirical p-values. A false discovery rate (FDR) threshold of <= 0.05 was applied to identify genes with a significant sQTL.
-}
+The retrieved data is split into pages with \code{items_per_page} entries per page
+
+\href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_sqtl_genes_api_v2_association_sgene_get}{GTEx Portal API documentation}.
 }
 \examples{
+\dontrun{
 get_sqtl_genes("Whole_Blood")
+}
 }
 \seealso{
 Other Static Association Endpoints: 

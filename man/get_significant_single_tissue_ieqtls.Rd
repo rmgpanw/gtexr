@@ -31,25 +31,25 @@ data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 \item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-A Tibble
+A tibble
 }
 \description{
 Retrieve Interaction eQTL Data.
-}
-\details{
 \itemize{
 \item This service returns cell type interaction eQTLs (ieQTLs), from a specified dataset.
 \item Results may be filtered by tissue
 \item By default, the service queries the latest GTEx release.
 }
 
-The retrieved data is split into pages with items_per_page entries per page
+The retrieved data is split into pages with \code{items_per_page} entries per page
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_ieqtls_api_v2_association_singleTissueIEqtl_get}{GTEx Portal API documentation}
 }
 \examples{
+\dontrun{
 get_significant_single_tissue_ieqtls(c("ENSG00000132693.12",
                                        "ENSG00000203782.5"))
+}
 }
 \seealso{
 Other Static Association Endpoints: 

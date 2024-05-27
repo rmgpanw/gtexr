@@ -36,15 +36,16 @@ A tibble.
 \description{
 Retrieve Fine Mapping Data
 \itemize{
-\item Finds and returns Fine Mapping data for the provided list of genes
-\item By default, this endpoint fetches data from the latest GTEx version
+\item Finds and returns \verb{Fine Mapping} data for the provided list of genes
+\item By default, this endpoint fetches data from the latest \code{GTEx} version
 }
 
-The retrieved data is split into pages with items_per_page entries per page
+The retrieved data is split into pages with \code{items_per_page} entries per page
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_fine_mapping_api_v2_association_fineMapping_get}{GTEx Portal API documentation}
 }
 \examples{
+\dontrun{
 # search by gene
 get_fine_mapping(gencodeIds = c("ENSG00000132693.12",
                                "ENSG00000203782.5"))
@@ -55,6 +56,7 @@ get_fine_mapping(gencodeIds = c("ENSG00000132693.12",
                  variantId = "chr1_153228363_A_G_b38",
                  tissueSiteDetailIds = c("Whole_Blood",
                                         "Thyroid"))
+}
 }
 \seealso{
 Other Static Association Endpoints: 

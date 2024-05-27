@@ -3,14 +3,14 @@
 #' @description
 #' Find significant single tissue eQTLs using Chromosomal Locations.
 
-#' This service returns precomputed significant single tissue eQTLs. Results may
-#' be filtered by tissue, and/or dataset. By default, the service queries the
-#' latest GTEx release. Since this endpoint is used to support a third party
-#' program on the portal. The return structure is different from other endpoints
-#' and is not paginated.
+#' - This service returns precomputed significant single tissue eQTLs.
+#' - Results may be filtered by tissue, and/or dataset.
 #'
+#' By default, the service queries the latest GTEx release. Since this endpoint
+#' is used to support a third party program on the portal, the return structure
+#' is different from other endpoints and is not paginated.
 #'
-#' #' [GTEx Portal API
+#' [GTEx Portal API
 #' documentation](https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_eqtls_api_v2_association_singleTissueEqtl_get)
 #'
 #' @inheritParams gtexr_arguments
@@ -20,11 +20,13 @@
 #' @family Static Association Endpoints
 #'
 #' @examples
+#' \dontrun{
 #' get_significant_single_tissue_eqtls_by_location(
 #'   tissueSiteDetailId = "Artery_Aorta",
 #'   start = 10000,
 #'   end = 250000,
 #'   chromosome = "chr11")
+#' }
 get_significant_single_tissue_eqtls_by_location <- function(tissueSiteDetailId,
                                                             start,
                                                             end,
@@ -34,5 +36,3 @@ get_significant_single_tissue_eqtls_by_location <- function(tissueSiteDetailId,
              return_raw = TRUE)$singleTissueEqtl |>
     purrr::map(tibble::as_tibble) |> dplyr::bind_rows()
 }
-
-

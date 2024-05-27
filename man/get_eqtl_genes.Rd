@@ -28,8 +28,6 @@ A tibble.
 }
 \description{
 Retrieve eGenes (eQTL Genes).
-}
-\details{
 \itemize{
 \item This service returns eGenes (eQTL Genes) from the specified dataset.
 \item eGenes are genes that have at least one significant cis-eQTL acting upon them.
@@ -38,7 +36,8 @@ Retrieve eGenes (eQTL Genes).
 
 For each eGene, the results include the allelic fold change
 (log2AllelicFoldChange), p-value (pValue), p-value threshold
-(pValueThreshold), empirical p-value (empiricalPValue), and q-value (qValue).
+(pValueThreshold), empirical p-value (empiricalPValue), and q-value
+(qValue).
 \itemize{
 \item The log2AllelicFoldChange is the allelic fold change (in log2 scale) of the most significant eQTL.
 \item The pValue is the nominal p-value of the most significant eQTL.
@@ -46,9 +45,13 @@ For each eGene, the results include the allelic fold change
 \item The empiricalPValue is the beta distribution-adjusted empirical p-value from FastQTL.
 \item The qValues were calculated based on the empirical p-values. A false discovery rate (FDR) threshold of <= 0.05 was applied to identify genes with a significant eQTL.
 }
+
+\href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_eqtl_genes_api_v2_association_egene_get}{GTEx Portal API documentation}.
 }
 \examples{
+\dontrun{
 get_eqtl_genes(c("Whole_Blood", "Artery_Aorta"))
+}
 }
 \seealso{
 Other Static Association Endpoints: 

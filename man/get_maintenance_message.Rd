@@ -4,16 +4,29 @@
 \alias{get_maintenance_message}
 \title{Get Maintenance Message}
 \usage{
-get_maintenance_message()
+get_maintenance_message(page = 0, itemsPerPage = 250)
+}
+\arguments{
+\item{page}{Integer (default = 0).}
+
+\item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
 A tibble.
 }
 \description{
-Getting all the maintenance messages from the database that are enabled.
+Getting all the maintenance messages from the database that are
+enabled.
+
+\href{https://gtexportal.org/api/v2/redoc#tag/Admin-Endpoints/operation/get_maintenance_message_api_v2_admin_maintenanceMessage_get}{GTEx Portal API documentation}.
+}
+\details{
+Note this typically returns an empty tibble.
 }
 \examples{
+\dontrun{
 get_maintenance_message()
+}
 }
 \seealso{
 Other Admin Endpoints: 

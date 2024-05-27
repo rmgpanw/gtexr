@@ -28,19 +28,25 @@ data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 A tibble
 }
 \description{
-Retrieve Single Tissue sQTL Data. This service returns single tissue sQTL
-data for the given genes, from a specified dataset. Results may be filtered
-by tissue By default, the service queries the latest GTEx release.
+Retrieve Single Tissue sQTL Data.
+\itemize{
+\item This service returns single tissue sQTL
+data for the given genes, from a specified dataset.
+\item Results may be filtered
+by tissue
+\item By default, the service queries the latest GTEx release.
 }
-\details{
-The retrieved data is split into pages with items_per_page entries per page
 
-\href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_sqtls_api_v2_association_singleTissueSqtl_get}{GTEx Portal API documentation}
+The retrieved data is split into pages with \code{items_per_page} entries per page
+
+\href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_sqtls_api_v2_association_singleTissueSqtl_get}{GTEx Portal API documentation}.
 }
 \examples{
+\dontrun{
 # search by gene
 get_significant_single_tissue_sqtls(gencodeIds = c("ENSG00000065613.9",
                                                    "ENSG00000203782.5"))
+}
 }
 \seealso{
 Other Static Association Endpoints: 

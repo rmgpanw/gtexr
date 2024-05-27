@@ -11,8 +11,12 @@ A tibble.
 }
 \description{
 General information about the GTEx service.
+
+\href{https://gtexportal.org/api/v2/redoc#tag/GTEx-Portal-API-Info/operation/get_service_info_api_v2__get}{GTEx Portal API documentation}.
 }
 \examples{
+\dontrun{
 get_service_info()
+}
 }
 \concept{GTEx Portal API Info}

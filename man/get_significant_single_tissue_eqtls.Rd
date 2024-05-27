@@ -34,21 +34,26 @@ data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 A tibble.
 }
 \description{
-\href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_eqtls_api_v2_association_singleTissueEqtl_get}{Find significant single tissue eQTLs.}
-}
-\details{
+Find significant single tissue
+eQTLs.
 \itemize{
 \item This service returns precomputed significant single tissue eQTLs.
 \item Results may be filtered by tissue, gene, variant or dataset.
 \item To search by gene, use the versioned GENCODE ID.
-\item To search by variant, use the gtex variant ID.
+\item To search by variant, use the dbSNP rs ID (snpId).
 }
 
+By default, the service queries the latest GTEx release and the retrieved data is split into pages with \code{items_per_page} entries per page
+
+\href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_eqtls_api_v2_association_singleTissueEqtl_get}{GTEx Portal API documentation}.
+}
+\details{
 \strong{Note:} although the GTEx Portal API documentation says to use the dbSNP rsID
 when searching by variant, this returns no results. Instead use gtex variant
 IDs e.g. use "chr1_153209640_C_A_b38" instead of "rs1410858".
 }
 \examples{
+\dontrun{
 # search by gene
 get_significant_single_tissue_eqtls(gencodeIds = c("ENSG00000132693.12",
                                                   "ENSG00000203782.5"))
@@ -62,6 +67,7 @@ get_significant_single_tissue_eqtls(gencodeIds = c("ENSG00000132693.12",
                                                   "ENSG00000203782.5"),
                                     variantId = "chr1_153209640_C_A_b38",
                                     tissueSiteDetailId = "Whole_Blood")
+}
 }
 \seealso{
 Other Static Association Endpoints: 

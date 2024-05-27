@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_significant_single_tissue_isqtls.R
 \name{get_significant_single_tissue_isqtls}
 \alias{get_significant_single_tissue_isqtls}
-\title{Get Significant Single Tissue Isqtls}
+\title{et Significant Single Tissue Isqtls}
 \usage{
 get_significant_single_tissue_isqtls(
   gencodeIds,
@@ -31,20 +31,26 @@ data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 \item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-A Tibble
+A tibble
 }
 \description{
-Retrieve Interaction sQTL Data. This service retrieves cell type interaction
-sQTLs (isQTLs), from a specified dataset. Results may be filtered by tissue
-By default, the service queries the latest GTEx release. The retrieved data
-is split into pages with items_per_page entries per page
+Retrieve Interaction sQTL Data.
+\itemize{
+\item This service retrieves cell type interaction
+sQTLs (isQTLs), from a specified dataset.
+\item Results may be filtered by tissue
+\item By default, the service queries the latest GTEx release.
 }
-\details{
-\href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_isqtls_api_v2_association_singleTissueISqtl_get}{GTEx Portal API documentation}
+
+The retrieved data is split into pages with \code{items_per_page} entries per page
+
+\href{https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_significant_single_tissue_isqtls_api_v2_association_singleTissueISqtl_get}{GTEx Portal API documentation}.
 }
 \examples{
+\dontrun{
 get_significant_single_tissue_isqtls(gencodeIds = c("ENSG00000065613.9",
                                                     "ENSG00000203782.5"))
+}
 }
 \seealso{
 Other Static Association Endpoints: 
