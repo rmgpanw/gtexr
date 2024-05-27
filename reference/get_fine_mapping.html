@@ -36,6 +36,12 @@ GTEx Portal API documentation"><meta property="og:image" content="https://rmgpan
 <li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/developer_guide.html">Developer guide</a>
+  </div>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -58,9 +64,9 @@ GTEx Portal API documentation"><meta property="og:image" content="https://rmgpan
     </div>
 
     <div class="ref-description section level2">
-    <p>Retrieve Fine Mapping Data</p><ul><li><p>Finds and returns Fine Mapping data for the provided list of genes</p></li>
-<li><p>By default, this endpoint fetches data from the latest GTEx version</p></li>
-</ul><p>The retrieved data is split into pages with items_per_page entries per page</p>
+    <p>Retrieve Fine Mapping Data</p><ul><li><p>Finds and returns <code>Fine Mapping</code> data for the provided list of genes</p></li>
+<li><p>By default, this endpoint fetches data from the latest <code>GTEx</code> version</p></li>
+</ul><p>The retrieved data is split into pages with <code>items_per_page</code> entries per page</p>
 <p><a href="https://gtexportal.org/api/v2/redoc#tag/Static-Association-Endpoints/operation/get_fine_mapping_api_v2_association_fineMapping_get" class="external-link">GTEx Portal API documentation</a></p>
     </div>
 
@@ -128,7 +134,8 @@ Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># search by gene</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span><span class="co"># search by gene</span></span></span>
 <span class="r-in"><span><span class="fu">get_fine_mapping</span><span class="op">(</span>gencodeIds <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ENSG00000132693.12"</span>,</span></span>
 <span class="r-in"><span>                               <span class="st">"ENSG00000203782.5"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
@@ -170,6 +177,7 @@ Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> gtex_v8   ENSG00000… DAP-G  0.012<span style="text-decoration: underline;">6</span>     1      22 Whole_Blood        UBERON:00…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: variantId &lt;chr&gt;</span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

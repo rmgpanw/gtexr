@@ -48,6 +48,12 @@
 <li class="nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/developer_guide.html">Developer guide</a>
+  </div>
+</li>
       </ul>
 <form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off">
@@ -105,19 +111,26 @@ to argument name <code>tissueSiteDetailIds</code> in
 example e.g. <code><a href="../reference/get_eqtl_genes.html">?get_eqtl_genes</a></code> provides example valid values
 for the required argument <code>tissueSiteDetailIds</code>.</li>
 <li>All functions return a <code><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble::tibble</a></code>.</li>
-<li>Users can try out all functions interatively with the ⭐<a href="https://7hocgq-rmgpanw.shinyapps.io/gtexr/" class="external-link">gtexr shiny app</a>⭐,
-which pre-populates query parameters with those for the first working
-example from each function’s documentation.</li>
 </ul>
+<div class="section level2">
+<h2 id="shiny-app">Shiny app<a class="anchor" aria-label="anchor" href="#shiny-app"></a>
+</h2>
+<p>Users can try out all functions interatively with the ⭐<a href="https://7hocgq-rmgpanw.shinyapps.io/gtexr/" class="external-link">gtexr shiny app</a>⭐,
+which pre-populates query parameters with those for the first working
+example from each function’s documentation.</p>
+</div>
+<div class="section level2">
+<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h2>
 <p>The rest of this vignette outlines some example applications of
 gtexr.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rmgpanw.github.io/gtexr/">gtexr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span></code></pre></div>
-<div class="section level2">
-<h2 id="get-build-37-coordinates-for-a-variant">Get build 37 coordinates for a variant<a class="anchor" aria-label="anchor" href="#get-build-37-coordinates-for-a-variant"></a>
-</h2>
+<div class="section level3">
+<h3 id="get-build-37-coordinates-for-a-variant">Get build 37 coordinates for a variant<a class="anchor" aria-label="anchor" href="#get-build-37-coordinates-for-a-variant"></a>
+</h3>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_variant.html">get_variant</a></span><span class="op">(</span>snpId <span class="op">=</span> <span class="st">"rs1410858"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate</a></span><span class="op">(</span></span>
@@ -145,9 +158,9 @@ gtexr.</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> rs1410858 1_153182116… 1          1531821… C                A                 </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 1 more variable: genome_build &lt;chr&gt;</span></span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="convert-gene-symbol-to-versioned-gencode-id">Convert gene symbol to versioned GENCODE ID<a class="anchor" aria-label="anchor" href="#convert-gene-symbol-to-versioned-gencode-id"></a>
-</h2>
+<div class="section level3">
+<h3 id="convert-gene-symbol-to-versioned-gencode-id">Convert gene symbol to versioned GENCODE ID<a class="anchor" aria-label="anchor" href="#convert-gene-symbol-to-versioned-gencode-id"></a>
+</h3>
 <p>Use <code>get_gene()</code> or <code><a href="../reference/get_genes.html">get_genes()</a></code></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_genes.html">get_genes</a></span><span class="op">(</span><span class="st">"CRP"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -163,9 +176,9 @@ gtexr.</p>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> CRP        ENSG00000132693.12</span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="convert-rsid-to-gtex-variant-id">Convert rsID to GTEx variant ID<a class="anchor" aria-label="anchor" href="#convert-rsid-to-gtex-variant-id"></a>
-</h2>
+<div class="section level3">
+<h3 id="convert-rsid-to-gtex-variant-id">Convert rsID to GTEx variant ID<a class="anchor" aria-label="anchor" href="#convert-rsid-to-gtex-variant-id"></a>
+</h3>
 <p>Use <code><a href="../reference/get_variant.html">get_variant()</a></code></p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_variant.html">get_variant</a></span><span class="op">(</span>snpId <span class="op">=</span> <span class="st">"rs1410858"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -181,10 +194,10 @@ gtexr.</p>
 <span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 </span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> rs1410858 chr1_153209640_C_A_b38</span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="for-a-gene-of-interest-which-tissues-have-significant-cis-eqtls">For a gene of interest, which tissues have significant
+<div class="section level3">
+<h3 id="for-a-gene-of-interest-which-tissues-have-significant-cis-eqtls">For a gene of interest, which tissues have significant
 <em>cis</em>-eQTLs?<a class="anchor" aria-label="anchor" href="#for-a-gene-of-interest-which-tissues-have-significant-cis-eqtls"></a>
-</h2>
+</h3>
 <p>Use <code><a href="../reference/get_significant_single_tissue_eqtls.html">get_significant_single_tissue_eqtls()</a></code> (note this
 requires versioned GENCODE IDs)</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -216,9 +229,9 @@ requires versioned GENCODE IDs)</p>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> CRP        ENSG00000132693.12 Esophagus_Gastroesophageal_Junction</span></span>
 <span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> CRP        ENSG00000132693.12 Muscle_Skeletal</span></span></code></pre></div>
 </div>
-<div class="section level2">
-<h2 id="get-data-for-non-eqtl-variants">Get data for non-eQTL variants<a class="anchor" aria-label="anchor" href="#get-data-for-non-eqtl-variants"></a>
-</h2>
+<div class="section level3">
+<h3 id="get-data-for-non-eqtl-variants">Get data for non-eQTL variants<a class="anchor" aria-label="anchor" href="#get-data-for-non-eqtl-variants"></a>
+</h3>
 <p>Some analyses (e.g. Mendelian randomisation) require data for
 variants which may or may not be significant eQTLs. Use
 <code><a href="../reference/calculate_eqtls.html">calculate_eqtls()</a></code> with <code><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr::map()</a></code> to
@@ -276,6 +289,7 @@ retrieve data for multiple variants</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ abbreviated name: ¹​alternative_allele_frequency</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># ℹ 6 more variables: chromosome &lt;chr&gt;, position &lt;chr&gt;, reference_allele &lt;chr&gt;,</span></span></span>
 <span><span class="co">#&gt; <span style="color: #949494;">#   alternative_allele &lt;chr&gt;, genome_build &lt;chr&gt;, tissueSiteDetailId &lt;chr&gt;</span></span></span></code></pre></div>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>
