@@ -71,10 +71,8 @@ causes", "Intermediate death", "Slow death".}
 
 \item{ischemicTime}{Integer.}
 
-\item{ischemicTimeGroups}{Character vector. Options: "<= 0", "1 - 300", "301
-\itemize{
-\item 600", "601 - 900", "901 - 1200", "1201 - 1500", "> 1500".
-}}
+\item{ischemicTimeGroups}{Character vector. Options:
+"<= 0", "1 - 300", "301 - 600", "601 - 900", "901 - 1200", "1201 - 1500", "> 1500".}
 
 \item{rin}{Integer vector.}
 

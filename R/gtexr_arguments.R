@@ -38,8 +38,8 @@
 #'   causes", "Intermediate death", "Slow death".
 #' @param itemsPerPage Integer (default = 250).
 #' @param ischemicTime Integer.
-#' @param ischemicTimeGroups Character vector. Options: "<= 0", "1 - 300", "301
-#'   - 600", "601 - 900", "901 - 1200", "1201 - 1500", "> 1500".
+#' @param ischemicTimeGroups Character vector. Options:
+#'   "<= 0", "1 - 300", "301 - 600", "601 - 900", "901 - 1200", "1201 - 1500", "> 1500".
 #' @param organizationName String. Options: "GTEx Consortium" "Kid's First".
 #' @param page Integer (default = 0).
 #' @param pathCategory Character vector. Options: "adenoma", "amylacea",
