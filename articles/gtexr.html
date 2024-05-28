@@ -234,15 +234,15 @@ requires versioned GENCODE IDs)</p>
 </h3>
 <p>Some analyses (e.g. Mendelian randomisation) require data for
 variants which may or may not be significant eQTLs. Use
-<code><a href="../reference/calculate_eqtls.html">calculate_eqtls()</a></code> with <code><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr::map()</a></code> to
-retrieve data for multiple variants</p>
+<code><a href="../reference/calculate_expression_quantitative_trait_loci.html">calculate_expression_quantitative_trait_loci()</a></code> with
+<code><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr::map()</a></code> to retrieve data for multiple variants</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">variants_of_interest</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rs12119111"</span>, <span class="st">"rs6605071"</span>, <span class="st">"rs1053870"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">variants_of_interest</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rlang.r-lib.org/reference/set_names.html" class="external-link">set_names</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">map</a></span><span class="op">(</span></span>
-<span>    \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="../reference/calculate_eqtls.html">calculate_eqtls</a></span><span class="op">(</span></span>
+<span>    \<span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="../reference/calculate_expression_quantitative_trait_loci.html">calculate_expression_quantitative_trait_loci</a></span><span class="op">(</span></span>
 <span>      tissueSiteDetailId <span class="op">=</span> <span class="st">"Liver"</span>,</span>
 <span>      gencodeId <span class="op">=</span> <span class="st">"ENSG00000237973.1"</span>,</span>
 <span>      variantId <span class="op">=</span> <span class="va">x</span></span>

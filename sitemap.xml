@@ -28,10 +28,16 @@
     <loc>https://rmgpanw.github.io/gtexr/reference/available_tissueSiteDetailIds.html</loc>
   </url>
   <url>
-    <loc>https://rmgpanw.github.io/gtexr/reference/calculate_eqtls.html</loc>
+    <loc>https://rmgpanw.github.io/gtexr/reference/calculate_expression_quantitative_trait_loci.html</loc>
   </url>
   <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/calculate_ieqtls.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/calculate_isqtls.html</loc>
+  </url>
+  <url>
+    <loc>https://rmgpanw.github.io/gtexr/reference/calculate_splicing_quantitative_trait_loci.html</loc>
   </url>
   <url>
     <loc>https://rmgpanw.github.io/gtexr/reference/get_annotation.html</loc>
