@@ -60,14 +60,21 @@ unversioned gencodeIds.}
 Options: "Ventilator case", "Fast death - violent", "Fast death - natural
 causes", "Intermediate death", "Slow death".}
 
+\item{hasExpressionData}{Logical.}
+
+\item{hasGenotype}{Logical.}
+
 \item{itemsPerPage}{Integer (default = 250).}
 
 \item{ischemicTime}{Integer.}
 
-\item{ischemicTimeGroups}{Character vector. Options: "<= 0", "1 - 300", "301
-\itemize{
-\item 600", "601 - 900", "901 - 1200", "1201 - 1500", "> 1500".
-}}
+\item{ischemicTimeGroups}{Character vector. Options:
+"<= 0", "1 - 300", "301 - 600", "601 - 900", "901 - 1200", "1201 - 1500", "> 1500".}
+
+\item{materialTypes}{String, vector. Options: "Cells:Cell Line Viable",
+"DNA:DNA Genomic", "DNA:DNA Somatic", "RNA:Total RNA", "Tissue:PAXgene
+Preserved", "Tissue:PAXgene Preserved Paraffin-embedded", "Tissue:Fresh
+Frozen Tissue".}
 
 \item{organizationName}{String. Options: "GTEx Consortium" "Kid's First".}
 
@@ -101,6 +108,8 @@ for further details.}
 
 \item{sampleIds}{Character vector. GTEx sample ID.}
 
+\item{searchTerm}{String.}
+
 \item{sex}{String. Options: "male", "female".}
 
 \item{snpId}{String}
@@ -114,6 +123,8 @@ for further details.}
 \item{start}{Integer.}
 
 \item{subjectIds}{Character vector. GTEx subject ID.}
+
+\item{tissueSampleId}{String. A Tissue Sample ID.}
 
 \item{tissueSampleIds}{Array of strings. A list of Tissue Sample ID(s).}
 

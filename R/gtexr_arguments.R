@@ -36,10 +36,16 @@
 #' @param hardyScales Character vector. A list of Hardy Scale(s) of interest.
 #'   Options: "Ventilator case", "Fast death - violent", "Fast death - natural
 #'   causes", "Intermediate death", "Slow death".
+#' @param hasExpressionData Logical.
+#' @param hasGenotype Logical.
 #' @param itemsPerPage Integer (default = 250).
 #' @param ischemicTime Integer.
 #' @param ischemicTimeGroups Character vector. Options:
 #'   "<= 0", "1 - 300", "301 - 600", "601 - 900", "901 - 1200", "1201 - 1500", "> 1500".
+#' @param materialTypes String, vector. Options: "Cells:Cell Line Viable",
+#'   "DNA:DNA Genomic", "DNA:DNA Somatic", "RNA:Total RNA", "Tissue:PAXgene
+#'   Preserved", "Tissue:PAXgene Preserved Paraffin-embedded", "Tissue:Fresh
+#'   Frozen Tissue".
 #' @param organizationName String. Options: "GTEx Consortium" "Kid's First".
 #' @param page Integer (default = 0).
 #' @param pathCategory Character vector. Options: "adenoma", "amylacea",
@@ -63,6 +69,7 @@
 #' @param rin Integer vector.
 #' @param sampleId String. `^GTEX-[A-Z0-9]{5}-[0-9]{4}-SM-[A-Z0-9]{5}$`
 #' @param sampleIds Character vector. GTEx sample ID.
+#' @param searchTerm String.
 #' @param sex String. Options: "male", "female".
 #' @param snpId String
 #' @param sortBy String. Options: "sampleId", "ischemicTime", "aliquotId",
@@ -71,7 +78,7 @@
 #' @param sortDirection String. Options: "asc", "desc". Default = "asc".
 #' @param start Integer.
 #' @param subjectIds Character vector. GTEx subject ID.
-#' @param tissueSampleIds String. A list of Tissue Sample ID(s).
+#' @param tissueSampleId String. A Tissue Sample ID.
 #' @param tissueSampleIds Array of strings. A list of Tissue Sample ID(s).
 #' @param tissueSiteDetailId String. The ID of the tissue of interest. Can be a
 #'   GTEx specific ID (e.g. "Whole_Blood"; use [available_tissueSiteDetailIds()]
@@ -120,18 +127,22 @@ gtexr_arguments <- function() {
     "geneIds", "character", FALSE, TRUE, "textAreaInput", NA,
     "genomeBuild", "character", TRUE, FALSE, "selectInput", c("GRCh38/hg38", "GRCh37/hg19"),
     "hardyScales", "character", FALSE, TRUE, "selectInput", c("Ventilator case", "Fast death - violent", "Fast death - natural causes", "Intermediate death", "Slow death"),
+    "hasExpressionData", "logical", TRUE, FALSE, "checkboxInput", NA,
+    "hasGenotype", "logical", TRUE, FALSE, "checkboxInput", NA,
     "itemsPerPage", "integer", TRUE, FALSE, "numericInput", c(0, 100000),
     "ischemicTime", "integer", FALSE, FALSE, "numericInput", c(-1300, 2100),
     "ischemicTimeGroups", "character", FALSE, TRUE, "selectInput", c("<= 0", "1 - 300", "301 - 600", "601 - 900", "901 - 1200", "1201 - 1500", "> 1500"),
+    "materialTypes", "character", FALSE, TRUE, "selectizeInput", c("Cells:Cell Line Viable", "DNA:DNA Genomic", "DNA:DNA Somatic", "RNA:Total RNA", "Tissue:PAXgene Preserved", "Tissue:PAXgene Preserved Paraffin-embedded", "Tissue:Fresh Frozen Tissue"),
     "organizationName", "character", TRUE, FALSE, "selectInput", c("GTEx Consortium", "Kid's First"),
     "page", "integer", TRUE, FALSE, "numericInput", c(0, 1000000),
-    "pathCategory", "character", FALSE, FALSE, "selectInput", c("adenoma", "amylacea", "atelectasis", "atherosclerosis", "atherosis", "atrophy", "calcification", "cirrhosis", "clean_specimens", "congestion", "corpora_albicantia", "cyst", "desquamation", "diabetic", "dysplasia", "edema", "emphysema", "esophagitis", "fibrosis", "gastritis", "glomerulosclerosis", "goiter", "gynecomastoid", "hashimoto", "heart_failure_cells", "hemorrhage", "hepatitis", "hyalinization", "hypereosinophilia", "hyperplasia", "hypertrophy", "hypoxic", "infarction", "inflammation", "ischemic_changes", "macrophages", "mastopathy", "metaplasia", "monckeberg", "necrosis", "nephritis", "nephrosclerosis", "no_abnormalities", "nodularity", "pancreatitis", "pigment", "pneumonia", "post_menopausal", "prostatitis", "saponification", "scarring", "sclerotic", "solar_elastosis", "spermatogenesis", "steatosis", "sweat_glands", "tma"),
+    "pathCategory", "character", FALSE, FALSE, "selectizeInput", c("adenoma", "amylacea", "atelectasis", "atherosclerosis", "atherosis", "atrophy", "calcification", "cirrhosis", "clean_specimens", "congestion", "corpora_albicantia", "cyst", "desquamation", "diabetic", "dysplasia", "edema", "emphysema", "esophagitis", "fibrosis", "gastritis", "glomerulosclerosis", "goiter", "gynecomastoid", "hashimoto", "heart_failure_cells", "hemorrhage", "hepatitis", "hyalinization", "hypereosinophilia", "hyperplasia", "hypertrophy", "hypoxic", "infarction", "inflammation", "ischemic_changes", "macrophages", "mastopathy", "metaplasia", "monckeberg", "necrosis", "nephritis", "nephrosclerosis", "no_abnormalities", "nodularity", "pancreatitis", "pigment", "pneumonia", "post_menopausal", "prostatitis", "saponification", "scarring", "sclerotic", "solar_elastosis", "spermatogenesis", "steatosis", "sweat_glands", "tma"),
     "phenotypeId", "character", TRUE, FALSE, "textInput", NA,
     "pos", "integer", FALSE, FALSE, "numericInput", c(0, 248945542),
     "project_id", "character", TRUE, FALSE, "selectInput", c("gtex", "adult-gtex", "egtex"),
     "rin", "integer", FALSE, FALSE, "numericInput", c(-1e8L, 1e8L),
     "sampleId", "character", TRUE, FALSE, "textInput", NA,
     "sampleIds", "character", FALSE, TRUE, "textAreaInput", NA,
+    "searchTerm", "character", TRUE, FALSE, "textInput", NA,
     "sex", "character", TRUE, FALSE, "selectInput", c("male", "female"),
     "snpId", "character", TRUE, FALSE, "textInput", NA,
     "sortBy", "character", TRUE, FALSE, "selectInput", c("sampleId", "ischemicTime", "aliquotId", "tissueSampleId", "hardyScale", "pathologyNotes", "ageBracket", "tissueSiteDetailId", "sex"),
