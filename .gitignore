@@ -4,3 +4,5 @@ docs
 .vscode
 inst/doc
 .Renviron
+/doc/
+/Meta/

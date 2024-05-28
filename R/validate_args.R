@@ -2,7 +2,7 @@ validate_args <- function(arguments,
                           call) {
   metadata <- gtexr_arguments()
 
-  # TODO move checks for missing args here, and also any "" values e.g. calculate_eqtls(tissueSiteDetailId = "Whole_Blood",
+  # TODO move checks for missing args here, and also any "" values e.g. calculate_expression_quantitative_trait_loci(tissueSiteDetailId = "Whole_Blood",
                    # gencodeId = "",
                    # variantId = "rs79641866")
 

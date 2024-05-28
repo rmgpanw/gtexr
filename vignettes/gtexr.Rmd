@@ -93,7 +93,7 @@ gene_gencodeId_of_interest |>
 
 ### Get data for non-eQTL variants
 
-Some analyses (e.g. Mendelian randomisation) require data for variants which may or may not be significant eQTLs. Use `calculate_eqtls()` with `purrr::map()` to retrieve data for multiple variants
+Some analyses (e.g. Mendelian randomisation) require data for variants which may or may not be significant eQTLs. Use `calculate_expression_quantitative_trait_loci()` with `purrr::map()` to retrieve data for multiple variants
 
 ```{r calculate-eqtls}
 variants_of_interest <- c("rs12119111", "rs6605071", "rs1053870")
@@ -101,7 +101,7 @@ variants_of_interest <- c("rs12119111", "rs6605071", "rs1053870")
 variants_of_interest |>
   set_names() |>
   map(
-    \(x) calculate_eqtls(
+    \(x) calculate_expression_quantitative_trait_loci(
       tissueSiteDetailId = "Liver",
       gencodeId = "ENSG00000237973.1",
       variantId = x

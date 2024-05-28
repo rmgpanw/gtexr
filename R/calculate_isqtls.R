@@ -1,6 +1,6 @@
-#' Calculate Ieqtls
+#' Calculate Isqtls
 #'
-#' @description Calculate your own Cell Specific eQTLs.
+#' @description Calculate your own Cell Specific sQTLs.
 #'
 #' - This service calculates the gene-variant association for any given pair of gene and variant, which may or may not be significant.
 #' - This requires as input a GENCODE ID, GTEx variant ID, and tissue site detail ID.
@@ -18,18 +18,18 @@
 #' @examples
 #' \dontrun{
 #' # perform request
-#' calculate_ieqtls(cellType = "Adipocytes",
-#'                  tissueSiteDetailId = "Adipose_Subcutaneous",
-#'                  gencodeId = "ENSG00000203782.5",
+#' calculate_isqtls(cellType = "Neutrophils",
+#'                  tissueSiteDetailId = "Whole_Blood",
+#'                  phenotypeId = "chr1:15947:16607:clu_40980:ENSG00000227232.5",
 #'                  variantId = "chr1_1099341_T_C_b38")
 #' }
-calculate_ieqtls <-
+calculate_isqtls <-
   function(cellType,
            tissueSiteDetailId,
-           gencodeId,
+           phenotypeId,
            variantId,
            datasetId = "gtex_v8") {
-    gtex_query(endpoint = "association/dynieqtl", return_raw = TRUE) |>
+    gtex_query(endpoint = "association/dynisqtl", return_raw = TRUE) |>
       purrr::imap(\(x, idx) ifelse(is.list(x),
                                    tibble::tibble(
                                      data = purrr::map_depth(x,

@@ -2,7 +2,7 @@
 with_mock_dir("handle_http_errors", {
   test_that("httr2_http_400 error condition is raised", {
     expect_error(
-      calculate_eqtls(
+      calculate_expression_quantitative_trait_loci(
         tissueSiteDetailId = "Whole_Blood",
         gencodeId = "ENSG00000203782.5",
         variantId = "invalid rsid"
@@ -11,7 +11,7 @@ with_mock_dir("handle_http_errors", {
     )
 
     expect_error(
-      calculate_eqtls(
+      calculate_expression_quantitative_trait_loci(
         tissueSiteDetailId = "Whole_Blood",
         gencodeId = "ENSG00000203782.5",
         variantId = "invalid rsid"

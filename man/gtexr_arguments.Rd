@@ -87,6 +87,10 @@ causes", "Intermediate death", "Slow death".}
 "saponification", "scarring", "sclerotic", "solar_elastosis",
 "spermatogenesis", "steatosis", "sweat_glands", "tma".}
 
+\item{phenotypeId}{String. See
+\href{https://www.gtexportal.org/home/faq#splicingPhenotypeId}{GTEx portal FAQs}
+for further details.}
+
 \item{pos}{Integer, vector.}
 
 \item{project_id}{String. Options: "gtex", "adult-gtex", "egtex".}

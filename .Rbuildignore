@@ -10,3 +10,5 @@
 ^README\.Rmd$
 ^codecov\.yml$
 ^.vscode$
+^doc$
+^Meta$

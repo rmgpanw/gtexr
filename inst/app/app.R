@@ -123,7 +123,7 @@ endpointUI <- function(id, gtexr_fn, gtexr_arguments_metadata, gtexr_functions_m
   gtexr_fn_args <- get_gtexr_fn_args(gtexr_fn)
   gtexr_fn_metadata <- gtexr_functions_metadata[gtexr_functions_metadata$fn_name == gtexr_fn, ]
 
-  # if (gtexr_fn == "calculate_eqtls") {
+  # if (gtexr_fn == "calculate_expression_quantitative_trait_loci") {
   #   browser()
   # }
 

@@ -55,6 +55,9 @@
 #'   "pancreatitis", "pigment", "pneumonia", "post_menopausal", "prostatitis",
 #'   "saponification", "scarring", "sclerotic", "solar_elastosis",
 #'   "spermatogenesis", "steatosis", "sweat_glands", "tma".
+#' @param phenotypeId String. See
+#'   [GTEx portal FAQs](https://www.gtexportal.org/home/faq#splicingPhenotypeId)
+#'   for further details.
 #' @param pos Integer, vector.
 #' @param project_id String. Options: "gtex", "adult-gtex", "egtex".
 #' @param rin Integer vector.
@@ -123,6 +126,7 @@ gtexr_arguments <- function() {
     "organizationName", "character", TRUE, FALSE, "selectInput", c("GTEx Consortium", "Kid's First"),
     "page", "integer", TRUE, FALSE, "numericInput", c(0, 1000000),
     "pathCategory", "character", FALSE, FALSE, "selectInput", c("adenoma", "amylacea", "atelectasis", "atherosclerosis", "atherosis", "atrophy", "calcification", "cirrhosis", "clean_specimens", "congestion", "corpora_albicantia", "cyst", "desquamation", "diabetic", "dysplasia", "edema", "emphysema", "esophagitis", "fibrosis", "gastritis", "glomerulosclerosis", "goiter", "gynecomastoid", "hashimoto", "heart_failure_cells", "hemorrhage", "hepatitis", "hyalinization", "hypereosinophilia", "hyperplasia", "hypertrophy", "hypoxic", "infarction", "inflammation", "ischemic_changes", "macrophages", "mastopathy", "metaplasia", "monckeberg", "necrosis", "nephritis", "nephrosclerosis", "no_abnormalities", "nodularity", "pancreatitis", "pigment", "pneumonia", "post_menopausal", "prostatitis", "saponification", "scarring", "sclerotic", "solar_elastosis", "spermatogenesis", "steatosis", "sweat_glands", "tma"),
+    "phenotypeId", "character", TRUE, FALSE, "textInput", NA,
     "pos", "integer", FALSE, FALSE, "numericInput", c(0, 248945542),
     "project_id", "character", TRUE, FALSE, "selectInput", c("gtex", "adult-gtex", "egtex"),
     "rin", "integer", FALSE, FALSE, "numericInput", c(-1e8L, 1e8L),
