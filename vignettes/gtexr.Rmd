@@ -84,7 +84,8 @@ Use `get_significant_single_tissue_eqtls()` (note this requires versioned GENCOD
 gene_symbol_of_interest <- "CRP"
 
 gene_gencodeId_of_interest <- get_genes(gene_symbol_of_interest) |>
-  pull(gencodeId)
+  pull(gencodeId) |>
+  suppressMessages()
 
 gene_gencodeId_of_interest |>
   get_significant_single_tissue_eqtls() |>
