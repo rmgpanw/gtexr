@@ -204,15 +204,9 @@ requires versioned GENCODE IDs)</p>
 <code class="sourceCode R"><span><span class="va">gene_symbol_of_interest</span> <span class="op">&lt;-</span> <span class="st">"CRP"</span></span>
 <span></span>
 <span><span class="va">gene_gencodeId_of_interest</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_genes.html">get_genes</a></span><span class="op">(</span><span class="va">gene_symbol_of_interest</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">gencodeId</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Paging info</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> numberOfPages = 1</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> page = 0</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> maxItemsPerPage = 250</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">•</span> totalNumberOfItems = 1</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">gencodeId</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/message.html" class="external-link">suppressMessages</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
 <span><span class="va">gene_gencodeId_of_interest</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="../reference/get_significant_single_tissue_eqtls.html">get_significant_single_tissue_eqtls</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">geneSymbol</span>, <span class="va">gencodeId</span>, <span class="va">tissueSiteDetailId</span><span class="op">)</span></span>
@@ -236,7 +230,7 @@ requires versioned GENCODE IDs)</p>
 variants which may or may not be significant eQTLs. Use
 <code><a href="../reference/calculate_expression_quantitative_trait_loci.html">calculate_expression_quantitative_trait_loci()</a></code> with
 <code><a href="https://purrr.tidyverse.org/reference/map.html" class="external-link">purrr::map()</a></code> to retrieve data for multiple variants</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">variants_of_interest</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rs12119111"</span>, <span class="st">"rs6605071"</span>, <span class="st">"rs1053870"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">variants_of_interest</span> <span class="op">|&gt;</span></span>
