@@ -79,7 +79,7 @@ A tibble
 \href{https://gtexportal.org/api/v2/redoc#tag/Biobank-Data-Endpoints/operation/download_api_v2_biobank_download_get}{GTEx Portal API documentation}
 }
 \details{
-Note: running this request with no filters (i.e. \code{download()}) raises an error
+Note: running this request with no filters (i.e. \code{download()}) raises an error.
 }
 \examples{
 \dontrun{

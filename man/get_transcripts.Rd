@@ -47,6 +47,7 @@ Other Reference Genome Endpoints:
 \code{\link{get_exons}()},
 \code{\link{get_gene_search}()},
 \code{\link{get_genes}()},
+\code{\link{get_genomic_features}()},
 \code{\link{get_gwas_catalog_by_location}()},
 \code{\link{get_neighbor_gene}()}
 }

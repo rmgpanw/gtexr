@@ -37,6 +37,9 @@ data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 
 \item{excludeDataArray}{String. Options are TRUE or FALSE}
 
+\item{.featureId}{String. A genomic feature e.g. GENCODE ID, RSID or
+GTEx Variant ID.}
+
 \item{filterMtGene}{Logical. Exclude mitochondrial genes.}
 
 \item{gencodeId}{String. A Versioned GENCODE ID of a gene, e.g.
