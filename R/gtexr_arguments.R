@@ -21,6 +21,8 @@
 #'   "EXCLUDE".
 #' @param end Integer.
 #' @param excludeDataArray String. Options are TRUE or FALSE
+#' @param .featureId String. A genomic feature e.g. GENCODE ID, RSID or
+#' GTEx Variant ID.
 #' @param filterMtGene Logical. Exclude mitochondrial genes.
 #' @param gencodeId String. A Versioned GENCODE ID of a gene, e.g.
 #'   "ENSG00000065613.9".
@@ -119,6 +121,7 @@ gtexr_arguments <- function() {
     "dataTypes", "character", FALSE, TRUE, "selectInput", c("RNASEQ", "WGS", "WES", "OMNI", "EXCLUDE"),
     "end", "integer", TRUE, FALSE, "numericInput", c(0, 250000000),
     "excludeDataArray", "logical", TRUE, FALSE, "checkboxInput", NA,
+    ".featureId", "character", TRUE, FALSE, "textInput", NA,
     "filterMtGene", "logical", TRUE, FALSE, "checkboxInput", NA,
     "gencodeId", "character", TRUE, FALSE, "textInput", NA,
     "gencodeIds", "character", FALSE, TRUE, "textAreaInput", NA,
