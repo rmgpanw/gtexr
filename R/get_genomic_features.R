@@ -34,28 +34,16 @@ get_genomic_features <- function(.featureId,
   # perform query
   gtex_query(endpoint = paste0("reference/features/", .featureId),
                        return_raw = TRUE) |>
-    process_get_genomic_features_resp_json(.featureId = .featureId,
-                                           call = rlang::caller_env())
+    process_get_genomic_features_resp_json(.featureId = .featureId)
 }
 
-process_get_genomic_features_resp_json <- function(resp, .featureId, call) {
+process_get_genomic_features_resp_json <- function(resp_json, .featureId) {
 
-  if (identical(resp$detail, "Not Found")) {
-    cli::cli_abort(
-      class = "httr2_http_404",
-      message = c(
-        "!" = "HTTP 404 Not Found",
-        "x" = paste0("Invalid input for `.featureId`: '", .featureId, "'")
-      ),
-      call = call
-    )
-  }
-
-  if (rlang::is_empty(resp$features)) {
-    result <- tibble::tibble(assembly = resp$assembly)
+  if (rlang::is_empty(resp_json$features)) {
+    result <- tibble::tibble(assembly = resp_json$assembly)
   } else {
-    result <- tibble::as_tibble(resp$features[[1]]) |>
-      dplyr::mutate("assembly" = resp$assembly)
+    result <- tibble::as_tibble(resp_json$features[[1]]) |>
+      dplyr::mutate("assembly" = resp_json$assembly)
   }
 
   return(result)
