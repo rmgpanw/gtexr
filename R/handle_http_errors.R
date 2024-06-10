@@ -12,7 +12,7 @@ handle_status_422 <- function(resp_body, call) {
   names(msgs) <- rep("i", length(msgs))
 
   cli::cli_abort(
-    class = "httr2_http_400",
+    class = "httr2_http_422",
     message = c("!" = "HTTP 422 Validation Error",
                 invalid_args,
                 msgs),
