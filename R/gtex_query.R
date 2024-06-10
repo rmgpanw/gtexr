@@ -111,7 +111,7 @@ gtex_query <- function(endpoint = NULL,
 
 perform_gtex_request <- function(gtex_request, call) {
   gtex_response <- gtex_request |>
-    httr2::req_error(is_error = \(resp) ifelse(!resp$status_code %in% c(200L, 422L, 400L),
+    httr2::req_error(is_error = \(resp) ifelse(!resp$status_code %in% c(200L, 422L, 400L, 404L),
                                                TRUE,
                                                FALSE)) |>
     httr2::req_perform()

@@ -27,13 +27,63 @@
 #' }
 get_genomic_features <- function(.featureId,
                                  datasetId = "gtex_v8") {
-  if (!rlang::is_string(.featureId)) {
-    cli::cli_abort("`.featureId` must be a single string.")
+
+  # validate `.featureId`
+  validate_featureId(.featureId)
+
+  # perform query
+  gtex_query(endpoint = paste0("reference/features/", .featureId),
+                       return_raw = TRUE) |>
+    process_get_genomic_features_resp_json(.featureId = .featureId,
+                                           call = rlang::caller_env())
+}
+
+process_get_genomic_features_resp_json <- function(resp, .featureId, call) {
+
+  if (identical(resp$detail, "Not Found")) {
+    cli::cli_abort(
+      class = "httr2_http_404",
+      message = c(
+        "!" = "HTTP 404 Not Found",
+        "x" = paste0("Invalid input for `.featureId`: '", .featureId, "'")
+      ),
+      call = call
+    )
   }
 
-  result <- gtex_query(endpoint = paste0("reference/features/", .featureId),
-                       return_raw = TRUE)
+  if (rlang::is_empty(resp$features)) {
+    result <- tibble::tibble(assembly = resp$assembly)
+  } else {
+    result <- tibble::as_tibble(resp$features[[1]]) |>
+      dplyr::mutate("assembly" = resp$assembly)
+  }
 
-  tibble::as_tibble(result$features[[1]]) |>
-    dplyr::mutate("assembly" = result$assembly)
+  return(result)
+}
+
+validate_featureId <- function(.featureId) {
+  if (!rlang::is_string(.featureId)) {
+    cli::cli_abort(c("!" = "Invalid `.featureId` input",
+                     "x" = cli::format_inline("You supplied: {class(.featureId)} of length {length(.featureId)}"),
+                     "i" = "`.featureId` must be a single string"))
+  }
+
+  if (grepl("[^a-zA-Z0-9_.]", .featureId)) {
+    invalid_characters <- gsub("[a-zA-Z0-9_.]", replacement = "", .featureId)
+    invalid_characters <- strsplit(invalid_characters, "")[[1]] |>
+      unique()
+
+    error_message <-
+      c(
+        "!" = "Invalid `.featureId` input",
+        "x" = cli::format_inline(
+          "Found {length(invalid_characters)} invalid character{?s}: `{paste(invalid_characters, sep = '', collapse = '`, `')}`"
+        ),
+        "i" = cli::format_inline(
+          "`.featureId` can only contain alphanumeric characters, underscores or period ('.') symbols."
+        )
+      )
+
+    cli::cli_abort(error_message)
+  }
 }
