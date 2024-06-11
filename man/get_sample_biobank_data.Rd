@@ -89,8 +89,7 @@ A tibble
 }
 \examples{
 \dontrun{
- get_sample_biobank_data(tissueSiteDetailIds = "Whole_Blood",
-                         itemsPerPage = 1)
+ get_sample_biobank_data(tissueSiteDetailIds = "Whole_Blood")
 }
 }
 \seealso{
