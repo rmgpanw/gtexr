@@ -33,6 +33,8 @@ data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 \item{dataTypes}{Character vector. Options: "RNASEQ", "WGS", "WES", "OMNI",
 "EXCLUDE".}
 
+\item{draw}{Integer.}
+
 \item{end}{Integer.}
 
 \item{excludeDataArray}{String. Options are TRUE or FALSE}

@@ -19,6 +19,7 @@
 #'   data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".
 #' @param dataTypes Character vector. Options: "RNASEQ", "WGS", "WES", "OMNI",
 #'   "EXCLUDE".
+#' @param draw Integer.
 #' @param end Integer.
 #' @param excludeDataArray String. Options are TRUE or FALSE
 #' @param .featureId String. A genomic feature e.g. GENCODE ID, RSID or
@@ -119,6 +120,7 @@ gtexr_arguments <- function() {
     "chromosome", "character", TRUE, FALSE, "selectInput", c(paste0("chr", 1:22), paste0("chr", c("M", "X", "Y"))),
     "datasetId", "character", TRUE, FALSE, "selectInput", c("gtex_v8", "gtex_snrnaseq_pilot"),
     "dataTypes", "character", FALSE, TRUE, "selectInput", c("RNASEQ", "WGS", "WES", "OMNI", "EXCLUDE"),
+    "draw", "integer", TRUE, FALSE, "numericInput", c(0, 250000000),
     "end", "integer", TRUE, FALSE, "numericInput", c(0, 250000000),
     "excludeDataArray", "logical", TRUE, FALSE, "checkboxInput", NA,
     ".featureId", "character", TRUE, FALSE, "textInput", NA,
