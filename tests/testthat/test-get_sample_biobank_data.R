@@ -1,3 +1,12 @@
+
+test_that("get_sample_biobank_data() runs without error", {
+  skip_if_offline()
+  expect_equal(get_sample_biobank_data(itemsPerPage = 1) |>
+                 suppressWarnings() |>
+                 nrow(),
+               1)
+})
+
 test_that("process_get_sample_biobank_data_resp_json() prints expected message/warning and returns tibble", {
 
   # get_sample_biobank_data(tissueSiteDetailIds = "Whole_Blood", itemsPerPage =
