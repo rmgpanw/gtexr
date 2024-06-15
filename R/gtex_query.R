@@ -72,27 +72,7 @@ gtex_query <- function(endpoint = NULL,
 
   if (!is.null(gtex_response_body[["paging_info"]])) {
 
-    # warn user if not all available results fit on one page
-    if ((gtex_response_body$paging_info$totalNumberOfItems > gtex_response_body$paging_info$maxItemsPerPage)) {
-
-      warning_message <-
-        c(
-          "!" = cli::format_inline(
-            "Total number of items ({gtex_response_body$paging_info$totalNumberOfItems}) exceeds maximum page size ({gtex_response_body$paging_info$maxItemsPerPage})."
-          ),
-          "i" = cli::format_inline("Try increasing `itemsPerPage`.")
-        )
-
-      cli::cli_warn(warning_message,
-                    message_unformatted = warning_message)
-    }
-
-    # print paging info
-    cli::cli_h1("Paging info")
-    gtex_response_body$paging_info |>
-      purrr::imap_chr(\(x, idx) paste(idx, x, sep = " = ")) |>
-      purrr::set_names(nm = "*") |>
-      cli::cli_bullets()
+    paging_info_messages(gtex_response_body)
 
     result <- gtex_response_body$data |>
       purrr::map(\(x) x |>
@@ -137,4 +117,28 @@ convert_null_to_na <- function(x) {
   } else {
     return(x)
   }
+}
+
+paging_info_messages <- function(gtex_response_body) {
+  # warn user if not all available results fit on one page
+  if ((gtex_response_body$paging_info$totalNumberOfItems > gtex_response_body$paging_info$maxItemsPerPage)) {
+
+    warning_message <-
+      c(
+        "!" = cli::format_inline(
+          "Total number of items ({gtex_response_body$paging_info$totalNumberOfItems}) exceeds maximum page size ({gtex_response_body$paging_info$maxItemsPerPage})."
+        ),
+        "i" = cli::format_inline("Try increasing `itemsPerPage`.")
+      )
+
+    cli::cli_warn(warning_message,
+                  message_unformatted = warning_message)
+  }
+
+  # print paging info
+  cli::cli_h1("Paging info")
+  gtex_response_body$paging_info |>
+    purrr::imap_chr(\(x, idx) paste(idx, x, sep = " = ")) |>
+    purrr::set_names(nm = "*") |>
+    cli::cli_bullets()
 }

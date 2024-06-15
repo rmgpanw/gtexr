@@ -18,15 +18,16 @@ data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 A tibble
 }
 \description{
-\itemize{
-\item This service returns the list of annotations and allowed values by which a particular dataset can be subsetted.
-\item Results may be filtered by dataset.
-}
+This service returns the list of annotations and allowed values
+by which a particular dataset can be subsetted. Results may be filtered by
+dataset.
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_annotation_api_v2_dataset_annotation_get}{GTEx Portal API documentation}
 }
 \examples{
-get_annotation()
+\dontrun{
+ get_annotation()
+}
 }
 \seealso{
 Other Datasets Endpoints: 
