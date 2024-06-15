@@ -1,11 +1,14 @@
 #' Get Annotation
 #'
 #' @description This service returns the list of annotations and allowed values
-#' by which a particular dataset can be subsetted. Results may be filtered by
-#' dataset.
+#'   by which a particular dataset can be subsetted. Results may be filtered by
+#'   dataset.
 #'
-#' [GTEx Portal API
-#' documentation](https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_annotation_api_v2_dataset_annotation_get)
+#'   [GTEx Portal API
+#'   documentation](https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_annotation_api_v2_dataset_annotation_get)
+#'
+#' @details Note: the output for this function appears to be incomplete
+#' currently.
 #'
 #' @inheritParams gtexr_arguments
 #'

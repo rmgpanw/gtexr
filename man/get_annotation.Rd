@@ -24,6 +24,10 @@ dataset.
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_annotation_api_v2_dataset_annotation_get}{GTEx Portal API documentation}
 }
+\details{
+Note: the output for this function appears to be incomplete
+currently.
+}
 \examples{
 \dontrun{
  get_annotation()
