@@ -7,12 +7,10 @@
 get_file_list()
 }
 \value{
-A Tibble
+A tibble
 }
 \description{
-\itemize{
-\item Get all the files in GTEx dataset for Download page
-}
+Get all the files in GTEx dataset for Download page
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_file_list_api_v2_dataset_fileList_get}{GTEx Portal API documentation}
 }
