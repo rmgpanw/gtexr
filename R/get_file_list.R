@@ -1,17 +1,33 @@
 #' Get File List
 #'
-#' @description
-#' Get all the files in GTEx dataset for Download page
+#' @description Get all the files in GTEx dataset for Download page
 #'
-#' [GTEx Portal API
-#' documentation](https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_file_list_api_v2_dataset_fileList_get)
+#'   [GTEx Portal API
+#'   documentation](https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_file_list_api_v2_dataset_fileList_get)
+#'
+#' @details The returned tibble includes a nested list column, "filesets". This
+#'   details files, sub-categorised by fileset (see examples section).
 #'
 #' @return A tibble
 #' @export
 #' @family Datasets Endpoints
 #'
 #' @examples
+#' \dontrun{
+#' # Column "filesets" is a list column
 #' get_file_list()
+#'
+#' # Get "GTEx Analysis V9" file list
+#' gtex_v9_files <- get_file_list() |>
+#'                    dplyr::filter(name == "GTEx Analysis V9") |>
+#'                    dplyr::pull(filesets)
+#'
+#' # "GTEx Analysis V9" filesets
+#' names(gtex_v9_files[[1]])
+#'
+#' # "GTEx Analysis V9", "snRNA-Seq Data" fileset files
+#' names(gtex_v9_files[[1]][["snRNA-Seq Data"]]$files)
+#' }
 get_file_list <- function() {
   result <- gtex_query(endpoint = "dataset/fileList", return_raw = TRUE)
   result |>

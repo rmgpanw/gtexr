@@ -14,8 +14,26 @@ Get all the files in GTEx dataset for Download page
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_file_list_api_v2_dataset_fileList_get}{GTEx Portal API documentation}
 }
+\details{
+The returned tibble includes a nested list column, "filesets". This
+details files, sub-categorised by fileset (see examples section).
+}
 \examples{
+\dontrun{
+# Column "filesets" is a list column
 get_file_list()
+
+# Get "GTEx Analysis V9" file list
+gtex_v9_files <- get_file_list() |>
+                   dplyr::filter(name == "GTEx Analysis V9") |>
+                   dplyr::pull(filesets)
+
+# "GTEx Analysis V9" filesets
+names(gtex_v9_files[[1]])
+
+# "GTEx Analysis V9", "snRNA-Seq Data" fileset files
+names(gtex_v9_files[[1]][["snRNA-Seq Data"]]$files)
+}
 }
 \seealso{
 Other Datasets Endpoints: 
