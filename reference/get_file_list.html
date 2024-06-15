@@ -70,6 +70,11 @@ GTEx Portal API documentation"><meta property="og:image" content="https://rmgpan
 <p>A tibble</p>
     </div>
     <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>The returned tibble includes a nested list column, "filesets". This
+details files, sub-categorised by fileset (see examples section).</p>
+    </div>
+    <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
     <div class="dont-index"><p>Other Datasets Endpoints: 
 <code><a href="get_annotation.html">get_annotation</a>()</code>,
@@ -88,7 +93,9 @@ GTEx Portal API documentation"><meta property="og:image" content="https://rmgpan
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">get_file_list</span><span class="op">(</span><span class="op">)</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \dontrun{</span></span></span>
+<span class="r-in"><span><span class="co"># Column "filesets" is a list column</span></span></span>
+<span class="r-in"><span><span class="fu">get_file_list</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 11 × 10</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    name            subpath dbgapId dataset release order type  id    description</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
@@ -104,6 +111,21 @@ GTEx Portal API documentation"><meta property="og:image" content="https://rmgpan
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> eGTEx           gtex_e… <span style="color: #949494;">""</span>      GTEx    egtex       2 data… egtex <span style="color: #949494;">"</span>The Enhan…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">11</span> GTEx Analysis … gtex_a… <span style="color: #949494;">"</span>phs00… GTEx    v9          0 data… gtex… <span style="color: #949494;">"</span>Open-acce…</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 1 more variable: filesets &lt;list&gt;</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Get "GTEx Analysis V9" file list</span></span></span>
+<span class="r-in"><span><span class="va">gtex_v9_files</span> <span class="op">&lt;-</span> <span class="fu">get_file_list</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>                   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">name</span> <span class="op">==</span> <span class="st">"GTEx Analysis V9"</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>                   <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">filesets</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># "GTEx Analysis V9" filesets</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">gtex_v9_files</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "snRNA-Seq Data" "Long Read Data"</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># "GTEx Analysis V9", "snRNA-Seq Data" fileset files</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">gtex_v9_files</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">[[</span><span class="st">"snRNA-Seq Data"</span><span class="op">]</span><span class="op">]</span><span class="op">$</span><span class="va">files</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "GTEx_8_tissues_snRNAseq_atlas_071421.public_obs.h5ad"       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [2] "GTEx_8_tissues_snRNAseq_immune_atlas_071421.public_obs.h5ad"</span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
