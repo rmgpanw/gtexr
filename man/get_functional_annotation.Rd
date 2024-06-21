@@ -31,12 +31,11 @@ data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 \item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-A Tibble
+A tibble
 }
 \description{
-\itemize{
-\item This endpoint retrieves the functional annotation of a certain chromosome location. Default to most recent dataset release.
-}
+This endpoint retrieves the functional annotation of a certain
+chromosome location. Default to most recent dataset release.
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_full_get_collapsed_gene_model_exon_api_v2_dataset_fullCollapsedGeneModelExon_get}{GTEx Portal API documentation}
 }
