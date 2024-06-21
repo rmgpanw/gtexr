@@ -4,33 +4,27 @@
 \alias{get_full_get_collapsed_gene_model_exon}
 \title{Get Full Get Collapsed Gene Model Exon}
 \usage{
-get_full_get_collapsed_gene_model_exon(
-  gencodeIds,
-  page = 0,
-  itemsPerPage = 250
-)
+get_full_get_collapsed_gene_model_exon(gencodeId, page = 0, itemsPerPage = 250)
 }
 \arguments{
-\item{gencodeIds}{A character vector of Versioned GENCODE IDs, e.g.
-c("ENSG00000132693.12", "ENSG00000203782.5").}
+\item{gencodeId}{String. A Versioned GENCODE ID of a gene, e.g.
+"ENSG00000065613.9".}
 
 \item{page}{Integer (default = 0).}
 
 \item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-A Tibble
+A tibble
 }
 \description{
-\itemize{
-\item This service allows the user to query the full Collapsed Gene Model Exon of a specific gene by gencode ID
-}
+This service allows the user to query the full Collapsed Gene
+Model Exon of a specific gene by gencode ID
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_full_get_collapsed_gene_model_exon_api_v2_dataset_fullCollapsedGeneModelExon_get}{GTEx Portal API documentation}
 }
 \examples{
-get_full_get_collapsed_gene_model_exon(gencodeIds = c("ENSG00000132693.12",
-                                                  "ENSG00000203782.5"))
+get_full_get_collapsed_gene_model_exon(gencodeId = "ENSG00000203782.5")
 }
 \seealso{
 Other Datasets Endpoints: 
