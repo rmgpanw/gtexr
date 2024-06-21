@@ -55,8 +55,8 @@ Other Expression Data Endpoints:
 \code{\link{get_median_exon_expression}()},
 \code{\link{get_median_junction_expression}()},
 \code{\link{get_median_transcript_expression}()},
-\code{\link{get_single_nucleus_gex_summary}()},
 \code{\link{get_single_nucleus_gex}()},
+\code{\link{get_single_nucleus_gex_summary}()},
 \code{\link{get_top_expressed_genes}()}
 }
 \concept{Expression Data Endpoints}

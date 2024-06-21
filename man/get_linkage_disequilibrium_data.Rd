@@ -51,7 +51,7 @@ Other Datasets Endpoints:
 \code{\link{get_sample_datasets_endpoints}()},
 \code{\link{get_subject}()},
 \code{\link{get_tissue_site_detail}()},
-\code{\link{get_variant_by_location}()},
-\code{\link{get_variant}()}
+\code{\link{get_variant}()},
+\code{\link{get_variant_by_location}()}
 }
 \concept{Datasets Endpoints}

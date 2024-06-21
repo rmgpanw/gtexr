@@ -133,7 +133,7 @@ Other Datasets Endpoints:
 \code{\link{get_linkage_disequilibrium_data}()},
 \code{\link{get_subject}()},
 \code{\link{get_tissue_site_detail}()},
-\code{\link{get_variant_by_location}()},
-\code{\link{get_variant}()}
+\code{\link{get_variant}()},
+\code{\link{get_variant_by_location}()}
 }
 \concept{Datasets Endpoints}
