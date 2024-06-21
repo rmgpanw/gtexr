@@ -13,14 +13,40 @@ get_downloads_page_data(project_id = "adult-gtex")
 A Tibble
 }
 \description{
-\itemize{
-\item Retrieves all the files belonging to the given project_id for display on the Downloads Page
-}
+Retrieves all the files belonging to the given \code{project_id} for
+display on the \verb{Downloads Page}
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_downloads_page_data_api_v2_dataset_openAccessFilesMetadata_get}{GTEx Portal API documentation}
 }
+\details{
+Note: The GTEx Portal API documentation states "GTEx currently has
+one project available: gtex". However, \code{project_id} values "adult-gtex" and
+"egtex" both return results, whereas "gtex" does not (see examples).
+}
 \examples{
-get_downloads_page_data()
+\dontrun{
+ # "adult-gtex" (default `project_id` value) and "egtex" both return results
+ get_downloads_page_data()
+ egtex <- get_downloads_page_data("egtex")
+ egtex
+
+ # ..."gtex" does not
+ get_downloads_page_data("gtex")
+
+ # get details for whole blood methylation data, including download URL
+ purrr::pluck(
+   egtex$children,
+   1,
+   "folders",
+   "Methylation - EPIC Array",
+   "children",
+   "folders",
+   "mQTLs",
+   "children",
+   "files",
+   "WholeBlood.mQTLs.regular.txt.gz"
+ )
+}
 }
 \seealso{
 Other Datasets Endpoints: 
