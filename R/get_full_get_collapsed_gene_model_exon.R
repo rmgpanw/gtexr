@@ -13,7 +13,9 @@
 #' @family Datasets Endpoints
 #'
 #' @examples
-#' get_full_get_collapsed_gene_model_exon(gencodeId = "ENSG00000203782.5")
+#' \dontrun{
+#'   get_full_get_collapsed_gene_model_exon(gencodeId = "ENSG00000203782.5")
+#' }
 get_full_get_collapsed_gene_model_exon <- function(gencodeId,
                                                    page = 0,
                                                    itemsPerPage = 250){

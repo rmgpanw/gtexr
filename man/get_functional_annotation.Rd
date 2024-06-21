@@ -40,7 +40,9 @@ chromosome location. Default to most recent dataset release.
 \href{https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_full_get_collapsed_gene_model_exon_api_v2_dataset_fullCollapsedGeneModelExon_get}{GTEx Portal API documentation}
 }
 \examples{
-get_functional_annotation(chromosome = "chr1", start = 192168000, end = 192169000)
+\dontrun{
+  get_functional_annotation(chromosome = "chr1", start = 192168000, end = 192169000)
+}
 }
 \seealso{
 Other Datasets Endpoints: 
@@ -51,7 +53,7 @@ Other Datasets Endpoints:
 \code{\link{get_full_get_collapsed_gene_model_exon}()},
 \code{\link{get_linkage_disequilibrium_by_variant_data}()},
 \code{\link{get_linkage_disequilibrium_data}()},
-\code{\link{get_sample}()},
+\code{\link{get_sample_datasets_endpoints}()},
 \code{\link{get_subject}()},
 \code{\link{get_tissue_site_detail}()},
 \code{\link{get_variant_by_location}()},
