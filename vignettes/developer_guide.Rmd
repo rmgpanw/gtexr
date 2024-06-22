@@ -30,6 +30,7 @@ library(gtexr)
   - [ ] Names match those for API endpoint, except where the argument accepts an array (vector in R) of values, in which case it is pluralised
   - [ ] Note that the [Get Genomic Features] endpoint takes a path parameter "featureId". The corresponding gtexr argument is prefixed with "." (`.featureId`).
   - [ ] Default values also match those for API endpoint
+  - [ ] Query parameters flagged as "required" in the GTEx Portal API documentation do not have default values. Note however that while `variantId` is not flagged as "required" for [Get Linkage Disequilibrium By Variant Data](https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_linkage_disequilibrium_by_variant_data_api_v2_dataset_ldByVariant_get), no default value is provided in `get_linkage_disequilibrium_by_variant_data()` as providing `NULL` or an unrecognised variant ID returns an empty response.
   - [ ] Are all documented in `gtexr_arguments.R`. Rules...see also link to separate section(?) (**TO DO**)
   - [ ] All functions therefore use `@inheritParams gtexr_arguments` for documentation
   

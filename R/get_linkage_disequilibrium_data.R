@@ -20,18 +20,8 @@
 get_linkage_disequilibrium_data <- function(gencodeId,
                                             datasetId = "gtex_v8",
                                             page = 0,
-                                            itemsPerPage = 250){
-  result <- gtex_query(endpoint = "dataset/ld",
-             return_raw = TRUE)
+                                            itemsPerPage = 250) {
+  resp_body <- gtex_query(endpoint = "dataset/ld", return_raw = TRUE)
 
-  paging_info_messages(result)
-
-  result$data |>
-    purrr::map(\(x) tibble::tibble(variants = x[[1]], ld = x[[2]])) |>
-    dplyr::bind_rows() |>
-    tidyr::separate_wider_delim(
-      cols = "variants",
-      delim = ",",
-      names = c("variantId_1", "variantId_2")
-    )
+  process_resp_body_linkage_disequilibrium(resp_body)
 }

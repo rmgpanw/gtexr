@@ -5,7 +5,7 @@
 \title{Get Linkage Disequilibrium By Variant Data}
 \usage{
 get_linkage_disequilibrium_by_variant_data(
-  variantId = NULL,
+  variantId,
   page = 0,
   itemsPerPage = 250
 )
@@ -18,17 +18,15 @@ get_linkage_disequilibrium_by_variant_data(
 \item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-A Tibble
+A tibble.
 }
 \description{
-\itemize{
-\item Find linkage disequilibrium (LD) data for a given variant
-}
+Find linkage disequilibrium (LD) data for a given variant
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_linkage_disequilibrium_by_variant_data_api_v2_dataset_ldByVariant_get}{GTEx Portal API documentation}
 }
 \examples{
-get_linkage_disequilibrium_by_variant_data()
+get_linkage_disequilibrium_by_variant_data("chr1_159245536_C_T_b38")
 }
 \seealso{
 Other Datasets Endpoints: 
