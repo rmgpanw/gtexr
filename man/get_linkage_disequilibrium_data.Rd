@@ -5,15 +5,15 @@
 \title{Get Linkage Disequilibrium Data}
 \usage{
 get_linkage_disequilibrium_data(
-  gencodeIds,
+  gencodeId,
   datasetId = "gtex_v8",
   page = 0,
   itemsPerPage = 250
 )
 }
 \arguments{
-\item{gencodeIds}{A character vector of Versioned GENCODE IDs, e.g.
-c("ENSG00000132693.12", "ENSG00000203782.5").}
+\item{gencodeId}{String. A Versioned GENCODE ID of a gene, e.g.
+"ENSG00000065613.9".}
 
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
 data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
@@ -26,18 +26,17 @@ data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 A tibble.
 }
 \description{
-\itemize{
-\item Find linkage disequilibrium (LD) data for a given gene.
-\item This endpoint returns linkage disequilibrium data for the cis-eQTLs found associated with the provided gene in a specified dataset.
-\item Results are queried by gencode ID. By default, the service queries the latest GTEx release.
-\item Specify a dataset ID to fetch results from a different dataset.
-}
+Find linkage disequilibrium (LD) data for a given gene.
+
+This endpoint returns linkage disequilibrium data for the cis-eQTLs found
+associated with the provided gene in a specified dataset. Results are queried
+by gencode ID. By default, the service queries the latest GTEx release.
+Specify a dataset ID to fetch results from a different dataset.
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_variant_by_location_api_v2_dataset_variantByLocation_get}{GTEx Portal API documentation}
 }
 \examples{
-get_linkage_disequilibrium_data(gencodeIds = c("ENSG00000132693.12",
-                                                  "ENSG00000203782.5"))
+get_linkage_disequilibrium_data(gencodeId = "ENSG00000132693.12")
 }
 \seealso{
 Other Datasets Endpoints: 
