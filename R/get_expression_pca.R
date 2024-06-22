@@ -1,23 +1,26 @@
 #' Get Expression Pca
 #'
 #' @description
-#' - Find gene expression PCA data.
+#' Find gene expression PCA data.
+#'
 #' - Returns gene expression PCA (principal component analysis) in tissues.
 #' - Results may be filtered by tissue, sample, or dataset.
-#' - By default, the service queries the latest GTEx release.
+#'
+#' By default, the service queries the latest GTEx release.
 #'
 #'[GTEx Portal API
 #'documentation](https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_expression_pca_api_v2_expression_expressionPca_get)
 #'
 #' @inheritParams gtexr_arguments
 #'
-#' @return A tibble
+#' @return A tibble.
 #' @export
 #' @family Expression Data Endpoints
 #'
 #' @examples
 #' \dontrun{
-#' get_expression_pca(tissueSiteDetailIds = "Adipose_Subcutaneous")
+#' get_expression_pca(tissueSiteDetailIds = c("Adipose_Subcutaneous",
+#'                                            "Whole_Blood"))
 #'
 #' get_expression_pca(tissueSiteDetailIds = "Adipose_Subcutaneous",
 #'                    sampleId = "GTEX-1117F-0226-SM-5GZZ7")

@@ -27,21 +27,23 @@ data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 \item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-A tibble
+A tibble.
 }
 \description{
+Find gene expression PCA data.
 \itemize{
-\item Find gene expression PCA data.
 \item Returns gene expression PCA (principal component analysis) in tissues.
 \item Results may be filtered by tissue, sample, or dataset.
-\item By default, the service queries the latest GTEx release.
 }
+
+By default, the service queries the latest GTEx release.
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_expression_pca_api_v2_expression_expressionPca_get}{GTEx Portal API documentation}
 }
 \examples{
 \dontrun{
-get_expression_pca(tissueSiteDetailIds = "Adipose_Subcutaneous")
+get_expression_pca(tissueSiteDetailIds = c("Adipose_Subcutaneous",
+                                           "Whole_Blood"))
 
 get_expression_pca(tissueSiteDetailIds = "Adipose_Subcutaneous",
                    sampleId = "GTEX-1117F-0226-SM-5GZZ7")
