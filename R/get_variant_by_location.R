@@ -1,8 +1,10 @@
 #' Get Variant By Location
 #'
-#' [This service allows the user to query information about variants on a
-#' certain chromosome at a certain
-#' location.](https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_variant_by_location_api_v2_dataset_variantByLocation_get)
+#' @description This service allows the user to query information about variants
+#'   on a certain chromosome at a certain location.
+#'
+#'   [GTEx Portal API
+#'   documentation](https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_variant_by_location_api_v2_dataset_variantByLocation_get)
 #'
 #' @inheritParams gtexr_arguments
 #'
@@ -17,6 +19,7 @@
 get_variant_by_location <- function(start,
                                     end,
                                     chromosome,
+                                    sortBy = "pos",
                                     sortDirection = "asc",
                                     page = 0,
                                     itemsPerPage = 250) {

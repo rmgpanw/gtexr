@@ -8,6 +8,7 @@ get_variant_by_location(
   start,
   end,
   chromosome,
+  sortBy = "pos",
   sortDirection = "asc",
   page = 0,
   itemsPerPage = 250
@@ -23,6 +24,10 @@ get_variant_by_location(
 "chr14", "chr15", "chr16", "chr17", "chr18", "chr19", "chr20", "chr21",
 "chr22", "chrM", "chrX", "chrY".}
 
+\item{sortBy}{String. Options: "sampleId", "ischemicTime", "aliquotId",
+"tissueSampleId", "hardyScale", "pathologyNotes", "ageBracket",
+"tissueSiteDetailId", "sex".}
+
 \item{sortDirection}{String. Options: "asc", "desc". Default = "asc".}
 
 \item{page}{Integer (default = 0).}
@@ -33,7 +38,10 @@ get_variant_by_location(
 A tibble.
 }
 \description{
-\href{https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_variant_by_location_api_v2_dataset_variantByLocation_get}{This service allows the user to query information about variants on a certain chromosome at a certain location.}
+This service allows the user to query information about variants
+on a certain chromosome at a certain location.
+
+\href{https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_variant_by_location_api_v2_dataset_variantByLocation_get}{GTEx Portal API documentation}
 }
 \examples{
 get_variant_by_location(start = 153209600,
