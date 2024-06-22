@@ -113,6 +113,14 @@ endpoint takes a path parameter “featureId”. The corresponding gtexr
 argument is prefixed with “.” (<code>.featureId</code>).</label></li>
 <li><label><input type="checkbox">Default values also match those for
 API endpoint</label></li>
+<li><label><input type="checkbox">Query parameters flagged as
+“required” in the GTEx Portal API documentation do not have default
+values. Note however that while <code>variantId</code> is not flagged as
+“required” for <a href="https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_linkage_disequilibrium_by_variant_data_api_v2_dataset_ldByVariant_get" class="external-link">Get
+Linkage Disequilibrium By Variant Data</a>, no default value is provided
+in <code><a href="../reference/get_linkage_disequilibrium_by_variant_data.html">get_linkage_disequilibrium_by_variant_data()</a></code> as
+providing <code>NULL</code> or an unrecognised variant ID returns an
+empty response.</label></li>
 <li><label><input type="checkbox">Are all documented in
 <code>gtexr_arguments.R</code>. Rules…see also link to separate
 section(?) (<strong>TO DO</strong>)</label></li>
