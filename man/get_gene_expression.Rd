@@ -7,7 +7,7 @@
 get_gene_expression(
   gencodeIds,
   datasetId = "gtex_v8",
-  tissueSiteDetailId = NULL,
+  tissueSiteDetailIds = NULL,
   attributeSubset = NULL,
   page = 0,
   itemsPerPage = 250
@@ -20,9 +20,9 @@ c("ENSG00000132693.12", "ENSG00000203782.5").}
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
 data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 
-\item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
-GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
-to see valid values) or an Ontology ID.}
+\item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
+Can be GTEx specific IDs (e.g. "Whole_Blood"; use
+\code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}} to see valid values) or Ontology IDs.}
 
 \item{attributeSubset}{String. Examples include but are not limited to "sex", "ageBracket"}
 
@@ -31,21 +31,39 @@ to see valid values) or an Ontology ID.}
 \item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-A Tibble
+A tibble.
 }
 \description{
+Find normalized gene expression data.
 \itemize{
-\item Find normalized gene expression data.
 \item Returns normalized gene expression in tissues at the sample level.
 \item Results may be filtered by dataset, gene or tissue, but at least one gene must be provided.
-\item By default, this service queries the latest GTEx release.
 }
+
+By default, this service queries the latest GTEx release.
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_gene_expression_api_v2_expression_geneExpression_get}{GTEx Portal API documentation}
 }
 \examples{
 \dontrun{
-get_gene_expression(gencodeIds = "ENSG00000132693.12")
+  # multiple genes, selected tissues
+  get_gene_expression(gencodeIds = c("ENSG00000132693.12",
+                                     "ENSG00000203782.5"),
+                      tissueSiteDetailIds = c("Thyroid", "Whole_Blood"))
+
+  # single gene, selected (single) tissue
+  get_gene_expression(gencodeIds = "ENSG00000132693.12",
+                      tissueSiteDetailIds = "Whole_Blood")
+
+  # subset by sex
+  get_gene_expression(gencodeIds = "ENSG00000132693.12",
+                      tissueSiteDetailIds = "Whole_Blood",
+                      attributeSubset = "sex")
+
+  # subset by age bracket
+  get_gene_expression(gencodeIds = "ENSG00000132693.12",
+                      tissueSiteDetailIds = "Whole_Blood",
+                      attributeSubset = "ageBracket")
 }
 }
 \seealso{
