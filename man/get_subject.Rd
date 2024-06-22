@@ -37,16 +37,17 @@ causes", "Intermediate death", "Slow death".}
 A Tibble
 }
 \description{
-\itemize{
-\item This service returns information of subjects used in analyses from all datasets.
-\item Results may be filtered by dataset ID, subject ID, sex, age bracket or Hardy Scale.
-\item By default, this service queries the latest GTEx release.
-}
+This service returns information of subjects used in analyses
+from all datasets. Results may be filtered by dataset ID, subject ID, sex,
+age bracket or Hardy Scale. By default, this service queries the latest GTEx
+release.
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_tissue_site_detail_api_v2_dataset_tissueSiteDetail_get}{GTEx Portal API documentation}
 }
 \examples{
-get_subject()
+\dontrun{
+  get_subject()
+}
 }
 \seealso{
 Other Datasets Endpoints: 
