@@ -1,17 +1,19 @@
 #' Get Median Transcript Expression
 #'
-#' @description
-#' Find median transcript expression data of all known transcripts of a gene.
-#' Returns median normalized expression in tissues of all known transcripts of a given gene.
-#' Results may be filtered by dataset or tissue.
+#' @description Find median transcript expression data of all known transcripts
+#' of a gene.
+#'
+#' - Returns median normalized expression in tissues of all known transcripts of a given gene.
+#' - Results may be filtered by dataset or tissue.
+#'
 #' By default, this service queries the latest GTEx release.
 #'
 #' [GTEx Portal API
-#'documentation](https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_median_transcript_expression_api_v2_expression_medianTranscriptExpression_get)
+#' documentation](https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_median_transcript_expression_api_v2_expression_medianTranscriptExpression_get)
 #'
-#'@inheritParams gtexr_arguments
+#' @inheritParams gtexr_arguments
 #'
-#' @return A tibble
+#' @return A tibble.
 #' @export
 #' @family Expression Data Endpoints
 #'
