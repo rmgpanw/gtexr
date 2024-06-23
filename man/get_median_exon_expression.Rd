@@ -28,21 +28,24 @@ Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 \item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-A tibble
+A tibble.
 }
 \description{
+Find median exon expression data.
 \itemize{
-\item Find median exon expression data.
 \item Returns median exon read counts, in tissues, of a collapsed gene model.
 \item Results may be filtered by dataset, gene or tissue, but at least one gene must be provided
-\item By default, this service queries the latest GTEx release.
 }
+
+By default, this service queries the latest GTEx release.
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_median_exon_expression_api_v2_expression_medianExonExpression_get}{GTEx Portal API documentation}
 }
 \examples{
 \dontrun{
-get_median_exon_expression(gencodeIds = "ENSG00000132693.12")
+# median exon expression values for CRP, filtered for whole blood
+get_median_exon_expression(gencodeIds = "ENSG00000132693.12",
+                           tissueSiteDetailIds = "Whole_Blood")
 }
 }
 \seealso{
