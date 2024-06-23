@@ -40,5 +40,5 @@ get_clustered_median_gene_expression <- function(gencodeIds,
                                                  tissueSiteDetailIds = NULL) {
   resp_body <- gtex_query(endpoint = "expression/clusteredMedianGeneExpression", return_raw = TRUE)
 
-  process_resp_body_clustered_expression(resp_body)
+  process_resp_body_clustered_expression(resp_body, expression_item_name = "medianGeneExpression")
 }

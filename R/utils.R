@@ -16,9 +16,19 @@ process_resp_body_linkage_disequilibrium <- function(resp_body) {
     dplyr::mutate("ld" = as.numeric(.data[["ld"]]))
 }
 
-process_resp_body_clustered_expression <- function(resp_body) {
+process_resp_body_clustered_expression <- function(resp_body, expression_item_name) {
+
+  if (!expression_item_name %in% names(resp_body)) {
+    cli::cli_abort(
+      c(
+        "Internal gtexr error - incorrect `expression_item_name`: '{expression_item_name}'",
+        "i" = "Please submit an issue at {.url {packageDescription('gtexr')$BugReports}} with a reproducible example."
+      )
+    )
+  }
+
   result <-
-    resp_body$medianExonExpression |>
+    resp_body[[expression_item_name]] |>
     purrr::map(tibble::as_tibble) |>
     dplyr::bind_rows()
 
