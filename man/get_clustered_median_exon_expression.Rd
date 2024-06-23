@@ -25,13 +25,15 @@ Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 A tibble, with clustering data stored as an attribute, "clusters".
 }
 \description{
-Find median transcript expression data along with hierarchical clusters.
+Find median transcript expression data along with hierarchical
+clusters.
 \itemize{
 \item Returns median normalized transcript expression in tissues of all known transcripts of a given gene along with the hierarchical clustering results of tissues and transcripts, based on exon expression, in Newick format.
 \item The hierarchical clustering is performed by calculating Euclidean distances and using the average linkage method.
 \item \strong{This endpoint is not paginated.}
-\item By default, this endpoint queries the latest GTEx release.
 }
+
+By default, this endpoint queries the latest GTEx release.
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_clustered_median_exon_expression_api_v2_expression_clusteredMedianExonExpression_get}{GTEx Portal API documentation}
 }
@@ -41,7 +43,9 @@ get_clustered_median_exon_expression(c("ENSG00000203782.5",
                                        "ENSG00000132693.12"))
 
 # clustering data is stored as an attribute "clusters"
-attributes(result)$cluster
+result <- get_clustered_median_exon_expression(c("ENSG00000203782.5",
+                                                 "ENSG00000132693.12"))
+attr(result, "clusters")
 }
 }
 \seealso{
