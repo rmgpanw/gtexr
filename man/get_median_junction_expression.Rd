@@ -28,12 +28,15 @@ Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 \item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-A tibble
+A tibble.
 }
 \description{
 Find junction gene expression data.
-Returns median junction read counts in tissues of a given gene from all known transcripts.
-Results may be filtered by dataset or tissue.
+\itemize{
+\item Returns median junction read counts in tissues of a given gene from all known transcripts.
+\item Results may be filtered by dataset or tissue.
+}
+
 By default, this service queries the latest GTEx release.
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_median_junction_expression_api_v2_expression_medianJunctionExpression_get}{GTEx Portal API documentation}
