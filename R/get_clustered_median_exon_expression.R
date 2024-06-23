@@ -27,21 +27,17 @@
 #' result <- get_clustered_median_exon_expression(c("ENSG00000203782.5",
 #'                                                  "ENSG00000132693.12"))
 #' attr(result, "clusters")
+#'
+#' # process clustering data with the ape package
+#' # install.packages("ape")
+#' # phylo_tree <- ape::read.tree(text = attr(result, "clusters")$tissue)
+#' # plot(phylo_tree)
+#' # print(phylo_tree)
 #' }
 get_clustered_median_exon_expression <- function(gencodeIds,
                                                  datasetId = "gtex_v8",
-                                                 tissueSiteDetailIds = NULL){
-  response <- gtex_query(endpoint = "expression/clusteredMedianExonExpression",
-             return_raw = TRUE)
+                                                 tissueSiteDetailIds = NULL) {
+  resp_body <- gtex_query(endpoint = "expression/clusteredMedianExonExpression", return_raw = TRUE)
 
-  result <-
-    response$medianExonExpression |>
-    purrr::map(tibble::as_tibble) |>
-    dplyr::bind_rows()
-
-  attr(result, "clusters") <- response$clusters
-
-  cli::cli_alert_info("Retrieve clustering data with `attr(<df>, 'clusters')`")
-
-  return(result)
+  process_resp_body_clustered_expression(resp_body)
 }

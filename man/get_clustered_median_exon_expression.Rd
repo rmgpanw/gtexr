@@ -46,6 +46,12 @@ get_clustered_median_exon_expression(c("ENSG00000203782.5",
 result <- get_clustered_median_exon_expression(c("ENSG00000203782.5",
                                                  "ENSG00000132693.12"))
 attr(result, "clusters")
+
+# process clustering data with the ape package
+# install.packages("ape")
+# phylo_tree <- ape::read.tree(text = attr(result, "clusters")$tissue)
+# plot(phylo_tree)
+# print(phylo_tree)
 }
 }
 \seealso{
