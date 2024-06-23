@@ -2,16 +2,17 @@
 #'
 #' @description
 #'
-#' - Find median gene expression data along with hierarchical clusters .
+#' Find median gene expression data along with hierarchical clusters.
+#'
 #' - Returns median gene expression in tissues.
 #' - By default, this endpoint queries the latest GTEx release.
 #'
 #' [GTEx Portal API
-#'documentation](https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_median_gene_expression_api_v2_expression_medianGeneExpression_get)
+#' documentation](https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_median_gene_expression_api_v2_expression_medianGeneExpression_get)
 #'
-#'@inheritParams gtexr_arguments
+#' @inheritParams gtexr_arguments
 #'
-#' @return A Tibble
+#' @return A tibble.
 #' @export
 #' @family Expression Data Endpoints
 #'

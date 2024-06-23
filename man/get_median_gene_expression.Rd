@@ -28,11 +28,11 @@ Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 \item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-A Tibble
+A tibble.
 }
 \description{
+Find median gene expression data along with hierarchical clusters.
 \itemize{
-\item Find median gene expression data along with hierarchical clusters .
 \item Returns median gene expression in tissues.
 \item By default, this endpoint queries the latest GTEx release.
 }
