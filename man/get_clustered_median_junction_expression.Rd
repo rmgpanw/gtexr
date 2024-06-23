@@ -26,7 +26,7 @@ A tibble, with clustering data stored as an attribute, "clusters".
 }
 \description{
 Find median junction expression data along with hierarchical
-clusters .
+clusters.
 \itemize{
 \item Returns median junction read counts in tissues of a given gene from all known transcripts along with the hierarchical clustering results of tissues and genes, based on junction expression, in Newick format.
 \item Results may be filtered by dataset, gene or tissue, but at least one gene must be provided.
