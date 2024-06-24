@@ -12,5 +12,6 @@
 get_image <- function(tissueSampleIds = NULL,
                       page = 0,
                       itemsPerPage = 250) {
-  gtex_query(endpoint = "histology/image")
+  gtex_query(endpoint = "histology/image") |>
+    tidyr::unnest(cols = "pathologyNotesCategories", keep_empty = TRUE)
 }
