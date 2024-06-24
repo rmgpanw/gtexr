@@ -35,16 +35,18 @@ A tibble.
 }
 \description{
 This service returns exons from all known transcripts of the given gene.
-}
-\details{
 \itemize{
 \item A versioned GENCODE ID is required to ensure that all exons are from a single gene.
 \item A dataset ID or both GENCODE version and genome build must be provided.
 \item Although annotated exons are not dataset dependent, specifying a dataset here is equivalent to specifying the GENCODE version and genome build used by that dataset.
 }
+
+\href{https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_exons_api_v2_reference_exon_get}{GTEx Portal API documentation}
 }
 \examples{
+\dontrun{
 get_exons(gencodeId = "ENSG00000203782.5")
+}
 }
 \seealso{
 Other Reference Genome Endpoints: 

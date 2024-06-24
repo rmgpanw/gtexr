@@ -2,8 +2,7 @@
 % Please edit documentation in R/get_gwas_catalog_by_location.R
 \name{get_gwas_catalog_by_location}
 \alias{get_gwas_catalog_by_location}
-\title{Get Gwas Catalog By Location
-Find the GWAS Catalog on a certain chromosome between start and end locations.}
+\title{Get Gwas Catalog By Location}
 \usage{
 get_gwas_catalog_by_location(
   start,
@@ -31,11 +30,15 @@ get_gwas_catalog_by_location(
 A tibble.
 }
 \description{
-Get Gwas Catalog By Location
-Find the GWAS Catalog on a certain chromosome between start and end locations.
+Find the GWAS Catalog on a certain chromosome between start and
+end locations.
+
+\href{https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_gwas_catalog_by_location_api_v2_reference_gwasCatalogByLocation_get}{GTEx API Portal documentation}
 }
 \examples{
+\dontrun{
 get_gwas_catalog_by_location(start = 1, end = 10000000, chromosome = "chr1")
+}
 }
 \seealso{
 Other Reference Genome Endpoints: 

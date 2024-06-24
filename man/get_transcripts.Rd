@@ -31,16 +31,18 @@ A tibble.
 }
 \description{
 Find all transcripts of a reference gene.
-}
-\details{
 \itemize{
 \item This service returns information about transcripts of the given versioned GENCODE ID.
 \item A genome build and GENCODE version must be provided.
 \item By default, this service queries the genome build and GENCODE version used by the latest GTEx release.
 }
+
+\href{https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_transcripts_api_v2_reference_transcript_get}{GTEx API Portal documentation}
 }
 \examples{
+\dontrun{
 get_transcripts(gencodeId = "ENSG00000203782.5")
+}
 }
 \seealso{
 Other Reference Genome Endpoints: 

@@ -1,13 +1,13 @@
 #' Get Genomic Features
 #'
 #' @description [GTEx API Portal
-#' docs](https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_genomic_features_api_v2_reference_features__featureId__get)
+#'   documentation](https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_genomic_features_api_v2_reference_features__featureId__get)
 #'
 #' @details This endpoint takes a path parameter "featureId".
 #'
 #' @inheritParams gtexr_arguments
 #'
-#' @return A tibble
+#' @return A tibble.
 #' @export
 #' @family Reference Genome Endpoints
 #'
@@ -25,20 +25,17 @@
 #' # GTEx variant ID
 #' get_genomic_features("chr11_66561023_G_GTTA_b38")
 #' }
-get_genomic_features <- function(.featureId,
-                                 datasetId = "gtex_v8") {
-
+get_genomic_features <- function(.featureId, datasetId = "gtex_v8") {
   # validate `.featureId`
   validate_featureId(.featureId)
 
   # perform query
   gtex_query(endpoint = paste0("reference/features/", .featureId),
-                       return_raw = TRUE) |>
+             return_raw = TRUE) |>
     process_get_genomic_features_resp_json(.featureId = .featureId)
 }
 
 process_get_genomic_features_resp_json <- function(resp_json, .featureId) {
-
   if (rlang::is_empty(resp_json$features)) {
     result <- tibble::tibble(assembly = resp_json$assembly)
   } else {
@@ -51,9 +48,15 @@ process_get_genomic_features_resp_json <- function(resp_json, .featureId) {
 
 validate_featureId <- function(.featureId) {
   if (!rlang::is_string(.featureId)) {
-    cli::cli_abort(c("!" = "Invalid `.featureId` input",
-                     "x" = cli::format_inline("You supplied: {class(.featureId)} of length {length(.featureId)}"),
-                     "i" = "`.featureId` must be a single string"))
+    cli::cli_abort(
+      c(
+        "!" = "Invalid `.featureId` input",
+        "x" = cli::format_inline(
+          "You supplied: {class(.featureId)} of length {length(.featureId)}"
+        ),
+        "i" = "`.featureId` must be a single string"
+      )
+    )
   }
 
   if (grepl("[^a-zA-Z0-9_.]", .featureId)) {

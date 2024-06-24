@@ -29,16 +29,18 @@ Either "v26" or "v19".}
 A tibble.
 }
 \description{
-\href{https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_gene_search_api_v2_reference_geneSearch_get}{Find genes that are partial or complete match of a gene_id}
-}
-\details{
+Find genes that are partial or complete match of a gene_id
 \itemize{
 \item gene_id could be a gene symbol, a gencode ID, or an Ensemble ID
 \item Gencode Version and Genome Build must be specified
 }
+
+\href{https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_gene_search_api_v2_reference_geneSearch_get}{GTEx Portal API documentation}
 }
 \examples{
+\dontrun{
 get_gene_search("CRP")
+}
 }
 \seealso{
 Other Reference Genome Endpoints: 

@@ -2,8 +2,7 @@
 % Please edit documentation in R/get_neighbor_gene.R
 \name{get_neighbor_gene}
 \alias{get_neighbor_gene}
-\title{Get Neighbor Gene
-Find all neighboring genes on a certain chromosome around a position with a certain window size.}
+\title{Get Neighbor Gene}
 \usage{
 get_neighbor_gene(pos, chromosome, bp_window, page = 0, itemsPerPage = 250)
 }
@@ -25,11 +24,15 @@ get_neighbor_gene(pos, chromosome, bp_window, page = 0, itemsPerPage = 250)
 A tibble.
 }
 \description{
-Get Neighbor Gene
-Find all neighboring genes on a certain chromosome around a position with a certain window size.
+Find all neighboring genes on a certain chromosome around a
+position with a certain window size.
+
+\href{https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_neighbor_gene_api_v2_reference_neighborGene_get}{GTEx API Portal documentation}
 }
 \examples{
+\dontrun{
 get_neighbor_gene(pos = 1000000, chromosome = "chr1", bp_window = 10000)
+}
 }
 \seealso{
 Other Reference Genome Endpoints: 

@@ -1,10 +1,12 @@
 #' Get Gene Search
 #'
-#' [Find genes that are partial or complete match of a
-#' gene_id](https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_gene_search_api_v2_reference_geneSearch_get)
+#' @description Find genes that are partial or complete match of a gene_id
 #'
 #' - gene_id could be a gene symbol, a gencode ID, or an Ensemble ID
 #' - Gencode Version and Genome Build must be specified
+#'
+#' [GTEx Portal API
+#' documentation](https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_gene_search_api_v2_reference_geneSearch_get)
 #'
 #' @inheritParams gtexr_arguments
 #'
@@ -13,7 +15,9 @@
 #' @family Reference Genome Endpoints
 #'
 #' @examples
+#' \dontrun{
 #' get_gene_search("CRP")
+#' }
 get_gene_search <- function(geneId,
                             gencodeVersion = "v26",
                             genomeBuild = "GRCh38/hg38",

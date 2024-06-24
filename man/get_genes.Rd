@@ -30,20 +30,20 @@ Either "v26" or "v19".}
 A tibble
 }
 \description{
-This service returns information about reference genes. A genome build and
-GENCODE version must be provided.
-}
-\details{
+This service returns information about reference genes. A genome
+build and GENCODE version must be provided.
 \itemize{
 \item Genes are searchable by gene symbol, GENCODE ID and versioned GENCODE ID.
 \item Versioned GENCODE ID is recommended to ensure unique ID matching.
 \item By default, this service queries the genome build and GENCODE version used by the latest GTEx release.
 }
 
-\href{https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_genes_api_v2_reference_gene_get}{GTEx API Portal docs}
+\href{https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_genes_api_v2_reference_gene_get}{GTEx API Portal documentation}
 }
 \examples{
+\dontrun{
 get_genes(c("CRP", "IL6R"))
+}
 }
 \seealso{
 Other Reference Genome Endpoints: 

@@ -14,10 +14,10 @@ GTEx Variant ID.}
 data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 }
 \value{
-A tibble
+A tibble.
 }
 \description{
-\href{https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_genomic_features_api_v2_reference_features__featureId__get}{GTEx API Portal docs}
+\href{https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_genomic_features_api_v2_reference_features__featureId__get}{GTEx API Portal documentation}
 }
 \details{
 This endpoint takes a path parameter "featureId".
