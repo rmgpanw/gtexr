@@ -1,14 +1,13 @@
 #' Get Single Nucleus Gex Summary
 #'
-#' @description
-#' Retrieve Summarized Single Nucleus Gene Expression Data.
+#' @description Retrieve Summarized Single Nucleus Gene Expression Data.
 #'
-#'[GTEx Portal API
-#'documentation](https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_single_nucleus_gex_summary_api_v2_expression_singleNucleusGeneExpressionSummary_get)
+#' [GTEx Portal API
+#' documentation](https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_single_nucleus_gex_summary_api_v2_expression_singleNucleusGeneExpressionSummary_get)
 #'
-#'@inheritParams gtexr_arguments
+#' @inheritParams gtexr_arguments
 #'
-#' @return A Tibble
+#' @return A tibble.
 #' @export
 #' @family Expression Data Endpoints
 #'

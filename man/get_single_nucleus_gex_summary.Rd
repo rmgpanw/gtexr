@@ -24,7 +24,7 @@ Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 \item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-A Tibble
+A tibble.
 }
 \description{
 Retrieve Summarized Single Nucleus Gene Expression Data.
