@@ -1,35 +1,38 @@
-#'Get Single Nucleux Gex
+#' Get Single Nucleux Gex
 #'
-#'@description Retrieve Single Nucleus Gene Expression Data for a given Gene.
+#' @description Retrieve Single Nucleus Gene Expression Data for a given Gene.
 #'
-#'[GTEx Portal API
-#'documentation](https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_single_nucleus_gex_api_v2_expression_singleNucleusGeneExpression_get)
+#' [GTEx Portal API
+#' documentation](https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_single_nucleus_gex_api_v2_expression_singleNucleusGeneExpression_get)
 #'
-#'@inheritParams gtexr_arguments
+#' @inheritParams gtexr_arguments
 #'
-#'@return A Tibble
-#'@export
-#'@family Expression Data Endpoints
+#' @return A tibble
+#' @export
+#' @family Expression Data Endpoints
 #'
 #' @examples
 #' \dontrun{
-#' # Search for one or more genes
+#' # Search for one or more genes - returns a tibble with one row per tissue.
+#' # Column "cellTypes" now contains a tibble of expression summary data, with
+#' # one row for each cell type
 #' get_single_nucleus_gex(gencodeIds = c("ENSG00000203782.5",
 #'                                       "ENSG00000132693.12"))
 #'
-#' # Returns a tibble with one row per tissue
+#' # `excludeDataArray = FALSE` - expression values are stored under "celltypes"
+#' # in an additional column called "data"
 #' response <- get_single_nucleus_gex(gencodeIds = "ENSG00000132693.12",
 #'                                    excludeDataArray = FALSE,
 #'                                    itemsPerPage = 2)
 #'
 #' response
 #'
-#' # Column "cellTypes" contains a tibble of data with one row for each cell type
-#' # e.g. for Breast_Mammary_Tissue,
+#' # "cellTypes" contains a tibble of data with one row for each
+#' # cell type e.g. for Breast_Mammary_Tissue
 #' response$cellTypes[[2]]
 #'
-#' # Expression values are stored in "data" e.g. for Breast_Mammary_Tissue,
-#' # Epithelial cell (luminal):
+#' # when `excludeDataArray = FALSE`, expression values are stored in "data"
+#' # e.g. for Breast_Mammary_Tissue, Epithelial cell (luminal):
 #' response$cellTypes[[2]]$data[[1]]
 #' }
 get_single_nucleus_gex <- function(gencodeIds,
@@ -38,8 +41,12 @@ get_single_nucleus_gex <- function(gencodeIds,
                                    excludeDataArray = TRUE,
                                    page = 0,
                                    itemsPerPage = 250) {
-  gtex_query(endpoint = "expression/singleNucleusGeneExpression",
-             return_raw = TRUE)$data |>
+  resp_body <- gtex_query(endpoint = "expression/singleNucleusGeneExpression",
+             return_raw = TRUE)
+
+  paging_info_messages(resp_body)
+
+  resp_body$data |>
 
     # returns a list of lists, with one list for each tissue type. Aim: return a
     # single row tibble for each tissue type

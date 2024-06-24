@@ -31,7 +31,7 @@ Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 \item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-A Tibble
+A tibble
 }
 \description{
 Retrieve Single Nucleus Gene Expression Data for a given Gene.
@@ -40,23 +40,26 @@ Retrieve Single Nucleus Gene Expression Data for a given Gene.
 }
 \examples{
 \dontrun{
-# Search for one or more genes
+# Search for one or more genes - returns a tibble with one row per tissue.
+# Column "cellTypes" now contains a tibble of expression summary data, with
+# one row for each cell type
 get_single_nucleus_gex(gencodeIds = c("ENSG00000203782.5",
                                       "ENSG00000132693.12"))
 
-# Returns a tibble with one row per tissue
+# `excludeDataArray = FALSE` - expression values are stored under "celltypes"
+# in an additional column called "data"
 response <- get_single_nucleus_gex(gencodeIds = "ENSG00000132693.12",
                                    excludeDataArray = FALSE,
                                    itemsPerPage = 2)
 
 response
 
-# Column "cellTypes" contains a tibble of data with one row for each cell type
-# e.g. for Breast_Mammary_Tissue,
+# "cellTypes" contains a tibble of data with one row for each
+# cell type e.g. for Breast_Mammary_Tissue
 response$cellTypes[[2]]
 
-# Expression values are stored in "data" e.g. for Breast_Mammary_Tissue,
-# Epithelial cell (luminal):
+# when `excludeDataArray = FALSE`, expression values are stored in "data"
+# e.g. for Breast_Mammary_Tissue, Epithelial cell (luminal):
 response$cellTypes[[2]]$data[[1]]
 }
 }
