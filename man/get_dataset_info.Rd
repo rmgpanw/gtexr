@@ -16,9 +16,14 @@ data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 A tibble.
 }
 \description{
-NB This current returns empty values.
+\href{https://gtexportal.org/api/v2/redoc#tag/Metadata-Endpoints/operation/get_dataset_info_api_v2_metadata_dataset_get}{GTEx Portal API documentation}
+}
+\details{
+Note: this current only returns empty values.
 }
 \examples{
+\dontrun{
 get_dataset_info()
+}
 }
 \concept{Metadata Endpoints}

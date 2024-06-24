@@ -17,10 +17,14 @@ get_image(tissueSampleIds = NULL, page = 0, itemsPerPage = 250)
 A tibble.
 }
 \description{
-Get Image
+\href{https://gtexportal.org/api/v2/redoc#tag/Histology-Endpoints/operation/get_image_api_v2_histology_image_get}{GTEx Portal API documentation}
 }
 \examples{
+\dontrun{
 get_image()
+
+# filter by `tissueSampleId`
 get_image(tissueSampleIds = "GTEX-1117F-0226", page = 0, itemsPerPage = 100000)
+}
 }
 \concept{Histology Endpoints}
