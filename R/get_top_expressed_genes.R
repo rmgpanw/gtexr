@@ -1,17 +1,17 @@
 #' Get Top Expressed Genes
 #'
-#' @description
-#' - Find top expressed genes for a specified tissue.
+#' @description Find top expressed genes for a specified tissue.
+#'
 #' - Returns top expressed genes for a specified tissue in a dataset, sorted by median expression.
 #' - When the optional parameter filterMtGene is set to true, mitochondrial genes will be excluded from the results.
-#' - By default, this service queries the latest GTEx release.
+#' By default, this service queries the latest GTEx release.
 #'
-#'[GTEx Portal API
-#'documentation](https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_top_expressed_genes_api_v2_expression_topExpressedGene_get)
+#' [GTEx Portal API
+#' documentation](https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_top_expressed_genes_api_v2_expression_topExpressedGene_get)
 #'
-#'@inheritParams gtexr_arguments
+#' @inheritParams gtexr_arguments
 #'
-#' @return A Tibble
+#' @return A tibble.
 #' @export
 #' @family Expression Data Endpoints
 #'

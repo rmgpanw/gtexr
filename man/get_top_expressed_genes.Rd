@@ -27,14 +27,14 @@ data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
 \item{itemsPerPage}{Integer (default = 250).}
 }
 \value{
-A Tibble
+A tibble.
 }
 \description{
+Find top expressed genes for a specified tissue.
 \itemize{
-\item Find top expressed genes for a specified tissue.
 \item Returns top expressed genes for a specified tissue in a dataset, sorted by median expression.
 \item When the optional parameter filterMtGene is set to true, mitochondrial genes will be excluded from the results.
-\item By default, this service queries the latest GTEx release.
+By default, this service queries the latest GTEx release.
 }
 
 \href{https://gtexportal.org/api/v2/redoc#tag/Expression-Data-Endpoints/operation/get_top_expressed_genes_api_v2_expression_topExpressedGene_get}{GTEx Portal API documentation}
