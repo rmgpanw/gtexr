@@ -24,7 +24,11 @@ A tibble.
 get_image()
 
 # filter by `tissueSampleId`
-get_image(tissueSampleIds = "GTEX-1117F-0226", page = 0, itemsPerPage = 100000)
+result <- get_image(tissueSampleIds = "GTEX-1117F-0526")
+print(result)
+
+# note that `pathologyNotesCategories` (if present) is a list column
+print(result$pathologyNotesCategories)
 }
 }
 \concept{Histology Endpoints}
