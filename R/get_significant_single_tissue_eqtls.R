@@ -30,27 +30,20 @@
 #'                                                   "ENSG00000203782.5"))
 #'
 #' # search by variant - must be variantId (not rsid)
-#' get_significant_single_tissue_eqtls(variantId = "chr1_153209640_C_A_b38")
+#' get_significant_single_tissue_eqtls(variantIds = "chr1_153209640_C_A_b38")
 #'
-#' # filter by gene/variant and tissue site - either `gencodeIds` or `variantId`
+#' # filter by gene/variant and tissue site - either `gencodeIds` or `variantIds`
 #' # should be supplied as a minimum
 #' get_significant_single_tissue_eqtls(gencodeIds = c("ENSG00000132693.12",
 #'                                                   "ENSG00000203782.5"),
-#'                                     variantId = "chr1_153209640_C_A_b38",
-#'                                     tissueSiteDetailId = "Whole_Blood")
+#'                                     variantIds = "chr1_153209640_C_A_b38",
+#'                                     tissueSiteDetailIds = "Whole_Blood")
 #' }
 get_significant_single_tissue_eqtls <- function(gencodeIds = NULL,
-                                                variantId = NULL,
-                                                tissueSiteDetailId = NULL,
+                                                variantIds = NULL,
+                                                tissueSiteDetailIds = NULL,
                                                 datasetId = "gtex_v8",
                                                 page = 0,
                                                 itemsPerPage = 250) {
-  # if (is.null(gencodeIds) & is.null(variantId)) {
-  #   cli::cli_abort(c("Either `gencodeIds` or `variantId` must be provided",
-  #                            "i" = "See {.fn ?get_significant_single_tissue_eqtls}"))
-  # }
-
-  # TODO - change variantId to variantIds, and add example with >1 variantId
-
   gtex_query(endpoint = "association/singleTissueEqtl")
 }

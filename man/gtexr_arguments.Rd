@@ -158,6 +158,8 @@ Options: "UBERON:EFO_0000572", "UBERON:EFO_0002009", "UBERON:0000007",
 "UBERON:0013756", "UBERON:0036149".}
 
 \item{variantId}{String. A gtex variant ID.}
+
+\item{variantIds}{Character vector. Gtex variant IDs.}
 }
 \value{
 Returns \code{NULL} invisibly. Used for documentation only.

@@ -6,8 +6,8 @@
 \usage{
 get_significant_single_tissue_isqtls(
   gencodeIds,
-  variantId = NULL,
-  tissueSiteDetailId = NULL,
+  variantIds = NULL,
+  tissueSiteDetailIds = NULL,
   datasetId = "gtex_v8",
   page = 0,
   itemsPerPage = 250
@@ -17,11 +17,11 @@ get_significant_single_tissue_isqtls(
 \item{gencodeIds}{A character vector of Versioned GENCODE IDs, e.g.
 c("ENSG00000132693.12", "ENSG00000203782.5").}
 
-\item{variantId}{String. A gtex variant ID.}
+\item{variantIds}{Character vector. Gtex variant IDs.}
 
-\item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
-GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
-to see valid values) or an Ontology ID.}
+\item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
+Can be GTEx specific IDs (e.g. "Whole_Blood"; use
+\code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}} to see valid values) or Ontology IDs.}
 
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
 data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}

@@ -105,6 +105,7 @@
 #'   "UBERON:0009835", "UBERON:0010414", "UBERON:0011907", "UBERON:0012249",
 #'   "UBERON:0013756", "UBERON:0036149".
 #' @param variantId String. A gtex variant ID.
+#' @param variantIds Character vector. Gtex variant IDs.
 #'
 #' @keywords internal
 #' @return Returns `NULL` invisibly. Used for documentation only.
@@ -158,6 +159,7 @@ gtexr_arguments <- function() {
     "tissueSiteDetailId", "character", TRUE, FALSE, "selectInput", available_tissueSiteDetailIds()$tissue,
     "tissueSiteDetailIds", "character", FALSE, TRUE, "selectizeInput", available_tissueSiteDetailIds()$tissue,
     "uberonIds", "character", FALSE, TRUE, "selectizeInput", c("UBERON:EFO_0000572", "UBERON:EFO_0002009", "UBERON:0000007", "UBERON:0000458", "UBERON:0000473", "UBERON:0000945", "UBERON:0000992", "UBERON:0000995", "UBERON:0000996", "UBERON:0001114", "UBERON:0001150", "UBERON:0001157", "UBERON:0001159", "UBERON:0001211", "UBERON:0001225", "UBERON:0001255", "UBERON:0001293", "UBERON:0001323", "UBERON:0001496", "UBERON:0001621", "UBERON:0001870", "UBERON:0001873", "UBERON:0001874", "UBERON:0001876", "UBERON:0001882", "UBERON:0001898", "UBERON:0001954", "UBERON:0002037", "UBERON:0002038", "UBERON:0002046", "UBERON:0002106", "UBERON:0002190", "UBERON:0002367", "UBERON:0002369", "UBERON:0003889", "UBERON:0004264", "UBERON:0004550", "UBERON:0004648", "UBERON:0006330", "UBERON:0006469", "UBERON:0006566", "UBERON:0006631", "UBERON:0006920", "UBERON:0007610", "UBERON:0008367", "UBERON:0008952", "UBERON:0009834", "UBERON:0009835", "UBERON:0010414", "UBERON:0011907", "UBERON:0012249", "UBERON:0013756", "UBERON:0036149"),
-    "variantId", "character", TRUE, FALSE, "textInput", NA
+    "variantId", "character", TRUE, FALSE, "textInput", NA,
+    "variantIds", "character", FALSE, TRUE, "textAreaInput", NA
   )
 }
