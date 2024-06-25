@@ -32,3 +32,11 @@ test_that("validate_args() raises an error for arguments that are not listed by 
   expect_error(validate_args(list(unrecognised_arg = "x"), rlang::caller_env()),
                "Unrecognised argument: `unrecognised_arg`")
 })
+
+test_that("`validate_args()` raises error if any query parameters are empty",
+          {
+            expect_error(
+              get_neighbor_gene(),
+              "Identified 3 missing arguments with no default values provided:"
+            )
+          })

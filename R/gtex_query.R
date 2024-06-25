@@ -30,27 +30,8 @@ gtex_query <- function(endpoint = NULL,
     query_params <- rlang::env_get_list(env = rlang::caller_env(n = 1),
                                         nms = query_params)
 
-    empty_query_params <- query_params |>
-      purrr::keep(rlang::is_missing)
-
-    if (length(empty_query_params) > 0) {
-      cli::cli_abort(
-        c(
-          "Identified {length(empty_query_params)} missing argument{?s} with no default value{?s} provided: ",
-          "{paste(names(empty_query_params), sep = '', collapse = ', ')}"
-        ),
-        call = rlang::caller_env()
-      )
-    }
-
     query_params <- query_params |>
-      purrr::map(\(x) {
-        if (rlang::is_na(x) | identical(x, "")) {
-          return(NULL)
-        } else {
-          return(x)
-        }
-      }) |>
+      purrr::map(process_na_and_zero_char_query_params) |>
       purrr::compact()
 
     query_params <- validate_args(arguments = query_params,
@@ -142,3 +123,13 @@ paging_info_messages <- function(gtex_response_body) {
     purrr::set_names(nm = "*") |>
     cli::cli_bullets()
 }
+
+
+process_na_and_zero_char_query_params <- function(x) {
+  if (rlang::is_na(x) | identical(x, "")) {
+    return(NULL)
+  } else {
+    return(x)
+  }
+}
+

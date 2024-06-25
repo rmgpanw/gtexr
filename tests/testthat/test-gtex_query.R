@@ -12,8 +12,11 @@ with_mock_dir("gtex_query", {
   })
 })
 
-# TODO - add test for `calculate_expression_quantitative_trait_loci(tissueSiteDetailId = "Artery_Aorta",
-# gencodeId = "ENSG00000116117", variantId = "rs147387290")` - returns `NULL`
-# for "pValueThreshold". This doesn't however:
-# `calculate_expression_quantitative_trait_loci(tissueSiteDetailId = "Artery_Aorta", gencodeId =
-# "ENSG00000225630", variantId = "rs554008981")`
+test_that("`convert_null_to_na()` works", {
+  expect_true(is.na(convert_null_to_na(NULL)))
+})
+
+test_that("`process_na_and_zero_char_query_params()` works", {
+  expect_identical(purrr::map(list(NA, "", 1L), process_na_and_zero_char_query_params),
+                   list(NULL, NULL, 1L))
+})

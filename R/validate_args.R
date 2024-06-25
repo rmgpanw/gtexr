@@ -2,9 +2,18 @@ validate_args <- function(arguments,
                           call) {
   metadata <- gtexr_arguments()
 
-  # TODO move checks for missing args here, and also any "" values e.g. calculate_expression_quantitative_trait_loci(tissueSiteDetailId = "Whole_Blood",
-                   # gencodeId = "",
-                   # variantId = "rs79641866")
+  empty_query_params <- arguments |>
+    purrr::keep(rlang::is_missing)
+
+  if (length(empty_query_params) > 0) {
+    cli::cli_abort(
+      c(
+        "Identified {length(empty_query_params)} missing argument{?s} with no default value{?s} provided: ",
+        "{paste(names(empty_query_params), sep = '', collapse = ', ')}"
+      ),
+      call = call
+    )
+  }
 
   # see ?purrr::purrr_error_indexed - withCallingHandlers() is used here to get
   # rid of purrr's wrapper error
