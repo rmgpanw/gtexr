@@ -9,6 +9,8 @@
 [![Codecov test
 coverage](https://codecov.io/gh/rmgpanw/gtexr/branch/main/graph/badge.svg)](https://app.codecov.io/gh/rmgpanw/gtexr?branch=main)
 [![R-CMD-check](https://github.com/rmgpanw/gtexr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rmgpanw/gtexr/actions/workflows/R-CMD-check.yaml)
+[![Deploy to
+shinyapps.io](https://github.com/rmgpanw/gtexr/actions/workflows/shinyapps-deploy.yaml/badge.svg)](https://github.com/rmgpanw/gtexr/actions/workflows/shinyapps-deploy.yaml)
 
 <!-- badges: end -->
 
