@@ -37,3 +37,13 @@ test_that(
     )
   }
 )
+
+test_that("`process_resp_body_clustered_expression()` raises expected error with invalid `expression_item_name` argument values", {
+  resp_body <- list(clusters = "clusters",
+                    medianExonExpression = "medianExonExpression")
+
+  expect_error(
+    process_resp_body_clustered_expression(resp_body, expression_item_name = "medianExonExpression_invalid"),
+    "Internal gtexr error - incorrect `expression_item_name`: 'medianExonExpression_invalid'"
+  )
+})
