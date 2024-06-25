@@ -14,11 +14,28 @@
 #' get_image()
 #'
 #' # filter by `tissueSampleId`
-#' get_image(tissueSampleIds = "GTEX-1117F-0226", page = 0, itemsPerPage = 100000)
+#' result <- get_image(tissueSampleIds = "GTEX-1117F-0526")
+#' print(result)
+#'
+#' # note that `pathologyNotesCategories` (if present) is a list column
+#' print(result$pathologyNotesCategories)
 #' }
 get_image <- function(tissueSampleIds = NULL,
                       page = 0,
                       itemsPerPage = 250) {
-  gtex_query(endpoint = "histology/image") |>
-    tidyr::unnest(cols = "pathologyNotesCategories", keep_empty = TRUE)
+  resp_body <- gtex_query(endpoint = "histology/image", return_raw = TRUE)
+
+  paging_info_messages(resp_body)
+
+  resp_body$data |>
+    purrr::map(\(x) {
+      if (!rlang::is_empty(x$pathologyNotesCategories)) {
+        x$pathologyNotesCategories <- tibble::as_tibble(x$pathologyNotesCategories)
+      }
+
+      x |>
+        purrr::compact() |>
+        tibble::as_tibble()
+    }, .progress = TRUE) |>
+    dplyr::bind_rows()
 }
