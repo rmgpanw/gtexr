@@ -41,3 +41,34 @@ test_that("`process_get_genomic_features_resp_json()` handles non-empty response
               )
             )
           })
+
+test_that("`get_genomic_features()` returns tibble with expected colnames",
+          {
+            skip_if_offline()
+            result <- get_genomic_features("brca1")
+
+            expect_s3_class(result, "tbl_df")
+
+            expect_identical(
+              names(result),
+              c(
+                "gencodeVersion",
+                "end",
+                "description",
+                "geneSymbolUpper",
+                "genomeBuild",
+                "geneStatus",
+                "strand",
+                "entrezGeneId",
+                "geneType",
+                "start",
+                "dataSource",
+                "gencodeId",
+                "geneSymbol",
+                "tss",
+                "chromosome",
+                "featureType",
+                "assembly"
+              )
+            )
+          })
