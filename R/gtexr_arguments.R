@@ -84,11 +84,11 @@
 #' @param tissueSampleId String. A Tissue Sample ID.
 #' @param tissueSampleIds Array of strings. A list of Tissue Sample ID(s).
 #' @param tissueSiteDetailId String. The ID of the tissue of interest. Can be a
-#'   GTEx specific ID (e.g. "Whole_Blood"; use [available_tissueSiteDetailIds()]
+#'   GTEx specific ID (e.g. "Whole_Blood"; use [get_tissue_site_detail()]
 #'   to see valid values) or an Ontology ID.
 #' @param tissueSiteDetailIds Character vector of IDs for tissues of interest.
 #'   Can be GTEx specific IDs (e.g. "Whole_Blood"; use
-#'   [available_tissueSiteDetailIds()] to see valid values) or Ontology IDs.
+#'   [get_tissue_site_detail()] to see valid values) or Ontology IDs.
 #' @param uberonIds Character vector. A list of Uberon ID(s) of interest.
 #'   Options: "UBERON:EFO_0000572", "UBERON:EFO_0002009", "UBERON:0000007",
 #'   "UBERON:0000458", "UBERON:0000473", "UBERON:0000945", "UBERON:0000992",

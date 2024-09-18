@@ -42,7 +42,3 @@ reference:
 - title: Reference Genome Endpoints
 - contents:
   - has_concept("Reference Genome Endpoints")
-
-- title: Utilities
-- contents:
-  - has_concept("Utilities")
