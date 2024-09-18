@@ -43,6 +43,7 @@
 <li><a class="dropdown-item" href="../articles/developer_guide.html">Developer guide</a></li>
   </ul>
 </li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -70,84 +71,60 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rmgpanw.github.io/gtexr/">gtexr</a></span><span class="op">)</span></span></code></pre></div>
-<p><strong>WIP</strong></p>
 <div class="section level2">
 <h2 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
 </h2>
-<ul class="task-list">
-<li><p><label><input type="checkbox">Function name is title of
-endpoint in lower case, with words separated by
-underscores</label></p></li>
-<li><p><label><input type="checkbox"><code>@description</code> section
-is copied verbatim from API documentation site and ends with a link to
-the corresponding API endpoint documentation.</label></p></li>
-<li><p><label><input type="checkbox">Further notes may be added under
-<code>@details</code></label></p></li>
+<ul>
+<li>Function name is title of API endpoint in lower case, with words
+separated by underscores.</li>
 <li>
-<p><label><input type="checkbox">Arguments</label></p>
-<ul class="task-list">
-<li><label><input type="checkbox">Names match those for API endpoint,
-except where the argument accepts an array (vector in R) of values, in
-which case it is pluralised</label></li>
-<li><label><input type="checkbox">Note that the [Get Genomic Features]
-endpoint takes a path parameter “featureId”. The corresponding gtexr
-argument is prefixed with “.” (<code>.featureId</code>).</label></li>
-<li><label><input type="checkbox">Default values also match those for
-API endpoint</label></li>
-<li><label><input type="checkbox">Query parameters flagged as
-“required” in the GTEx Portal API documentation do not have default
-values. Note however that while <code>variantId</code> is not flagged as
-“required” for <a href="https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_linkage_disequilibrium_by_variant_data_api_v2_dataset_ldByVariant_get" class="external-link">Get
-Linkage Disequilibrium By Variant Data</a>, no default value is provided
-in <code><a href="../reference/get_linkage_disequilibrium_by_variant_data.html">get_linkage_disequilibrium_by_variant_data()</a></code> as
-providing <code>NULL</code> or an unrecognised variant ID returns an
-empty response.</label></li>
-<li><label><input type="checkbox">Are all documented in
-<code>gtexr_arguments.R</code>. Rules…see also link to separate
-section(?) (<strong>TO DO</strong>)</label></li>
-<li><label><input type="checkbox">All functions therefore use
-<code>@inheritParams gtexr_arguments</code> for
-documentation</label></li>
+<code>@description</code> section is copied verbatim from the API
+documentation site and ends with a link to the corresponding API
+endpoint documentation.</li>
+<li>Further notes may be added under <code>@details</code>.</li>
+<li>Arguments
+<ul>
+<li>Names match those for API endpoint, except where the argument
+accepts an array (vector in R) of values, in which case it is
+pluralised.<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Note that the &lt;a href="https://gtexportal.org/api/v2/redoc#tag/Reference-Genome-Endpoints/operation/get_genomic_features_api_v2_reference_features__featureId__get" class="external-link"&gt;Get
+Genomic Features&lt;/a&gt; endpoint takes a path parameter “featureId”. The
+corresponding gtexr argument is prefixed with “.”
+(&lt;code&gt;.featureId&lt;/code&gt;).&lt;/p&gt;'><sup>1</sup></a>
+</li>
+<li>Default values also match those for API endpoint.</li>
+<li>Query parameters flagged as “required” in the GTEx Portal API
+documentation do not have default values.<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Note however that while &lt;code&gt;variantId&lt;/code&gt; is not
+flagged as “required” for &lt;a href="https://gtexportal.org/api/v2/redoc#tag/Datasets-Endpoints/operation/get_linkage_disequilibrium_by_variant_data_api_v2_dataset_ldByVariant_get" class="external-link"&gt;Get
+Linkage Disequilibrium By Variant Data&lt;/a&gt;, no default value is provided
+in &lt;code&gt;&lt;a href="../reference/get_linkage_disequilibrium_by_variant_data.html"&gt;get_linkage_disequilibrium_by_variant_data()&lt;/a&gt;&lt;/code&gt; as
+providing &lt;code&gt;NULL&lt;/code&gt; or an unrecognised variant ID returns an
+empty response.&lt;/p&gt;'><sup>2</sup></a>
+</li>
+<li>Are all documented in <code>gtexr_arguments.R</code>. All functions
+therefore use <code>@inheritParams gtexr_arguments</code> for
+documentation.</li>
 </ul>
 </li>
-<li><p><label><input type="checkbox">Use <code>@family</code> roxygen
-tag to match categories on API documentation e.g. … . This is used to
-categorise functions on pkgdown site reference page.</label></p></li>
-<li><p><label><input type="checkbox">All return a
-tibble</label></p></li>
-<li><p><label><input type="checkbox">The first example in
-<code>@examples</code> must produce output, where possible, and be a
-single function call without assignment
+<li>Use <code>@family</code> roxygen tag to match categories on API
+documentation. This is used to categorise functions on pkgdown site
+reference page.</li>
+<li>Return a tibble.</li>
+<li>The first example in <code>@examples</code> must produce output and
+be a single function call without assignment
 (e.g. <code>get_news_items()</code>, not
 <code>x &lt;- get_news_items()</code>). This is used to pre-populate
-argument values in the gtexr shiny app with a working
-example.</label></p></li>
-<li><p><label><input type="checkbox">All examples should be surrounded
-by <code>\dontrun{}</code>.</label></p></li>
-<li><p><label><input type="checkbox"><code><a href="../reference/gtexr_arguments.html">gtexr_arguments()</a></code>
-metadata … (<em>new section</em>)</label></p></li>
+argument values in the gtexr shiny app with a working example.</li>
+<li>All examples should be surrounded by <code>\dontrun{}</code>.</li>
 </ul>
 </div>
-<div class="section level2">
-<h2 id="todo">TODO<a class="anchor" aria-label="anchor" href="#todo"></a>
-</h2>
-<ul class="task-list">
-<li><label><input type="checkbox">Complete above
-documentation</label></li>
-<li><label><input type="checkbox">Add unit test(s) to enforce above
-(e.g. check that URL to )</label></li>
-</ul>
-</div>
-  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
-    </nav></aside>
+
+  </main>
 </div>
 
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Alasdair Warwick.</p>
+  <p>Developed by Alasdair Warwick, Benjamin Zuckerman, Abraham Olvera-Barrios, Chuin Ying Ung, Robert Luben.</p>
 </div>
 
 <div class="pkgdown-footer-right">

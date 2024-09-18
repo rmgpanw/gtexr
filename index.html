@@ -17,8 +17,8 @@
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Query the GTEx Portal API">
-<meta name="description" content="A convenient R interface to the GTEx Portal API.">
-<meta property="og:description" content="A convenient R interface to the GTEx Portal API.">
+<meta name="description" content="A convenient R interface to the Genotype-Tissue Expression (GTEx) Portal API. For more information on the API, see &lt;https://gtexportal.org/api/v2/redoc&gt;.">
+<meta property="og:description" content="A convenient R interface to the Genotype-Tissue Expression (GTEx) Portal API. For more information on the API, see &lt;https://gtexportal.org/api/v2/redoc&gt;.">
 <meta property="og:image" content="https://rmgpanw.github.io/gtexr/logo.png">
 </head>
 <body>
@@ -46,6 +46,7 @@
 <li><a class="dropdown-item" href="articles/developer_guide.html">Developer guide</a></li>
   </ul>
 </li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -73,8 +74,11 @@
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of gtexr from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<p>You can install this package from CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"gtexr"</span><span class="op">)</span></span></code></pre></div>
+<p>Or you can install the development version of gtexr from <a href="https://github.com/rmgpanw/gtexr" class="external-link">GitHub</a> with:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"rmgpanw/gtexr"</span><span class="op">)</span></span></code></pre></div>
 </div>
@@ -82,7 +86,7 @@
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
 <p>Get general information about the GTEx service:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rmgpanw.github.io/gtexr/">gtexr</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/get_service_info.html">get_service_info</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 1 × 9</span></span>
@@ -91,7 +95,7 @@
 <span><span class="co">#&gt; 1 org.g… GTEx… 2.0.0   GTEx Project      https://gtexpor… This servi… https://g…</span></span>
 <span><span class="co">#&gt; # ℹ 2 more variables: documentationUrl &lt;chr&gt;, environment &lt;chr&gt;</span></span></code></pre></div>
 <p>Retrieve eQTL genes for whole blood tissue:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_eqtl_genes.html">get_eqtl_genes</a></span><span class="op">(</span><span class="st">"Whole_Blood"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning: ! Total number of items (12360) exceeds maximum page size (250).</span></span>
 <span><span class="co">#&gt; ℹ Try increasing `itemsPerPage`.</span></span>
@@ -118,7 +122,7 @@
 <span><span class="co">#&gt; # ℹ 4 more variables: log2AllelicFoldChange &lt;dbl&gt;, pValue &lt;dbl&gt;,</span></span>
 <span><span class="co">#&gt; #   pValueThreshold &lt;dbl&gt;, qValue &lt;dbl&gt;</span></span></code></pre></div>
 <p>Retrieve significant eQTLs for one or more genes:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_significant_single_tissue_eqtls.html">get_significant_single_tissue_eqtls</a></span><span class="op">(</span>gencodeId <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"ENSG00000132693.12"</span>,</span>
 <span>                                                  <span class="st">"ENSG00000203782.5"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
@@ -173,6 +177,10 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Alasdair Warwick <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0002-0800-2890" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Benjamin Zuckerman <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-0077-6074" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Abraham Olvera-Barrios <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-3305-4465" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Chuin Ying Ung <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0001-8487-4589" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Robert Luben <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-5088-6343" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
@@ -191,7 +199,7 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Alasdair Warwick.</p>
+  <p>Developed by Alasdair Warwick, Benjamin Zuckerman, Abraham Olvera-Barrios, Chuin Ying Ung, Robert Luben.</p>
 </div>
 
 <div class="pkgdown-footer-right">

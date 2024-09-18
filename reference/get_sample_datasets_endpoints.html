@@ -29,6 +29,7 @@ GTEx Portal API documentation"><meta property="og:image" content="https://rmgpan
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/developer_guide.html">Developer guide</a></li>
   </ul></li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/rmgpanw/gtexr/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
@@ -40,7 +41,7 @@ GTEx Portal API documentation"><meta property="og:image" content="https://rmgpan
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Get Sample (Datasets Endpoints)</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rmgpanw/gtexr/blob/main/R/get_sample.R" class="external-link"><code>R/get_sample.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rmgpanw/gtexr/blob/main/R/get_sample_datasets_endpoints.R" class="external-link"><code>R/get_sample_datasets_endpoints.R</code></a></small>
       <div class="d-none name"><code>get_sample_datasets_endpoints.Rd</code></div>
     </div>
 
@@ -159,21 +160,8 @@ causes", "Intermediate death", "Slow death".</p></dd>
 
 
 <dt id="arg-uberonids">uberonIds<a class="anchor" aria-label="anchor" href="#arg-uberonids"></a></dt>
-<dd><p>Character vector. A list of Uberon ID(s) of interest.
-Options: "UBERON:EFO_0000572", "UBERON:EFO_0002009", "UBERON:0000007",
-"UBERON:0000458", "UBERON:0000473", "UBERON:0000945", "UBERON:0000992",
-"UBERON:0000995", "UBERON:0000996", "UBERON:0001114", "UBERON:0001150",
-"UBERON:0001157", "UBERON:0001159", "UBERON:0001211", "UBERON:0001225",
-"UBERON:0001255", "UBERON:0001293", "UBERON:0001323", "UBERON:0001496",
-"UBERON:0001621", "UBERON:0001870", "UBERON:0001873", "UBERON:0001874",
-"UBERON:0001876", "UBERON:0001882", "UBERON:0001898", "UBERON:0001954",
-"UBERON:0002037", "UBERON:0002038", "UBERON:0002046", "UBERON:0002106",
-"UBERON:0002190", "UBERON:0002367", "UBERON:0002369", "UBERON:0003889",
-"UBERON:0004264", "UBERON:0004550", "UBERON:0004648", "UBERON:0006330",
-"UBERON:0006469", "UBERON:0006566", "UBERON:0006631", "UBERON:0006920",
-"UBERON:0007610", "UBERON:0008367", "UBERON:0008952", "UBERON:0009834",
-"UBERON:0009835", "UBERON:0010414", "UBERON:0011907", "UBERON:0012249",
-"UBERON:0013756", "UBERON:0036149".</p></dd>
+<dd><p>Character vector of Uberon IDs (e.g. "UBERON:EFO_0000572";
+use <code><a href="get_tissue_site_detail.html">get_tissue_site_detail()</a></code> to see valid values).</p></dd>
 
 
 <dt id="arg-datatypes">dataTypes<a class="anchor" aria-label="anchor" href="#arg-datatypes"></a></dt>
@@ -259,7 +247,7 @@ Options: "UBERON:EFO_0000572", "UBERON:EFO_0002009", "UBERON:0000007",
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by Alasdair Warwick.</p>
+  <p>Developed by Alasdair Warwick, Benjamin Zuckerman, Abraham Olvera-Barrios, Chuin Ying Ung, Robert Luben.</p>
 </div>
 
 <div class="pkgdown-footer-right">
