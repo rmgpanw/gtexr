@@ -134,12 +134,12 @@ for further details.}
 \item{tissueSampleIds}{Array of strings. A list of Tissue Sample ID(s).}
 
 \item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
-GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
+GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=get_tissue_site_detail]{get_tissue_site_detail()}}
 to see valid values) or an Ontology ID.}
 
 \item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
 Can be GTEx specific IDs (e.g. "Whole_Blood"; use
-\code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}} to see valid values) or Ontology IDs.}
+\code{\link[=get_tissue_site_detail]{get_tissue_site_detail()}} to see valid values) or Ontology IDs.}
 
 \item{uberonIds}{Character vector. A list of Uberon ID(s) of interest.
 Options: "UBERON:EFO_0000572", "UBERON:EFO_0002009", "UBERON:0000007",

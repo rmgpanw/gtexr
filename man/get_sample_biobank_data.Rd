@@ -34,7 +34,7 @@ Frozen Tissue".}
 
 \item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
 Can be GTEx specific IDs (e.g. "Whole_Blood"; use
-\code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}} to see valid values) or Ontology IDs.}
+\code{\link[=get_tissue_site_detail]{get_tissue_site_detail()}} to see valid values) or Ontology IDs.}
 
 \item{pathCategory}{Character vector. Options: "adenoma", "amylacea",
 "atelectasis", "atherosclerosis", "atherosis", "atrophy", "calcification",

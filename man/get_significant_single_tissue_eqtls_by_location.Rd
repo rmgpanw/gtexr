@@ -15,7 +15,7 @@ get_significant_single_tissue_eqtls_by_location(
 }
 \arguments{
 \item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
-GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}}
+GTEx specific ID (e.g. "Whole_Blood"; use \code{\link[=get_tissue_site_detail]{get_tissue_site_detail()}}
 to see valid values) or an Ontology ID.}
 
 \item{start}{Integer.}

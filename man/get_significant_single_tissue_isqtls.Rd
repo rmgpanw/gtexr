@@ -21,7 +21,7 @@ c("ENSG00000132693.12", "ENSG00000203782.5").}
 
 \item{tissueSiteDetailIds}{Character vector of IDs for tissues of interest.
 Can be GTEx specific IDs (e.g. "Whole_Blood"; use
-\code{\link[=available_tissueSiteDetailIds]{available_tissueSiteDetailIds()}} to see valid values) or Ontology IDs.}
+\code{\link[=get_tissue_site_detail]{get_tissue_site_detail()}} to see valid values) or Ontology IDs.}
 
 \item{datasetId}{String. Unique identifier of a dataset. Usually includes a
 data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".}
