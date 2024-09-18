@@ -12,3 +12,4 @@
 ^.vscode$
 ^doc$
 ^Meta$
+^cran-comments\.md$

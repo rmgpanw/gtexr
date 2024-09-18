@@ -4,7 +4,57 @@
 \alias{gtexr_arguments}
 \title{gtexr arguments}
 \usage{
-gtexr_arguments()
+gtexr_arguments(
+  ageBrackets = NULL,
+  aliquotIds = NULL,
+  attributeSubset = NULL,
+  autolysisScores = NULL,
+  cellType = NULL,
+  bp_window = NULL,
+  chromosome = NULL,
+  datasetId = NULL,
+  dataTypes = NULL,
+  draw = NULL,
+  end = NULL,
+  excludeDataArray = NULL,
+  .featureId = NULL,
+  filterMtGene = NULL,
+  gencodeId = NULL,
+  gencodeIds = NULL,
+  gencodeVersion = NULL,
+  geneId = NULL,
+  geneIds = NULL,
+  genomeBuild = NULL,
+  hardyScales = NULL,
+  hasExpressionData = NULL,
+  hasGenotype = NULL,
+  itemsPerPage = NULL,
+  ischemicTime = NULL,
+  ischemicTimeGroups = NULL,
+  materialTypes = NULL,
+  organizationName = NULL,
+  page = NULL,
+  pathCategory = NULL,
+  phenotypeId = NULL,
+  pos = NULL,
+  project_id = NULL,
+  rin = NULL,
+  sampleId = NULL,
+  sampleIds = NULL,
+  searchTerm = NULL,
+  sex = NULL,
+  snpId = NULL,
+  sortBy = NULL,
+  sortDirection = NULL,
+  start = NULL,
+  subjectIds = NULL,
+  tissueSampleIds = NULL,
+  tissueSiteDetailId = NULL,
+  tissueSiteDetailIds = NULL,
+  uberonIds = NULL,
+  variantId = NULL,
+  variantIds = NULL
+)
 }
 \arguments{
 \item{ageBrackets}{The age bracket(s) of the donors of interest. Options:
@@ -12,15 +62,15 @@ gtexr_arguments()
 
 \item{aliquotIds}{Character vector.}
 
+\item{attributeSubset}{String. Examples include but are not limited to "sex", "ageBracket"}
+
 \item{autolysisScores}{Character vector. Options: "None", "Mild", "Moderate",
 "Severe".}
 
-\item{attributeSubset}{String. Examples include but are not limited to "sex", "ageBracket"}
-
-\item{bp_window}{Integer.}
-
 \item{cellType}{String. "Adipocytes", "Epithelial_cells", "Hepatocytes",
 "Keratinocytes", "Myocytes", "Neurons", "Neutrophils".}
+
+\item{bp_window}{Integer.}
 
 \item{chromosome}{String. One of "chr1", "chr2", "chr3", "chr4", "chr5",
 "chr6", "chr7", "chr8", "chr9", "chr10", "chr11", "chr12", "chr13",
@@ -129,8 +179,6 @@ for further details.}
 
 \item{subjectIds}{Character vector. GTEx subject ID.}
 
-\item{tissueSampleId}{String. A Tissue Sample ID.}
-
 \item{tissueSampleIds}{Array of strings. A list of Tissue Sample ID(s).}
 
 \item{tissueSiteDetailId}{String. The ID of the tissue of interest. Can be a
@@ -141,21 +189,8 @@ to see valid values) or an Ontology ID.}
 Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 \code{\link[=get_tissue_site_detail]{get_tissue_site_detail()}} to see valid values) or Ontology IDs.}
 
-\item{uberonIds}{Character vector. A list of Uberon ID(s) of interest.
-Options: "UBERON:EFO_0000572", "UBERON:EFO_0002009", "UBERON:0000007",
-"UBERON:0000458", "UBERON:0000473", "UBERON:0000945", "UBERON:0000992",
-"UBERON:0000995", "UBERON:0000996", "UBERON:0001114", "UBERON:0001150",
-"UBERON:0001157", "UBERON:0001159", "UBERON:0001211", "UBERON:0001225",
-"UBERON:0001255", "UBERON:0001293", "UBERON:0001323", "UBERON:0001496",
-"UBERON:0001621", "UBERON:0001870", "UBERON:0001873", "UBERON:0001874",
-"UBERON:0001876", "UBERON:0001882", "UBERON:0001898", "UBERON:0001954",
-"UBERON:0002037", "UBERON:0002038", "UBERON:0002046", "UBERON:0002106",
-"UBERON:0002190", "UBERON:0002367", "UBERON:0002369", "UBERON:0003889",
-"UBERON:0004264", "UBERON:0004550", "UBERON:0004648", "UBERON:0006330",
-"UBERON:0006469", "UBERON:0006566", "UBERON:0006631", "UBERON:0006920",
-"UBERON:0007610", "UBERON:0008367", "UBERON:0008952", "UBERON:0009834",
-"UBERON:0009835", "UBERON:0010414", "UBERON:0011907", "UBERON:0012249",
-"UBERON:0013756", "UBERON:0036149".}
+\item{uberonIds}{Character vector of Uberon IDs (e.g. "UBERON:EFO_0000572";
+use \code{\link[=get_tissue_site_detail]{get_tissue_site_detail()}} to see valid values).}
 
 \item{variantId}{String. A gtex variant ID.}
 

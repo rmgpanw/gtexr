@@ -1,13 +1,24 @@
 Package: gtexr
 Title: Query the GTEx Portal API
 Version: 0.0.0.9000
-Authors@R: 
+Authors@R: c(
     person(given = "Alasdair",
            family = "Warwick",
            role = c("aut", "cre", "cph"),
-           email = "alasdair.warwick06@gmail.com",
-           comment = c(ORCID = "0000-0002-0800-2890"))
-Description: A convenient R interface to the GTEx Portal API.
+           email = "alasdair.warwick.19@ucl.ac.uk",
+           comment = c(ORCID = "0000-0002-0800-2890")),
+    person("Benjamin", "Zuckerman", role = "aut",
+           comment = c(ORCID = "0000-0002-0077-6074")),
+    person("Abraham", "Olvera-Barrios", role = "aut",
+           comment = c(ORCID = "0000-0002-3305-4465")),
+    person("Chuin Ying", "Ung", role = "aut",
+           comment = c(ORCID = "0000-0001-8487-4589")),
+    person("Robert", "Luben", role = "aut",
+           comment = c(ORCID = "0000-0002-5088-6343"))
+    )
+Description: A convenient R interface to the Genotype-Tissue Expression (GTEx) 
+    Portal API. For more information on the API, see 
+    <https://gtexportal.org/api/v2/redoc>.
 License: MIT + file LICENSE
 URL: https://rmgpanw.github.io/gtexr/,
     https://github.com/rmgpanw/gtexr

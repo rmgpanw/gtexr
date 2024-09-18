@@ -81,7 +81,6 @@
 #' @param sortDirection String. Options: "asc", "desc". Default = "asc".
 #' @param start Integer.
 #' @param subjectIds Character vector. GTEx subject ID.
-#' @param tissueSampleId String. A Tissue Sample ID.
 #' @param tissueSampleIds Array of strings. A list of Tissue Sample ID(s).
 #' @param tissueSiteDetailId String. The ID of the tissue of interest. Can be a
 #'   GTEx specific ID (e.g. "Whole_Blood"; use [get_tissue_site_detail()]
@@ -89,27 +88,62 @@
 #' @param tissueSiteDetailIds Character vector of IDs for tissues of interest.
 #'   Can be GTEx specific IDs (e.g. "Whole_Blood"; use
 #'   [get_tissue_site_detail()] to see valid values) or Ontology IDs.
-#' @param uberonIds Character vector. A list of Uberon ID(s) of interest.
-#'   Options: "UBERON:EFO_0000572", "UBERON:EFO_0002009", "UBERON:0000007",
-#'   "UBERON:0000458", "UBERON:0000473", "UBERON:0000945", "UBERON:0000992",
-#'   "UBERON:0000995", "UBERON:0000996", "UBERON:0001114", "UBERON:0001150",
-#'   "UBERON:0001157", "UBERON:0001159", "UBERON:0001211", "UBERON:0001225",
-#'   "UBERON:0001255", "UBERON:0001293", "UBERON:0001323", "UBERON:0001496",
-#'   "UBERON:0001621", "UBERON:0001870", "UBERON:0001873", "UBERON:0001874",
-#'   "UBERON:0001876", "UBERON:0001882", "UBERON:0001898", "UBERON:0001954",
-#'   "UBERON:0002037", "UBERON:0002038", "UBERON:0002046", "UBERON:0002106",
-#'   "UBERON:0002190", "UBERON:0002367", "UBERON:0002369", "UBERON:0003889",
-#'   "UBERON:0004264", "UBERON:0004550", "UBERON:0004648", "UBERON:0006330",
-#'   "UBERON:0006469", "UBERON:0006566", "UBERON:0006631", "UBERON:0006920",
-#'   "UBERON:0007610", "UBERON:0008367", "UBERON:0008952", "UBERON:0009834",
-#'   "UBERON:0009835", "UBERON:0010414", "UBERON:0011907", "UBERON:0012249",
-#'   "UBERON:0013756", "UBERON:0036149".
+#' @param uberonIds Character vector of Uberon IDs (e.g. "UBERON:EFO_0000572";
+#'   use [get_tissue_site_detail()] to see valid values).
 #' @param variantId String. A gtex variant ID.
 #' @param variantIds Character vector. Gtex variant IDs.
 #'
 #' @keywords internal
 #' @return Returns `NULL` invisibly. Used for documentation only.
-gtexr_arguments <- function() {
+gtexr_arguments <- function(ageBrackets = NULL,
+                            aliquotIds = NULL,
+                            attributeSubset = NULL,
+                            autolysisScores = NULL,
+                            cellType = NULL,
+                            bp_window = NULL,
+                            chromosome = NULL,
+                            datasetId = NULL,
+                            dataTypes = NULL,
+                            draw = NULL,
+                            end = NULL,
+                            excludeDataArray = NULL,
+                            .featureId = NULL,
+                            filterMtGene = NULL,
+                            gencodeId = NULL,
+                            gencodeIds = NULL,
+                            gencodeVersion = NULL,
+                            geneId = NULL,
+                            geneIds = NULL,
+                            genomeBuild = NULL,
+                            hardyScales = NULL,
+                            hasExpressionData = NULL,
+                            hasGenotype = NULL,
+                            itemsPerPage = NULL,
+                            ischemicTime = NULL,
+                            ischemicTimeGroups = NULL,
+                            materialTypes = NULL,
+                            organizationName = NULL,
+                            page = NULL,
+                            pathCategory = NULL,
+                            phenotypeId = NULL,
+                            pos = NULL,
+                            project_id = NULL,
+                            rin = NULL,
+                            sampleId = NULL,
+                            sampleIds = NULL,
+                            searchTerm = NULL,
+                            sex = NULL,
+                            snpId = NULL,
+                            sortBy = NULL,
+                            sortDirection = NULL,
+                            start = NULL,
+                            subjectIds = NULL,
+                            tissueSampleIds = NULL,
+                            tissueSiteDetailId = NULL,
+                            tissueSiteDetailIds = NULL,
+                            uberonIds = NULL,
+                            variantId = NULL,
+                            variantIds = NULL) {
   tibble::tribble(
     ~arg, ~type, ~scalar, ~pluralised, ~shinyinput, ~choices,
     "ageBrackets", "character", FALSE, TRUE, "selectInput", c("20-29", "30-39", "40-49", "50-59", "60-69", "70-79"),

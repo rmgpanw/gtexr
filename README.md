@@ -23,8 +23,14 @@ app](https://7hocgq-rmgpanw.shinyapps.io/gtexr/)⭐.
 
 ## Installation
 
-You can install the development version of gtexr from
-[GitHub](https://github.com/) with:
+You can install this package from CRAN:
+
+``` r
+install.packages("gtexr")
+```
+
+Or you can install the development version of gtexr from
+[GitHub](https://github.com/rmgpanw/gtexr) with:
 
 ``` r
 # install.packages("devtools")
