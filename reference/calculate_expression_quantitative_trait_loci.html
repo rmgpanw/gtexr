@@ -45,7 +45,7 @@ GTEx Portal API documentation."><meta property="og:image" content="https://rmgpa
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Calculate Expression Quantitative Trait Loci</h1>
-      <small class="dont-index">Source: <a href="https://github.com/rmgpanw/gtexr/blob/v0.1.0.9000/R/calculate_expression_quantitative_trait_loci.R" class="external-link"><code>R/calculate_expression_quantitative_trait_loci.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rmgpanw/gtexr/blob/main/R/calculate_expression_quantitative_trait_loci.R" class="external-link"><code>R/calculate_expression_quantitative_trait_loci.R</code></a></small>
       <div class="d-none name"><code>calculate_expression_quantitative_trait_loci.Rd</code></div>
     </div>
 
@@ -130,18 +130,18 @@ data source and data release. Options: "gtex_v8", "gtex_snrnaseq_pilot".</p></dd
 <span class="r-in"><span>                                             variantId <span class="op">=</span> <span class="st">"rs79641866"</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>  <span class="fu">tidyr</span><span class="fu">::</span><span class="fu"><a href="https://tidyr.tidyverse.org/reference/unnest.html" class="external-link">unnest</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"genotypes"</span><span class="op">)</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 670 × 15</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      data error gencodeId         geneSymbol genotypes hetCount homoAltCount</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> -<span style="color: #BB0000;">1.11</span>  0.148 ENSG00000203782.5 LOR                0       38            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> -<span style="color: #BB0000;">1.21</span>  0.148 ENSG00000203782.5 LOR                0       38            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> -<span style="color: #BB0000;">0.791</span> 0.148 ENSG00000203782.5 LOR                0       38            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>  1.77  0.148 ENSG00000203782.5 LOR                0       38            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>  0.926 0.148 ENSG00000203782.5 LOR                0       38            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span> -<span style="color: #BB0000;">0.148</span> 0.148 ENSG00000203782.5 LOR                0       38            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>  2.75  0.148 ENSG00000203782.5 LOR                0       38            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>  0.848 0.148 ENSG00000203782.5 LOR                0       38            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  0.816 0.148 ENSG00000203782.5 LOR                0       38            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> -<span style="color: #BB0000;">0.114</span> 0.148 ENSG00000203782.5 LOR                1       38            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>       data error gencodeId         geneSymbol genotypes hetCount homoAltCount</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span> -<span style="color: #BB0000;">0.175</span>  0.148 ENSG00000203782.5 LOR                0       38            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span> -<span style="color: #BB0000;">0.247</span>  0.148 ENSG00000203782.5 LOR                0       38            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span> -<span style="color: #BB0000;">1.27</span>   0.148 ENSG00000203782.5 LOR                0       38            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span> -<span style="color: #BB0000;">1.53</span>   0.148 ENSG00000203782.5 LOR                0       38            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>  0.263  0.148 ENSG00000203782.5 LOR                0       38            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>  0.046<span style="text-decoration: underline;">7</span> 0.148 ENSG00000203782.5 LOR                0       38            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span> -<span style="color: #BB0000;">1.42</span>   0.148 ENSG00000203782.5 LOR                0       38            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span> -<span style="color: #BB0000;">1.88</span>   0.148 ENSG00000203782.5 LOR                0       38            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>  1.42   0.148 ENSG00000203782.5 LOR                0       38            0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>  1.98   0.148 ENSG00000203782.5 LOR                0       38            0</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 660 more rows</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 8 more variables: homoRefCount &lt;int&gt;, maf &lt;dbl&gt;, nes &lt;dbl&gt;, pValue &lt;dbl&gt;,</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;">#   pValueThreshold &lt;dbl&gt;, tStatistic &lt;dbl&gt;, tissueSiteDetailId &lt;chr&gt;,</span></span>
