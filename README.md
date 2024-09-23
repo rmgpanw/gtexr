@@ -11,6 +11,10 @@ coverage](https://codecov.io/gh/rmgpanw/gtexr/branch/main/graph/badge.svg)](http
 [![R-CMD-check](https://github.com/rmgpanw/gtexr/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/rmgpanw/gtexr/actions/workflows/R-CMD-check.yaml)
 [![Deploy to
 shinyapps.io](https://github.com/rmgpanw/gtexr/actions/workflows/shinyapps-deploy.yaml/badge.svg)](https://github.com/rmgpanw/gtexr/actions/workflows/shinyapps-deploy.yaml)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/gtexr)](https://CRAN.R-project.org/package=gtexr)
+[![CRAN
+downloads](https://cranlogs.r-pkg.org/badges/gtexr)](https://CRAN.R-project.org/package=gtexr)
 
 <!-- badges: end -->
 
